@@ -1,0 +1,110 @@
+---
+title: "DependencePlots"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(semtree)
+library(metaforest)
+library(gridExtra)
+library(grid)
+```
+
+```{r loading objects}
+forestdata <- readRDS("data/forestfile.RData")
+vim <- readRDS("data/forestvim.RData")
+```
+
+```{r extracting importance values}
+sort.values = T 
+aggregate = "mean" 
+horiz = T
+las = 1 
+convergence = F 
+scale = "absolute" 
+xlim = NULL 
+head = NULL 
+tail = NULL 
+na.omit = FALSE
+
+vimp <- vim
+x <- semtree:::aggregateVarimp(vimp, aggregate, scale, na.omit)
+
+vnames <- vimp$var.names
+low <- min(x, na.rm = T) - 1
+filt <- is.na(x)
+x[filt] <- low
+srt <- sort(x, index.return = T)
+x <- x[srt$ix]
+vnames <- vnames[srt$ix]
+x[x <= (low + 0.5)] <- NA
+
+selection <- 1:length(x)
+
+impmat <- x[selection]
+```
+
+```{r partialDependence residual}
+indxvec <- matrix(c(1:5, (length(impmat)-4):length(impmat)), nrow=1)
+
+pDres <- readRDS("data/pDres.RData")
+```
+
+```{r partialDependence meani}
+pDmi <- readRDS("data/pDmi.RData")
+```
+
+```{r partialDependence means}
+pDms <- readRDS("data/pDms.RData")
+```
+
+```{r partialDependence meanq}
+pDmq <- readRDS("data/pDmq.RData")
+```
+
+```{r plots,  results="asis"}
+texttempl <- "This is variable of importance rank %i
+Variable: %s
+"
+plotres <- list()
+plotmi <- list()
+plotms <- list()
+plotmq <- list()
+
+for(i in 1:length(indxvec)){
+  plotres[[i]] <- ggplot() +
+  geom_line(mapping=aes(x=as.matrix(pDres[[i]]$xgrid), y=as.matrix(unlist(pDres[[i]]$dict))), col="red") +
+  geom_point(mapping=aes(x=as.matrix(pDres[[i]]$xgrid), y=as.matrix(unlist(pDres[[i]]$dict))), col="black", 
+             shape=3, size=3) +
+  labs(x=names(impmat)[indxvec[i]], y="residual") +
+  theme_minimal()
+  
+  plotmi[[i]] <- ggplot() +
+  geom_line(mapping=aes(x=as.matrix(pDmi[[i]]$xgrid), y=as.matrix(unlist(pDmi[[i]]$dict))), col="red") +
+  geom_point(mapping=aes(x=as.matrix(pDmi[[i]]$xgrid), y=as.matrix(unlist(pDmi[[i]]$dict))), col="black", 
+             shape=3, size=3) +
+  labs(x=names(impmat)[indxvec[i]], y="mean i") +
+  theme_minimal()
+  
+  plotms[[i]] <- ggplot() +
+  geom_line(mapping=aes(x=as.matrix(pDms[[i]]$xgrid), y=as.matrix(unlist(pDms[[i]]$dict))), col="red") +
+  geom_point(mapping=aes(x=as.matrix(pDms[[i]]$xgrid), y=as.matrix(unlist(pDms[[i]]$dict))), col="black", 
+             shape=3, size=3) +
+  labs(x=names(impmat)[indxvec[i]], y="mean s") +
+  theme_minimal()
+  
+  plotmq[[i]] <- ggplot() +
+  geom_line(mapping=aes(x=as.matrix(pDmq[[i]]$xgrid), y=as.matrix(unlist(pDmq[[i]]$dict))), col="red") +
+  geom_point(mapping=aes(x=as.matrix(pDmq[[i]]$xgrid), y=as.matrix(unlist(pDmq[[i]]$dict))), col="black", 
+             shape=3, size=3) +
+  labs(x=names(impmat)[indxvec[i]], y="mean q") +
+  theme_minimal()
+}
+
+for(i in 1:length(indxvec)){
+  grid.arrange(plotres[[i]], plotmi[[i]], plotms[[i]], plotmq[[i]], nrow=2,
+               top=textGrob(sprintf(texttempl, (length(impmat)-indxvec[i]+1), names(impmat)[indxvec[i]])))
+}
+```

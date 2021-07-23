@@ -1,0 +1,14 @@
+worcs_version: 0.1.3
+creator: Lissa102
+entry_point: manuscript/manuscript.Rmd
+checksums:
+  df.csv: 75b5123573e67678a0be718924c13d53
+  df_anal.csv: 44af6d161082100f795e4fc2fd36e556
+  synthetic_df_anal.csv: 1a36e951524ba1f37dea170302cb07a1
+data:
+  df.csv:
+    save_expression: write.csv(x = data, file = filename, row.names = FALSE)
+    load_expression: read.csv(file = filename, stringsAsFactors = TRUE)
+  df_anal.csv:
+    synthetic: synthetic_df_anal.csv
+    codebook: codebook_df_anal.Rmd
