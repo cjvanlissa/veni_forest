@@ -10,9 +10,8 @@ library(semPlot)
 library(lavaan)
 library(tidySEM)
 library(semtree)
-library(parallel)
 library(metaforest)
-library(future)
+library(future.apply)
 
 df_anal <- load_data(to_envir = FALSE)$df_anal
 
@@ -75,27 +74,54 @@ table_results(m0)
 
 # setting some controls, current: default method, 1000 trees in forest
 controls <- semforest.control()
+controls$num.trees <- 10 # number of trees to grow
+controls$sampling <- "bootstrap" # number of trees to grow
+controls$mtry <- floor(sqrt(length(predvar)))
+controls$semtree.control
+controls$semtree.control$alpha <- 0.05
+controls$semtree.control$min.N <- 50
+controls$semtree.control$method <- "score"
+controls$semtree.control$exclude.heywood <- TRUE
+controls
 
+plan(multisession(workers = 10))
 # Change the Default settings in semforest.control() and semtree.control()
-for(i in 1:50){
-  controls$num.trees <- 10 # number of trees to grow
-  controls$sampling <- "bootstrap" # number of trees to grow
-  controls$mtry <- floor(sqrt(length(predvar)))
-  controls$semtree.control
-  controls$semtree.control$alpha <- 0.05
-  controls$semtree.control$min.N <- 50
-  controls$semtree.control$method <- "score"
-  controls$semtree.control$exclude.heywood <- TRUE
-  controls
-  
-  #################################################################################################
-  plan(multisession(workers = 10))
-  res_rf <- semforest(m0, data = df_anal, control = controls)#, cluster=cl)
-  saveRDS(res_rf, paste0("forest_", Sys.time(), ".RData"))
+# set.seed(78326)
+# cl<-makeCluster(10) #change the 2 to your number of CPU cores
+for(i in 1:100){
+  res_rf <- semtree::semforest(m0, data = df_anal, control = controls)#, cluster=cl)
+  saveRDS(res_rf, paste0("forest_", i, "_", Sys.time(), ".RData"))
+  rm(res_rf)
   gc()
 }
 
-vim <- varimp(res_rf)
+#saveRDS(res_rf, paste0("forest_", Sys.time(), ".RData"))
+# foreach(i = 1:1000, .packages = c("semtree")) %dopar% {
+#    res_rf <- semtree::semforest(m0, data = df_anal, control = controls)#, cluster=cl)
+#    saveRDS(res_rf, paste0("forest_", i, "_", Sys.time(), ".RData"))
+# }
+# f <- list.files(pattern = "^forest_\\d{1,2}_")
+# file.remove(f)
+parallel::stopCluster(cl)
+rm(cl)
+
+f <- list.files(pattern = "^forest_\\d{4}")
+dts <- as.Date(gsub("^forest_(.+?)\\.RData", "\\1", f))
+res_rf <- readRDS(f[which.max(dts)])
+for(i in f[-1]){
+  out <- try({merge(res_rf, readRDS(i))})
+  if(!inherits(out, "try-error")){
+    res_rf <- out
+  } else {
+    cat("File ", i, " could not be merged.")
+  }
+}
+nullforests <- sapply(res_rf$forest, is.null)
+res_rf$forest <- res_rf$forest[!nullforests]
+# vim <- varimp(res_rf)
+library(future)
+plan(multisession(workers = 40))
+vim2 <- varimp(res_rf)
 #saveRDS(vim, paste0("vim_", Sys.time(), ".RData"))
 VI <- list(variable.importance = semtree:::aggregateVarimp(vim, aggregate = "median", scale = "absolute", TRUE))
 class(VI) <- "ranger"

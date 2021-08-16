@@ -303,6 +303,13 @@
       "Repository": "CRAN",
       "Hash": "a0cbe758a531d054b537d16dff4d58a1"
     },
+    "doSNOW": {
+      "Package": "doSNOW",
+      "Version": "1.0.19",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "d37ea40b304eec255022065947092af6"
+    },
     "dplyr": {
       "Package": "dplyr",
       "Version": "1.0.7",
@@ -365,6 +372,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "38ec653c2613bed60052ba3787bd8a2c"
+    },
+    "foreach": {
+      "Package": "foreach",
+      "Version": "1.5.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "e32cfc0973caba11b65b1fa691b4d8c9"
     },
     "foreign": {
       "Package": "foreign",
@@ -512,6 +526,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "7ab57a6de7f48a8dc84910d1eca42883"
+    },
+    "iterators": {
+      "Package": "iterators",
+      "Version": "1.0.13",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "64778782a89480e9a644f69aad9a2877"
     },
     "jpeg": {
       "Package": "jpeg",
@@ -998,15 +1019,15 @@
     },
     "semtree": {
       "Package": "semtree",
-      "Version": "0.9.16",
+      "Version": "0.9.17",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteUsername": "brandmaier",
       "RemoteRepo": "semtree",
       "RemoteRef": "master",
-      "RemoteSha": "ca903e3fc85be247c27941677a8ff367e8022270",
-      "Hash": "281a64e3c82c8c55c2089f34cce57e0c"
+      "RemoteSha": "d9bce427c05f99ea8438e3a48993c344c39b0fbe",
+      "Hash": "0c1c41f659d0a936372765acb5c3157d"
     },
     "sets": {
       "Package": "sets",
@@ -1014,6 +1035,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "aa24d973032c4b53d7111e94aad07ff0"
+    },
+    "snow": {
+      "Package": "snow",
+      "Version": "0.4-3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "11b822ad6214111a4188d5e5fd1b144c"
     },
     "storr": {
       "Package": "storr",
