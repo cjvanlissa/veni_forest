@@ -131,21 +131,15 @@ for(reps in 1:100){
   if(!inherits(res_rf, "try-error")) saveRDS(res_rf, paste0("forest_", reps, "_", Sys.time(), ".RData"))
 }
 
-#saveRDS(res_rf, paste0("forest_", Sys.time(), ".RData"))
-# foreach(i = 1:1000, .packages = c("semtree")) %dopar% {
-#    res_rf <- semtree::semforest(m0, data = df_anal, control = controls)#, cluster=cl)
-#    saveRDS(res_rf, paste0("forest_", i, "_", Sys.time(), ".RData"))
-# }
-# f <- list.files(pattern = "^forest_\\d{1,2}_")
-# file.remove(f)
 parallel::stopCluster(cl)
 rm(cl)
 
-f <- list.files(pattern = "^forest_\\d{4}")
-dts <- as.Date(gsub("^forest_(.+?)\\.RData", "\\1", f))
-res_rf <- readRDS(f[which.max(dts)])
+f <- list.files("results", pattern = "^forest.+?RData$", full.names = T)
+f <- lapply(f, readRDS)
+#dts <- as.Date(gsub("^forest_(.+?)\\.RData", "\\1", f))
+res_rf <- f[[1]]#readRDS(f[which.max(dts)])
 for(i in f[-1]){
-  out <- try({merge(res_rf, readRDS(i))})
+  out <- try({merge(res_rf, i)})
   if(!inherits(out, "try-error")){
     res_rf <- out
   } else {
@@ -154,6 +148,7 @@ for(i in f[-1]){
 }
 nullforests <- sapply(res_rf$forest, is.null)
 res_rf$forest <- res_rf$forest[!nullforests]
+saveRDS(res_rf, "results/full_forest.RData")
 # vim <- varimp(res_rf)
 library(future)
 plan(multisession(workers = 40))
