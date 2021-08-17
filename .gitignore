@@ -16,3 +16,4 @@ df_anal.csv
 !codebook_df_anal.csv
 dad_request.*
 *.Rdata
+!results/*.RData

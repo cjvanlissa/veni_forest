@@ -29,6 +29,37 @@ df_anal <- as.data.frame(df_anal)
 df_anal <- df_anal[, !names(df_anal) %in% c("awareness", "clarity", "impulsivity", 
                         "goals", "accept", "strategies")]
 
+
+# Preliminary variable selection ------------------------------------------
+
+library(psych)
+fa.parallel(df_anal[, grepl("^de[2-6]", names(df_anal))])
+dv <- principal(df_anal[, grepl("^de[2-6]", names(df_anal))])
+dv$scores
+df_pres <- data.frame(dv$scores, df_anal[, !grepl("^de[2-6]", names(df_anal))])
+library(ranger)
+library(tuneRanger)
+tunetask <- makeRegrTask(data = df_pres, target = "PC1")
+res_tune <- tuneRanger(tunetask, num.trees = 1000, 
+                 num.threads = 40, iters = 70, save.file.path = NULL)
+res_tune$model$learner.model
+
+set.seed(57)
+res <- ranger(PC1~., data = df_pres, importance = "impurity_corrected", mtry = 35, min.node.size = 4, num.trees = 1000)
+VI <- ranger::importance_pvalues(res, method = "altmann", formula = PC1~., data = df_pres)
+sum(VI[,2] < .05)
+lastsig <- order(VI[,1], decreasing = TRUE)
+lastsig <- max(which(VI[lastsig, 2] < .05))
+selected <- rownames(VI)[VI[, 2] < .05]
+p <- VarImpPlot(res, lastsig)
+p <- p + 
+  geom_point(data = data.frame(p$data, sig = (VI[,2] < .05)[as.character(p$data$Variable)]), aes(fill = sig), shape = 21) + 
+  scale_fill_manual(values = c("FALSE" = "white", "TRUE" = "black"))+
+  theme(legend.position = "none")
+
+
+# SEM forest --------------------------------------------------------------
+
 m0 <- as_ram("i =~ 1*de2 + 1*de3 + 1*de4 + 1*de5 + 1*de6
 s =~ 0*de2 + 1*de3 + 2*de4 + 3*de5 + 4*de6
 q =~ 0*de2 + 1*de3 + 4*de4 + 9*de5 + 16*de6
@@ -84,15 +115,20 @@ controls$semtree.control$method <- "score"
 controls$semtree.control$exclude.heywood <- TRUE
 controls
 
-plan(multisession(workers = 10))
+mxOption(model= NULL, key="Number of Threads", value=1)
+plan(multisession, workers = 10)
+res_rf <- par_forest(m0, data = df_anal[, c(paste0("de", 2:6), selected)], control = controls)
 # Change the Default settings in semforest.control() and semtree.control()
 # set.seed(78326)
 # cl<-makeCluster(10) #change the 2 to your number of CPU cores
-for(i in 1:100){
-  res_rf <- semtree::semforest(m0, data = df_anal, control = controls)#, cluster=cl)
-  saveRDS(res_rf, paste0("forest_", i, "_", Sys.time(), ".RData"))
-  rm(res_rf)
-  gc()
+for(reps in 1:100){
+  i = 1
+  while(i < 20){
+    res_rf <- try(semtree::semforest(m0, data = df_anal[, c(paste0("de", 2:6), selected)], control = controls))
+    if(!inherits(res_rf, "try-error")) break
+    plan(multisession, workers = 10)
+  }
+  if(!inherits(res_rf, "try-error")) saveRDS(res_rf, paste0("forest_", reps, "_", Sys.time(), ".RData"))
 }
 
 #saveRDS(res_rf, paste0("forest_", Sys.time(), ".RData"))
