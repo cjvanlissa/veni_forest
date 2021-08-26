@@ -149,11 +149,13 @@ for(i in f[-1]){
 nullforests <- sapply(res_rf$forest, is.null)
 res_rf$forest <- res_rf$forest[!nullforests]
 saveRDS(res_rf, "results/full_forest.RData")
+res_rf <- readRDS("results/full_forest.RData")
 # vim <- varimp(res_rf)
 library(future)
-plan(multisession(workers = 40))
-vim2 <- varimp(res_rf)
-#saveRDS(vim, paste0("vim_", Sys.time(), ".RData"))
+plan(multisession, workers = 40)
+vim <- semtree::varimp(res_rf)
+saveRDS(vim, paste0("results/vim_", gsub("[: ]", "_", Sys.time()), ".RData"))
+vim <- readRDS("results/vim_2021-08-17_09_07_56.RData")
 VI <- list(variable.importance = semtree:::aggregateVarimp(vim, aggregate = "median", scale = "absolute", TRUE))
 class(VI) <- "ranger"
 metaforest::VarImpPlot(VI)
@@ -177,3 +179,61 @@ metaforest::VarImpPlot(VI)
 # Examine results ---------------------------------------------------------
 
 M_dist <- semtree::proximity(res_rf)
+
+
+
+# With full dataset -------------------------------------------------------
+
+# setting some controls, current: default method, 1000 trees in forest
+controls <- semforest.control()
+controls$num.trees <- 10 # number of trees to grow
+controls$sampling <- "bootstrap" # number of trees to grow
+controls$mtry <- floor(sqrt(length(predvar)))
+controls$semtree.control
+controls$semtree.control$alpha <- 0.05
+controls$semtree.control$min.N <- 50
+controls$semtree.control$method <- "score"
+controls$semtree.control$exclude.heywood <- TRUE
+controls
+
+mxOption(model= NULL, key="Number of Threads", value=1)
+plan(multisession, workers = 10)
+
+for(reps in 1:100){
+  i = 1
+  while(i < 20){
+    res_rf <- try(semtree::semforest(m0, data = df_anal, control = controls))
+    if(!inherits(res_rf, "try-error")) break
+    plan(multisession, workers = 10)
+  }
+  if(!inherits(res_rf, "try-error")) saveRDS(res_rf, paste0("forest_all_", reps, "_", Sys.time(), ".RData"))
+}
+
+parallel::stopCluster(cl)
+rm(cl)
+
+f <- list.files("results", pattern = "^forest.+?RData$", full.names = T)
+f <- lapply(f, readRDS)
+#dts <- as.Date(gsub("^forest_(.+?)\\.RData", "\\1", f))
+res_rf <- f[[1]]#readRDS(f[which.max(dts)])
+for(i in f[-1]){
+  out <- try({merge(res_rf, i)})
+  if(!inherits(out, "try-error")){
+    res_rf <- out
+  } else {
+    cat("File ", i, " could not be merged.")
+  }
+}
+nullforests <- sapply(res_rf$forest, is.null)
+res_rf$forest <- res_rf$forest[!nullforests]
+saveRDS(res_rf, "results/full_forest.RData")
+res_rf <- readRDS("results/full_forest.RData")
+# vim <- varimp(res_rf)
+library(future)
+plan(multisession, workers = 40)
+vim <- semtree::varimp(res_rf)
+saveRDS(vim, paste0("results/vim_", gsub("[: ]", "_", Sys.time()), ".RData"))
+vim <- readRDS("results/vim_2021-08-17_09_07_56.RData")
+VI <- list(variable.importance = semtree:::aggregateVarimp(vim, aggregate = "median", scale = "absolute", TRUE))
+class(VI) <- "ranger"
+metaforest::VarImpPlot(VI)

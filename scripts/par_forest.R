@@ -56,7 +56,7 @@ par_forest <- function (model, data, control = NULL, predictors = NULL, constrai
     stop(paste("Error! semtree.control object inside semforest.control has a seed.\n", 
                "Instead, use seed argument of semforest() function to specify seeds for reproducible analysis!"))
   }
-  if (!checkControl(semforest.control$semtree.control)) {
+  if (!semtree:::checkControl(semforest.control$semtree.control)) {
     ui_stop("Unknown options in semforest.control$semtree.control object!")
   }
   if (!is.na(semforest.control$semtree.control$mtry)) {
@@ -93,7 +93,22 @@ par_forest <- function (model, data, control = NULL, predictors = NULL, constrai
   }
   start.time <- proc.time()
   browser()
-  trees <- future.apply::future_mapply(FUN = semtree:::semtreeApplyWrapper, 
+  library(foreach)
+  library(doSNOW)
+  cl<-makeCluster(10) #change the 2 to your number of CPU cores
+  registerDoSNOW(cl)
+  trees <- foreach(rownum = 1:length(seeds), .packages = c("semtree")) %dopar% {
+    semtree:::semtreeApplyWrapper(data = forest.data,
+                                  seed = seeds[rownum],
+                                  skip = skip[rownum],
+                                  model = model,
+                                  semtree.control = semforest.control$semtree.control,
+                                  with.error.handler = with.error.handler,
+                                  predictors = covariates,
+                                  constraints = constraints)
+  }
+    
+    future.apply::future_mapply(FUN = semtree:::semtreeApplyWrapper, 
                                        forest.data, seeds, skip, MoreArgs = list(model = model, 
                                                                                  semtree.control = semforest.control$semtree.control, 
                                                                                  with.error.handler, predictors = covariates, constraints = constraints), 

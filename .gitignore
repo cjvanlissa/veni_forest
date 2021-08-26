@@ -18,3 +18,5 @@ dad_request.*
 *.Rdata
 !results/*.RData
 results/full_forest.RData
+.RData
+*.RData

@@ -1,41 +1,34 @@
-### Emotional Dysregulation # Assessing SEM-forest results ###
-
-#############################
-# Lukas Beinhauer
-# 27/06/20
-#############################
-
-########################################################################################################
-# Over the following lines, code can be found to assess the results from the SEM-forest                #
-# Important: Run <missRanger.R>, <creatingscales.R > and < plantingforest.R > first!                                  #
-########################################################################################################
-
-forestdata <- readRDS("data/forestfile.RData")
-
 library(semtree)
 library(metaforest)
+library(future)
+
+res_rf <- readRDS("results/full_forest_all_2.RData")
+
+plan(multisession, workers = 40)
+vim <- semtree::varimp(res_rf)
+saveRDS(vim, paste0("results/vim_all_2", gsub("[: ]", "_", Sys.time()), ".RData"))
+#vim <- readRDS("results/vim_2021-08-17_09_07_56.RData")
+VI <- list(variable.importance = semtree:::aggregateVarimp(vim, aggregate = "median", scale = "absolute", TRUE))
+class(VI) <- "ranger"
+p <- metaforest::VarImpPlot(VI, 92) 
+saveRDS(p, "varimp_21-08-2021.RData")
 
 
-# system.time(# time of growing forest consisting of 10 trees: 238.52s; forest with 50 trees 1167.93s
-#   vim <- varimp(predgrowthforest)
-# ) #assessing variabel importance of that forest: 93.4 s; forest w/ 50 trees: 343.36s
+# Partial dependence: too computationally intensive -----------------------
 
-system.time(
-  vim <- varimp(forestdata)
-)
+# names(VI$variable.importance)[which.max(VI$variable.importance)]
+# p <- semtree::partialDependence(res_rf, reference.var = "neuroticism", reference.param = "meani", support = 20)
 
-plot(vim) 
-#result from 50 trees, top 5:
-#   1.: ra11aa: 14.666
-#   2.: as11aa: 14.122
-#   3.: ys11aa: 11.441
-#   4.: sc11aa: 10.262
-#   5.: pp11av: 9.700
 
-print(vim)
-# vim$importance
+# Clustering --------------------------------------------------------------
+klsym
+plan(multisession, workers = 40)
+M <- diversityMatrix(res_rf)
 
-# forestdata$forest[[1]]$param_names
 
-saveRDS(vim, "data/forestvim.RData")
-
+# a grid will show the proximity between every pair of observations.
+# The proximity represents the percentage of trees where the two observations
+# appear in the same leaf node.
+# So the higher the value, the closer the observations.
+# You can then use this proximity measure as the similarity or distance metric
+# in your favorite clustering technique.
