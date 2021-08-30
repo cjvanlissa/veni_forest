@@ -17,3 +17,4 @@ df_anal.csv
 dad_request.*
 results/full_forest.RData
 *.RData
+!sim_mat.RData
