@@ -80,6 +80,7 @@ controls$mtry <- floor(sqrt(length(predvar)))
 controls$semtree.control
 controls$semtree.control$alpha <- 0.05
 controls$semtree.control$min.N <- 50
+#controls$semtree.control$min.bucket <- 10
 controls$semtree.control$method <- "score"
 controls$semtree.control$exclude.heywood <- TRUE
 #controls$semtree.control$verbose <- TRUE

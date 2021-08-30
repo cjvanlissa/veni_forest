@@ -2,8 +2,7 @@ plot_pdp <- function (x,
                       variable,
                       growth_pars = c("meani", "means", "meanq"),
                       times = matrix(c(rep(1, 5), 0:4, (0:4)^2), nrow = 5),
-                      probs = pnorm(c(-1, 0, 1)),
-                      relabel = NULL){
+                      probs = pnorm(c(-1, 0, 1))){
   #isfac <- inherits(x$data[[variable]], "factor")
 
 # Partial dependence ------------------------------------------------------
@@ -31,32 +30,53 @@ plot_pdp <- function (x,
   isfac <- inherits(refVar, "factor")
   if (isfac) {
     xgrid <- levels(refVar)
-    if(is.null(relabel)){
-      xlabs <- levels(refVar)
-    } else {
-      xlabs <- relabel[levels(refVar)]
-    }
   }
   else {
     xgrid <- quantile(refVar, probs = probs)
-    xlabs <- xgrid
   }
   fd <- semtree:::partialDependenceDataset(x$data, variable, 
                                  xgrid)
+  # mapreduce <- function(tree) {
+  #   leaf.ids <- semtree:::traverse(tree, fd)
+  #   ret <- vector("list", length(leaf.ids))
+  #   for (j in 1:length(leaf.ids)) {
+  #     node <- semtree:::getNodeById(tree, leaf.ids[j])
+  #     p.estimate <- node$params[param.id]
+  #     yvalue <- fd[j, variable]
+  #     ret[[j]] <- (list(key = as.character(yvalue), value = p.estimate))
+  #   }
+  #   return(ret)
+  # }
+  # mapresult <- vector("list", length = length(x$forest))
+  # chunks <- cut(1:length(x$forest), 100)
+  # for(thechunk in levels(chunks)[-1]){
+  #   i = 1
+  #   while(i < 20){
+  #     tmp <- try(foreach(i = which(chunks == thechunk), .packages = c("semtree")) %dopar% {
+  #       mapreduce(x$forest[[i]])
+  #     })
+  #     if(!inherits(tmp, "try-error")) break
+  #     stopCluster(cl)
+  #     rm(cl)
+  #     cl<-makeCluster(10) #change the 2 to your number of CPU cores
+  #     registerDoSNOW(cl)
+  #     i <- i + 1
+  #   }
+  #   if(!inherits(res_rf, "try-error")) mapresult[which(chunks == thechunk)] <- tmp
+  # }
+  
+  # mapresult <- foreach(i = 1:length(x$forest), .packages = c("semtree")) %dopar% {
+  #   mapreduce(x$forest[[i]])
+  # }
   mapreduce <- function(tree) {
-    leaf.ids <- semtree:::traverse(tree, fd)
-    ret <- vector("list", length(leaf.ids))
-    for (j in 1:length(leaf.ids)) {
-      node <- semtree:::getNodeById(tree, leaf.ids[j])
-      p.estimate <- node$params[param.id]
-      yvalue <- fd[j, variable]
-      ret[[j]] <- (list(key = as.character(yvalue), value = p.estimate))
-    }
-    return(ret)
+    t(sapply(1:nrow(fd), function(i){
+      thisrow <- fd[i, , drop = FALSE]
+      leaf.id <- semtree:::traverse(tree, thisrow)
+      unname(unlist(c(thisrow[thisvar], semtree:::getNodeById(tree, leaf.id)$params[param.id])))
+    }))
   }
-  mapresult <- future.apply::future_lapply(FUN = mapreduce, 
-                                           X = x$forest)
-  mr <- matrix(unlist(mapresult), ncol = length(param.id)+1, byrow = TRUE)
+  mr <- future.apply::future_lapply(FUN = mapreduce, X = x$forest)
+  mr <- do.call(rbind, mr)
   keys <- mr[,1, drop = TRUE]
   mr <- mr[, -1, drop = FALSE]
   class(mr) <- "numeric"
@@ -72,20 +92,23 @@ plot_pdp <- function (x,
   # })))
   if(!isfac) df_plot$x <- ordered(df_plot$x, levels = unique(df_plot$x)[order(as.numeric(unique(df_plot$x)), decreasing = TRUE)], labels = formatC(as.numeric(unique(df_plot$x))[order(as.numeric(unique(df_plot$x)), decreasing = TRUE)], digits = 2, format = "f"))
   names(df_plot)[1] <- variable
-  df_plot$facet <- variable
-  p <- ggplot(df_plot, aes_string(x = "Time", y = "y", shape = variable, group = variable, linetype = variable)) +
+  df_plot$variable <- variable
+  ggplot(df_plot, aes_string(x = "Time", y = "y", shape = variable, group = variable, linetype = variable)) +
     geom_path() +
     geom_point() +
-    labs(title = NULL, x = NULL, y = NULL) +
-    theme_bw() +
-    facet_wrap(~facet)
-  if(!isfac){
-    p <- p + theme(legend.position = "none")
-  } else {
-    p + theme(legend.position = c(.9, .5))
-  }
-  p
+    theme_bw()
 }
-
-pneur <- plot_pdp(tmp, "neuroticism")
-pgesl <- plot_pdp(tmp, "geslacht")
+# list
+# <- plot_pdp(tmp, "neuroticism")
+# pneur +
+#   #scale_y_continuous(limits = range(df_anal[grep("^de[2-6]$", names(df_anal), value = TRUE)]))
+#   scale_y_continuous(quantile(unlist(df_anal[grep("^de[2-6]$", names(df_anal), value = TRUE)]), c(.025, .975)))
+# pgesl <- plot_pdp(tmp, "geslacht")
+# 
+# pgesl +
+#   scale_linetype_discrete(labels = c("Boy", "Girl")) +
+#   scale_shape_discrete(labels = c("Boy", "Girl")) +
+#   theme(legend.title = element_blank(), legend.position = c(.9, .5)) +
+#   scale_y_continuous(limits = quantile(unlist(df_anal[grep("^de[2-6]$", names(df_anal), value = TRUE)]), c(.05, .95)))
+# quantile(unlist(df_anal[grep("^de[2-6]$", names(df_anal), value = TRUE)]), c(.025, .975))
+#  <- plot_pdp(tmp, "neuroticism")

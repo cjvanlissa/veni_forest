@@ -15,8 +15,5 @@ df_anal.csv
 !synthetic_df_anal.csv
 !codebook_df_anal.csv
 dad_request.*
-*.Rdata
-!results/*.RData
 results/full_forest.RData
-.RData
 *.RData
