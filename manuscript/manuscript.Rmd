@@ -1,28 +1,35 @@
 ---
-title             : "The title"
+  title             : "Complementing theory on adolescent emotion regulation using data-driven insights from machine learning"
 shorttitle        : "Title"
 
-author: 
-  - name          : "First Author"
-    affiliation   : "1"
-    corresponding : yes    # Define only one corresponding author
-    address       : "Postal address"
-    email         : "my@email.com"
-  - name          : "Ernst-August Doelle"
-    affiliation   : "1,2"
+author:
+  - name: "Caspar J. Van Lissa"
+    affiliation: "1,2"
+    corresponding: yes
+    address: "Padualaan 14, 3584CH Utrecht, The Netherlands"
+    email: "c.j.vanlissa@uu.nl"
+  - name: "Lukas Beinhauer"
+    affiliation: "3"
+  - name: "Susan Branje"
+    affiliation: "4"
+  - name: "Wim H. J. Meeus"
+    affiliation: "4"
 
 affiliation:
-  - id            : "1"
-    institution   : "Wilhelm-Wundt-University"
-  - id            : "2"
-    institution   : "Konstanz Business School"
+  - id: "1"
+    institution: "Utrecht University, department of Methodology & Statistics"
+  - id: "2"
+    institution: "Open Science Community Utrecht"
+  - id: "3"
+    institution: "Helmut-Schmidt-Universität, Department of Methodology and Statistics for Psychology"
+  - id: "4"
+    institution: "Utrecht University, department of Youth and Family"
 
 authornote: |
-  Add complete departmental affiliations for each author here. Each new line herein must be indented, like this line.
-
-  Enter author note here.
+  Data of the RADAR (Research on Adolescent Development And Relationships) study were used (https://doi.org/10.17026/dans-zrb-v5wp). RADAR has been financially supported by main grants from the Netherlands Organisation for Scientific Research (GB-MAGW 480-03-005, GB-MAGW 480-08-006), Stichting Achmea Slachtoffer en Samenleving (SASS), the Netherlands Organisation for Scientific Research to the Consortium Individual Development (CID; 024.001.003), a grant of the European Research Council (ERC-2017-CoG - 773023 INTRANSITION), and various other grants from the Netherlands Organisation for Scientific Research, VU University Amsterdam, and Utrecht University. The funders had no role in the study design, data collection and analysis, decision to publish, or preparation of the manuscript. If the regulations of the journal allow it, the participating children, parents and schools are to be thanked as well.
 
 abstract: |
+  https://www.srcd.org/news/child-development-special-section-formalizing-theories-child-development
   One or two sentences providing a **basic introduction** to the field,  comprehensible to a scientist in any discipline.
   
   Two to three sentences of **more detailed background**, comprehensible  to scientists in related disciplines.
@@ -68,36 +75,377 @@ library("worcs")
 # load_data()
 ```
 
-This manuscript uses the Workflow for Open Reproducible Code in Science [@vanlissaWORCSWorkflowOpen2020] to ensure reproducibility and transparency. All code <!--and data--> are available at <https://github.com/cjvanlissa/veni_forest.git>.
+<!-- TS: Emotion regulation development is a critical challenge in adolescence. -->
+<!-- TS: Emotion dysregulation has severe consequences for individual adolescents, and society at large. -->
+TS: Therefore, substantial research has addressed this topic.
+TS: Most preceding research has been limited in scope, focusing on only a few theoretically-driven predictors.
+TS: Machine learning makes it possible to cast a wider net, and explore all (available) potentially relevant predictors.
+TS: Confirmatory versus exploratory research: Define the distinction.
+TS: Some longitudinal research falls between these categories. For example, complex longitudinal studies, where prior research is sufficient to lead us to hypothesize *some* associations between two constructs, but not sufficiently specific to let us hypothesize which parameters will be significant.
+TS: Instead, us
 
-This is an example of a non-essential citation [@@vanlissaWORCSWorkflowOpen2020]. If you change the rendering function to `worcs::cite_essential`, it will be removed.
+A key challenge in adolescence is developing mature emotion regulation abilities [@zimmermannEmotionRegulationEarly2014]. 
+Adolescents experience biological, cognitive, and social changes that create an opportunity for positive emotion regulation development [@steinbergAgeOpportunityLessons2014].
+Still, as many as 20% of adolescents instead experience severe emotion regulation difficulties [@leeAdolescentMentalHealth2014],
+with potentially lifelong implications for mental health and well-being [@aldaoEmotionregulationStrategiesPsychopathology2010].
+These difficulties in emotion regulation can cause substantial distress to the individual,
+and incur a sizable societal cost.
+Researchers thus seek to understand what risk factors predispose some adolescents to emotion dysregulation,
+so that effective screening and interventions can be developed.
+Despite abundant empirical research, however,
+an overarching understanding is still lacking because
+the literature is fragmented across subdisciplines 
+and lacks consistent terminology and guiding theory [@vanlissaMappingPhenomenaRelevant2021].
+  
+The present study seeks to gain a more comprehensive understanding of adolescent emotion regulation development by using machine learning methods for rigorous exploration.
+<!-- These predictors may include both risk factors that render some youth susceptible to emotion regulation difficulties, and correlates that can be used to identify at-risk youth. -->
+The SEM-forests algorithm was used to
+identify the most important early indicators of developmental trajectories
+of emotion regulation across adolescence, from a large set of potential candidates.
+The resulting insights can guide future research and interventions to focus on the most important predictors,
+and lays the foundation for formation and revision of overarching theory, such that essential phenomena are adequately represented.
+
+Recently, a text mining systematic review of 6305 publications on adolescents' emotion regulation has revealed what phenomena 
+
+Theory cons methods for theory construction state that the first step in this endeavor is to identify well-established relevant *empirical phenomena*,
+defined as stable and general features of the world [@borsboomTheoryConstructionMethodology2020].
+The current study used a text mining systematic review to provide a comprehensive map of the empirical phenomena relevant to adolescent emotion regulation.
+
+Currently, few instruments exist for the identification of relevant phenomena; instead, theorists typically rely on expert opinion [@borsboomTheoryConstructionMethodology2020].
+This paper argues that systematic reviews are a suitable and relatively more objective method for phenomena detection.
+Traditional narrative reviews are limited, however, by small convenience samples,
+confirmation bias,
+and an undue emphasis on positive results [@littellEvidencebasedBiasedQuality2008].
+These limitations are overcome by a novel method:
+the text mining systematic review (TMSR).
+Relative to narrative reviews, text mining can cover arbitrarily greater corpora,
+and gleans insights from the literature by means of a relatively more transparent, objective, and reproducible process.
+<!--Where sentient readers tend to structure their reading of the literature around established ideas [@littellEvidencebasedBiasedQuality2008],
+the inherent "fairness" of text mining gives emerging themes a chance to come to the fore.-->
+This approach assumes the frequency with which phenomena recur in the literature to be indicative of their relevance.
+If it is additionally assumed that the frequency with which phenomena are studied together is indicative of the extent to which they are thought to be associated,
+then the co-occurrence of phenomena within publications can be interpreted as a rudimentary nomological network: a mapping of relationships between theoretically relevant phenomena [see @alaviAligningTheoryMethodology2018].
+Such a network can serve as a starting point for the formulation of a proto-theory,
+which would additionally involve abductive reasoning: specifying putative mechanisms to explain associations between the phenomena [@borsboomTheoryConstructionMethodology2020].
+Text mining systematic reviews constitute an inductive and exploratory approach:
+Their aim is phenomena detection based on generalization from observations (data) without appeal to theory [@haigExploratoryFactorAnalysis2005].
+By identifying and mapping the phenomena relevant to adolescent emotion regulation,
+such an inductive approach lays the groundwork for future theory development.
+
+<!--
+stifterEmotionRegulation2019
+* call for studies incorporating predictors of ER across multiple levels of analysis
+* different conceptual frameworks
+
+riedigerEmotionRegulationAdolescence2014
+* difficulty in deriving a cohesive picture about emotion regulation in adolescence
+* different conceptual frameworks
+
+* three themes (neurocognitive development, socialization, interplay between internal and external factors) currently represent relatively independent bodies of research
+* A more explicit integration of these various research perspectives will help us to arrive at a more integrated and interpretable picture of the development of emorion regulation during adolescence. 
+
+@bussTheoriesEmotionalDevelopment2019
+
+* emotional development theory is still in its own state of development. 
+* empirical evidence can contribute to theory development.
+
+@bariolaChildAdolescentEmotion2011
+* Further research apply reﬁned theoretical conceptualizations of ER.
 
 
-```{r analysis-preferences}
-# Seed for random number generation
-set.seed(42)
-knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
+Where sentient readers tend to structure their reading of the literature around established ideas [@littellEvidencebasedBiasedQuality2008],
+This potentially reveals phenomena and associations missed by narrative reviewers,
+thereby laying the groundwork for future empirical and theoretical work.
+
+
+we set out to map these relevant empirical phenomena using a systematic review.
+
+
+generate a proto-theoretical nomological network of the relevant empirical phenomena.
+We discuss how this nomological network relates to existing relevant theory, and conclude
+with recommendations for future theory-generating efforts.
+There have been calls for the  consolidation of these disparate insights into overarching theory would be an important step forward.
+An important first step 
+and intrinsic limitations of narrative reviews prohibit comprehensive coverage of the vast but diffuse literature .-->
+<!--
+Recent years have seen the publication of several excellent systematic reviews,
+but these have all been narrative reviews.-->
+
+ <!-- CJ To fill out gaps, following up on promising constructs and unify heretofore disparate regions of the lit -->
+<!-- SH: this implies that the main contribution of the paper is predominantly methodological is that the case? Is there some primary thesis/argument that will be advanced? It is really important to take a top-down approach to that messaging, beginning here in the first paragraph-->
+<!-- Ergens anders: Similarly, although
+there are several *relevant* theories, there is no specific theoretical
+framework to guide research on adolescents' emotion regulation. Although theory
+development is beyond the scope of this paper, we set out to generate a
+proto-theoretical nomological network of the potential risk factors,
+manifestations, and outcomes of emotion regulation in adolescence. We discuss
+how this nomological network relates to existing relevant theory, and conclude
+with recommendations for future theory-generating efforts.-->
+<!-- At the same time, the staggered development of motivational-emotional and regulatory brain circuits gives rise
+to a maturity gap [@croneUnderstandingAdolescencePeriod2012]. 
+This leads youngsters to pursue new experiences in life and love,
+without being fully prepared to cope with the emotional outcomes. --> 
+
+<!--The literature thus paints a picture of
+adolescence as a chrysalis for emotional development: Children enter this stage
+with emotion regulation skills adapted to the challenges of childhood. During
+adolescence, emotional systems are rearranged substantially.-->
+
+<!--
+* intense negative emotions in daily life (Silk, Steinberg, & Morris, 2003) 
+* unstable peer or romantic relationships (Furman & Collins, 2009)
+* decrease in perceived support from parents (Furman & Buhrmester, 1992).
+* early adolescence is characterized by a higher rate of conflicts with parents (Laursen, Coy, & Collins, 1998)
+* higher variability of negative emotions compared to late adolescence (Larson, Moneta, Richards, & Wilson, 2002).
+* relative to other developmental stages, adolescence involves a particularly large number of transitions, novel situations, and new stimuli, physical, cognitive, emotional, and social development—particularly in early and mid-adolescence (Seiffge-Krenke, 2000)
+-->
+
+
+## Knowledge gap
+
+Substantial empirical research, but:
+
+* Different (sub)disciplines have approached the topic in disparate ways [@riedigerEmotionRegulationAdolescence2014]
+* No consistent terminology [@bariolaChildAdolescentEmotion2011]
+* No conceptual frameworks [@stifterEmotionRegulation2019]
+* No overarching theoretical framework [@bussTheoriesEmotionalDevelopment2019]
+
+Knowledge must be consolidated into overarching theory
+
+## Relevant theory
+
+* Bioecological model [@bronfenbrennerBioecologicalModelHuman2007]
+* Transactional model [@sameroffUnifiedTheoryDevelopment2010]
+* Hall's notion of "storm and stress"
+* Theory of normative emotional development [@sroufeEmotionalDevelopmentOrganization1995]
+* Tripartite model [@morrisRoleFamilyContext2007]
+* Internalization model [@holodynskiDevelopmentEmotionsEmotion2006]
+* Polyvagal theory [@porgesOrientingDefensiveWorld1995].
+* Model of social-affective engagement and goal flexibility [@croneUnderstandingAdolescencePeriod2012]
+* Process model of emotion regulation [@grossHandbookEmotionRegulation2013]
+* Social Information Processing Theory [@lemeriseIntegratedModelEmotion2000]
+
+## Limitations of relevant theory
+
+* Few explicitly address adolescence
+* Few comprehensively address predictors of emotion regulation
+* None directly guide contemporary research 
+* Theories vary widely in scope: Some are broad and non-specific; others describe a specific phenomenon in detail, but lack a broader perspective.
+    + Broad theories can frame any research, specific theories generate hypotheses.
+    + It would be beneficial to bridge these levels of analysis.
+
+## Towards integrative theory
+
+First step: identifying relevant phenomena [@borsboomTheoryConstructionMethodology2020]
+
+We conducted a text mining systematic review (TMSR) [@vanlissaMappingPhenomenaRelevant2021]
+
+  * Narrative reviews: small samples, confirmation bias, emphasize positive results [@littellEvidencebasedBiasedQuality2008]
+  * TMSR: Unlimited sample size, transparent, objective, reproducible
+
+6653 papers on Addresses **emotion regulation** in population overlapping with adolescence [10-24]
+
+<doi.org/10.1007/s40894-021-00160-7>
+
+## Co-occurrence graph
+
+```{r networks1, eval = TRUE, results='asis', out.width = "90%"}
+knitr::include_graphics("tmnetworks_small.png")
 ```
 
+Author keywords (a) and abstracts (b)
+
+## Next step
+
+```{r, out.height="50%"}
+knitr::include_graphics("groups.png")
+```
+
+* Predictors of latent growth model?
+  + Only linear differences, few predictors (power)
+* Multigroup latent growth model?
+  + Non-linear differences, but only one moderator
+* Latent class growth model with auxilliary variables?
+  + Groups with regard to trajectory, not predictors
+
+## Solution: Machine learning
+
+* Allows non-linear differences between trajectories
+* Performs variable selection
+  + Cast wide net among potentially relevant predictors
+* Checks & balances ensure generalizability
+* Exploratory: No hypothesis
+
+## Method illustrated
+
+```{r}
+knitr::include_graphics("tree.png")
+```
+
+## Method
+
+SEM-forest [@brandmaierTheoryguidedExplorationStructural2016]
+
+1. Bootstrap sample
+2. On each sample, estimate a SEM-model
+3. Consider $k$ candidate predictors
+4. Identify predictor and value that maximizes $LR$ of post-split multi-group model
+5. Average predictions across bootstrap samples
+
+We used 1000 bootstrap samples, $k = 9$
+
+<!-- TS: Confirmatory versus exploratory research: Define the distinction. -->
+<!-- TS: Some longitudinal research falls between these categories. For example, complex longitudinal studies, where prior research is sufficient to lead us to hypothesize *some* associations between two constructs, but not sufficiently specific to let us hypothesize which parameters will be significant. -->
+
+<!-- ## Results -->
+
+<!-- * Both analyses reflected some constructs from theoretical literature -->
+<!--     + neurodevelopment, socialization -->
+<!-- * Undertheorized themes -->
+<!--     + Developmental disorders -->
+<!--     + Physical health (sic) -->
+<!--     + External stressors -->
+<!--     + Structural disadvantage -->
+<!--     + Addictive behavior -->
+<!--     + Identity and moral development -->
+<!--     + Sexual development -->
+
+<!-- * This offers guidance for phenomena to consider as relevant predictors -->
 
 
-# Methods
-We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study. <!-- 21-word solution (Simmons, Nelson & Simonsohn, 2012; retrieved from http://ssrn.com/abstract=2160588) -->
+## Present study
 
-## Participants
+RQ1: What are the most important predictors of adolescents' trajectories of emotion regulation development?
 
-## Material
+RQ2: What is the nature of the association of the predictors with the trajectories?
 
-## Procedure
+**Participants**
 
-## Data analysis
-We used `r cite_r("r-references.bib")` for all our analyses.
+* RADAR data (https://www.uu.nl/en/research/radar)
+* 497 Dutch adolescents (283 boys; age at T1: M =13.03, SD = 0.46)
+* Collected between 2006-2011
+* Most families were  medium- to high-SES (10% low-SES)
 
+## Candidate predictors
+
+Predictors: 87
+
+Categories: 
+
+* Demographics (e.g., SES)
+* Biological (age, sex, pubertal development)
+* Individual differences (big5, BIS/BAS, empathy)
+* Risk behavior (in/externalizing symptoms, substance use, delinquency, school performance, victimization)
+* Relationship quality (parents/peers)
+* Parenting (perceived and parent-reported)
+* Conflict resolution styles
+
+## Dependent variable
+
+Difficulties in emotion regulation [@gratzMultidimensionalAssessmentEmotion2004]
+
+* 24 items (omitted 'emotional awareness' subscale)
+* E.g.: “When I’m upset, I have difficulty thinking about anything else”
+* 1 (“Almost never”) to 5 (“Almost always”)
+* Excellent reliability, $(.94 > \alpha > .95)$.
+* Metric invariance across waves
+* Quadratic growth model had good fit
+  + CFI = .996, TLI = .993, RMSEA = .047, SRMR = 0.020
+
+## Open science
+
+Workflow for Open Reproducible Code in Science (WORCS) used to make analyses reproducible [@vanlissaWORCSWorkflowOpen2020]
+
+All code and synthetic data available at
+
+<https://github.com/cjvanlissa/veni_forest>
 
 # Results
 
-# Discussion
+## Variable importance
 
+```{r, out.height="100%"}
+vim <- readRDS("varimp_comb_21-08-2021.RData")
+vim
+```
+
+## Marginal association
+
+```{r, out.width="40%"}
+knitr::include_graphics("plots/pdp1-12.png")
+```
+
+## Marginal association 2
+
+```{r, out.width="40%"}
+knitr::include_graphics("plots/pdp13-24.png")
+```
+
+## Marginal association 3
+
+```{r, out.width="40%"}
+knitr::include_graphics("plots/pdp25-36.png")
+```
+
+## Marginal association 4
+
+```{r, out.width="40%"}
+knitr::include_graphics("plots/pdp37-44.png")
+```
+
+## Summary
+
+Important:
+
+* Best predictors: Personality and related constructs
+* Best parental predictor is autonomy support (bal. rel.)
+  + Negative/intrusive parenting more predictive than other positive practices
+* Conflict frequency and behavior
+* Empathy, particularly personal distress
+
+Less important than expected:
+
+* SES
+* Bullying/victimization
+* Delinquency
+* Substance use
+* Monitoring
+
+## Reflection content
+
+* Most important predictors are routinely assessed (big 5) or overt (conflict)
+  + Prime candidates for early risk assessment
+  + Conflict resolution behavior can be taught
+    - Target for intervention if association is causal
+* Emphasis on parenting (in literature and theory) might not be justified
+  + Congruent with RI-CLPM showing few parenting effects in adolescence [@vanlissaRoleFathersMothers2019]
+* Order of predictors mirrors bioecological model
+
+## {.fullslide}
+
+![](polarplot2.png)
+
+## Reflections form
+
+* Many predictors show non-linear effects: Emotion dysregulation only for +/-1SD
+* Some predictors show almost no marginal effect (e.g., father's age, drug use)
+  + This suggests they might be important in **interactions**
+
+## Limitations
+
+* Selective sample
+  + WEIRD, Dutch, mostly mid- high-SES (restriction of range)
+* Panel study, so few biological / cognitive / neurological measures
+* Relatively small sample size
+  + If you have access to 1000+ sample, please get in touch
+* Computational constraints prevented us from tuning the model beyond default settings, and from exploring marginal effects for higher order interactions
+
+## Conclusions
+
+* Proximal factors more predictive of ER development than distal predictors
+* Parenting may be less relevant than previously thought
+* Personality and conflict behavior are candidates for early diagnosis
+* Conflict skills training might be avenue for intervention
 
 \newpage
 

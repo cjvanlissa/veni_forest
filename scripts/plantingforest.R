@@ -12,6 +12,7 @@ library(tidySEM)
 library(semtree)
 library(metaforest)
 library(future.apply)
+library(yaml)
 
 df_anal <- load_data(to_envir = FALSE)$df_anal
 
@@ -59,7 +60,10 @@ p <- p +
 
 
 # SEM forest --------------------------------------------------------------
-
+basicgrowth <- lavaan::growth("i =~ 1*de2 + 1*de3 + 1*de4 + 1*de5 + 1*de6
+s =~ 0*de2 + 1*de3 + 2*de4 + 3*de5 + 4*de6
+q =~ 0*de2 + 1*de3 + 4*de4 + 9*de5 + 16*de6" , data = df_anal)
+write_yaml(as.list(fitmeasures(basicgrowth)), "fitmeasures_growth.yml")
 m0 <- as_ram("i =~ 1*de2 + 1*de3 + 1*de4 + 1*de5 + 1*de6
 s =~ 0*de2 + 1*de3 + 2*de4 + 3*de5 + 4*de6
 q =~ 0*de2 + 1*de3 + 4*de4 + 9*de5 + 16*de6
@@ -84,7 +88,7 @@ s ~~ 0*s
 q ~~ 0*q")
 m0 <- run_mx(m0, data = df_anal)
 table_results(m0)
-
+table_fit(m0)
 # fitting a single tree using the model
 
 # system.time(

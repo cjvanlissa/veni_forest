@@ -35,8 +35,21 @@ fac_labs <- list(
 #saveRDS(vim, paste0("results/vim_all_2", gsub("[: ]", "_", Sys.time()), ".RData"))
 vim <- readRDS("results/vim_all_22021-08-21_17_23_27.RData")
 VI <- list(variable.importance = semtree:::aggregateVarimp(vim, aggregate = "median", scale = "absolute", TRUE))
+ren <- read.csv("scale_rename.csv", stringsAsFactors = F, header = FALSE)
+names(VI$variable.importance)[names(VI$variable.importance) %in% ren$V1] <- ren$V2[match(names(VI$variable.importance)[names(VI$variable.importance) %in% ren$V1], ren$V1)]
+VI$variable.importance <- sort(VI$variable.importance, decreasing = TRUE)
+names(VI$variable.importance) <- paste0(1:length(VI$variable.importance), ". ", names(VI$variable.importance))
 class(VI) <- "ranger"
-p <- metaforest::VarImpPlot(VI, 92) 
+v1 <- v2 <- VI
+v1$variable.importance <- v1$variable.importance[1:44]
+p1 <- metaforest::VarImpPlot(v1, 44)+theme(axis.text.y = element_text(hjust=0))+xlab(NULL)+scale_x_continuous(limits = c(0, max(VI$variable.importance)))
+v2$variable.importance <- v2$variable.importance[45:87]
+p2 <- metaforest::VarImpPlot(v2, 43)+theme(axis.text.y = element_text(hjust=0))+xlab(NULL)+scale_x_continuous(limits = c(0, max(VI$variable.importance)))
+library("cowplot")
+pcomb <- plot_grid(p1,p2,
+          ncol = 2, nrow = 1)
+saveRDS(pcomb, "varimp_comb_21-08-2021.RData")
+p <- metaforest::VarImpPlot(VI, length(VI$variable.importance))
 saveRDS(p, "varimp_21-08-2021.RData")
 
 
