@@ -113,7 +113,8 @@ df_anal <- data.frame(scores,
 
 res <- lavaan::growth("# intercept and slope with fixed coefficients 
                        i =~ 1*de2 + 1*de3 + 1*de4 + 1*de5 + 1*de6
-                       s =~ 0*de2 + 1*de3 + 2*de4 + 3*de5 + 4*de6",
+                       s =~ 0*de2 + 1*de3 + 2*de4 + 3*de5 + 4*de6
+                       q =~ 0*de2 + 1*de3 + 4*de4 + 9*de5 + 16*de6",
                df_anal)
 
 fitMeasures(res)
