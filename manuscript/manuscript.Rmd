@@ -111,86 +111,206 @@ Armed with this knowledge, future research and interventions can focus on the mo
 Moreover, these insights can guide the formation of overarching theory that adequately represents essential phenomena.
 <!-- complement existing theory on adolescent emotion regulation using data-driven insights from machine learning. -->
 
-## 
-
 ## Emotion dysregulation in adolescence
 
 Emotion regulation,
 defined as the ability to manage emotional experience and expression,
-is critical for mental health4–6 and social competence2 throughout life. There is mounting evidence, however, that adolescents do not uniformly become better at regulating emotions1. 
-According to Crone and Dahl's neurodevelopmental model1,
-staggered development of emotional and regulatory brain circuits gives rise to a "maturity gap" in mid-adolescence:
-A period wherein the emotional salience of social stimuli is intensified, while the ability to regulate these emotions lags behind8,21,22.
+is critical for mental health [@aldaoEmotionregulationStrategiesPsychopathology2010, @schaferEmotionRegulationStrategies2017, @braetEmotionRegulationChildren2014]
+and social competence [@zimmermannEmotionRegulationEarly2014] throughout life.
+There is mounting evidence, however, that adolescents do not uniformly become better at regulating emotions: 
+staggered development of emotional and regulatory brain circuits gives rise to a "maturity gap" in mid-adolescence [@croneUnderstandingAdolescencePeriod2012].
+The emotional salience of social stimuli is intensified, while the ability to regulate these emotions lags behind [@caseyBrakingAcceleratingAdolescent2011, @vanlissaLongitudinalInterplayAffective2014].
 This imbalance motivates most adolescents to engage in adaptive exploration:
 Seeking out experiences required to develop mature socio-emotional competences.
-At the same time, this imbalance renders some adolescents vulnerable to emotion dysregulation1,10,
+At the same time, this imbalance renders some adolescents vulnerable to emotion dysregulation [@leeAdolescentMentalHealth2014],
 <!-- exposes youth to a risk of emotion dysregulation, -->
 for example, because they are not yet well-equipped to regulate the pursuit of unhealthy incentives,
 or persevere in pursuing adaptive goals when facing obstacles.
-Thus, some become trapped in a negative spiral characterized by more negative and volatile emotions2,9,11,14,
-which has been linked to the emergence of several mental disorders5,10.
+Thus, some become trapped in a negative spiral characterized by more negative and volatile emotions [@craccoEmotionRegulationChildhood2017],
+which has been linked to the emergence of several mental disorders [@schaferEmotionRegulationStrategies2017].
 <!-- This imbalance motivates most youngsters to seek out new challenges in life and love, -->
 <!-- but renders some of them vulnerable to emotion dysregulation1,10. Unfortunately, there is little theory about which risk factors and environmental hazards render adolescents susceptible to emotional difficulties11. -->
 <!-- Acquiring adaptive emotion regulation skills in adolescence plays a key role in this regard7,20, because t -->
  
-Empirical support for this notion of diverging destinies11 is evident from studies that examine developmental trajectories of emotion regulation in adolescence: 
-Such studies consistently reveal large between-individual heterogeneity 2,7,9.
+Empirical support for this notion of diverging destinies is evident from studies that examine developmental trajectories of emotion regulation in adolescence: 
+Such studies consistently reveal large between-individual heterogeneity [see @craccoEmotionRegulationChildhood2017; @vanlissaRoleFathersMothers2019; @zimmermannEmotionRegulationEarly2014; @reindlSocializationEmotionRegulation2016].
 An important next step is to identify which risk factors render some adolescents susceptible to emotion dysregulation.
-This involves three important challenges:
-The first is that the number of potentially relevant risk factors is large,
-the second is that there is a paucity of relevant theory to narrow down this number,
-and the third is that methods commonly used in the field are not well suited for large numbers of predictors.
-We argue that machine learning methods that perform variable selection overcome these challenges.
-
 <!-- This goal fits within the paradigm shift that has gripped the field of pedagogy, towards “person-centered” research, which focuses on individual developmental trajectories and within-family predictive processes, rather than average patterns across samples16,23. Seminal studies have applied “clustering” methods to identify youth with similar developmental trajectories14,24–26. Adolescents may follow similar trajectories for different reasons, however, and person-centered methods are too complex to accommodate more than a handful of theoretically-derived predictors. Unfortunately, relevant theory on adolescent emotion regulation development is limited27–29. The field is therefore at an impasse: We know that some adolescents are more susceptible to emotion dysregulation than others, but lack tools and theory to identify important predictors of individual development30. -->
 
-## Potential predictors
+## Potential predictors of emotion regulation development
+
+Several theories are commonly cited in research on adolescent emotion regulation.
+Notably, there appears to be a trade-off between these theories' scope and specificity.
+Some theories are broad in scope, considering many potential risk factors, but are non-specific.
+This limits their usefulness in generating testable predictions, and renders them impervious to falsification.
+Other theories are narrow in scope, and are sufficiently specific to derive testable predictions, but lack broader context.
+Two examples of macro-theories are the bioecological model [@bronfenbrennerBioecologicalModelHuman2007] and the transactional model [@sameroffUnifiedTheoryDevelopment2010].
+The bioecological model describes how individual development is shaped by factors at different levels of analysis:
+The individual level, which includes biological make-up and individual differences;
+the microsystem, composed of primary caregivers and close relationships;
+the mesosystem, including school and neighborhood factors;
+the exosystem, including media, political- and economic influences;
+and the macrosystem, consisting of cultural norms and values.
+The transactional model is compatible with the bioecological model;
+it describes development as an interplay between the individual child and the environment.
+It distinguishes proximal environmental influences, roughly corresponding to the microsystem,
+from more distal influences.
+With increasing age, distal influences are thought to become more influential. 
+More specific theories primarily focus on cognitive maturation and the role of primary caregivers,
+including the theory of normative emotional development [@sroufeAttachmentDyadicRegulation1996]
+and the tripartite model of emotion regulation socialization by parents [@morrisRoleFamilyContext2007] and peers [@reindlSocializationEmotionRegulation2016].
+Note that the tripartite model is one of the few theories that explicitly addresses the life phase of adolescence.
+It would be beneficial to work towards a more comprehensive theory of emotion regulation development,
+specific to adolescence,
+that is broad in scope and still specific enough to derive testable predictions.
+
+<!-- * Bioecological model [@bronfenbrennerBioecologicalModelHuman2007] -->
+<!-- * Transactional model [@sameroffUnifiedTheoryDevelopment2010] -->
+<!-- * Hall's notion of "storm and stress" -->
+<!-- * Theory of normative emotional development [@sroufeEmotionalDevelopmentOrganization1995] -->
+<!-- * Tripartite model [@morrisRoleFamilyContext2007] -->
+<!-- * Internalization model [@holodynskiDevelopmentEmotionsEmotion2006] -->
+<!-- * Polyvagal theory [@porgesOrientingDefensiveWorld1995]. -->
+<!-- * Model of social-affective engagement and goal flexibility [@croneUnderstandingAdolescencePeriod2012] -->
+<!-- * Process model of emotion regulation [@grossHandbookEmotionRegulation2013] -->
+<!-- * Social Information Processing Theory [@lemeriseIntegratedModelEmotion2000] -->
 
 <!-- Maybe review theory briefly? -->
-A recent literature review set out to identify relevant phenomena in relation to adolescents' emotion regulation [@vanlissaMappingPhenomenaRelevant2021].
-It used a new technique, text mining systematic review,
-to identify relevant phenomena based on frequently occurring terms in the author keywords and abstracts of 6305 publications.
-Whereas narrative reviews are typically restricted to small corpora and structured around well-established ideas [@littellEvidencebasedBiasedQuality2008],
-text mining systematic reviews are more comprehensive and derive insights from the literature through a relatively transparent and objective procedure - at the expense of reflection and meaning-making.
+The first step towards theory formation or revision is identifying relevant phenomena [@borsboomTheoryConstructionMethodology2020].
+Thus, offering a starting point for this endeavor,<!-- empirical investigations of predictors of adolescents' emotion regulation development -->
+a recent literature review 
+used a new method, the text mining systematic review, to identify relevant phenomena in relation to adolescents' emotion regulation based on the analysis of author keywords and abstracts of 6305 publications  [@vanlissaMappingPhenomenaRelevant2021].
+Typically, phenomena are identified using narrative literature reviews.
+However, these are often limited to a small number of papers and structured around well-established ideas [@littellEvidencebasedBiasedQuality2008]
+Text mining systematic reviews, by comparison, are relatively comprehensive and derive insights from the literature through a relatively transparent and objective - albeit less interpretative - procedure [@vanlissaMappingPhenomenaRelevant2021]. <!-- reflection and meaning-making-->
 
-The findings of that systematic review indicated that internalizing and externalizing problems and mental health-related outcomes were most frequently studied in conjunction with emotion regulation. 
-Other relevant phenomena reflected themes discussed in prior narrative reviews,
+The results of that review indicated that internalizing and externalizing problems and mental health-related outcomes were most frequently studied in conjunction with emotion regulation. 
+Some relevant phenomena reflected themes also identified in prior narrative reviews,
 including cognitive development, parenting, and external stressors [cf. @coe-odessEmergentEmotionsAdolescence2019].
 Other relevant phenomena were underrepresented in prior theory and reviews,
 such as substance use, structural disadvantage,
 identity, morality, sex and sexual development.
-This relatively comprehensive overview offers a starting point for empirical investigations of predictors of adolescents' emotion regulation development.
+This relatively comprehensive overview offers a starting point for empirical investigations of predictors of adolescents' emotion regulation development, such as the present study.
 <!-- To this end, the present study sought to identify operationalizations of these relevant phenomena in a large-scale panel study. -->
 
 ## Complementing theory using machine learning
 
-As mentioned before, the field of adolescent emotion regulation is prolific, but lacks overarching theory.
-For guidance on how to remedy this shortcoming, we turn to philosophy of science.
-De Groot’s "empirical cycle" constitutes a model of the production of knowledge through scientific research [@degrootMethodologieGrondslagenVan1961].
-It consists of five phases: *observation* of phenomena to be explained; *induction* of hypotheses; *deduction* or derivation of testable predictions; *testing* these predictions in new data; and finally *evaluation*: reflecting back on the theories and hypotheses that gave rise to the tested predictions.
-The model is cyclical because *evaluation* offers new interpretative data for the researcher to observe - such as rejected hypotheses and serendipitous findings.
+According to models of knowledge production within the quantitative positivist paradigm,
+a field progresses through the cyclical alternation of exploratory and confirmatory research, also known as the "empirical cycle" [@degrootMethodologieGrondslagenVan1961, @wagenmakersCreativityVerificationCyclePsychological2018].
+Exploratory research gives rise to testable predictions,
+and confirmatory research evaluates testable predictions on new data.
+Crucially, these phases are linked through evaluation of existing theory in light of empirical findings [@degrootMethodologieGrondslagenVan1961].
+The fact that our field still lacks overarching theory despite decades of productive empirical research
+suggests that the empirical cycle is not routinely completed.
+In support of this claim, it has been noted that the overwhelming majority of research in our field appears, at first glance, to be confirmatory [@demuthQualitativeMethodologyDevelopmental2015].
+More exploratory research is thus needed to complete the cycle.
+Secondly, and paradoxically given the first argument,
+the link between confirmatory research and theory is often tenuous.
+For instance, many studies derive their predictions from prior empirical research, not from theory [e.g., @vanlissaCostEmpathyParentadolescent2017].
+Thirdly, theories are rarely falsified or revised in light of empirical findings.
+This failure to evaluate theory leads to flexible, "invulnerable" frameworks that can accommodate any result [@szollosiArrestedTheoryDevelopment2021].
+To advance theory formation, our field might benefit from "closing the empirical cycle" through increased exploratory research and reflection on theory.
+
+There are preliminary indications of a move towards exploratory research:
+Developmental scientists are turning to increasingly complex structural equation models.
+Consider, for example, the burgeoning interest in disentangling between-family differences from within-family processes using the innovative random-intercept cross-lagged panel model [@hamakerCritiqueCrosslaggedPanel2015] and dynamic structural equation modeling [@asparouhovDynamicStructuralEquation2018].
+Many authors using these methods have realized that existing theory is not sufficiently precise to derive distinct hypotheses at these two levels [see @nevilleBidirectionalAssociationsScreen2021; @vanlissaMothersFathersQuantitative2020].
+By necessity, these models are thus used in at least a partly exploratory capacity.
+This approach has two pitfalls.
+Firstly, complex models are by definition more flexible and fit data better then simpler models, at the expense of decreased generalizability [@hastieElementsStatisticalLearning2009].
+Flexibility is a hallmark of exploratory research [@wagenmakersCreativityVerificationCyclePsychological2018],
+but increases the risk of false-positive results and questionable research practices in confirmatory research [@wichertsDegreesFreedomPlanning2016, @simmonsFalsePositivePsychologyUndisclosed2011].
+It is therefore essential that flexibility is disclosed, and that exploratory and confirmatory research are clearly demarcated.
+Secondly, structural equation models are inherently a confirmatory method,
+and they can only include a limited number of predictors due to concerns of statistical power [@klinePrinciplesPracticeStructural2005].
+Their use for exploration is limited, effortful, and potentially fraught (e.g., when using p-values for discovery instead of inference).
+We argue that machine learning offers a suitable tool for rigorous exploration:
+These methods discover patterns in data while maximizing generalizability,
+and incorporate checks and balances to curtail false-positive results [@hastieElementsStatisticalLearning2009].
+In the context of the present study, we use a specific machine learning algorithm uniquely suited for theory-guided exploration: SEM-forests [@brandmaierTheoryguidedExplorationStructural2016].
+
+<!-- * Predictors of latent growth model? -->
+<!--   + Only linear differences, few predictors (power) -->
+<!-- * Multigroup latent growth model? -->
+<!--   + Non-linear differences, but only one moderator -->
+<!-- * Latent class growth model with auxilliary variables? -->
+<!--   + Groups with regard to trajectory, not predictors -->
+
+<!-- ## Solution: Machine learning -->
+
+<!-- * Allows non-linear differences between trajectories -->
+<!-- * Performs variable selection -->
+<!--   + Cast wide net among potentially relevant predictors -->
+<!-- * Checks & balances ensure generalizability -->
+<!-- * Exploratory: No hypothesis -->
+
+
+## The present study
+
+The present study set out to identify the most important early indicators of developmental trajectories
+of emotion regulation across adolescence.
+This involves three important challenges:
+First, the number of potentially relevant risk factors, as identified in a prior text mining systematic review, is large.
+Second, there is a paucity of relevant theory to narrow down the candidate predictors.
+Third, methods commonly used in the field are not well suited for large numbers of predictors.
+Machine learning methods that perform variable selection can overcome these challenges.
+We therefore used the SEM-forests algorithm to identify the most important early predictors of trajectories of emotion regulation development throughout adolescence.
+The primary aim is to identify the most important predictors of adolescents' trajectories of emotion regulation development.
+The secondary aim is to probe the nature of the marginal association of the predictors with these trajectories.
+
+
+<!-- Deductive research, or hypothesis-testing, is the predominant focus of contemporary behavioral research. It tends to focus on a relatively narrow set of theoretically-derived variables, and the results revolve around statistical inference: Whether the theoretical hypotheses are supported by significant or reliable effects. In deductive research, less emphasis is placed on comprehensiveness or breadth of candidate predictors. Relatedly, the relative importance of different predictors is often of secondary importance, as is the model’s predictive performance. Thus, although an advantage of deductive approaches is that they can be used to draw inferences about theoretical hypotheses, they also have specific limitations.  -->
+<!-- To allocate scientific resources effectively, it is important to cast a wide net among potential predictors, across different theories, and even include under-theorized factors to unearth potential blind spots in the extant literature. Inductive research – that is, rigorous exploratory work that identifies reliable patterns in data, is more suited to these demands.  -->
+<!-- In recent years, inductive research has been gaining traction as a technique to complement existing theories by identifying important omissions[2]. In particular, machine learning offers powerful new tools for systematic exploration that can identify relevant predictors and complex relationships that have eluded theoreticians[5]. Machine learning is an approach to data analysis that focuses on maximizing predictive performance. This involves the use of flexible models to find reliable patterns in data. Machine learning models can distill a large set of candidate variables down to the ones that are most important in predicting the outcome of interest, and also indicate the direction and shape of the marginal association between those predictors and the outcome. In a context where predictor variables are likely to be related to each other, machine learning is better suited to manage these complex relationships than, e.g., multiple regressions. Moreover, it incorporates checks and balances to prevent spurious findings [3]. -->
+
+
+
+
+<!-- The field of adolescent emotion regulation is prolific, but lacks overarching theory. -->
+<!-- For guidance on how to remedy this shortcoming, we turn to philosophy of science. -->
+<!-- De Groot’s "empirical cycle" constitutes a model of the production of knowledge through scientific research [@degrootMethodologieGrondslagenVan1961]. -->
+<!-- It consists of five phases: *observation* of phenomena to be explained; *induction* of hypotheses; *deduction* or derivation of testable predictions; *testing* these predictions in new data; and finally *evaluation*: reflecting back on the theories and hypotheses that gave rise to the tested predictions. -->
+<!-- The model is cyclical because *evaluation* offers new interpretative data for the researcher to observe - such as rejected hypotheses and serendipitous findings. -->
 
 <!-- The empirical cycle is merely one model, -->
 <!-- and there is a pluriformity of other epistemological approaches to knowledge production. -->
 <!-- Nonetheless, u -->
-Unsubstantiated or undisclosed deviations from the empirical cycle may signal practices that limit scientific progress.
-Consider three examples:
-First, conducting many analyses and then writing a paper that presents significant findings as tests of a-priori hypotheses, or "hypothesizing after the results are known", constitutes a questionable research practice that leads to false-positive results [@wichertsDegreesFreedomPlanning2016].
-Second, failure to engage in evaluation and reflect back on theory in light of empirical findings leads to flexible, "invulnerable" theories that can accommodate any result [@szollosiArrestedTheoryDevelopment2021].
-Third, and particularly relevant to the present study,
-is failure to complete the cycle.
-In a productive field of study, the empirical cycle is regularly completed;
-evaluation of theories in the light of empirical findings allows scholars to hone those theories,
-which in turn yield increasingly precise predictions.
-We argue that, the paucity of overarching theory in our field can be remedied by completing the empirical cycle.
+<!-- Unsubstantiated or undisclosed deviations from the empirical cycle may signal practices that limit scientific progress. -->
+<!-- Consider three examples: -->
+<!-- First, conducting many analyses and then writing a paper that presents significant findings as tests of a-priori hypotheses, or "hypothesizing after the results are known", constitutes a questionable research practice that leads to false-positive results [@wichertsDegreesFreedomPlanning2016]. -->
+<!-- Second, failure to engage in evaluation and reflect back on theory in light of empirical findings leads to flexible, "invulnerable" theories that can accommodate any result [@szollosiArrestedTheoryDevelopment2021]. -->
+<!-- Third, and particularly relevant to the present study, -->
+<!-- is failure to complete the cycle. -->
+<!-- In a productive field of study, the empirical cycle is regularly completed; -->
+<!-- evaluation of theories in the light of empirical findings allows scholars to hone those theories, -->
+<!-- which in turn yield increasingly precise predictions. -->
+<!-- We argue that, the paucity of overarching theory in our field can be remedied by completing the empirical cycle. -->
 
-The phases of the empirical cycle map onto two modes of conducting research:
-Confirmatory research, which involves the phases of deduction, testing, and evaluation, and exploratory research, which involves the phases of observation and induction  [@wagenmakersCreativityVerificationCyclePsychological2018].
-Although developmental psychology is dominated by quantitative positivism,
-relatively few studies are explicitly exploratory [@demuthQualitativeMethodologyDevelopmental2015].
+<!-- The phases of the empirical cycle map onto two modes of conducting research: -->
+<!-- Confirmatory research, which involves the phases of deduction, testing, and evaluation, and exploratory research, which involves the phases of observation and induction  [@wagenmakersCreativityVerificationCyclePsychological2018]. -->
+<!-- Although developmental psychology is dominated by quantitative positivism, -->
+<!-- relatively few studies are explicitly exploratory [@demuthQualitativeMethodologyDevelopmental2015]. -->
+<!-- There are two main indications that some studies are implicitly exploratory. -->
+
+<!-- The first is that some, apparently confirmatory, papers are not rooted in any theoretical framework, but instead based exclusively on prior empirical literature. -->
+
+<!-- The second indication is that an increasing number of studies use complex modeling techniques in the absence of theory specific enough to derive hypotheses for such models. -->
+<!-- For example, consider the recent literature using the random-intercept cross-lagged panel model, -->
+<!-- a complex structural equation model that separates stable differences between individuals from processes within  individuals (or families). -->
+<!-- Several authors have remarked that theory in their areas of expertise is insufficiently precise to derive specific and distinct predictions about effects at the between- and within level. -->
+<!-- At first glance, these publications fit the mold of confirmatory research, providing hypotheses and tests thereof. -->
+<!-- Upon further reflection, the hypotheses tested are not very specific (e.g., specifying a positive relation between two constructs, regardless of level of analysis), -->
+<!-- and they can be simultaneously supported and refuted by different parameters in the model without repercussions for theory. -->
+<!-- They are thus not truly "testable" in the sense that De Groot intended. -->
+<!-- Furthermore, the focus in these publications is on post-hoc interpretation of many parameter estimates - a hallmark of exploratory research. -->
+<!-- Implicitly exploratory research such as this suggests that others have perceived the need for more exploration, -->
+<!-- but that exploratory work is wrt as confirmatory the exploratory mode of research is not ingrained in the field. -->
 
 
-and devoting greater attention to exploratory research and theory formation.
+<!-- have noted that existing theory is insufficiently specific  -->
+<!-- ,  -->
+
+<!-- and devoting greater attention to exploratory research and theory formation. -->
 
 
 
@@ -200,44 +320,44 @@ and devoting greater attention to exploratory research and theory formation.
 <!-- this drives a scientific field forward. -->
 
 
-Prior theory and empirical research thus suggests many phenomena potentially related to heterogeneity in adolescents' emotion regulation development.
-What is missing is an understanding of the relative utility of each of these phenomena in predicting developmental outcomes.
-Individual studies do not suffice for this purpose as
-they tend to sample from different populations,
-use different research designs,
-different control variables and statistical models.
-Relatedly, many studies tend to examine only a handful of predictors,
-often guided by a theory with narrow scope - 
-, it is hard to tell how important the variables are, relative to other variables considered by other theories (or variables not considered at all). Machine learning is a more holistic methodology, as it can assess and compare a large number of potential predictors simultaneously, including theoretically relevant ones, and identify which predictors ultimately explain the most variance in the outcome measure of interest
-  
-  
-  Machine learning is a more holistic methodology, as it can assess and compare a large number of potential predictors simultaneously, including theoretically relevant ones, and identify which predictors ultimately explain the most variance in the outcome measure of interest.
-  
-  
-Theory cons methods for theory construction state that the first step in this endeavor is to identify well-established relevant *empirical phenomena*,
-defined as stable and general features of the world [@borsboomTheoryConstructionMethodology2020].
-The current study used a text mining systematic review to provide a comprehensive map of the empirical phenomena relevant to adolescent emotion regulation.
+<!-- Prior theory and empirical research thus suggests many phenomena potentially related to heterogeneity in adolescents' emotion regulation development. -->
+<!-- What is missing is an understanding of the relative utility of each of these phenomena in predicting developmental outcomes. -->
+<!-- Individual studies do not suffice for this purpose as -->
+<!-- they tend to sample from different populations, -->
+<!-- use different research designs, -->
+<!-- different control variables and statistical models. -->
+<!-- Relatedly, many studies tend to examine only a handful of predictors, -->
+<!-- often guided by a theory with narrow scope -  -->
+<!-- , it is hard to tell how important the variables are, relative to other variables considered by other theories (or variables not considered at all). Machine learning is a more holistic methodology, as it can assess and compare a large number of potential predictors simultaneously, including theoretically relevant ones, and identify which predictors ultimately explain the most variance in the outcome measure of interest -->
 
-Currently, few instruments exist for the identification of relevant phenomena; instead, theorists typically rely on expert opinion [@borsboomTheoryConstructionMethodology2020].
-This paper argues that systematic reviews are a suitable and relatively more objective method for phenomena detection.
-Traditional narrative reviews are limited, however, by small convenience samples,
-confirmation bias,
-and an undue emphasis on positive results [@littellEvidencebasedBiasedQuality2008].
-These limitations are overcome by a novel method:
-the text mining systematic review (TMSR).
-Relative to narrative reviews, text mining can cover arbitrarily greater corpora,
-and gleans insights from the literature by means of a relatively more transparent, objective, and reproducible process.
-<!--Where sentient readers tend to structure their reading of the literature around established ideas [@littellEvidencebasedBiasedQuality2008],
-the inherent "fairness" of text mining gives emerging themes a chance to come to the fore.-->
-This approach assumes the frequency with which phenomena recur in the literature to be indicative of their relevance.
-If it is additionally assumed that the frequency with which phenomena are studied together is indicative of the extent to which they are thought to be associated,
-then the co-occurrence of phenomena within publications can be interpreted as a rudimentary nomological network: a mapping of relationships between theoretically relevant phenomena [see @alaviAligningTheoryMethodology2018].
-Such a network can serve as a starting point for the formulation of a proto-theory,
-which would additionally involve abductive reasoning: specifying putative mechanisms to explain associations between the phenomena [@borsboomTheoryConstructionMethodology2020].
-Text mining systematic reviews constitute an inductive and exploratory approach:
-Their aim is phenomena detection based on generalization from observations (data) without appeal to theory [@haigExploratoryFactorAnalysis2005].
-By identifying and mapping the phenomena relevant to adolescent emotion regulation,
-such an inductive approach lays the groundwork for future theory development.
+
+<!--   Machine learning is a more holistic methodology, as it can assess and compare a large number of potential predictors simultaneously, including theoretically relevant ones, and identify which predictors ultimately explain the most variance in the outcome measure of interest. -->
+
+
+<!-- Theory cons methods for theory construction state that the first step in this endeavor is to identify well-established relevant *empirical phenomena*, -->
+<!-- defined as stable and general features of the world [@borsboomTheoryConstructionMethodology2020]. -->
+<!-- The current study used a text mining systematic review to provide a comprehensive map of the empirical phenomena relevant to adolescent emotion regulation. -->
+
+<!-- Currently, few instruments exist for the identification of relevant phenomena; instead, theorists typically rely on expert opinion [@borsboomTheoryConstructionMethodology2020]. -->
+<!-- This paper argues that systematic reviews are a suitable and relatively more objective method for phenomena detection. -->
+<!-- Traditional narrative reviews are limited, however, by small convenience samples, -->
+<!-- confirmation bias, -->
+<!-- and an undue emphasis on positive results [@littellEvidencebasedBiasedQuality2008]. -->
+<!-- These limitations are overcome by a novel method: -->
+<!-- the text mining systematic review (TMSR). -->
+<!-- Relative to narrative reviews, text mining can cover arbitrarily greater corpora, -->
+<!-- and gleans insights from the literature by means of a relatively more transparent, objective, and reproducible process. -->
+<!-- <!--Where sentient readers tend to structure their reading of the literature around established ideas [@littellEvidencebasedBiasedQuality2008], -->
+<!-- the inherent "fairness" of text mining gives emerging themes a chance to come to the fore.--> -->
+<!-- This approach assumes the frequency with which phenomena recur in the literature to be indicative of their relevance. -->
+<!-- If it is additionally assumed that the frequency with which phenomena are studied together is indicative of the extent to which they are thought to be associated, -->
+<!-- then the co-occurrence of phenomena within publications can be interpreted as a rudimentary nomological network: a mapping of relationships between theoretically relevant phenomena [see @alaviAligningTheoryMethodology2018]. -->
+<!-- Such a network can serve as a starting point for the formulation of a proto-theory, -->
+<!-- which would additionally involve abductive reasoning: specifying putative mechanisms to explain associations between the phenomena [@borsboomTheoryConstructionMethodology2020]. -->
+<!-- Text mining systematic reviews constitute an inductive and exploratory approach: -->
+<!-- Their aim is phenomena detection based on generalization from observations (data) without appeal to theory [@haigExploratoryFactorAnalysis2005]. -->
+<!-- By identifying and mapping the phenomena relevant to adolescent emotion regulation, -->
+<!-- such an inductive approach lays the groundwork for future theory development. -->
 
 <!--
 stifterEmotionRegulation2019
@@ -307,78 +427,20 @@ adolescence, emotional systems are rearranged substantially.-->
 * relative to other developmental stages, adolescence involves a particularly large number of transitions, novel situations, and new stimuli, physical, cognitive, emotional, and social development—particularly in early and mid-adolescence (Seiffge-Krenke, 2000)
 -->
 
+<!-- ## Knowledge gap -->
 
-## Knowledge gap
+<!-- Substantial empirical research, but: -->
 
-Substantial empirical research, but:
+<!-- * Different (sub)disciplines have approached the topic in disparate ways [@riedigerEmotionRegulationAdolescence2014] -->
+<!-- * No consistent terminology [@bariolaChildAdolescentEmotion2011] -->
+<!-- * No conceptual frameworks [@stifterEmotionRegulation2019] -->
+<!-- * No overarching theoretical framework [@bussTheoriesEmotionalDevelopment2019] -->
 
-* Different (sub)disciplines have approached the topic in disparate ways [@riedigerEmotionRegulationAdolescence2014]
-* No consistent terminology [@bariolaChildAdolescentEmotion2011]
-* No conceptual frameworks [@stifterEmotionRegulation2019]
-* No overarching theoretical framework [@bussTheoriesEmotionalDevelopment2019]
+<!-- Knowledge must be consolidated into overarching theory -->
 
-Knowledge must be consolidated into overarching theory
-
-## Relevant theory
-
-* Bioecological model [@bronfenbrennerBioecologicalModelHuman2007]
-* Transactional model [@sameroffUnifiedTheoryDevelopment2010]
-* Hall's notion of "storm and stress"
-* Theory of normative emotional development [@sroufeEmotionalDevelopmentOrganization1995]
-* Tripartite model [@morrisRoleFamilyContext2007]
-* Internalization model [@holodynskiDevelopmentEmotionsEmotion2006]
-* Polyvagal theory [@porgesOrientingDefensiveWorld1995].
-* Model of social-affective engagement and goal flexibility [@croneUnderstandingAdolescencePeriod2012]
-* Process model of emotion regulation [@grossHandbookEmotionRegulation2013]
-* Social Information Processing Theory [@lemeriseIntegratedModelEmotion2000]
-
-## Limitations of relevant theory
-
-* Few explicitly address adolescence
-* Few comprehensively address predictors of emotion regulation
-* None directly guide contemporary research 
-* Theories vary widely in scope: Some are broad and non-specific; others describe a specific phenomenon in detail, but lack a broader perspective.
-    + Broad theories can frame any research, specific theories generate hypotheses.
-    + It would be beneficial to bridge these levels of analysis.
-
-## Towards integrative theory
-
-First step: identifying relevant phenomena [@borsboomTheoryConstructionMethodology2020]
-
-We conducted a text mining systematic review (TMSR) [@vanlissaMappingPhenomenaRelevant2021]
-
-  * Narrative reviews: small samples, confirmation bias, emphasize positive results [@littellEvidencebasedBiasedQuality2008]
-  * TMSR: Unlimited sample size, transparent, objective, reproducible
-
-6653 papers on Addresses **emotion regulation** in population overlapping with adolescence [10-24]
-
-<doi.org/10.1007/s40894-021-00160-7>
-
-## Co-occurrence graph
-
-Author keywords (a) and abstracts (b)
-
-## Next step
-
-
-* Predictors of latent growth model?
-  + Only linear differences, few predictors (power)
-* Multigroup latent growth model?
-  + Non-linear differences, but only one moderator
-* Latent class growth model with auxilliary variables?
-  + Groups with regard to trajectory, not predictors
-
-## Solution: Machine learning
-
-* Allows non-linear differences between trajectories
-* Performs variable selection
-  + Cast wide net among potentially relevant predictors
-* Checks & balances ensure generalizability
-* Exploratory: No hypothesis
-
-## Method illustrated
 
 ## Method
+
 
 SEM-forest [@brandmaierTheoryguidedExplorationStructural2016]
 
@@ -390,30 +452,6 @@ SEM-forest [@brandmaierTheoryguidedExplorationStructural2016]
 
 We used 1000 bootstrap samples, $k = 9$
 
-<!-- TS: Confirmatory versus exploratory research: Define the distinction. -->
-<!-- TS: Some longitudinal research falls between these categories. For example, complex longitudinal studies, where prior research is sufficient to lead us to hypothesize *some* associations between two constructs, but not sufficiently specific to let us hypothesize which parameters will be significant. -->
-
-<!-- ## Results -->
-
-<!-- * Both analyses reflected some constructs from theoretical literature -->
-<!--     + neurodevelopment, socialization -->
-<!-- * Undertheorized themes -->
-<!--     + Developmental disorders -->
-<!--     + Physical health (sic) -->
-<!--     + External stressors -->
-<!--     + Structural disadvantage -->
-<!--     + Addictive behavior -->
-<!--     + Identity and moral development -->
-<!--     + Sexual development -->
-
-<!-- * This offers guidance for phenomena to consider as relevant predictors -->
-
-
-## Present study
-
-RQ1: What are the most important predictors of adolescents' trajectories of emotion regulation development?
-
-RQ2: What is the nature of the association of the predictors with the trajectories?
 
 **Participants**
 
