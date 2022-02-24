@@ -19,3 +19,6 @@ results/full_forest.RData
 *.RData
 !sim_mat.RData
 *.docx
+!supplemental_table_1.csv
+!desc_num.csv
+!desc_cat.csv

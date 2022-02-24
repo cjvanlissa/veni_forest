@@ -151,6 +151,7 @@ numvars <- c("leeftijd_target_11", "leeftijd_moeder_11", "leeftijd_sibling_11",
 intvars <- intvars[!intvars %in% numvars]
 reldata[intvars] <- lapply(reldata[intvars], drop_floats)
 table(drop_floats(reldata$de21aa03))
+saveRDS(reldata, "reldata.RData")
 #!
 # @Caspar - make sure to adjust the num.trees parameter! 
 #!

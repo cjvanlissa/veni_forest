@@ -1,0 +1,126 @@
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+[tbp]
+
+\begin{center}
+\begin{threeparttable}
+
+\caption{\label{tab:tabcat}Sample descriptive statistics for categorical predictors.}
+
+\begin{tabular}{llllll}
+\toprule
+name & \multicolumn{1}{c}{n} & \multicolumn{1}{c}{unique} & \multicolumn{1}{c}{mode} & \multicolumn{1}{c}{mode\_value} & \multicolumn{1}{c}{v}\\
+\midrule
+Sex & 495 & 3 & 281 & Boy & 0.49\\
+SES (m) & 483 & 4 & 176 & high & 0.66\\
+SES (f) & 464 & 4 & 245 & high & 0.59\\
+SES family & 487 & 3 & 434 & medium/high & 0.19\\
+Which religion & 491 & 8 & 281 & Atheist & 0.63\\
+Religious & 491 & 3 & 281 & No & 0.49\\
+\bottomrule
+\end{tabular}
+
+\end{threeparttable}
+\end{center}
+
+\end{table*}
+\efloatseparator
+ 
+\begin{ThreePartTable}
+
+\begin{longtable}{lllllllll}\noalign{\getlongtablewidth\global\LTcapwidth=\longtablewidth}
+\caption{\label{tab:tabcont}Sample descriptive statistics for continuous variables and scales.}\\
+\toprule
+name & \multicolumn{1}{c}{n} & \multicolumn{1}{c}{Items} & \multicolumn{1}{c}{mean} & \multicolumn{1}{c}{sd} & \multicolumn{1}{c}{min} & \multicolumn{1}{c}{max} & \multicolumn{1}{c}{Reliability} & \multicolumn{1}{c}{PC1}\\
+\midrule
+\endfirsthead
+\caption*{\normalfont{Table \ref{tab:tabcont} continued}}\\
+\toprule
+name & \multicolumn{1}{c}{n} & \multicolumn{1}{c}{Items} & \multicolumn{1}{c}{mean} & \multicolumn{1}{c}{sd} & \multicolumn{1}{c}{min} & \multicolumn{1}{c}{max} & \multicolumn{1}{c}{Reliability} & \multicolumn{1}{c}{PC1}\\
+\midrule
+\endhead
+Age & 495 &  & 13.03 & 0.47 & 11.01 & 15.56 &  & \\
+Mother age & 495 &  & 44.42 & 4.45 & 30.83 & 64.16 &  & \\
+Age sibling & 434 &  & 14.75 & 3.12 & 7.16 & 23.41 &  & \\
+Father age & 454 &  & 46.76 & 5.09 & 33.33 & 68.08 &  & \\
+Age dif. Sibling & 434 &  & -1.73 & 3.10 & -10.11 & 6.14 &  & \\
+Age dif. parents & 454 &  & 2.26 & 3.63 & -9.42 & 21.17 &  & \\
+Cigarettes & 492 &  & 0.51 & 1.34 & 0.00 & 8.00 &  & \\
+Balanced Relatedness & 495 & 14 & 3.25 & 0.37 & 1.75 & 4.00 & 0.88 & 0.39\\
+Extraversion (big 5) & 493 & 6 & 5.08 & 1.04 & 1.50 & 7.00 & 0.78 & 0.49\\
+Agreeableness (big 5) & 493 & 6 & 5.46 & 0.76 & 2.50 & 7.00 & 0.79 & 0.50\\
+Conscientiousness (big 5) & 493 & 6 & 3.98 & 1.11 & 1.17 & 7.00 & 0.82 & 0.54\\
+Neuroticism (big 5) & 493 & 6 & 4.40 & 1.10 & 1.00 & 7.00 & 0.82 & 0.54\\
+Openness (big 5) & 493 & 6 & 4.89 & 0.96 & 1.50 & 7.00 & 0.72 & 0.43\\
+BIS & 488 & 7 & 2.47 & 0.48 & 1.14 & 3.86 & 0.64 & 0.34\\
+BAS & 488 & 13 & 3.07 & 0.39 & 1.69 & 4.00 & 0.78 & 0.29\\
+Externalizing & 495 & 66 & 0.29 & 0.21 & 0.00 & 1.15 & 0.93 & 0.26\\
+Interparental conflict & 469 & 5 & 1.75 & 0.63 & 1.00 & 4.60 & 0.81 & 0.57\\
+Conflict engagement (b) & 464 & 5 & 1.42 & 0.55 & 1.00 & 4.40 & 0.82 & 0.58\\
+Conflict resolution (b) & 464 & 5 & 3.15 & 0.94 & 1.00 & 5.00 & 0.84 & 0.56\\
+Conflict withdrawal (b) & 464 & 5 & 1.68 & 0.65 & 1.00 & 4.00 & 0.77 & 0.52\\
+Conflict compliance (b) & 464 & 5 & 1.74 & 0.62 & 1.00 & 4.33 & 0.64 & 0.39\\
+Conflict engagement (f) & 464 & 5 & 1.69 & 0.66 & 1.00 & 5.00 & 0.79 & 0.59\\
+Conflict resolution (f) & 464 & 5 & 2.97 & 0.86 & 1.00 & 5.00 & 0.81 & 0.58\\
+Conflict withdrawal (f) & 463 & 5 & 2.26 & 0.72 & 1.00 & 4.40 & 0.69 & 0.44\\
+Conflict compliance (f) & 464 & 5 & 1.97 & 0.66 & 1.00 & 4.00 & 0.63 & 0.38\\
+Conflict engagement (m) & 493 & 5 & 1.61 & 0.65 & 1.00 & 4.25 & 0.80 & 0.58\\
+Conflict resolution (m) & 493 & 5 & 3.08 & 0.83 & 1.00 & 5.00 & 0.85 & 0.62\\
+Conflict withdrawal (m) & 493 & 5 & 2.17 & 0.76 & 1.00 & 4.67 & 0.80 & 0.53\\
+Conflict compliance (m) & 493 & 5 & 1.91 & 0.63 & 1.00 & 3.80 & 0.67 & 0.41\\
+Parenting stress & 495 & 48 & 0.57 & 0.32 & 0.00 & 2.08 & 0.89 & 0.18\\
+Daily happiness & 486 & 3 & 7.75 & 1.72 & 1.00 & 10.00 & 0.85 & 0.77\\
+Daily anger & 486 & 3 & 1.95 & 1.47 & 1.00 & 10.00 & 0.92 & 0.86\\
+Daily anxiety & 486 & 3 & 1.84 & 1.41 & 1.00 & 9.33 & 0.90 & 0.84\\
+Daily sadness & 486 & 3 & 1.72 & 1.45 & 1.00 & 9.00 & 0.94 & 0.90\\
+Daily guilt & 486 & 2 & 1.72 & 1.36 & 1.00 & 9.00 & 0.79(sb) & 0.84\\
+Daily tiredness & 486 & 2 & 3.43 & 2.32 & 1.00 & 10.00 & 0.75(sb) & 0.81\\
+Daily tenseness & 486 & 2 & 2.60 & 2.01 & 1.00 & 10.00 & 0.75(sb) & 0.80\\
+Delinquency & 491 & 30 & 0.55 & 0.23 & 0.00 & 2.47 & 0.87 & 0.34\\
+Delinquent peers & 492 & 6 & 1.15 & 0.22 & 1.00 & 2.33 & 0.66 & 0.53\\
+Peer contact freq. & 492 & 5 & 2.01 & 0.42 & 1.00 & 3.20 & 0.68 & 0.45\\
+Conflict frequency (mf) & 495 & 20 & 2.23 & 0.65 & 1.00 & 4.15 & 0.90 & 0.37\\
+Conflict emotions (mf) & 494 & 6 & 2.74 & 0.72 & 1.00 & 5.00 & 0.77 & 0.48\\
+Empathic concern (IRI) & 493 & 7 & 2.46 & 0.55 & 0.14 & 4.00 & 0.62 & 0.31\\
+Perspective taking (IRI) & 493 & 7 & 3.30 & 0.54 & 1.29 & 4.86 & 0.60 & 0.34\\
+Fantasy (IRI) & 269 & 7 & 2.19 & 0.72 & 0.00 & 4.00 & 0.75 & 0.33\\
+Personal distress (IRI) & 269 & 7 & 2.00 & 0.61 & 0.00 & 4.00 & 0.73 & 0.36\\
+Tolerance (mf) & 475 & 19 & 3.39 & 0.39 & 1.68 & 4.00 & 0.84 & 0.27\\
+Intrusive parenting & 475 & 7 & 3.96 & 0.47 & 2.43 & 5.14 & 0.64 & 0.36\\
+Parental emotion regulation & 475 & 7 & 2.86 & 0.64 & 1.00 & 4.00 & 0.77 & 0.55\\
+Parent annoyed & 475 & 5 & 3.35 & 0.50 & 1.00 & 4.00 & 0.73 & 0.53\\
+Supportive criticism (mf) & 475 & 8 & 1.78 & 0.51 & 1.00 & 4.00 & 0.81 & 0.44\\
+Support (b) & 466 & 12 & 3.43 & 0.68 & 1.00 & 5.00 & 0.90 & 0.47\\
+Conflict frequency (b) & 466 & 6 & 1.33 & 0.45 & 1.00 & 4.67 & 0.87 & 0.61\\
+Power (b) & 465 & 6 & 2.04 & 0.51 & 1.00 & 4.00 & 0.80 & 0.50\\
+Support (m) & 494 & 12 & 3.81 & 0.55 & 1.00 & 5.00 & 0.85 & 0.38\\
+Conflict frequency (m) & 494 & 6 & 1.66 & 0.59 & 1.00 & 4.50 & 0.90 & 0.66\\
+Power (m) & 493 & 6 & 2.99 & 0.67 & 1.00 & 5.00 & 0.86 & 0.58\\
+Support (f) & 465 & 12 & 3.55 & 0.57 & 1.50 & 4.83 & 0.85 & 0.38\\
+Conflict frequency (f) & 465 & 6 & 1.51 & 0.56 & 1.00 & 5.00 & 0.89 & 0.64\\
+Power (f) & 465 & 6 & 2.94 & 0.69 & 1.00 & 4.83 & 0.82 & 0.53\\
+Parental knowledge & 495 & 18 & 4.03 & 0.62 & 1.65 & 5.00 & 0.90 & 0.40\\
+Disclosure (mf) & 495 & 12 & 3.82 & 0.65 & 1.67 & 5.00 & 0.84 & 0.38\\
+Sollicitation (mf) & 495 & 12 & 2.98 & 0.66 & 1.25 & 5.00 & 0.83 & 0.36\\
+Control (mf) & 271 & 12 & 3.39 & 0.91 & 1.00 & 5.00 & 0.89 & 0.38\\
+Psychological control & 495 & 16 & 1.83 & 0.59 & 1.00 & 4.31 & 0.86 & 0.33\\
+Consistency (m) & 495 & 8 & 3.83 & 0.60 & 1.38 & 5.00 & 0.69 & 0.37\\
+Control friendships (mf) & 271 & 12 & 1.83 & 0.58 & 1.00 & 3.42 & 0.92 & 0.49\\
+Bully physical & 490 & 6 & 1.53 & 0.81 & 1.00 & 5.33 & 0.85 & 0.65\\
+Bully relational & 490 & 10 & 1.90 & 0.83 & 1.00 & 4.80 & 0.84 & 0.45\\
+Victim physical & 490 & 3 & 1.64 & 0.94 & 1.00 & 7.00 & 0.77 & 0.71\\
+Victim relational & 490 & 4 & 2.20 & 1.14 & 1.00 & 7.00 & 0.78 & 0.60\\
+Prosociality & 485 & 11 & 5.53 & 0.93 & 1.18 & 7.00 & 0.90 & 0.50\\
+Pubertal development & 493 & 5 & 2.19 & 0.83 & 1.00 & 4.40 & 0.84 & 0.68\\
+Depression & 491 & 30 & 2.66 & 0.40 & 1.90 & 4.40 & 0.90 & 0.31\\
+Anxiety & 491 & 38 & 1.37 & 0.29 & 1.00 & 2.72 & 0.91 & 0.26\\
+Self-Concept Clarity & 485 & 12 & 3.13 & 0.70 & 1.09 & 5.17 & 0.86 & 0.42\\
+School performance & 492 & 10 & 6.42 & 0.94 & 2.90 & 9.50 & 0.74 & 0.41\\
+Victim delinquency & 493 & 5 & 0.11 & 0.16 & 0.00 & 0.80 & 0.40 & 0.45\\
+Alcohol & 493 & 3 & 0.29 & 0.31 & 0.00 & 2.33 & 0.57 & 0.59\\
+Drug use & 492 & 6 & 0.04 & 0.40 & 0.00 & 7.50 & 0.80 & 0.55\\
+Externalizing\_psy & 492 & 30 & 0.35 & 0.24 & 0.00 & 1.17 & 0.88 & 0.26\\
+\bottomrule
+\end{longtable}
+
+\end{ThreePartTable}
