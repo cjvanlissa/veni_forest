@@ -633,7 +633,8 @@ Even the highest ranked problem behavior, drug use, had no distinguishable margi
 This suggests that drug use derives its high importance from higher-order interactions with other predictors.
 It might be the case, for example, that for some youth, drug use contributes to self-exploration and social relationships, whereas for others, it may be a form of escapism, self-medication, or even self-harm.
 This is merely a hypothesis, and the present study cannot conclusively identify what interactions are at play.
-Future research should explore this issue further.
+Future research should explore this further.
+
 
 The present study set out to identify the most important early indicators of developmental trajectories
 of emotion regulation across adolescence.
@@ -651,13 +652,36 @@ The secondary aim is to probe the nature of the marginal association of the pred
 * Emphasis on parenting (in literature and theory) might not be justified
   + Congruent with RI-CLPM showing few parenting effects in adolescence [@vanlissaRoleFathersMothers2019]
 
+Correspondence between research interest vs empirical importance.
+one of the most commonly studied correlates of emotion regulation in adolescence is parenting [@vanlissaMappingPhenomenaRelevant2021]
 
+One emergent theme in the developmental literature is attention for fathers' role in child development [ref Keizer].
+Authors have lamented the lack of attention to fathers, and the equation of parenting with mothering.
+With this in mind, it is worth noteworthy that the predictive importance of mothers' parenting did not in any way outrank that of fathers' parenting.
+In fact, constructive conflict resolution with fathers was the highest-ranked construct related to conflict with parents;
+paternal power was the highest-ranked parenting construct,
+and maternal and paternal support and socio-economic status were both ranked approximately equally, despite both constructs being historically gendered.
+This highlights the importance of considering both parents as equally relevant in research and in daily life.
 
-## Reflections form
+Linear statistical models are the default in our field.
+Therefore, an interesting result is that most predictors had non-linear effects:
+Out of the three values contrasted in the marginal dependence plots,
+only the one corresponding to the least desirable conditions diverged from the others.
+<!-- For instanhigh neuroticism, high interparental conflict, low constructive conflict resolution with fathers. -->
+Our findings send an important signal that many of the associations between predictors and developmental outcomes might be better modeled non-linearly.
+In particular, they suggest a notion of "good-enough" preconditions for the development of mature emotion regulation.
+Most adolescents seem to follow trajectories characterized by low difficulties in emotion regulation - except those with the most disadvantage.
+Some prior research has considered this notion of a "good-enough" environment [@vanlissaCostEmpathyParentadolescent2017; @poonGoodEnoughParental2017];
+the consistency of our findings suggests that it may be more ubiquitous than previously thought.
 
-* Many predictors show non-linear effects: Emotion dysregulation only for +/-1SD
-* Some predictors show almost no marginal effect (e.g., father's age, drug use)
-  + This suggests they might be important in **interactions**
+It is also noteworthy that some predictors had relatively high predictive importance,
+but almost no marginal effect (e.g., father's age, drug use, openness to experience).
+Such predictors likely derive their importance from interactions.
+For instance, drug use might be a vehicle for social status or self-harm;
+older fathers might be an asset if they are involved in children's lives but a liability if they prioritize professional success;
+openness to experience may be an asset if it leads to self-discovery but a liability if it leads to risk behavior.
+As the present method is not well-suited to identify what interaction drives a variable's importance,
+these results should be taken as indications for potentially fruitful areas of future research. 
 
 ## Limitations
 
