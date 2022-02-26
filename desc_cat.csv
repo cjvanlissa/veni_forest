@@ -1,7 +1,20 @@
-"name","n","unique","mode","mode_value","v"
-"Sex",495,3,281,"Boy",0.49083971023365
-"SES (m)",483,4,176,"high",0.662285834308519
-"SES (f)",464,4,245,"high",0.594576768727705
-"SES family",487,3,434,"medium/high",0.19397138749162
-"Which religion",491,8,281,"Atheist",0.62674370854609
-"Religious",491,3,281,"No",0.489545007694509
+"name","n","%","Category"
+"Sex",495,0.567676767676768,"Boy"
+"Sex",495,0.432323232323232,"Girl"
+"SES (m)",483,0.279503105590062,"low"
+"SES (m)",483,0.356107660455487,"medium"
+"SES (m)",483,0.364389233954451,"high"
+"SES (f)",464,0.148706896551724,"low"
+"SES (f)",464,0.323275862068966,"medium"
+"SES (f)",464,0.52801724137931,"high"
+"SES family",487,0.891170431211499,"medium/high"
+"SES family",487,0.108829568788501,"low SES"
+"Which religion",491,0.134419551934827,"Catholic"
+"Which religion",491,0.09979633401222,"Dutch reformed"
+"Which religion",491,0.112016293279022,"Reformed"
+"Which religion",491,0.00814663951120163,"Islam"
+"Which religion",491,0.00203665987780041,"Hindu"
+"Which religion",491,0.0712830957230143,"Other"
+"Which religion",491,0.572301425661914,"Atheist"
+"Religious",491,0.572301425661914,"No"
+"Religious",491,0.427698574338086,"Yes"

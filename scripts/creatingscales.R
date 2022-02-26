@@ -98,6 +98,17 @@ fitmeasures(r_config)[c("rmsea", "cfi", "tli")]
 # Prepare predictor scales ------------------------------------------------
 unlist(scales_list)[!unlist(scales_list) %in% names(data)]
 pred_list <- lapply(scales_list, function(x){ prcomp(data[x]) })
+revcod <- sapply(scales_list, function(x){ 
+  pc <- prcomp(data[x]) 
+  signs <- sign(pc$rotation[,1])
+  tb <- table(signs)
+  tb <- sort(tb, decreasing = TRUE)
+  names(tb)[1] == "-1"
+  })
+# Note: Neuroticism and self-concept clarity were already reverse-coded;
+# this reverse coding has flipped them the right way around. Thus,
+# remove them from this list.
+saveRDS(names(revcod)[revcod], "revcod.RData")
 
 pc_mat <- t(sapply(pred_list, function(x){
   tst <- summary(x)
@@ -155,7 +166,14 @@ desc_num$name <- renm$V2[match(desc_num$name, renm$V1)]
 write.csv(desc_num, "desc_num.csv", row.names = FALSE)
 
 desc_cat <- desc_noscale[!desc_noscale$type == "numeric", -2]
+desc_cat$unique <- sapply(desc_cat$name, function(i){length(table(reldata[[i]]))})
+desc_cat <- desc_cat[inverse.rle(list(lengths = desc_cat$unique, values = 1:nrow(desc_cat))), ]
 desc_cat <- desc_cat[, !sapply(desc_cat, function(i){all(is.na(i))})][, -3]
+desc_cat <- cbind(desc_cat, do.call(rbind, lapply(unique(desc_cat$name), function(n){
+  as.data.frame.table(prop.table(table(data_noscale2[[n]])))
+})))
+desc_cat <- desc_cat[, c("name", "n", "Freq", "Var1")]
+names(desc_cat) <- c("name", "n", "%", "Category")
 desc_cat$name <- renm$V2[match(desc_cat$name, renm$V1)]
 write.csv(desc_cat, "desc_cat.csv", row.names = FALSE)
 

@@ -36,9 +36,17 @@ fac_labs <- list(
 vim <- readRDS("results/vim_all_22021-08-21_17_23_27.RData")
 VI <- list(variable.importance = semtree:::aggregateVarimp(vim, aggregate = "median", scale = "absolute", TRUE))
 ren <- read.csv("scale_rename.csv", stringsAsFactors = F, header = FALSE)
-names(VI$variable.importance)[names(VI$variable.importance) %in% ren$V1] <- ren$V2[match(names(VI$variable.importance)[names(VI$variable.importance) %in% ren$V1], ren$V1)]
 VI$variable.importance <- sort(VI$variable.importance, decreasing = TRUE)
-names(VI$variable.importance) <- paste0(1:length(VI$variable.importance), ". ", names(VI$variable.importance))
+
+# Legend
+leg <- read.csv("supplemental_table_1.csv", stringsAsFactors = FALSE)
+legtab <- data.frame(Predictor = ren$V2[match(names(VI$variable.importance)[1:30], ren$V1)], Description = leg$description.en[match(names(VI$variable.importance)[1:30], leg$variable.name)])
+                                        
+write.csv(legtab, "legtab.csv", row.names = FALSE)
+names(VI$variable.importance)[names(VI$variable.importance) %in% ren$V1] <- ren$V2[match(names(VI$variable.importance)[names(VI$variable.importance) %in% ren$V1], ren$V1)]
+saveRDS(VI$variable.importance, "variable_importance.RData")
+
+names(VI$variable.importance) <- paste0(1:length(VI$variable.importance), ". ", c(rep("  ", 9), rep("", (length(VI$variable.importance)-9))), names(VI$variable.importance))
 class(VI) <- "ranger"
 v1 <- v2 <- VI
 v1$variable.importance <- v1$variable.importance[1:44]
@@ -48,6 +56,7 @@ p2 <- metaforest::VarImpPlot(v2, 43)+theme(axis.text.y = element_text(hjust=0))+
 library("cowplot")
 pcomb <- plot_grid(p1,p2,
           ncol = 2, nrow = 1)
+ggsave("pcomb.pdf", pcomb, device = "pdf")
 saveRDS(pcomb, "varimp_comb_21-08-2021.RData")
 p <- metaforest::VarImpPlot(VI, length(VI$variable.importance))
 saveRDS(p, "varimp_21-08-2021.RData")

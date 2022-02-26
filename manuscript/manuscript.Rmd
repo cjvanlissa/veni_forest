@@ -63,14 +63,20 @@ documentclass     : "apa6"
 classoption       : "man"
 output            : papaja::apa6_pdf
 knit              : worcs::cite_all
+header-includes:
+  - \raggedbottom
 ---
 
 ```{r setup, include = FALSE}
 library("papaja")
 library("worcs")
 library(tidySEM)
+# this does nothing for apa_table:
 options(knitr.kable.NA = '')
-
+# To make svg work, use this and 
+# header-includes:
+#   - \usepackage{svg}
+#options(tinytex.engine_args = '--shell-escape')
 ```
 
 <!-- TS: Emotion regulation development is a critical challenge in adolescence. -->
@@ -262,7 +268,7 @@ The Workflow for Open Reproducible Code in Science (WORCS) was used to make anal
 All analysis code, supplemental materials and synthetic data are available at <https://github.com/cjvanlissa/veni_forest>.
 The original data (restricted) and all study documentation are available via <https://doi.org/10.17026/DANS-ZRB-V5WP>.
 
-## Participants
+## Participants and procedure
 
 ```{r}
 desc_num <- read.csv("../desc_num.csv", stringsAsFactors = FALSE)
@@ -275,6 +281,14 @@ From 2006 to 2012, trained interviewers conducted annual home visits to collect 
 All independent variables were assessed in the first measurement wave.
 The dependent variable was measured from the second to the sixth wave.
 Adolescents received financial compensation for their participation in annual measurements (approximately \$17).
+
+<!-- **Participants** -->
+
+<!-- * RADAR data (https://www.uu.nl/en/research/radar) -->
+<!-- * 497 Dutch adolescents (283 boys; age at T1: M =13.03, SD = 0.46) -->
+<!-- * Collected between 2006-2011 -->
+<!-- * Most families were  medium- to high-SES (10% low-SES) -->
+
 
 ## Measures
 
@@ -293,59 +307,239 @@ about anything else").
 Responses ranged
 from 1 (Almost never) to 5 (Almost always).
 Reliability was excellent in all waves, $\alpha \in [`r report(min(alphs), equals = F)`, `r report(max(alphs), equals = F)`]$.
-According to confirmatory factor analyses,
-a model that imposed metric measurement invariance across waves ($BIC = 140913.27$) was preferable over a model with configural invariance ($BIC = 141247.46$).
-The RMSEA and SRMR of this model indicated acceptable fit ($\text{RMSEA} = .05, \text{SRMR} = 0.05$), but the CFI indicated poor fit ($\text{CFI} = .80$).
-However, as reliability and standardized factor loadings ($\lambda \in [0.44, 0.84]$) were high across all waves, we extracted individual factor scores for further analysis.
-As quadratic growth model fit to the full sample had excellent fit, $\text{RMSEA} < .05, \text{SRMR} = 0.02, \text{CFI} = 1.00$. 
+We used latent variable scores (instead of mean scores) for further analyses.
+To this end, we imposed a five-factor CFA (one for each wave) on the indicators of the dependent variable.
+Latent means were restricted to zero, such that resulting scores reflect the deviation of individual adolescents' trajectories from the overall trajectory.
+As measurement invariance must be imposed in order to compare latent scores across waves,
+we compared a model with configural invariance ($BIC = 141247.46$)
+to a model that imposed metric invariance ($BIC = 140913.27$).
+The lower BIC indicates support for metric invariance.
+The RMSEA and SRMR of the invariant model indicated acceptable fit ($\text{RMSEA} = .05, \text{SRMR} = 0.05$), but the CFI indicated poor fit ($\text{CFI} = .80$).
+As reliability and standardized factor loadings were high across all waves ($\lambda \in [0.44, 0.84]$),
+we considered it acceptable to proceed with individual factor scores for further analysis.
 
 ## Candidate predictors
 
 We set out to identify operationalizations of all relevant phenomena identified in @vanlissaMappingPhenomenaRelevant2021 that were available in the RADAR data.
-This yielded 87 candidate predictors, of which `r nrow(desc_cat)` categorical (see Table \@ref(tab:tabcat)), `r sum(is.na(desc_num$Items))` numerical, and `r sum(!is.na(desc_num$Items))` multi-item scales, see \@ref(tab:tabcont).
-We used principal components analysis for dimension reduction of multi-item scales.
+This yielded 87 candidate predictors, of which `r nrow(desc_cat)` categorical (see Table \@ref(tab:tabcat)), `r sum(is.na(desc_num$Items))` numerical, and `r sum(!is.na(desc_num$Items))` multi-item scales, see \@ref(tab:tabnum).
+For multi-item scales, we used principal components analysis for dimension reduction.
 Across all scales, the explained variance of the first component ranged from $R^2 \in [0.18, 0.90]$.
-Supplementary Table S1 additionally reports skew and kurtosis,
-the minimum and maximum factor loading of a CFA fit to each scale,
+This first component represents the largest amount of shared variance among the scale items, and was used for further analysis.
+[Supplementary Table S1](https://github.com/cjvanlissa/veni_forest/blob/master/supplemental_table_1.csv) additionally reports skew and kurtosis,
+minimum and maximum factor loadings,
 sample items,
-and references to the scale validation papers.
+and references to the validation paper for each scale.
 
 ```{r tabcat, results='asis'}
-papaja::apa_table(desc_cat, caption = "Sample descriptive statistics for categorical predictors.", format.args = list(na_string = ""))
+vimp <- readRDS("../variable_importance.RData")
+ordr <- match(desc_cat$name, names(vimp))
+desc_cat$name <- paste0(ordr, ". ", desc_cat$name)
+desc_cat <- desc_cat[order(ordr, decreasing = FALSE), ]
+names(desc_cat) <- c("Variable", "n", "%", "Category")
+papaja::apa_table(desc_cat, caption = "Sample descriptive statistics for categorical predictors.", landscape = FALSE, longtable = TRUE, format.args = list(na_string = ""))
 ```
-```{r tabcont, results='asis'}
- options(knitr.kable.NA = '')
-papaja::apa_table(desc_num[,c("name", "n", "Items", "mean", "sd", "min", "max", "Reliability", "PC1")
-], caption = "Sample descriptive statistics for continuous variables and scales.", landscape = FALSE, longtable = TRUE, format.args = list(na_string = ""))
+```{r tabnum, results='asis'}
+ordr <- match(desc_num$name, names(vimp))
+desc_num$name <- paste0(ordr, ". ", desc_num$name)
+desc_num <- desc_num[order(ordr, decreasing = FALSE), ]
+desc_num <- desc_num[,c("name", "n", "Items", "mean", "sd", "min", "max", "Reliability", "PC1")]
+names(desc_num) <- c("Variable", "n", "i", "M", "SD", "min", "max", "alpha", "PC1")
+papaja::apa_table(desc_num, caption = "Sample descriptive statistics for continuous variables and scales. n: valid sample size, i: number of items, M: mean, SD: standard deviation, alpha: Cronbach's alpha", landscape = FALSE, longtable = TRUE, format.args = list(na_string = ""))
 ```
 
- 
+## Missing data
+
+The SEM-forests algorithm requires complete data and cannot accommodate multiple imputed data.
+Consequently, we used single imputation using the missForest algorithm,
+a random forests based approach with comparable performance to multiple imputation and FIML estimation [@stekhovenMissForestNonparametricMissing2012].
+This method is valid when missingness is either random or contingent on observed data (MAR or MCAR).
+It does not make any distributional assumptions and does not extrapolate,
+meaning it returns realistic values within the range of the observed data.
+The percentage of missingness ranged from $`r report(min((495-desc_cat[["n"]])/495), equals = F)` - `r report(max((495-desc_cat[["n"]])/495), equals = F)`$ for categorical data (see Table \@ref(tab:tabcat)),
+and from $`r report(min((495-desc_num[["n"]])/495), equals = F)` - `r report(max((495-desc_cat[["n"]])/495), equals = F)`$ for continuous data (see Table \@ref(tab:tabnum)).
+<!-- Original publication had up to 30% missing, Wolputte, E. V., & Blockeel, H. (2020, October). Missing value imputation with MERCS: a faster alternative to MissForest. In International Conference on Discovery Science (pp. 502-516). Springer, Cham. looked at higher numbers. According to Mplus: minimum 10% -->
+
 ## Strategy of analyses
 
+Trajectories of emotion regulation development were modeled using a curvilinear latent growth curve model with an intercept (I), linear slope (S), and quadratic slope (Q).
+The full sample fit was excellent, $\text{RMSEA} < .05, \text{SRMR} = 0.02, \text{CFI} = 1.00$.
+As this model is relatively complex for the subsequent SEM-forests analysis, residual variances were constrained over time, reflecting an assumption of homoscedasticity,
+and variances of growth parameters were fixed at zero,
+reflecting the assumption of homogeneity of trajectories within terminal nodes,
+with remaining heterogeneity attributed to error variance.
+
+To identify predictors of these latent growth trajectories, we used the SEM forests algorithm [@brandmaierTheoryguidedExplorationStructural2016].
+This algorithm proceeds as follows:
+
+1. Bootstrap the data with replacement; we used 1000 bootstrap replications
+2. For each bootstrap sample, construct a SEM tree:
+  i. Estimate the latent growth model on the bootstrap sample
+  ii. Consider a random selection of $K$ candidates out of all $p$ predictors; we used $k = 9$ based on the standard practice to use $K = \lfloor\sqrt{p}\rfloor$
+  iii. Identify the predictor $k$ and value of that predictor that, when using that predictor and value to split the sample in two, maximizes the likelihood ratio $LR$ of a post-split multigroup model
+  iv. Repeat steps 3 and 4 until all post-split groups reach a minimum size
+3. Aggregate predictions from all SEM-trees
+
+Each tree thus maps relationships between the predictors and outcome as a series of recursive splits of the data.
+This approach intrinsically accommodates non-linear effects and (complex) interactions, which is an advantage over parametric models that assume linearity.
+The algorithm additionally performs variable selection;
+unimportant variables are not selected in step 2.iii.
+Thus, the number of predictors can be large without risking model non-identification.
+
+Our primary outcome of interest, variable importance,
+is defined as the average absolute increase in model misfit due to randomization of each variable.
+For each tree, the log-likelihood of cases not in that tree's bootstrap sample is computed twice:
+Once using the true data for these cases, and once after randomizing one predictor.
+The variable importance is given by averaging the ratio of these two log-likelihoods across all trees.
+Our secondary outcome of interest, marginal associations,
+were derived using a custom function developed for this paper.
+For three values of each continuous predictor - namely the percentiles corresponding to the median, +/- 1SD of a standard normal distribution - 
+model-implied growth trajectories were predicted for all other values of all other predictors.
+To average across all other predictors, the median of these predicted growth trajectories was taken and plotted.
+
+<!-- $$ -->
+<!-- \begin{align} -->
+<!-- \bm{\lambda} &=  -->
+<!-- \begin{bmatrix} -->
+<!-- 1 & 0 & 0^2 \\ -->
+<!-- 1 & 1 & 1^2 \\ -->
+<!-- \vdots & \vdots & \vdots \\ -->
+<!-- 1 & 5 & 5^2 \\ -->
+
+<!-- \end{bmatrix} -->
+<!-- \\ -->
+<!-- \bm{\psi} &= -->
+<!-- \end{align} -->
+<!-- $$ -->
+<!-- Across all measurements, 13.3% of data were missing. -->
+<!-- Little’s (1988) Missing Completely at Random (MCAR) -->
+<!-- test produced a statistically significant value for the daily -->
+<!-- identity and self-concept clarity variables, x -->
+<!-- 2 -->
+<!-- (8592) ¼ -->
+<!-- 9228.07, p < .001, although the x -->
+<!-- 2 -->
+<!-- /df ratio was only 1.07. -->
+<!-- Similarly, for the annual assessments, the MCAR test -->
+<!-- produced a statistically significant value, x -->
+<!-- 2 -->
+<!-- (56) ¼ 75.19, -->
+<!-- p < .001, although the x -->
+<!-- 2 -->
+<!-- /df ratio was only 1.34. These -->
+<!-- findings suggest that data were likely missing at random, -->
+<!-- and that maximum likelihood techniques were appropriate -->
+<!-- for use. Moreover, even when the assumption of missing -->
+<!-- completely at random is not met, the Full Information -->
+<!-- Maximum Likelihood (FIML) procedure is still preferable to -->
+<!-- listwise deletion of cases with missing data (McKnight, -->
+<!-- McKnight, Sidani, & Figuredo, 2007). Listwise deletion -->
+<!-- results in a biased sample, and therefore biased results, -->
+<!-- by systematically excluding cases with missing data on -->
+<!-- any of the study variables. We therefore utilized FIML -->
+<!-- estimation using Mplus release 5.1 (Muthe´n & Muthe´n, -->
+<!-- 2007). -->
 <!-- Our analyses were based on an extension of cross-lagged panel modeling (Selig & Little, 2012), with staggered measurement occasions for one of the variables (mood variability). Mood variability was measured each time during the year between two measurement waves. Thus, for mood variability, no within-wave correlations were estimated, and all links with conflict frequency and difficulties in emotion regulation were specified as (predictive) regression paths. We used this staggered cross-lagged panel model to investigate over-time predictive effects between conflict frequency, day-to-day mood variability, and difficulties in emotion regulation. First, we estimated a single-group path model with autoregressive and cross-lagged paths, as well as within-time correlations for concurrent measurements (Model 1, see Table 1). Then we introduced empathy (high, average, low) as a moderator in a multi-group model, with all parameters free to vary between groups (Model 2). To derive the best fitting, most parsimonious model, we constrained parameters that were not significantly different. We used Wald \chi^2 tests to evaluate which parameters did not differ significantly, first over time and then between groups. We used the resulting final model to test our hypotheses (Model 3, see Figure 2). For hypotheses involving moderation, we used Wald tests to investigate whether parameters differed significantly between empathy groups. To test hypotheses involving mediation, we inspected indirect effects with bootstrapped standard errors (10,000 resamples). Furthermore, although posterior predictive probabilities were high, we conducted additional analyses, using the approach described by Asparouhov and Muthén (2014) to account for classification uncertainty. As can be seen in Appendix A, results were in line with the multi-group model reported here. -->
 <!-- Attrition for the annual measurements ranged from 0.40% at age 13 to 14.50% at age 18, and attrition for the daily mood diaries ranged from 3.40% to 23.40%. These data were missing completely at random, Little’s (1988) MCAR test \chi^2(2179) = 2124.07, p = .80. Therefore, full information maximum likelihood estimation (FIML) was warranted to make use of all available information without estimating missing data. All analyses were conducted in Mplus Version 7 (Muthén & Muthén, 1998–2012). Per the developers’ recommendation, we used robust maximum-likelihood estimation, which yields a Satorra-Bentler scaled \chi^2 value to account for potential non-normality (Satorra, 2000). Model fit was evaluated using the Comparative Fit Index and Tucker–Lewis Index (CFI and TLI, acceptable fit = 0.90-0.95, Bentler & Bonett, 1980), and Root Mean Square Error of Approximation (RMSEA, close fit = 0.01-0.06, acceptable fit = 0.06-0.08, Browne & Cudeck, 1993). According to these criteria, the fit of the final model was acceptable-to-good (Table 1). In addition to these measures of objective fit, we also provide two comparative fit indices, the Akaike Information Criterion (AIC) and sample-size adjusted Bayesian Information Criterion (saBIC). Lower values on these comparative fit indices indicate a better fitting model. According to both relative and absolute fit indices, the final model had the best fit. -->
 
-SEM-forest [@brandmaierTheoryguidedExplorationStructural2016]
-
-1. Bootstrap sample
-2. On each sample, estimate a SEM-model
-3. Consider $k$ candidate predictors
-4. Identify predictor and value that maximizes $LR$ of post-split multi-group model
-5. Average predictions across bootstrap samples
-
-We used 1000 bootstrap samples, $k = 9$
-
-
-**Participants**
-
-* RADAR data (https://www.uu.nl/en/research/radar)
-* 497 Dutch adolescents (283 boys; age at T1: M =13.03, SD = 0.46)
-* Collected between 2006-2011
-* Most families were  medium- to high-SES (10% low-SES)
-
-
-
 # Results
+
+## Variable importance
+
+Candidate predictors were rank-ordered by their relative variable importance,
+as illustrated in Figure 1.
+<!-- Table \@ref(tab:tablegend) provides a brief legend of the 30 most important variables, and  -->
+Supplementary Table S1 provides a full legend of all variables.
+
+```{r figvarimp, fig.cap="Predictors ranked in order of relative importance. m: mother, f: father, b: best friend, s: sibling."}
+knitr::include_graphics("../pcomb.pdf")
+```
+
+```{r legtab, results="asis", eval = FALSE}
+legtab <- read.csv("../legtab.csv", stringsAsFactors = FALSE)
+papaja::apa_table(legtab, caption = "Brief description of 30 most important predictors.", format.arg = list(na_string = ""))
+```
+
+Examining the variable importance rankings,
+several themes emerged.
+Specifically, results indicated that several individual differences - personality and related constructs - were ranked among the most important predictors.
+For example, three of the big five personality dimensions rank among the top six predictors: Neuroticism (1), extraversion (4), and agreeableness (6).
+The Behavioral Inhibition Scale (BIS, 2), which reflects motivation to avoid aversive outcomes, ranked highly - although the BAS (73), its counterpart which measures motivation to approach goal-oriented outcomes,
+ranked very low.
+One dimension of empathy - personal distress (9), the tendency to experience aversive emotions in response to the misfortunes of others,
+also ranked highly, and substantially higher than other dimensions of empathy.
+Finally, self-concept clarity (11) also ranked highly; this construct represents the internal consistency of self-referential thought, and has close theoretical ties to identity [@schwartzDailyDynamicsPersonal2011].
+
+A second emerging theme is that most constructs related to conflict frequency and behavior ranked highly, and few ranked low.
+For instance, adolescent-perceived interparental conflict (8),
+adolescents' conflict engagement (escalation) with best friends (10),
+mothers (13) and fathers (20),
+frequency (14) and negative emotionality (28) of adolescents' conflict with both parents,
+and withdrawal from conflicts with best friends (18) and mothers (19).
+
+A third emerging theme is that parenting was relatively underrepresented among the most important predictors;
+the highest-ranking parental predictor was balanced relatedness (3),
+a construct that represents the extent to which parents support and respect the adolescent's autonomy.
+It further appeared that negative and intrusive aspects of parenting were more predictive than other positive practices:
+Prohibition and control of friendship choice (16),
+perceived intrusiveness and meddling (25),
+psychological control (27),
+and supportive criticism (33).
+Positively valenced parenting dimensions like maternal (54) and paternal (55) support were ranked low,
+and neutrally valenced aspects like parental monitoring (sollicitation 71, adolescent disclosure 72) were ranked very low.
+
+It is further of note that some themes that are considered to be theoretically relevant ranked low.
+For instance, indicators of maternal (86) and paternal (87) socio-economic status were ranked the lowest,
+as were other family demographic indicators, like religion (81, 82). 
+Aspects of adolescents' peer networks,
+such as bullying (60, 84) and victimization (51, 62, 83),
+and contact with delinquent peers (85) also ranked low.
+The same applied to substance use;
+the most commonly used substances of alcohol (78) and cigarettes (61) were ranked very low; drug use, which is less common, ranked a bit higher than this (37, but see direction of association).
+
+## Direction of association
+
+**Note that a number of predictors were reverse coded; re-computing the analyses that generate the Figures requires access to a supercomputer, which we have not been able to obtain at this point. These reverse-coded plots have been highlighted in red. Reverse the + and - 1SD lines to interpret these.**
+
+Figures \@ref(fig:figpdp1)-\@ref(fig:figpdp4) depict the marginal association of the predictors with the outcome,
+also in order of importance.
+This provides an indication of whether the effect is generally positive, negative, or other.
+Note that the dependent variable measures *difficulties* in emotion regulation;
+thus, higher values represent poorer emotion regulation.
+
+```{r figpdp1, fig.cap="Predicted trajectory of difficulties in emotion regulation for predictors 1-12. Red highlights indicate reverse-coded predictors."}
+knitr::include_graphics("../plots/pdp1-12r.png")
+```
+```{r figpdp2, fig.cap="Predicted trajectory of difficulties in emotion regulation for predictors 13-24. Red highlights indicate reverse-coded predictors."}
+knitr::include_graphics("../plots/pdp13-24r.png")
+```
+```{r figpdp3, fig.cap="Predicted trajectory of difficulties in emotion regulation for predictors 25-36. Red highlights indicate reverse-coded predictors."}
+knitr::include_graphics("../plots/pdp25-36r.png")
+```
+```{r figpdp4, fig.cap="Predicted trajectory of difficulties in emotion regulation for predictors 37-44. Red highlights indicate reverse-coded predictors."}
+knitr::include_graphics("../plots/pdp37-44r.png")
+```
+
+All associations were in a direction consistent with prior literature.
+Among these were several factors associated with less difficulties in emotion regulation (i.e., potential protective factors), including
+parents' autonomy support and tolerance,
+big five extraversion and agreeableness, 
+self-concept clarity,
+problem solving in conflict with both parents,
+parents' own emotion regulation ability,
+and maternal age (older mothers had better adjusted children).
+
+Other factors were associated with more difficulties in emotion regulation (i.e., potential risk factors or diagnostic aids),
+including big five neuroticism, 
+behavioral inhibition system,
+externalizing and internalizing (depression and anxiety) problem behavior,
+frequency and intensity of conflict with both parents,
+and use of the conflict resolutions styles engagement and withdrawal.
+Intrusive parenting behaviors were also negative predictors, including psychological control, control of friendships, paternal power, and constructive criticism.
+All empathy dimensions except perspective taking predicted greater emotion dysregulation,
+as did different daily negative emotions,
+parental stress and interparental conflict,
+age and pubertal development,
+and sex (girls experienced greater difficulties in emotion regulation).
 
 <!-- Categories:  -->
 
@@ -357,47 +551,106 @@ We used 1000 bootstrap samples, $k = 9$
 <!-- * Parenting (perceived and parent-reported) -->
 <!-- * Conflict resolution styles -->
 
-## Variable importance
 
-## Marginal association
+# Discussion
+
+This study used the machine learning algorithm SEM-forests
+to identify the most important early indicators of emotion regulation development across adolescence,
+and to explore the nature of the association of those predictors with development. 
+The results identified several potential protective- and risk factors.
+Although all predictors attained a positive variable importance value,
+there were differences in relative importance.
+Individual differences in personality, motivation, self-concept clarity, and personal distress were among the most important predictors.
+Conflict frequency and behavior also ranked highly.
+Parenting ranked relatively low, with two notable exceptions:
+First, balanced relatedness, a measure of autonomy support, was an important protective factor, and second,
+among all remaining parenting constructs, negative and intrusive dimensions were more predictive (as risk factors) than positive or neutral parenting practices.
+Other themes that ranked very low were family demographics,
+bullying, victimization and delinquency, and substance use.
+
+Relating these results to prior theory,
+it is noteworthy that the order of importance of these themes appears to correspond to the levels of the bioecological model.
+Predictors at the individual level were most important,
+followed by those at the microsystem level, such as aspects of the relationship with parents,
+followed by the mesosystem, including aspects of the peer network (e.g., bullying/victimization and delinquency), school performance, and socio-economic status,
+and the macrosystem indicator religiosity was among the least important predictors.
 
 
-## Marginal association 2
+These findings have several implications for the early identification of youth at-risk for emotion regulation difficulties.
+The fact that individual-level predictors were most important
+suggests that individual assessments might be sufficient.
+Holistic approaches that involve the family system might not be necessary for preliminary risk assessment.
+Moreover, some of the most important predictors are already routinely assessed (for example, big five personality).
+Other important predictors are overt, and thus easily observed by teachers and parents - for example, externalizing problem behavior and conflict frequency and behavior.
+Future research might thus develop and validate risk assessment instruments
+focusing on these constructs.
 
+The present findings have important implications for intervention.
+However, it is important to consider the correlational nature of the study design.
+Our findings reveal the strength of the association of each predictor with emotion regulation development.
+Intervention can only be effective if this association can additionally be assumed to be causal, based on theory or experimental research.
+Two phenomena appear to be prime candidates for intervention,
+based on the variable importance rankings:
+conflict resolution behavior, and (negative) parenting.
 
-## Marginal association 3
+There is prior evidence for the efficacy of conflict resolution training in adolescents [@breunlinConflictResolutionTraining2002].
+The same evidence indicates that conflict resolution training caused a decrease in externalizing problems (another important predictor), suggesting potential compounding benefits.
 
+Parenting behavior is another promising target for intervention,
+as indeed it has historically been.
+Importantly, our results suggest that such interventions should focus on promoting parental autonomy support, and decreasing intrusive, negative, guilt-inducing and overbearing parenting behaviors.
+By contrast, promoting positive parenting practices may have limited potential for impact.
+With this in mind, it is important to consider that positive parenting practices are often a key focus of parenting training.
+Although one meta-analysis did report large effects of the Triple P-Positive Parenting Program on parental outcomes - including some negative parenting behaviors [@fletcherImpactBehaviouralParent2011],
+another meta-analysis called these findings into question,
+citing mixed evidence, a lack of adequate blinding, risk of bias, and the substantial cost of such programs [@wilsonHowEvidencebasedEvidencebased2012].
+<!-- Another study Even when negative parenting has been assessed as outcomes, -->
+<!-- significant effects were found for positive practices only [@marcynyszynGettingEvidencebasedProgram2011]. -->
+<!-- and that there have been prior concerns about the efficacy of such training [@wilsonHowEvidencebasedEvidencebased2012; @cottamDiscoursesUnderpinningParenting2014]. -->
+Also note that the efficacy of parenting training has been evaluated primarily in terms of parents' self-reported outcomes;
+the ultimate benefit for children,
+in particular for adolescents' emotion regulation,
+is less studied.
+The relatively higher importance rankings for negative versus parenting is in line with the well-established *negativity bias*,
+that negative stimuli are more psychologically impactful than positive ones,
+which has also been found in children [@vaishNotAllEmotions2008].
+Future parenting interventions might take this into consideration by devoting sufficient attention to the elimination of negative parenting practices.
 
-## Marginal association 4
+As parents have a legal and moral imperative to care for their children,
+much of developmental research has understandably focused on parents' role in child and adolescent development.
+It is thus noteworthy that, with the exception of autonomy support and negative parenting,
+other parenting behaviors were rated low in terms of predictive importance.
+This finding seems paradoxical in light of prior theory and empirical research.
+At the same time, these findings are consistent with an increasing number of recent studies - particularly those employing innovative methods to study processes within families - that have found little evidence for parent-directed processes in adolescence.
+At this point, the evidence suggests that we must consider the possibility that parents' influence in adolescence is more limited than once was thought.
+Based on our findings, the best advice to give parents might be to support their individuating adolescents' autonomy,
+refrain from overly invasive or negative parenting practices,
+and model constructive problem solving behavior when conflicts arise.
 
+Another paradoxical finding was that substance use and other "problem behaviors",
+like time spent with delinquent peers, had very low variable importance ratings in predicting emotion dysregulation.
+Even the highest ranked problem behavior, drug use, had no distinguishable marginal effect.
+This suggests that drug use derives its high importance from higher-order interactions with other predictors.
+It might be the case, for example, that for some youth, drug use contributes to self-exploration and social relationships, whereas for others, it may be a form of escapism, self-medication, or even self-harm.
+This is merely a hypothesis, and the present study cannot conclusively identify what interactions are at play.
+Future research should explore this issue further.
 
-## Summary
-
-Important:
-
-* Best predictors: Personality and related constructs
-* Best parental predictor is autonomy support (bal. rel.)
-  + Negative/intrusive parenting more predictive than other positive practices
-* Conflict frequency and behavior
-* Empathy, particularly personal distress
-
-Less important than expected:
-
-* SES
-* Bullying/victimization
-* Delinquency
-* Substance use
-* Monitoring
+The present study set out to identify the most important early indicators of developmental trajectories
+of emotion regulation across adolescence.
+This involves three important challenges:
+First, the number of potentially relevant risk factors, as identified in a prior text mining systematic review, is large.
+Second, there is a paucity of relevant theory to narrow down the candidate predictors.
+Third, methods commonly used in the field are not well suited for large numbers of predictors.
+Machine learning methods that perform variable selection can overcome these challenges.
+We therefore used the SEM-forests algorithm to identify the most important early predictors of trajectories of emotion regulation development throughout adolescence.
+The primary aim is to identify the most important predictors of adolescents' trajectories of emotion regulation development.
+The secondary aim is to probe the nature of the marginal association of the predictors with these trajectories.
 
 ## Reflection content
 
-* Most important predictors are routinely assessed (big 5) or overt (conflict)
-  + Prime candidates for early risk assessment
-  + Conflict resolution behavior can be taught
-    - Target for intervention if association is causal
 * Emphasis on parenting (in literature and theory) might not be justified
   + Congruent with RI-CLPM showing few parenting effects in adolescence [@vanlissaRoleFathersMothers2019]
-* Order of predictors mirrors bioecological model
+
 
 
 ## Reflections form
