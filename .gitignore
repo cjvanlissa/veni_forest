@@ -22,3 +22,6 @@ results/full_forest.RData
 !supplemental_table_1.csv
 !desc_num.csv
 !desc_cat.csv
+*.inp
+*.out
+*.dat
