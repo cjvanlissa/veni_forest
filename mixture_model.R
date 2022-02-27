@@ -43,3 +43,12 @@ p <- p + scale_linetype_manual(labels = classlabs, values = c(1:2), name = "Risk
   theme(legend.position = c(0.88, 0.85))
 saveRDS(p, "classplot.RData")
 ggsave("classplot.pdf", p, device = "pdf", units = "in", width = 7, height = 5)
+
+p <- plotGrowthMixtures(res_mp[[2]], rawdata = TRUE, alpha_range = c(0, 0.05))
+p <- p + scale_linetype_manual(labels = classlabs, values = c(1:2), name = "Risk", guide = guide_legend(reverse = TRUE)) +
+  scale_shape_manual(labels = classlabs, values = c(15, 17), name = "Risk", guide = guide_legend(reverse = TRUE)) +
+  scale_colour_manual(labels = classlabs, values = c("green", "red"), name = "Risk", guide = guide_legend(reverse = TRUE)) +
+  scale_x_continuous(breaks = 0:4, labels = 14:18, expand = c(0, 0)) +
+  labs(x = "Age", y = "Difficulties in emotion regulation") +
+  theme(legend.position = c(0.88, 0.85))
+saveRDS(p, "classplot_color.RData")

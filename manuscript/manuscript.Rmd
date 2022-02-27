@@ -63,6 +63,7 @@ documentclass     : "apa6"
 classoption       : "man"
 output            : papaja::apa6_pdf
 knit              : worcs::cite_all
+urlcolor: blue
 header-includes:
   - \raggedbottom
 ---
@@ -361,32 +362,37 @@ and from $`r report(min((495-desc_num[["n"]])/495), equals = F)` - `r report(max
 
 ## Strategy of analyses
 
-Preliminary analyses were conducted to ensure the appropriateness of growth curve modeling.
-To this end, trajectories of emotion regulation development were modeled using a curvilinear latent growth curve model with an intercept (I), linear slope (S), and quadratic slope (Q).
-The full sample fit of this model was excellent, $\text{RMSEA} < .05, \text{SRMR} = 0.02, \text{CFI} = 1.00$.
+Preliminary analyses were conducted to ensure the appropriateness of growth curve modeling, and determine the presence of heterogeneity in developmental trajectories.
+First, trajectories of emotion regulation development were modeled using a curvilinear latent growth curve model with an intercept (I), linear slope (S), and quadratic slope (Q).
+The full sample model fit was excellent, $\text{RMSEA} < .05, \text{SRMR} = 0.02, \text{CFI} = 1.00$.
 Second, latent class growth analyses were conducted to determine the presence of youth with trajectories that indicated elevated risk of emotion regulation difficulties.
-We used the R-package `tidySEM` to estimate and compare 1-6 class solutions of the aforementioned curvilinear growth curve model;
-analysis results are displayed in [Supplemental Table 2]().
+We used the R-package `tidySEM` [@tidysem] to estimate and compare 1-6 class solutions of the aforementioned curvilinear growth curve model;
+analysis results are displayed in [Supplemental Table 2](https://github.com/cjvanlissa/veni_forest/blob/master/supplemental_table_2.csv).
 To ensure model convergence in small classes, the latent variable covariance matrix was restricted to zero,
 reflecting the assumption of homogeneity of trajectories,
 with remaining heterogeneity attributed to error variance.
 Class solutions with more than two classes were excluded from consideration due to low class separability (entropy < .9).
 The LMR likelihood ratio test indicated that two classes significantly improved fit ($p < .001$); more classes did not ($p = .26$).
 As displayed in Figure \@ref(fig:figclass),
-this analysis indicated a similar proportion of youth at-risk for difficulties in emotion regulation to what was found in previous studies [cf @leeAdolescentMentalHealth2014].
+about 25% of youth were at-risk for emotion dysregulation,
+a similar proportion to what was found in previous studies [cf @leeAdolescentMentalHealth2014].
 
 ```{r figclass, fig.cap="Latent class analysis of risk profiles."}
 knitr::include_graphics("../classplot.pdf")
 ```
 
+As we set out to identifying important predictors of emotion regulation development,
+this latent class analysis is not sufficient to answer our research question.
 In latent class analysis, individuals are clustered only with respect the the outcome (growth trajectories), to ensure maximum homogeneity of growth trajectories in each class.
 It thus answers the question: "Which adolescents have similar growth trajectories?"
 SEM-forests similarly aim to ensure maximum homogeneity of growth trajectories within clusters,
 but they differ from latent class analysis in that they cluster individuals by reference to a set of predictors.
 They thus answer the question: "Why do some adolescents have similar growth trajectories"?
+This method is suitable to meet the study goals.
 
 For the SEM-forests analysis,
-we imposed an additional restriction on the diagonal of the residual covariance matrix, reflecting an assumption of homoscedastic residual variance over time.
+we imposed an additional restriction on the diagonal of the residual covariance matrix,
+reflecting an assumption of homoscedastic residuals over time.
 The SEM-forests algorithm operates as follows:
 
 1. Bootstrap the data with replacement; we used 1000 bootstrap replications
