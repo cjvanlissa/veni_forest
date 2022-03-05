@@ -26,28 +26,14 @@ affiliation:
     institution: "Utrecht University, department of Youth and Family"
 
 authornote: |
-  Data of the RADAR (Research on Adolescent Development And Relationships) study were used (https://doi.org/10.17026/dans-zrb-v5wp). RADAR has been financially supported by main grants from the Netherlands Organisation for Scientific Research (GB-MAGW 480-03-005, GB-MAGW 480-08-006), Stichting Achmea Slachtoffer en Samenleving (SASS), the Netherlands Organisation for Scientific Research to the Consortium Individual Development (CID; 024.001.003), a grant of the European Research Council (ERC-2017-CoG - 773023 INTRANSITION), and various other grants from the Netherlands Organisation for Scientific Research, VU University Amsterdam, and Utrecht University. The funders had no role in the study design, data collection and analysis, decision to publish, or preparation of the manuscript. If the regulations of the journal allow it, the participating children, parents and schools are to be thanked as well.
+  CVL conceived of the study, conducted the final analyses, and wrote the draft paper. LB conducted preliminary analyses and gave feedback on the draft. SB and WM provided data and gave feedback on the draft. This work was funded by a NWO Veni Grant (NWO Grant Number VI.Veni.191G.090), awarded to the lead author. Data of the RADAR (Research on Adolescent Development And Relationships) study were used (https://doi.org/10.17026/dans-zrb-v5wp). RADAR has been financially supported by main grants from the Netherlands Organisation for Scientific Research (GB-MAGW 480-03-005, GB-MAGW 480-08-006), Stichting Achmea Slachtoffer en Samenleving (SASS), the Netherlands Organisation for Scientific Research to the Consortium Individual Development (CID; 024.001.003), a grant of the European Research Council (ERC-2017-CoG - 773023 INTRANSITION), and various other grants from the Netherlands Organisation for Scientific Research, VU University Amsterdam, and Utrecht University. The funders had no role in the study design, data collection and analysis, decision to publish, or preparation of the manuscript. If the regulations of the journal allow it, the participating children, parents and schools are to be thanked as well.
 
 abstract: |
-  https://www.srcd.org/news/child-development-special-section-formalizing-theories-child-development
-  One or two sentences providing a **basic introduction** to the field,  comprehensible to a scientist in any discipline.
+  This paper set out to identify the most important early early predictors of emotion regulation development from many (87) candidates using the machine learning algorithm SEM forests. Candidate predictors were selected based on a prior text mining systematic review of 6305 papers. Participants were 497 Dutch adolescents. Predictors were assessed at age 13, and emotion regulation development from age 14-18 was described using a quadratic latent trajectory model. SEM-forests were used to group adolescents with similar trajectories, based on their scores on the predictors. This person-centered approach not only identifies groups of adolescents with similar trajectories, but also indicates why some adolescents follow similar trajectories. The results indicated that individual differences (e.g., in personality) and conflict behaviors in relationships with parents and friends, and internalizing and externalizing were important early predictors. Less important were parenting behaviors, except autonomy support and invasive parenting, bullying and victimization, delinquent peers, and substance use. The implications of these findings for theory formation and intervention are discussed, and we present an open source risk assessment tool, ERRATA.
+
   
-  Two to three sentences of **more detailed background**, comprehensible  to scientists in related disciplines.
-  
-  One sentence clearly stating the **general problem** being addressed by  this particular study.
-  
-  One sentence summarizing the main result (with the words "**here we show**" or their equivalent).
-  
-  Two or three sentences explaining what the **main result** reveals in direct comparison to what was thought to be the case previously, or how the  main result adds to previous knowledge.
-  
-  One or two sentences to put the results into a more **general context**.
-  
-  Two or three sentences to provide a **broader perspective**, readily comprehensible to a scientist in any discipline.
-  
-  <!-- https://tinyurl.com/ybremelq -->
-  
-keywords          : "keywords"
-wordcount         : "X"
+keywords          : "emotion regulation, adolescence, machine learning, theory formation, random forests"
+wordcount         : "6199"
 
 bibliography      : ["r-references.bib", "references.bib"]
 
@@ -80,6 +66,7 @@ options(knitr.kable.NA = '')
 #options(tinytex.engine_args = '--shell-escape')
 ```
 
+<!-- https://www.srcd.org/news/child-development-special-section-formalizing-theories-child-development -->
 <!-- TS: Emotion regulation development is a critical challenge in adolescence. -->
 <!-- TS: Emotion dysregulation has severe consequences for individual adolescents, and society at large. -->
 <!-- TS: Therefore, substantial research has addressed this topic. -->
@@ -595,50 +582,57 @@ bullying, victimization and delinquency, and substance use.
 ## Implications for theory
 
 Relating these results to prior theory,
-it is noteworthy that predictive importance of different themes appears to correspond to the levels of the bioecological model:
+it is noteworthy that predictive importance of different themes appears to correspond to the levels of the bioecological model [@bronfenbrennerBioecologicalModelHuman2007]:
 Predictors at the individual level were most important,
 followed by those at the microsystem level, such as aspects of the relationship with parents,
 followed by the mesosystem, including aspects of the peer network (e.g., bullying/victimization and delinquency), school performance, and socio-economic status,
 and the macrosystem indicator religiosity was among the least important predictors.
+Future theory might thus emphasize proximal factors over distal ones [see also @sameroffUnifiedTheoryDevelopment2010].
 
-
-* Emphasis on parenting (in literature and theory) might not be justified
-  + Congruent with RI-CLPM showing few parenting effects in adolescence [@vanlissaRoleFathersMothers2019]
-
-Correspondence between research interest vs empirical importance.
-one of the most commonly studied correlates of emotion regulation in adolescence is parenting [@vanlissaMappingPhenomenaRelevant2021]
-
-
+Another relevant insight for theory formation is that,
+with the exception of autonomy support and negative parenting,
+other parenting behaviors ranked low in predictive importance.
+This might seem counter intuitive in light of prior theory and empirical research.
 As parents have a legal and moral imperative to care for their children,
-much of developmental research has understandably focused on parents' role in child and adolescent development.
-It is thus noteworthy that, with the exception of autonomy support and negative parenting,
-other parenting behaviors were rated low in terms of predictive importance.
-This finding seems paradoxical in light of prior theory and empirical research.
-At the same time, these findings are consistent with an increasing number of recent studies - particularly those employing innovative methods to study processes within families - that have found little evidence for parent-directed processes in adolescence.
+much of developmental research has focused on parents' role.
+One of the few highly specific theories of emotion regulation development focuses on the family context shapes adolescent emotion regulation development [@morrisRoleFamilyContext2007].
+At the same time, however, this finding is consistent with an increasing number of recent studies - particularly those employing innovative methods to study processes within families - that have found little evidence for parent-directed processes in adolescence [@vanlissaRoleFathersMothers2019; @mastrotheodorosFamilyFunctioningAdolescent2020].
 Of course, an alternative explanation might be that parenting effects take place earlier in development,
 and are engrained in individual differences by the time youth reach adolescence.
-A recent study on the role of parents in younger children's emotion regulation development casts doubt on this hypothesis however, as it similarly found little evidence for parent-directed processes.
+However, a recent study tested this hypothesis in a younger sample and similarly found little evidence for parent-directed processes [@vanlissaMothersFathersQuantitative2020].
 <!-- aren’t individual differences the result of the environment where those people were growing up, hence parental style as well? -->
 We must thus consider the possibility that parents' influence, at least in adolescence, is less prominent than once was thought.
-Based on present findings, the best advice to give parents might be to support their individuating adolescents' autonomy,
-refrain from overly invasive or negative parenting practices,
-and model problem solving behavior when conflicts arise.
+Future theories of adolescent emotion regulation development should thus at least go beyond parents' role.
 
-Another paradoxical finding was that substance use and other "problem behaviors",
+Another finding that challenges contemporary discourse is that substance use and other "problem behaviors",
 like time spent with delinquent peers, had very low variable importance ratings in predicting emotion dysregulation.
 Even the highest ranked problem behavior, drug use, had no distinguishable marginal effect.
 This suggests that drug use derives its high importance from higher-order interactions with other predictors.
 It might be the case, for example, that for some youth, drug use contributes to self-exploration and social relationships, whereas for others, it may be a form of escapism, self-medication, or even self-harm.
-This is merely a hypothesis, and the present study cannot conclusively identify what interactions are at play.
-Future research should explore this further.
+This is merely a hypothesis, and further research is required to identify what interactions are at play.
+These results imply that what are commonly thought of as risk factors might not be decisive in adolescents' emotion regulation development;
+such factors ought to be included in future theory, but should not take center stage.
 
-One emergent theme in the developmental literature is attention for fathers' role in child development [ref Keizer].
-Authors have lamented the lack of attention to fathers, and the equation of parenting with mothering.
-With this in mind, it is worth noteworthy that the predictive importance of mothers' parenting did not in any way outrank that of fathers' parenting.
+One emergent theme in the developmental literature is attention for fathers' role in child development [@vanlissaMappingPhenomenaRelevant2021].
+Scholars have lamented the lack of attention to fathers,
+and the equation of parenting with mothering [@keizerProspectiveStudyFather2014a].
+With this in mind, it is worth noteworthy that the predictive importance of mothers' parenting did not outrank that of fathers' parenting in any way.
 In fact, constructive conflict resolution with fathers was the highest-ranked construct related to conflict with parents;
-paternal power was the highest-ranked parenting construct,
+paternal power was the highest-ranked parenting construct;
 and maternal and paternal support and socio-economic status were both ranked approximately equally, despite both constructs being historically gendered.
-This highlights the importance of considering both parents as equally relevant in research and in daily life.
+This highlights the importance of considering both parents as equally relevant in future theory development.
+
+A final consideration relevant for future theory development is to what extent 
+research interest corresponds to the empirical importance of phenomena relevant for adolescents' emotion regulation.
+A prior text mining systematic review comprehensively mapped the phenomena studied in this field [@vanlissaMappingPhenomenaRelevant2021].
+It showed that among the most commonly studied phenomena were parenting, substance use, and bullying - all phenomena that ranked low in empirical importance in the present study.
+Conversely, phenomena found to be important in the present study, such as personality and other individual differences, parental autonomy support, and conflict-related behavior were less prevalent in the literature.
+Of course, the relative importance of predictors may vary across studies,
+and replications of the present findings are required.
+Nonetheless, this is an important reminder that the salience of a construct is not the same as its empirical importance.
+As many theorists base their work on literature reviews and expert opinion,
+focal topics in the literature are likely to garner undue theoretical weight.
+Considering the empirical importance of phenomena may provide guidance in focusing future theory development in this area.
 
 ## Implications for practice
 
@@ -650,6 +644,23 @@ Moreover, some of the most important predictors are already routinely assessed (
 Other important predictors are overt, and thus easily observed by teachers and parents - for example, externalizing problem behavior and conflict frequency and behavior.
 Future research might thus develop and validate risk assessment instruments
 focusing on these constructs.
+
+The method used in the present study is particularly well-suited to risk assessment instruments,
+because machine learning models maximize predictive performance, whereas traditional methods like linear regression maximize performance within the study sample.
+In fact, the trained model from the present study can be used to make predictions for the emotion regulation development of new adolescents.
+To illustrate the potential for risk assessment, we developed ERRATA,
+an Emotion Regulation Risk Assessment Tool for Adolescents (see Figure \@ref(fig:figerrata)).
+Users can select values of categorical predictors,
+and dial in low- to high values on a five point scale for each continuous predictor,
+which are mapped to the percentiles of the observed data distribution corresponding to -2SD, -1SD, the median, +1SD, and +2SD of a standard normal distribution.
+By default, all inputs are set to the median and mode values.
+This means that users can use informative input for the most important predictors,
+while keeping other less important predictors constant at the most common value.
+The ERRATA application is open source, and can thus be customized for clinical use.
+
+```{r figerrata, fig.cap="Screen captures of the ERRATA app."}
+knitr::include_graphics("errata.png")
+```
 
 The present findings also have important implications for intervention.
 However, it is important to consider the correlational nature of the study design.
@@ -681,6 +692,9 @@ that negative stimuli are more psychologically impactful than positive ones,
 which has also been found in children [@vaishNotAllEmotions2008].
 Future parenting interventions might take this into consideration by devoting sufficient attention to the elimination of negative parenting practices,
 and including children's outcomes, including emotion regulation, into consideration.
+Simply put, the present results suggest that the best advice for parents might be to support their individuating adolescents' autonomy,
+refrain from overly invasive or negative parenting practices,
+and model problem solving behavior when conflicts arise.
 
 ## Methodological implications
 
@@ -707,6 +721,16 @@ but these results might indicate potentially fruitful areas of future research.
 ## Strengths and limitations
 
 The present study had some unique strengths, most notably that it constituted the first comprehensive study of potential predictors of adolescent emotion regulation development, where prior work has taken more piecewise approaches, considering only a few predictors at a time.
+This allows us, for the first time, to assess the relative importance of different (themes of) predictors, where prior work has taken a more fragmented approach that does not allow for such comparisons.
+Another important contribution of the present study is that, in contrast to many other approaches,
+our method accommodates non-linear associations and interactions.
+Results indeed showed consistent evidence for non-linear effects,
+and some indications for interactions. 
+The present study answers recent calls for more person-centered research that explores heterogeneity in developmental processes.
+Crucially, whereas other approaches have merely *explored* heterogeneity in outcomes (e.g., using latent class analyses),
+the present study *explained* heterogeneity using a comprehensive battery of predictors.
+This answers the question why some adolescents experience more difficulties in emotion regulation than others.
+Another contribution is that the results have clear implications for theory, assessment, and intervention.
 <!-- The present study set out to identify the most important early indicators of developmental trajectories -->
 <!-- of emotion regulation across adolescence. -->
 <!-- This involves three important challenges: -->
@@ -718,13 +742,13 @@ The present study had some unique strengths, most notably that it constituted th
 <!-- The primary aim is to identify the most important predictors of adolescents' trajectories of emotion regulation development. -->
 <!-- The secondary aim is to probe the nature of the marginal association of the predictors with these trajectories. -->
 
-The study also has some limitations, most notably that the sample was selective,
+The study also has limitations, most notably that the sample was selective,
 which may limit the generalizability of the findings.
-Specifically, this was a non-random, ethnically and socially relatively homogenous  sample from the Netherlands.
-This raises some specific concerns, for example, that the low importance of SES might be due to a restriction of range.
+Specifically, this was a non-random, ethnically and socially relatively homogeneous  sample from the Netherlands.
+This raises specific concerns, for example, that the low importance of SES might be due to a restriction of range.
 The sample might also be somewhat dated - especially considering daily life has changed drastically for youth coming of age in a post-pandemic world.
 The only way to address these concerns is to replicate these findings in other samples.
-Note that all code is available in a reproducible archive, which lowers the threshold to replication.
+Note that all code is made available in a reproducible archive to enable easy replication.
 Another limitation is that the data source was a panel study with mostly questionnaire measures and relatively few biological, cognitive and neurological assays.
 One final limitation related to the data is the relatively small sample size.
 Machine learning methods benefit from large samples.

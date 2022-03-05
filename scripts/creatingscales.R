@@ -1,15 +1,7 @@
-### Emotional Dysregulation # Creating Scales from Radar ###
-
-#############################
-# Lukas Beinhauer
-# 08/07/20
-#############################
-
-########################################################################################################
+####################
 # Over the following lines, code can be found in order to create scales from the synthetic RADAR data. #
 # Important: run <missRanger.R> first!                                                                 #
 # Scale scores are averages of each individual's item scores per scale/subscale                        #
-########################################################################################################
 
 library(tidySEM)
 library(lavaan)
@@ -136,8 +128,10 @@ scales_list_desc <- lapply(scales_list, function(i){
 scales_list_desc <- scales_list_desc[!sapply(scales_list_desc, is.null)]
 # Descriptive table -------------------------------------------------------
 renm <- read.csv("scale_rename.csv", stringsAsFactors = FALSE, header = F)
+vim <- readRDS("variable_importance.RData")
 # Scales
-desc_scales <- tidySEM:::create_scales.data.frame(reldata, keys.list = scales_list_desc)$descriptives
+scales <- tidySEM:::create_scales.data.frame(reldata, keys.list = scales_list_desc)
+desc_scales <- scales$descriptives
 pc1 <- pc_mat[,1]
 names(pc1) <- rownames(pc_mat)
 desc_scales$PC1 <- formatC(pc1[desc_scales$Subscale], digits = 2, format = "f")
@@ -145,7 +139,9 @@ desc_scales[c("n", "Items")] <- lapply(desc_scales[c("n", "Items")], as.integer)
 
 # Individual items
 data_noscale2 <- reldata[, which(!names(reldata) %in% unlist(scales_list))]
-data_noscale2$cigarettes <- as.numeric(reldata$su11aa04)
+data_noscale2$cigarettes <- as.factor(!(reldata$su11aa04 == min(reldata$su11aa04, na.rm = TRUE)))
+data_noscale2$alcohol <- as.factor(!(scales$scores$alcohol == min(scales$scores$alcohol, na.rm = TRUE)))
+data_noscale2$drugs <- as.factor(!(scales$scores$drugs == min(scales$scores$drugs, na.rm = TRUE)))
 data_noscale2$geslacht <- factor(data_noscale2$geslacht, labels = c("Boy", "Girl"))
 data_noscale2$brpmoe_lmh <- factor(data_noscale2$brpmoe_lmh, labels = c("low", "medium", "high"))
 data_noscale2$brpvad_lmh <- factor(data_noscale2$brpvad_lmh, labels = c("low", "medium", "high"))
@@ -162,11 +158,13 @@ names(desc_scales)[1] <- "name"
 desc_num <- tidySEM:::bind_list(list(desc_num, desc_scales))
 desc_num[c("skew", "kurt")] <- NULL
 desc_num[c("mean", "sd", "min", "max", "skew_2se", "kurt_2se", "min_load", "max_load", "PC1")] <- lapply(desc_num[c("mean", "sd", "min", "max", "skew_2se", "kurt_2se", "min_load", "max_load", "PC1")], as.numeric)
+desc_num <- desc_num[!desc_num$name %in% c("cigarettes", "alcohol", "drugs"), ]
 desc_num$name <- renm$V2[match(desc_num$name, renm$V1)]
+desc_num <- desc_num[order(vim[match(desc_num$name, names(vim))], decreasing = TRUE), ]
 write.csv(desc_num, "desc_num.csv", row.names = FALSE)
 
 desc_cat <- desc_noscale[!desc_noscale$type == "numeric", -2]
-desc_cat$unique <- sapply(desc_cat$name, function(i){length(table(reldata[[i]]))})
+desc_cat$unique <- desc_cat$unique-1
 desc_cat <- desc_cat[inverse.rle(list(lengths = desc_cat$unique, values = 1:nrow(desc_cat))), ]
 desc_cat <- desc_cat[, !sapply(desc_cat, function(i){all(is.na(i))})][, -3]
 desc_cat <- cbind(desc_cat, do.call(rbind, lapply(unique(desc_cat$name), function(n){
@@ -175,6 +173,7 @@ desc_cat <- cbind(desc_cat, do.call(rbind, lapply(unique(desc_cat$name), functio
 desc_cat <- desc_cat[, c("name", "n", "Freq", "Var1")]
 names(desc_cat) <- c("name", "n", "%", "Category")
 desc_cat$name <- renm$V2[match(desc_cat$name, renm$V1)]
+desc_cat <- desc_cat[order(vim[match(desc_cat$name, names(vim))], decreasing = TRUE), ]
 write.csv(desc_cat, "desc_cat.csv", row.names = FALSE)
 
 additionalinfo <- read.csv("selected_scales.csv", stringsAsFactors = F)
