@@ -127,9 +127,9 @@ staggered development of emotional and regulatory brain circuits gives rise to a
 The emotional salience of social stimuli is intensified, while the ability to regulate these emotions lags behind [@caseyBrakingAcceleratingAdolescent2011, @vanlissaLongitudinalInterplayAffective2014].
 This imbalance motivates most adolescents to engage in adaptive exploration:
 Seeking out experiences required to develop mature socio-emotional competences.
-At the same time, this imbalance renders some adolescents vulnerable to emotion dysregulation [@leeAdolescentMentalHealth2014],
+At the same time, this imbalance renders some adolescents vulnerable to emotion dysregulation [@leeAdolescentMentalHealth2014].
 <!-- exposes youth to a risk of emotion dysregulation, -->
-for example, because they are not yet well-equipped to regulate the pursuit of unhealthy incentives,
+For example, they might not yet be sufficiently equipped to regulate the pursuit of unhealthy incentives,
 or persevere in pursuing adaptive goals when facing obstacles.
 Thus, some become trapped in a negative spiral characterized by more negative and volatile emotions [@craccoEmotionRegulationChildhood2017],
 which has been linked to the emergence of several mental disorders [@schaferEmotionRegulationStrategies2017].
@@ -186,7 +186,7 @@ The first step towards theory formation or revision is identifying relevant phen
 A recent literature review did so
 using a text mining systematic review of author keywords and abstracts of 6305 publications on  adolescents’ emotion regulation [@vanlissaMappingPhenomenaRelevant2021].
 Typically, phenomena are identified using narrative literature reviews.
-However, these are often limited to a small number of papers and structured around well-established ideas [@littellEvidencebasedBiasedQuality2008]
+However, these are often limited to a small number of papers and structured around well-established ideas [@littellEvidencebasedBiasedQuality2008].
 Text mining systematic reviews, by comparison, are relatively comprehensive and derive insights from the literature through a relatively transparent and objective - albeit less interpretative - procedure [@vanlissaMappingPhenomenaRelevant2021]. <!-- reflection and meaning-making-->
 
 The results of that review indicated that internalizing and externalizing problems and mental health-related outcomes were most frequently studied in conjunction with emotion regulation. 
@@ -208,7 +208,7 @@ Crucially, these phases are linked through evaluation of existing theory in ligh
 The fact that our field still lacks overarching theory despite decades of productive empirical research
 suggests that the empirical cycle is not routinely completed.
 In support of this claim, it has been noted that the overwhelming majority of research in our field appears, at first glance, to be confirmatory [@demuthQualitativeMethodologyDevelopmental2015].
-More exploratory research is thus needed to complete the cycle.
+More exploratory research is thus needed to not only complete the cycle, but to enable confirmatory prediction testing growing from exploratory approaches.
 Secondly, and paradoxically given the first argument,
 the link between confirmatory research and theory is often tenuous.
 For instance, many studies derive their predictions from prior empirical research, not from theory [e.g., @vanlissaCostEmpathyParentadolescent2017].
@@ -307,7 +307,7 @@ we used 24 items of this 32-item scale
 about anything else").
 Responses ranged
 from 1 (Almost never) to 5 (Almost always).
-Reliability was excellent in all waves, $\alpha \in [`r report(min(alphs), equals = F)`, `r report(max(alphs), equals = F)`]$.
+Score reliability was excellent in all waves, $\alpha \in [`r report(min(alphs), equals = F)`, `r report(max(alphs), equals = F)`]$.
 We used latent variable scores (instead of mean scores) for further analyses.
 To this end, we imposed a five-factor CFA (one for each wave) on the indicators of the dependent variable.
 Latent means were restricted to zero, such that resulting scores reflect the deviation of individual adolescents' trajectories from the overall trajectory.
@@ -316,7 +316,7 @@ we compared a model with configural invariance ($BIC = 141247.46$)
 to a model that imposed metric invariance ($BIC = 140913.27$).
 The lower BIC indicates support for metric invariance.
 The RMSEA and SRMR of the invariant model indicated acceptable fit ($\text{RMSEA} = .05, \text{SRMR} = 0.05$), but the CFI indicated poor fit ($\text{CFI} = .80$).
-As reliability and standardized factor loadings were high across all waves ($\lambda \in [0.44, 0.84]$),
+As score reliability and standardized factor loadings were high across all waves ($\lambda \in [0.44, 0.84]$),
 we considered it acceptable to proceed with individual factor scores for further analysis.
 
 ## Candidate predictors
@@ -356,7 +356,7 @@ a random forests based approach with comparable performance to multiple imputati
 This method is valid when missingness is either random or contingent on observed data (MAR or MCAR).
 It does not make any distributional assumptions and does not extrapolate,
 meaning it returns realistic values within the range of the observed data.
-The percentage of missingness ranged from $`r report(min((495-desc_cat[["n"]])/495), equals = F)` - `r report(max((495-desc_cat[["n"]])/495), equals = F)`$ for categorical data (see Table \@ref(tab:tabcat)),
+The proportion of missingness ranged from $`r report(min((495-desc_cat[["n"]])/495), equals = F)` - `r report(max((495-desc_cat[["n"]])/495), equals = F)`$ for categorical data (see Table \@ref(tab:tabcat)),
 and from $`r report(min((495-desc_num[["n"]])/495), equals = F)` - `r report(max((495-desc_cat[["n"]])/495), equals = F)`$ for continuous data (see Table \@ref(tab:tabnum)).
 <!-- Original publication had up to 30% missing, Wolputte, E. V., & Blockeel, H. (2020, October). Missing value imputation with MERCS: a faster alternative to MissForest. In International Conference on Discovery Science (pp. 502-516). Springer, Cham. looked at higher numbers. According to Mplus: minimum 10% -->
 
@@ -387,7 +387,7 @@ In latent class analysis, individuals are clustered only with respect the the ou
 It thus answers the question: "Which adolescents have similar growth trajectories?"
 SEM-forests similarly aim to ensure maximum homogeneity of growth trajectories within clusters,
 but they differ from latent class analysis in that they cluster individuals by reference to a set of predictors.
-They thus answer the question: "Why do some adolescents have similar growth trajectories"?
+They thus answer the question: "Why do some adolescents have similar growth trajectories?"
 This method is suitable to meet the study goals.
 
 For the SEM-forests analysis,
@@ -664,7 +664,7 @@ The same evidence indicates that conflict resolution training caused a decrease 
 Parenting behavior is another promising target for intervention,
 as indeed it has historically been.
 Importantly, our results suggest that such interventions should focus on promoting parental autonomy support, and decreasing intrusive, negative, guilt-inducing and overbearing parenting behaviors.
-By contrast, promoting positive parenting practices may have limited potential for impact.
+By contrast, promoting positive parenting practices may have limited potential for impact or even been detrimental.
 With this in mind, it is important to consider that positive parenting practices are often a key focus of parenting training.
 Although one meta-analysis did report large effects of the Triple P-Positive Parenting Program on parental outcomes - including some negative parenting behaviors [@fletcherImpactBehaviouralParent2011],
 another meta-analysis called these findings into question,
@@ -706,7 +706,7 @@ but these results might indicate potentially fruitful areas of future research.
 
 ## Strengths and limitations
 
-The present study had some unique strengths, most notably that it constituted the first comprehensive study of potential predictors of adolescent emotion regulation development, where prior work has taken more piecewise approaches, considering only a few predictors at a time.
+The present study had some unique strengths, most notably that it constituted the first comprehensive study of potential predictors of adolescent emotion regulation development. Prior work has taken more piecewise approaches, considering only a few predictors at a time.
 <!-- The present study set out to identify the most important early indicators of developmental trajectories -->
 <!-- of emotion regulation across adolescence. -->
 <!-- This involves three important challenges: -->
@@ -720,7 +720,7 @@ The present study had some unique strengths, most notably that it constituted th
 
 The study also has some limitations, most notably that the sample was selective,
 which may limit the generalizability of the findings.
-Specifically, this was a non-random, ethnically and socially relatively homogenous  sample from the Netherlands.
+Specifically, this was a non-random, ethnically and socially relatively homogenous sample from the Netherlands. The WEIRD-nature of the sample does not allow to generalize this study's findings beyond similar populations.
 This raises some specific concerns, for example, that the low importance of SES might be due to a restriction of range.
 The sample might also be somewhat dated - especially considering daily life has changed drastically for youth coming of age in a post-pandemic world.
 The only way to address these concerns is to replicate these findings in other samples.
