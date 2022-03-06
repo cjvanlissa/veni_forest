@@ -30,19 +30,6 @@ df_anal <- as.data.frame(df_anal)
 df_anal <- df_anal[, !names(df_anal) %in% c("awareness", "clarity", "impulsivity", 
                         "goals", "accept", "strategies")]
 
-# Prepare matrices for shiny ap -------------------------------------------
-
-tmp <- df_anal[, !names(df_anal) %in% c(facs, dich_vars)]
-num_mat <- sapply(tmp, quantile, probs = pnorm(c(-2, -1, 0, 1, 2)))
-num_mat <- data.frame(name = colnames(num_mat), t(num_mat))
-names(num_mat)[-1] <- paste0("Q", c(1:5))
-write.csv(num_mat, "shiny_num_mat.csv", row.names = FALSE)
-
-tmp <- df_anal[, names(df_anal) %in% c(facs, dich_vars)]
-num_mat <- sapply(tmp, quantile, probs = pnorm(c(-2, -1, 0, 1, 2)))
-num_mat <- data.frame(name = colnames(num_mat), t(num_mat))
-names(num_mat)[-1] <- paste0("Q", c(1:5))
-write.csv(num_mat, "shiny_num_mat.csv", row.names = FALSE)
 # Preliminary variable selection ------------------------------------------
 
 library(psych)
