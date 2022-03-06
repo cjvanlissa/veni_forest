@@ -29,7 +29,7 @@ authornote: |
   CVL conceived of the study, conducted the final analyses, and wrote the draft paper. LB conducted preliminary analyses and gave feedback on the draft. SB and WM provided data and gave feedback on the draft. This work was funded by a NWO Veni Grant (NWO Grant Number VI.Veni.191G.090), awarded to the lead author. Data of the RADAR (Research on Adolescent Development And Relationships) study were used (https://doi.org/10.17026/dans-zrb-v5wp). RADAR has been financially supported by main grants from the Netherlands Organisation for Scientific Research (GB-MAGW 480-03-005, GB-MAGW 480-08-006), Stichting Achmea Slachtoffer en Samenleving (SASS), the Netherlands Organisation for Scientific Research to the Consortium Individual Development (CID; 024.001.003), a grant of the European Research Council (ERC-2017-CoG - 773023 INTRANSITION), and various other grants from the Netherlands Organisation for Scientific Research, VU University Amsterdam, and Utrecht University. The funders had no role in the study design, data collection and analysis, decision to publish, or preparation of the manuscript. If the regulations of the journal allow it, the participating children, parents and schools are to be thanked as well.
 
 abstract: |
-  This paper set out to identify the most important early early predictors of emotion regulation development from many (87) candidates using the machine learning algorithm SEM forests. Candidate predictors were selected based on a prior text mining systematic review of 6305 papers. Participants were 497 Dutch adolescents. Predictors were assessed at age 13, and emotion regulation development from age 14-18 was described using a quadratic latent trajectory model. SEM-forests were used to group adolescents with similar trajectories, based on their scores on the predictors. This person-centered approach not only identifies groups of adolescents with similar trajectories, but also indicates why some adolescents follow similar trajectories. The results indicated that individual differences (e.g., in personality) and conflict behaviors in relationships with parents and friends, and internalizing and externalizing were important early predictors. Less important were parenting behaviors, except autonomy support and invasive parenting, bullying and victimization, delinquent peers, and substance use. The implications of these findings for theory formation and intervention are discussed, and we present an open source risk assessment tool, ERRATA.
+  This paper set out to identify the most important early predictors of emotion regulation development from many (87) candidates using the machine learning algorithm SEM forests. Candidate predictors were selected based on a prior text mining systematic review of 6305 papers. Participants were 497 Dutch adolescents. Predictors were assessed at age 13, and emotion regulation development from age 14-18 was described using a quadratic latent trajectory model. SEM-forests were used to group adolescents with similar trajectories, based on their predictor scores. This person-centered approach not only identifies groups of adolescents with similar trajectories, but also indicates why some adolescents may follow similar trajectories. The results indicated that individual differences (e.g., in personality) and conflict behaviors in relationships with parents and friends, and internalizing and externalizing were important early predictors. Less important were parenting behaviors, except autonomy support and invasive parenting, bullying and victimization, delinquent peers, and substance use. The implications of these findings for theory formation and intervention are discussed, and we present an open source risk assessment tool, ERRATA.
 
   
 keywords          : "emotion regulation, adolescence, machine learning, theory formation, random forests"
@@ -195,7 +195,7 @@ Crucially, these phases are linked through evaluation of existing theory in ligh
 The fact that our field still lacks overarching theory despite decades of productive empirical research
 suggests that the empirical cycle is not routinely completed.
 In support of this claim, it has been noted that the overwhelming majority of research in our field appears, at first glance, to be confirmatory [@demuthQualitativeMethodologyDevelopmental2015].
-More exploratory research is thus needed to not only complete the cycle, but to enable confirmatory prediction testing growing from exploratory approaches.
+More exploratory research is thus needed to not only complete the cycle, but to enable tests confirmatory prediction following from exploratory approaches.
 Secondly, and paradoxically given the first argument,
 the link between confirmatory research and theory is often tenuous.
 For instance, many studies derive their predictions from prior empirical research, not from theory [e.g., @vanlissaCostEmpathyParentadolescent2017].
@@ -592,7 +592,7 @@ Future theory might thus emphasize proximal factors over distal ones [see also @
 Another relevant insight for theory formation is that,
 with the exception of autonomy support and negative parenting,
 other parenting behaviors ranked low in predictive importance.
-This might seem counter intuitive in light of prior theory and empirical research.
+This might seem counter-intuitive in light of prior theory and empirical research.
 As parents have a legal and moral imperative to care for their children,
 much of developmental research has focused on parents' role.
 One of the few highly specific theories of emotion regulation development focuses on the family context shapes adolescent emotion regulation development [@morrisRoleFamilyContext2007].
@@ -720,8 +720,8 @@ but these results might indicate potentially fruitful areas of future research.
 
 ## Strengths and limitations
 
-The present study had some unique strengths, most notably that it constituted the first comprehensive study of potential predictors of adolescent emotion regulation development, where prior work has taken more piecewise approaches, considering only a few predictors at a time.
-This allows us, for the first time, to assess the relative importance of different (themes of) predictors, where prior work has taken a more fragmented approach that does not allow for such comparisons.
+The present study had some unique strengths, most notably that it constituted the first comprehensive study of potential predictors of adolescent emotion regulation development. In contrast, prior work has taken more piecewise approaches, considering only a few predictors at a time.
+This allows us, for the first time, to assess the relative importance of different (themes of) predictors, where the more fragmented approach used in prior work does not allow for such comparisons.
 Another important contribution of the present study is that, in contrast to many other approaches,
 our method accommodates non-linear associations and interactions.
 Results indeed showed consistent evidence for non-linear effects,
@@ -744,9 +744,9 @@ Another contribution is that the results have clear implications for theory, ass
 
 The study also has limitations, most notably that the sample was selective,
 which may limit the generalizability of the findings.
-Specifically, this was a non-random, ethnically and socially relatively homogeneous  sample from the Netherlands.
+Specifically, this was a non-random, ethnically and socially relatively homogeneous sample from the Netherlands.
 This raises specific concerns, for example, that the low importance of SES might be due to a restriction of range.
-The sample might also be somewhat dated - especially considering daily life has changed drastically for youth coming of age in a post-pandemic world.
+The sample might also be somewhat dated - especially considering daily life has changed drastically for youth coming of age in a post-pandemic world. The WEIRD nature of the sample constrict us in generalizing beyond such populations from these findings.
 The only way to address these concerns is to replicate these findings in other samples.
 Note that all code is made available in a reproducible archive to enable easy replication.
 Another limitation is that the data source was a panel study with mostly questionnaire measures and relatively few biological, cognitive and neurological assays.
