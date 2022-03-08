@@ -195,7 +195,7 @@ Crucially, these phases are linked through evaluation of existing theory in ligh
 The fact that our field still lacks overarching theory despite decades of productive empirical research
 suggests that the empirical cycle is not routinely completed.
 In support of this claim, it has been noted that the overwhelming majority of research in our field appears, at first glance, to be confirmatory [@demuthQualitativeMethodologyDevelopmental2015].
-More exploratory research is thus needed to not only complete the cycle, but to enable tests confirmatory prediction following from exploratory approaches.
+More exploratory research is thus needed to complete the cycle.
 Secondly, and paradoxically given the first argument,
 the link between confirmatory research and theory is often tenuous.
 For instance, many studies derive their predictions from prior empirical research, not from theory [e.g., @vanlissaCostEmpathyParentadolescent2017].
@@ -675,7 +675,7 @@ The same evidence indicates that conflict resolution training caused a decrease 
 Parenting behavior is another promising target for intervention,
 as indeed it has historically been.
 Importantly, our results suggest that such interventions should focus on promoting parental autonomy support, and decreasing intrusive, negative, guilt-inducing and overbearing parenting behaviors.
-By contrast, promoting positive parenting practices may have limited potential for impact or even been detrimental.
+By contrast, promoting positive parenting practices may have limited potential for impact.
 With this in mind, it is important to consider that positive parenting practices are often a key focus of parenting training.
 Although one meta-analysis did report large effects of the Triple P-Positive Parenting Program on parental outcomes - including some negative parenting behaviors [@fletcherImpactBehaviouralParent2011],
 another meta-analysis called these findings into question,
@@ -746,7 +746,7 @@ The study also has limitations, most notably that the sample was selective,
 which may limit the generalizability of the findings.
 Specifically, this was a non-random, ethnically and socially relatively homogeneous sample from the Netherlands.
 This raises specific concerns, for example, that the low importance of SES might be due to a restriction of range.
-The sample might also be somewhat dated - especially considering daily life has changed drastically for youth coming of age in a post-pandemic world. The WEIRD nature of the sample constrict us in generalizing beyond such populations from these findings.
+The sample might also be somewhat dated - especially considering daily life has changed drastically for youth coming of age in a post-pandemic world.
 The only way to address these concerns is to replicate these findings in other samples.
 Note that all code is made available in a reproducible archive to enable easy replication.
 Another limitation is that the data source was a panel study with mostly questionnaire measures and relatively few biological, cognitive and neurological assays.
