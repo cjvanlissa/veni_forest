@@ -29,7 +29,7 @@ authornote: |
   This is a preprint paper, generated from Git Commit # `r gert::git_commit_id()`. CVL conceived of the study, conducted the final analyses, and wrote the draft paper. LB conducted preliminary analyses and gave feedback on the draft. SB and WM provided data and gave feedback on the draft. This work was funded by a NWO Veni Grant (NWO Grant Number VI.Veni.191G.090), awarded to the lead author. Data of the RADAR (Research on Adolescent Development And Relationships) study were used (https://doi.org/10.17026/dans-zrb-v5wp). RADAR has been financially supported by main grants from the Netherlands Organisation for Scientific Research (GB-MAGW 480-03-005, GB-MAGW 480-08-006), Stichting Achmea Slachtoffer en Samenleving (SASS), the Netherlands Organisation for Scientific Research to the Consortium Individual Development (CID; 024.001.003), a grant of the European Research Council (ERC-2017-CoG - 773023 INTRANSITION), and various other grants from the Netherlands Organisation for Scientific Research, VU University Amsterdam, and Utrecht University. The funders had no role in the study design, data collection and analysis, decision to publish, or preparation of the manuscript. If the regulations of the journal allow it, the participating children, parents and schools are to be thanked as well.
 
 abstract: |
-  This paper set out to identify the most important early early predictors of emotion regulation development from many (87) candidates using the machine learning algorithm SEM forests. Candidate predictors were selected based on a prior text mining systematic review of 6305 papers. Participants were 497 Dutch adolescents. Predictors were assessed at age 13, and emotion regulation development from age 14-18 was described using a quadratic latent trajectory model. SEM-forests were used to group adolescents based on their scores on the predictors, while maximizing the similarity of developmental trajectories within each group. Compared to other person-centered approaches, this method not only identifies groups of adolescents with similar trajectories, but also indicates why some adolescents follow similar trajectories. The results indicated that the most important early predictors (at age 13) were individual differences (e.g., in personality), conflict behaviors towards parents and friends, and internalizing and externalizing behavior. Less important were parenting behaviors, except autonomy support and invasive parenting, bullying and victimization, delinquent peers, and substance use. The implications of these findings for theory formation and intervention are discussed, and we present an open source risk assessment tool, ERRATA.
+  This paper set out to identify the most important early predictors of emotion regulation development from many (87) candidates using the machine learning algorithm SEM forests. Candidate predictors were selected based on a prior text mining systematic review of 6305 papers. Participants were 497 Dutch adolescents. Predictors were assessed at age 13, and emotion regulation development from age 14-18 was described using a quadratic latent trajectory model. SEM-forests were used to group adolescents based on their predictor scores, while maximizing the similarity of developmental trajectories within each group. Compared to other person-centered approaches, this method not only identifies groups of adolescents with similar trajectories, but also indicates why some adolescents follow similar trajectories. The results indicated that the most important early predictors (at age 13) were individual differences (e.g., in personality), conflict behaviors towards parents and friends, and internalizing and externalizing behavior. Less important were parenting behaviors, except autonomy support and invasive parenting, bullying and victimization, delinquent peers, and substance use. The implications of these findings for theory formation and intervention are discussed, and we present an open source risk assessment tool, ERRATA.
 
   
 keywords          : "emotion regulation, adolescence, machine learning, theory formation, random forests"
@@ -114,9 +114,9 @@ staggered development of emotional and regulatory brain circuits gives rise to a
 The emotional salience of social stimuli is intensified, while the ability to regulate these emotions lags behind [@caseyBrakingAcceleratingAdolescent2011, @vanlissaLongitudinalInterplayAffective2014].
 This imbalance motivates most adolescents to engage in adaptive exploration:
 Seeking out experiences required to develop mature socio-emotional competences.
-At the same time, this imbalance renders some adolescents vulnerable to emotion dysregulation [@leeAdolescentMentalHealth2014],
+At the same time, this imbalance renders some adolescents vulnerable to emotion dysregulation [@leeAdolescentMentalHealth2014].
 <!-- exposes youth to a risk of emotion dysregulation, -->
-for example, because they are not yet well-equipped to regulate the pursuit of unhealthy incentives,
+For example, because they are not yet well-equipped to regulate the pursuit of unhealthy incentives,
 or persevere in pursuing adaptive goals when facing obstacles.
 Thus, some become trapped in a negative spiral characterized by more negative and volatile emotions [@craccoEmotionRegulationChildhood2017],
 which has been linked to the emergence of several mental disorders [@schaferEmotionRegulationStrategies2017].
@@ -173,7 +173,7 @@ The first step towards theory formation or revision is identifying relevant phen
 A recent literature review did so
 using a text mining systematic review of author keywords and abstracts of 6305 publications on  adolescents’ emotion regulation [@vanlissaMappingPhenomenaRelevant2021].
 Typically, phenomena are identified using narrative literature reviews.
-However, these are often limited to a small number of papers and structured around well-established ideas [@littellEvidencebasedBiasedQuality2008]
+However, these are often limited to a small number of papers and structured around well-established ideas [@littellEvidencebasedBiasedQuality2008].
 Text mining systematic reviews, by comparison, are relatively comprehensive and derive insights from the literature through a relatively transparent and objective - albeit less interpretative - procedure [@vanlissaMappingPhenomenaRelevant2021]. <!-- reflection and meaning-making-->
 
 The results of that review indicated that internalizing and externalizing problems and mental health-related outcomes were most frequently studied in conjunction with emotion regulation. 
@@ -294,7 +294,7 @@ we used 24 items of this 32-item scale
 about anything else").
 Responses ranged
 from 1 (Almost never) to 5 (Almost always).
-Reliability was excellent in all waves, $\alpha \in [`r report(min(alphs), equals = F)`, `r report(max(alphs), equals = F)`]$.
+Score reliability was excellent in all waves, $\alpha \in [`r report(min(alphs), equals = F)`, `r report(max(alphs), equals = F)`]$.
 We used latent variable scores (instead of mean scores) for further analyses.
 To this end, we imposed a five-factor CFA (one for each wave) on the indicators of the dependent variable.
 Latent means were restricted to zero, such that resulting scores reflect the deviation of individual adolescents' trajectories from the overall trajectory.
@@ -303,7 +303,7 @@ we compared a model with configural invariance ($BIC = 141247.46$)
 to a model that imposed metric invariance ($BIC = 140913.27$).
 The lower BIC indicates support for metric invariance.
 The RMSEA and SRMR of the invariant model indicated acceptable fit ($\text{RMSEA} = .05, \text{SRMR} = 0.05$), but the CFI indicated poor fit ($\text{CFI} = .80$).
-As reliability and standardized factor loadings were high across all waves ($\lambda \in [0.44, 0.84]$),
+As score reliability and standardized factor loadings were high across all waves ($\lambda \in [0.44, 0.84]$),
 we considered it acceptable to proceed with individual factor scores for further analysis.
 
 ## Candidate predictors
@@ -343,7 +343,7 @@ a random forests based approach with comparable performance to multiple imputati
 This method is valid when missingness is either random or contingent on observed data (MAR or MCAR).
 It does not make any distributional assumptions and does not extrapolate,
 meaning it returns realistic values within the range of the observed data.
-The percentage of missingness ranged from $`r report(min((495-desc_cat[["n"]])/495), equals = F)` - `r report(max((495-desc_cat[["n"]])/495), equals = F)`$ for categorical data (see Table \@ref(tab:tabcat)),
+The proportion of missingness ranged from $`r report(min((495-desc_cat[["n"]])/495), equals = F)` - `r report(max((495-desc_cat[["n"]])/495), equals = F)`$ for categorical data (see Table \@ref(tab:tabcat)),
 and from $`r report(min((495-desc_num[["n"]])/495), equals = F)` - `r report(max((495-desc_cat[["n"]])/495), equals = F)`$ for continuous data (see Table \@ref(tab:tabnum)).
 <!-- Original publication had up to 30% missing, Wolputte, E. V., & Blockeel, H. (2020, October). Missing value imputation with MERCS: a faster alternative to MissForest. In International Conference on Discovery Science (pp. 502-516). Springer, Cham. looked at higher numbers. According to Mplus: minimum 10% -->
 
@@ -371,7 +371,7 @@ knitr::include_graphics("../classplot.pdf")
 As we set out to identifying important predictors of emotion regulation development,
 this latent class analysis is not sufficient to answer our research question.
 In latent class analysis, individuals are clustered only with respect the the outcome (growth trajectories), to ensure maximum homogeneity of growth trajectories in each class.
-It thus answers the question: "Which adolescents have similar growth trajectories?"
+It thus answers the question: "Which adolescents have similar growth trajectories"?
 SEM-forests similarly aim to ensure maximum homogeneity of growth trajectories within clusters,
 but they differ from latent class analysis in that they cluster individuals by reference to a set of predictors.
 They thus answer the question: "Why do some adolescents have similar growth trajectories"?
@@ -590,7 +590,7 @@ Future theory might thus emphasize proximal factors over distal ones [see also @
 Another relevant insight for theory formation is that,
 with the exception of autonomy support and negative parenting,
 other parenting behaviors ranked low in predictive importance.
-This might seem counter intuitive in light of prior theory and empirical research.
+This might seem counter-intuitive in light of prior theory and empirical research.
 As parents have a legal and moral imperative to care for their children,
 much of developmental research has focused on parents' role.
 One of the few highly specific theories of emotion regulation development focuses on the family context shapes adolescent emotion regulation development [@morrisRoleFamilyContext2007].
@@ -718,8 +718,8 @@ but these results might indicate potentially fruitful areas of future research.
 
 ## Strengths and limitations
 
-The present study had some unique strengths, most notably that it constituted the first comprehensive study of potential predictors of adolescent emotion regulation development, where prior work has taken more piecewise approaches, considering only a few predictors at a time.
-This allows us, for the first time, to assess the relative importance of different (themes of) predictors, where prior work has taken a more fragmented approach that does not allow for such comparisons.
+The present study had some unique strengths, most notably that it constituted the first comprehensive study of potential predictors of adolescent emotion regulation development. In contrast, prior work has taken more piecewise approaches, considering only a few predictors at a time.
+This allows us, for the first time, to assess the relative importance of different (themes of) predictors, where the more fragmented approach used in prior work does not allow for such comparisons.
 Another important contribution of the present study is that, in contrast to many other approaches,
 our method accommodates non-linear associations and interactions.
 Results indeed showed consistent evidence for non-linear effects,
@@ -742,7 +742,7 @@ Another contribution is that the results have clear implications for theory, ass
 
 The study also has limitations, most notably that the sample was selective,
 which may limit the generalizability of the findings.
-Specifically, this was a non-random, ethnically and socially relatively homogeneous  sample from the Netherlands.
+Specifically, this was a non-random, ethnically and socially relatively homogeneous sample from the Netherlands.
 This raises specific concerns, for example, that the low importance of SES might be due to a restriction of range.
 The sample might also be somewhat dated - especially considering daily life has changed drastically for youth coming of age in a post-pandemic world.
 The only way to address these concerns is to replicate these findings in other samples.
