@@ -26,10 +26,10 @@ affiliation:
     institution: "Utrecht University, department of Youth and Family"
 
 authornote: |
-  CVL conceived of the study, conducted the final analyses, and wrote the draft paper. LB conducted preliminary analyses and gave feedback on the draft. SB and WM provided data and gave feedback on the draft. This work was funded by a NWO Veni Grant (NWO Grant Number VI.Veni.191G.090), awarded to the lead author. Data of the RADAR (Research on Adolescent Development And Relationships) study were used (https://doi.org/10.17026/dans-zrb-v5wp). RADAR has been financially supported by main grants from the Netherlands Organisation for Scientific Research (GB-MAGW 480-03-005, GB-MAGW 480-08-006), Stichting Achmea Slachtoffer en Samenleving (SASS), the Netherlands Organisation for Scientific Research to the Consortium Individual Development (CID; 024.001.003), a grant of the European Research Council (ERC-2017-CoG - 773023 INTRANSITION), and various other grants from the Netherlands Organisation for Scientific Research, VU University Amsterdam, and Utrecht University. The funders had no role in the study design, data collection and analysis, decision to publish, or preparation of the manuscript. If the regulations of the journal allow it, the participating children, parents and schools are to be thanked as well.
+  This is a preprint paper, generated from Git Commit # `r gert::git_commit_id()`. CVL conceived of the study, conducted the final analyses, and wrote the draft paper. LB conducted preliminary analyses and gave feedback on the draft. SB and WM provided data and gave feedback on the draft. This work was funded by a NWO Veni Grant (NWO Grant Number VI.Veni.191G.090), awarded to the lead author. Data of the RADAR (Research on Adolescent Development And Relationships) study were used (https://doi.org/10.17026/dans-zrb-v5wp). RADAR has been financially supported by main grants from the Netherlands Organisation for Scientific Research (GB-MAGW 480-03-005, GB-MAGW 480-08-006), Stichting Achmea Slachtoffer en Samenleving (SASS), the Netherlands Organisation for Scientific Research to the Consortium Individual Development (CID; 024.001.003), a grant of the European Research Council (ERC-2017-CoG - 773023 INTRANSITION), and various other grants from the Netherlands Organisation for Scientific Research, VU University Amsterdam, and Utrecht University. The funders had no role in the study design, data collection and analysis, decision to publish, or preparation of the manuscript. If the regulations of the journal allow it, the participating children, parents and schools are to be thanked as well.
 
 abstract: |
-  This paper set out to identify the most important early early predictors of emotion regulation development from many (87) candidates using the machine learning algorithm SEM forests. Candidate predictors were selected based on a prior text mining systematic review of 6305 papers. Participants were 497 Dutch adolescents. Predictors were assessed at age 13, and emotion regulation development from age 14-18 was described using a quadratic latent trajectory model. SEM-forests were used to group adolescents with similar trajectories, based on their scores on the predictors. This person-centered approach not only identifies groups of adolescents with similar trajectories, but also indicates why some adolescents follow similar trajectories. The results indicated that individual differences (e.g., in personality) and conflict behaviors in relationships with parents and friends, and internalizing and externalizing were important early predictors. Less important were parenting behaviors, except autonomy support and invasive parenting, bullying and victimization, delinquent peers, and substance use. The implications of these findings for theory formation and intervention are discussed, and we present an open source risk assessment tool, ERRATA.
+  This paper set out to identify the most important early early predictors of emotion regulation development from many (87) candidates using the machine learning algorithm SEM forests. Candidate predictors were selected based on a prior text mining systematic review of 6305 papers. Participants were 497 Dutch adolescents. Predictors were assessed at age 13, and emotion regulation development from age 14-18 was described using a quadratic latent trajectory model. SEM-forests were used to group adolescents based on their scores on the predictors, while maximizing the similarity of developmental trajectories within each group. Compared to other person-centered approaches, this method not only identifies groups of adolescents with similar trajectories, but also indicates why some adolescents follow similar trajectories. The results indicated that the most important early predictors (at age 13) were individual differences (e.g., in personality), conflict behaviors towards parents and friends, and internalizing and externalizing behavior. Less important were parenting behaviors, except autonomy support and invasive parenting, bullying and victimization, delinquent peers, and substance use. The implications of these findings for theory formation and intervention are discussed, and we present an open source risk assessment tool, ERRATA.
 
   
 keywords          : "emotion regulation, adolescence, machine learning, theory formation, random forests"
@@ -96,8 +96,8 @@ and ranked in terms of predictive importance.
 <!-- These predictors may include both risk factors that render some youth susceptible to emotion regulation difficulties, and correlates that can be used to identify at-risk youth. -->
 Specifically,
 the SEM-forests algorithm was used to
-identify the most important early indicators of developmental trajectories
-of emotion regulation across adolescence.
+identify the most important early indicators, at age 13, of developmental trajectories
+of emotion regulation across adolescence (age 14 through 18).
 The resulting insights indicate which factors are most predictive of adolescents' diverging destinies in terms of emotion regulation development.
 Armed with this knowledge, future research and interventions can focus on the most important predictors.
 Moreover, these insights can guide the formation of overarching theory that adequately represents essential phenomena.
@@ -509,25 +509,23 @@ the most commonly used substances of alcohol (78) and cigarettes (61) were ranke
 
 ## Direction of association
 
-**Note that a number of predictors were reverse coded; re-computing the analyses that generate the Figures requires access to a supercomputer, which we have not been able to obtain at this point. These reverse-coded plots have been highlighted in red. Reverse the + and - 1SD lines to interpret these.**
-
 Figures \@ref(fig:figpdp1)-\@ref(fig:figpdp4) depict the marginal association of the predictors with the outcome,
 also in order of importance.
 This provides an indication of whether the effect is generally positive, negative, or other.
 Note that the dependent variable measures *difficulties* in emotion regulation;
 thus, higher values represent poorer emotion regulation.
 
-```{r figpdp1, fig.cap="Predicted trajectory of difficulties in emotion regulation for predictors 1-12. Red highlights indicate reverse-coded predictors."}
-knitr::include_graphics("../plots/pdp1-12r.png")
+```{r figpdp1, fig.cap="Predicted trajectory of difficulties in emotion regulation for predictors 1-20."}
+knitr::include_graphics("../plots/pdp1-20.png")
 ```
-```{r figpdp2, fig.cap="Predicted trajectory of difficulties in emotion regulation for predictors 13-24. Red highlights indicate reverse-coded predictors."}
-knitr::include_graphics("../plots/pdp13-24r.png")
+```{r figpdp2, fig.cap="Predicted trajectory of difficulties in emotion regulation for predictors 21-40."}
+knitr::include_graphics("../plots/pdp21-40.png")
 ```
-```{r figpdp3, fig.cap="Predicted trajectory of difficulties in emotion regulation for predictors 25-36. Red highlights indicate reverse-coded predictors."}
-knitr::include_graphics("../plots/pdp25-36r.png")
+```{r figpdp3, fig.cap="Predicted trajectory of difficulties in emotion regulation for predictors 41-60."}
+knitr::include_graphics("../plots/pdp41-60.png")
 ```
-```{r figpdp4, fig.cap="Predicted trajectory of difficulties in emotion regulation for predictors 37-44. Red highlights indicate reverse-coded predictors."}
-knitr::include_graphics("../plots/pdp37-44r.png")
+```{r figpdp4, fig.cap="Predicted trajectory of difficulties in emotion regulation for predictors 61-87."}
+knitr::include_graphics("../plots/pdp61-87.png")
 ```
 
 All associations were in a direction consistent with prior literature.
@@ -750,6 +748,9 @@ The sample might also be somewhat dated - especially considering daily life has 
 The only way to address these concerns is to replicate these findings in other samples.
 Note that all code is made available in a reproducible archive to enable easy replication.
 Another limitation is that the data source was a panel study with mostly questionnaire measures and relatively few biological, cognitive and neurological assays.
+It is also important to consider that, in our efforts to identify important early predictors of emotion dysregulation, we relied on predictors at a single timepoint (age 13).
+It is possible that the relative importance of these predictors changes over time,
+or even dynamically, in interplay with emotion regulation.
 One final limitation related to the data is the relatively small sample size.
 Machine learning methods benefit from large samples.
 Although random forests are relatively robust to overfitting,
