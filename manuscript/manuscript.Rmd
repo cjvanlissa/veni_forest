@@ -107,14 +107,14 @@ Moreover, these insights can guide the formation of overarching theory that adeq
 
 Emotion regulation,
 defined as the ability to manage emotional experience and expression,
-is critical for mental health [@aldaoEmotionregulationStrategiesPsychopathology2010, @schaferEmotionRegulationStrategies2017, @braetEmotionRegulationChildren2014]
+is critical for mental health [@aldaoEmotionregulationStrategiesPsychopathology2010; @schaferEmotionRegulationStrategies2017; @braetEmotionRegulationChildren2014]
 and social competence [@zimmermannEmotionRegulationEarly2014] throughout life.
 There is mounting evidence, however, that adolescents do not uniformly become better at regulating emotions: 
 staggered development of emotional and regulatory brain circuits gives rise to a "maturity gap" in mid-adolescence [@croneUnderstandingAdolescencePeriod2012].
-The emotional salience of social stimuli is intensified, while the ability to regulate these emotions lags behind [@caseyBrakingAcceleratingAdolescent2011, @vanlissaLongitudinalInterplayAffective2014].
-This imbalance motivates most adolescents to engage in adaptive exploration:
-Seeking out experiences required to develop mature socio-emotional competences.
-At the same time, this imbalance renders some adolescents vulnerable to emotion dysregulation [@leeAdolescentMentalHealth2014].
+The emotional salience of social stimuli is intensified, while the development of cognitive capacities lags behind [@caseyBrakingAcceleratingAdolescent2011, @vanlissaLongitudinalInterplayAffective2014].
+This imbalance might help motivate adolescents to engage in adaptive exploration:
+Seeking out experiences that challenge their socio-emotional competences and stimulate growth.
+At the same time, this imbalance may render some adolescents vulnerable to emotion dysregulation [@leeAdolescentMentalHealth2014].
 <!-- exposes youth to a risk of emotion dysregulation, -->
 For example, because they are not yet well-equipped to regulate the pursuit of unhealthy incentives,
 or persevere in pursuing adaptive goals when facing obstacles.
@@ -131,12 +131,12 @@ An important next step is to identify which risk factors render some adolescents
 
 ## Potential predictors of emotion regulation development
 
-Several theories are commonly cited in research on adolescent emotion regulation.
+Several theories are commonly cited in research on adolescent emotion regulation [for a review, see @vanlissaMappingPhenomenaRelevant2021].
 Notably, there appears to be a trade-off between these theories' scope and specificity.
 Some theories are broad in scope, considering many potential risk factors, but are non-specific.
 This limits their usefulness in generating testable predictions, and renders them impervious to falsification.
 Other theories are narrow in scope, and are sufficiently specific to derive testable predictions, but lack broader context.
-Two examples of macro-theories are the bioecological model [@bronfenbrennerBioecologicalModelHuman2007] and the transactional model [@sameroffUnifiedTheoryDevelopment2010].
+Two macro-theories that have been influential in research on emotion regulation development are the bioecological model [@bronfenbrennerBioecologicalModelHuman2007; e.g., see @augustEmotionRegulationAtRisk2017] and the transactional model [@sameroffUnifiedTheoryDevelopment2010].
 The bioecological model describes how individual development is shaped by factors at different levels of analysis:
 The individual level, which includes biological make-up and individual differences;
 the microsystem, composed of primary caregivers and close relationships;
@@ -148,10 +148,13 @@ it describes development as an interplay between the individual child and the en
 It distinguishes proximal environmental influences, roughly corresponding to the microsystem,
 from more distal influences.
 With increasing age, distal influences are thought to become more influential. 
-More specific theories primarily focus on cognitive maturation and the role of primary caregivers,
-including the theory of normative emotional development [@sroufeAttachmentDyadicRegulation1996]
+
+Other theories are more specific, focusing on cognitive maturation and the role of primary caregivers.
+This includes the theory of normative emotional development [@sroufeAttachmentDyadicRegulation1996]
 and the tripartite model of emotion regulation socialization by parents [@morrisRoleFamilyContext2007] and peers [@reindlSocializationEmotionRegulation2016].
-Note that the tripartite model is one of the few theories that explicitly addresses the life phase of adolescence.
+Note that the tripartite model explicitly addresses the life phase of adolescence.<!--is one of the few theories that -->
+<!-- This seems a bit selective. For example, also discuss the work of Hollenstein and of Nicholas Allen. -->
+<!-- I think you do insufficient right to the theories that exist, both in breadth and in depth. Perhaps just stay closer to the contribution of the current paper: empirically examine multiple factors simultaneously rather than selectively examining a few? -->
 It would be beneficial to work towards a more comprehensive theory of emotion regulation development,
 specific to adolescence,
 that is broad in scope and still specific enough to derive testable predictions.
@@ -174,15 +177,20 @@ A recent literature review did so
 using a text mining systematic review of author keywords and abstracts of 6305 publications on  adolescents’ emotion regulation [@vanlissaMappingPhenomenaRelevant2021].
 Typically, phenomena are identified using narrative literature reviews.
 However, these are often limited to a small number of papers and structured around well-established ideas [@littellEvidencebasedBiasedQuality2008].
-Text mining systematic reviews, by comparison, are relatively comprehensive and derive insights from the literature through a relatively transparent and objective - albeit less interpretative - procedure [@vanlissaMappingPhenomenaRelevant2021]. <!-- reflection and meaning-making-->
+Text mining systematic reviews, by comparison, are relatively comprehensive and derive insights from the literature through a relatively transparent and objective - albeit less interpretative - procedure [@vanlissaMappingPhenomenaRelevant2021].
+They identify relevant phenomena by grouping related keywords,
+and ranking these by number of studies those keywords occur in.<!-- reflection and meaning-making-->
+This review offers a relatively comprehensive overview of potentially relevant phenomena.
+The present study used it as a starting point for an empirical investigation of potential predictors of adolescents' emotion regulation development.
 
-The results of that review indicated that internalizing and externalizing problems and mental health-related outcomes were most frequently studied in conjunction with emotion regulation. 
-Some relevant phenomena reflected themes also identified in prior narrative reviews,
+According to this review, the phenomena that received most attention in the literature were related to internalizing and externalizing problems, and mental health.
+Although these phenomena are likely to be, at least in part, outcomes of emotion dysregulation - that does not diminish their usefulness as predictors.
+Some of the phenomena that were identified using text mining reflect what has been discussed in prior narrative reviews,
 including cognitive development, parenting, and external stressors [cf. @coe-odessEmergentEmotionsAdolescence2019].
-Other relevant phenomena were underrepresented in prior theory and reviews,
+Other identified phenomena had received less attention in prior theory and reviews,
 such as substance use, structural disadvantage,
 identity, morality, sex and sexual development.
-This relatively comprehensive overview offers a starting point for empirical investigations of predictors of adolescents' emotion regulation development, such as the present study.
+
 <!-- To this end, the present study sought to identify operationalizations of these relevant phenomena in a large-scale panel study. -->
 
 ## Complementing theory using machine learning
@@ -239,6 +247,7 @@ In the context of the present study, we use a specific machine learning algorith
 
 ## The present study
 
+<!-- SB: you have convincingly argued why machine learning in general is important, yet I miss the details related to ER. I would recommend to add a paragraph summarizing theories of ER and the factors they consider important. Also, describe the candidate predictors that were derived from the literature search, and how they relate to theories and /or empirical evidence -->
 The present study set out to identify the most important early indicators of developmental trajectories
 of emotion regulation across adolescence.
 This involves three important challenges:
@@ -262,10 +271,10 @@ The original data (restricted) and all study documentation are available via <ht
 desc_num <- read.csv("../desc_num.csv", stringsAsFactors = FALSE)
 desc_cat <- read.csv("../desc_cat.csv", stringsAsFactors = FALSE)
 ```
-Participants were 497 Dutch adolescents and their parents enrolled in the longitudinal RADAR study  [@branjeResearchAdolescentDevelopment2018].
-The RADAR sample was recruited from randomly selected elementary schools in the province of Utrecht, and four main cities in The Netherlands.
-Of 1,544 randomly selected families, 497 produced informed consent and were included in the study.
-From 2006 to 2012, trained interviewers conducted annual home visits to collect questionnaire data from adolescents and parents.
+Participants were 497 Dutch adolescents and their parents enrolled in the ongoing longitudinal RADAR study  [@branjeResearchAdolescentDevelopment2018].
+The RADAR sample was recruited from over 200 randomly selected elementary schools in the province of Utrecht, and four main cities in The Netherlands.
+Of 1,544 eligible families, 497 produced informed consent and were included in the study.
+From 2006 to 2011, trained interviewers conducted annual home visits to collect questionnaire data from adolescents and parents.
 All independent variables were assessed in the first measurement wave.
 The dependent variable was measured from the second to the sixth wave.
 Adolescents received financial compensation for their participation in annual measurements (approximately \$17).
@@ -309,7 +318,8 @@ we considered it acceptable to proceed with individual factor scores for further
 ## Candidate predictors
 
 We set out to identify operationalizations of all relevant phenomena identified in @vanlissaMappingPhenomenaRelevant2021 that were available in the RADAR data.
-This yielded 87 candidate predictors, of which `r nrow(desc_cat)` categorical (see Table \@ref(tab:tabcat)), `r sum(is.na(desc_num$Items))` numerical, and `r sum(!is.na(desc_num$Items))` multi-item scales, see \@ref(tab:tabnum).
+This yielded 87 candidate predictors, of which `r nrow(desc_cat)` categorical (see Table \@ref(tab:tabcat)), `r sum(is.na(desc_num$Items))` numerical, and `r sum(!is.na(desc_num$Items))` multi-item scales, see Table \@ref(tab:tabnum).
+<!-- SB: I miss a reflection on the extent to which the available data cover all relevant predictors -->
 For multi-item scales, we used principal components analysis for dimension reduction.
 Across all scales, the explained variance of the first component ranged from $R^2 \in [0.18, 0.90]$.
 This first component represents the largest amount of shared variance among the scale items, and was used for further analysis.
@@ -401,11 +411,21 @@ is defined as the average absolute increase in model misfit due to randomization
 For each tree, the log-likelihood of cases not in that tree's bootstrap sample is computed twice:
 Once using the true data for these cases, and once after randomizing one predictor.
 The variable importance is given by averaging the ratio of these two log-likelihoods across all trees.
-Our secondary outcome of interest, marginal associations,
-were derived using a custom function developed for this paper.
-For three values of each continuous predictor - namely the percentiles corresponding to the median, +/- 1SD of a standard normal distribution - 
-model-implied growth trajectories were predicted for all other values of all other predictors.
-To average across all other predictors, the median of these predicted growth trajectories was taken and plotted.
+Our secondary outcome of interest were marginal association plots,
+which visualize the partial dependence of each predictor with trajectories of emotion regulation development.
+New functions for computing partial dependence for growth curve SEM-forests were developed for this paper, which are now available in the `semtree` R-package.
+Partial dependence for a predictor $p$ is defined as following:
+let $\hat{\boldsymbol{g}}_s$ be a vector representing the expected growth trajectory for value $s$ on predictor $p$,
+let $\hat{f}$ be the function implied by a SEM-forest trained on predictor matrix $\boldsymbol{X}$ with $n$ rows,
+and $\boldsymbol{X}_{-p}$ be the predictor matrix excluding $p$.
+Partial dependence is then computed using Monte Carlo integration as follows:
+
+$$
+\hat{\boldsymbol{g}}_s = \frac{1}{n}\sum^{n}_{i = 1}\hat{f}(s, \boldsymbol{X}_{-p})
+$$
+
+For continuous predictors, three values of $s$ were used - namely the percentiles corresponding to the median, $+/- 1 SD$ of a standard normal distribution.
+For categorical predictors, all unique values were used.
 
 <!-- $$ -->
 <!-- \begin{align} -->
@@ -495,12 +515,13 @@ Prohibition and control of friendship choice (16),
 perceived intrusiveness and meddling (25),
 psychological control (27),
 and supportive criticism (33).
-Positively valenced parenting dimensions like maternal (54) and paternal (55) support were ranked low,
+Positively valenced dimensions of parent-adolescent relationship quality
+like maternal (54) and paternal (55) support were ranked low,
 and neutrally valenced aspects like parental monitoring (sollicitation 71, adolescent disclosure 72) were ranked very low.
 
 It is further of note that some themes that are considered to be theoretically relevant ranked low.
 For instance, indicators of maternal (86) and paternal (87) socio-economic status were ranked the lowest,
-as were other family demographic indicators, like religion (81, 82). 
+as were other family demographic indicators, like religion (81, 82).<!--SB: Why is this important? CJ: Religion is part of moral development, SES, and is directly related to emotion regulation: https://link.springer.com/chapter/10.1007/978-94-017-8950-9_13--> 
 Aspects of adolescents' peer networks,
 such as bullying (60, 84) and victimization (51, 62, 83),
 and contact with delinquent peers (85) also ranked low.
@@ -569,7 +590,7 @@ and to explore the nature of the association of those predictors with developmen
 The results identified several potential protective- and risk factors.
 Although all predictors attained a positive variable importance value,
 there were differences in relative importance.
-Individual differences in personality, motivation, self-concept clarity, and personal distress were among the most important predictors.
+Individual differences in personality, motivational system, self-concept clarity, and personal distress were among the most important predictors.
 Conflict frequency and behavior also ranked highly.
 Parenting ranked relatively low, with two notable exceptions:
 First, balanced relatedness, a measure of autonomy support, was an important protective factor, and second,
@@ -582,43 +603,51 @@ bullying, victimization and delinquency, and substance use.
 Relating these results to prior theory,
 it is noteworthy that predictive importance of different themes appears to correspond to the levels of the bioecological model [@bronfenbrennerBioecologicalModelHuman2007]:
 Predictors at the individual level were most important,
+<!-- SB: this is not very surprising given that many of the behaviors assessed require ER (e.g. becoming angry in a conflict is an indication of low ER, and individuals high in Neuroticism also have fluctuating emotions that they find difficult to control/regulate) -->
 followed by those at the microsystem level, such as aspects of the relationship with parents,
 followed by the mesosystem, including aspects of the peer network (e.g., bullying/victimization and delinquency), school performance, and socio-economic status,
 and the macrosystem indicator religiosity was among the least important predictors.
 Future theory might thus emphasize proximal factors over distal ones [see also @sameroffUnifiedTheoryDevelopment2010].
+<!-- SB: So in a way this is support for the specific theories that tend to focus on proximal factors such as personality and parenting? -->
+<!-- Yet perhaps there was too little variation in relevant macro factors (ethnicity, SES/poverty, cultural differences in ER) -->
 
-Another relevant insight for theory formation is that,
-with the exception of autonomy support and negative parenting,
-other parenting behaviors ranked low in predictive importance.
-This might seem counter-intuitive in light of prior theory and empirical research.
-As parents have a legal and moral imperative to care for their children,
-much of developmental research has focused on parents' role.
-One of the few highly specific theories of emotion regulation development focuses on the family context shapes adolescent emotion regulation development [@morrisRoleFamilyContext2007].
-At the same time, however, this finding is consistent with an increasing number of recent studies - particularly those employing innovative methods to study processes within families - that have found little evidence for parent-directed processes in adolescence [@vanlissaRoleFathersMothers2019; @mastrotheodorosFamilyFunctioningAdolescent2020].
-Of course, an alternative explanation might be that parenting effects take place earlier in development,
-and are engrained in individual differences by the time youth reach adolescence.
-However, a recent study tested this hypothesis in a younger sample and similarly found little evidence for parent-directed processes [@vanlissaMothersFathersQuantitative2020].
+Another relevant insight for theory formation is that
+results were somewhat consistent with one of the few theories specific to (adolescent) emotion regulation development: the tripartite model,
+which focuses on the family context [@morrisRoleFamilyContext2007].
+In particular,
+child characteristics and
+aspects of the emotional family climate ranked highly (e.g., autonomy support and interparental conflict).
+Parent-child conflict resolution also ranked highly, but is not explicitly mentioned in the tripartite model.
+Perhaps the definition of the emotional family climate could be expanded to include it.
+Counter to this theory, however, parent characteristics (e.g., parental emotion regulation) ranked low in importance.
+Parenting practices also ranked relatively low - with the notable exception of negative parenting behaviors.
+<!-- SB: here you should really go into more depth. you do find evidence for several parenting behaviors, yet you seem to dismiss the theory because some other dimensions were not significant. It makes sense that the dimensions that spring out in this analysis are the most relevant ones, particularly in adolescence when autonomy support is one of the most important parenting dimensions and parenting behaviors undermining autonomy development might result in most problems. -->
+<!-- Also, conflict resolution with parents was important and reflects the quality of the parent-adolescent relationship as well -->
+This finding is consistent with recent studies that, using innovative methods to study processes within families,<!--The finding that positive parenting practices ranked low -->
+have found limited evidence for effects of parenting behaviors on emotional development in adolescence [@vanlissaRoleFathersMothers2019; @mastrotheodorosFamilyFunctioningAdolescent2020] and childhood [@vanlissaMothersFathersQuantitative2020].
 <!-- aren’t individual differences the result of the environment where those people were growing up, hence parental style as well? -->
-We must thus consider the possibility that parents' influence, at least in adolescence, is less prominent than once was thought.
-Future theories of adolescent emotion regulation development should thus at least go beyond parents' role.
+We must thus consider the possibility that parenting behavior, at least in adolescence, is less influential than once was thought.
+The absence of negative behavior and constructive communication in conflict situations might be more important.
+<!-- Future theories of adolescent emotion regulation development should thus at least go beyond parents' role. -->
 
-Another finding that challenges contemporary discourse is that substance use and other "problem behaviors",
-like time spent with delinquent peers, had very low variable importance ratings in predicting emotion dysregulation.
+Given recent interest in fathers' role in child development [@vanlissaMothersFathersQuantitative2020],
+it is worth examining whether differences exist between the importance of predictors pertaining to mothers versus fathers.
+Some scholars have lamented the lack of research attention to fathers,
+and the equation of parenting with "mothering" [@pleckPaternalInvolvementRevised2004].
+Our results showed no systematic differences between mothers and fathers.
+Anecdotally however, out all parent-related constructs, constructive conflict resolution with fathers ranked highest, and out of all parenting behaviors, paternal power ranked highest.
+These observations validate the notion that fathers matter.
+Also note that two historically gendered constructs, support and socio-economic status, were both ranked approximately equally for mothers and fathers.
+Prior research has found support to be more important in mother-adolescent relationships [@vanlissaRoleFathersMothers2019], and family socio-economic status is often defined by reference to the father [@pleckPaternalInvolvementRevised2004].
+Our results highlight the importance of considering both parents as equally relevant in future empirical research and theory development.
+
+A finding that challenges contemporary discourse is that certain phenomena often conceptualized as "problem behaviors" had very low - for example, substance use [cf @willsEmotionRegulationSubstance2017], bullying, and time spent with delinquent peers.
 Even the highest ranked problem behavior, drug use, had no distinguishable marginal effect.
 This suggests that drug use derives its high importance from higher-order interactions with other predictors.
-It might be the case, for example, that for some youth, drug use contributes to self-exploration and social relationships, whereas for others, it may be a form of escapism, self-medication, or even self-harm.
+It might be the case, for example, that for some youth, drug use contributes to self-exploration and social relationships, whereas for others, it may be a form of escapism, self-medication, or even self-harm [see also @nelemansLongitudinalAssociationsSocial2016].
 This is merely a hypothesis, and further research is required to identify what interactions are at play.
 These results imply that what are commonly thought of as risk factors might not be decisive in adolescents' emotion regulation development;
 such factors ought to be included in future theory, but should not take center stage.
-
-One emergent theme in the developmental literature is attention for fathers' role in child development [@vanlissaMappingPhenomenaRelevant2021].
-Scholars have lamented the lack of attention to fathers,
-and the equation of parenting with mothering [@keizerProspectiveStudyFather2014a].
-With this in mind, it is worth noteworthy that the predictive importance of mothers' parenting did not outrank that of fathers' parenting in any way.
-In fact, constructive conflict resolution with fathers was the highest-ranked construct related to conflict with parents;
-paternal power was the highest-ranked parenting construct;
-and maternal and paternal support and socio-economic status were both ranked approximately equally, despite both constructs being historically gendered.
-This highlights the importance of considering both parents as equally relevant in future theory development.
 
 A final consideration relevant for future theory development is to what extent 
 research interest corresponds to the empirical importance of phenomena relevant for adolescents' emotion regulation.
