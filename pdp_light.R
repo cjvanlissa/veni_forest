@@ -36,13 +36,14 @@ for(i in 1:length(vim)){
 
 
 # Merge plots -------------------------------------------------------------
-scls <- c(-.06, .01)
+scls <- c(-.01, .06)
 revcod <- readRDS('revcod.RData')
 p_list <- vector("list", length = length(vim))
 for(i in 1:length(vim)){
   n <- names(vim)[i]
-  v <- renm$V1[match(names(vim)[i], renm$V2)]
+  v <- renm$V1[pmatch(names(vim)[i], renm$V2)]
   tmp <- readRDS(file = paste0("pdpdat_", v, ".RData"))
+  tmp$value <- -1 * tmp$value
   if("mean" %in% tmp[[1]]){
     if(n %in% revcod){
       levels(tmp[[1]]) <- levels(tmp[[1]])[c(3,2,1)]
@@ -66,7 +67,7 @@ chunks <- list(
 )
 for(thischunk in chunks){
   pdps <- p_list[thischunk]
-  ylab <- "Difficulties in Emotion Regulation"
+  ylab <- "Emotion Regulation"
   catvars <- which(names(vim[thischunk]) %in% catlevs$name)
   n_grobs <- length(pdps)
   grob_rows <- ceiling(n_grobs/4)

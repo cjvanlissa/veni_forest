@@ -1,5 +1,5 @@
 ---
-title             : "Complementing theory on adolescent emotion regulation using data-driven insights from machine learning"
+title             : "Using machine learning to identify early predictors of adolescent emotion regulation development"
 shorttitle        : "Emotion Regulation and Machine Learning"
 
 author:
@@ -29,8 +29,7 @@ authornote: |
   This is a preprint paper, generated from Git Commit # `r gert::git_commit_id()`. CVL conceived of the study, conducted the final analyses, and wrote the draft paper. LB conducted preliminary analyses and gave feedback on the draft. SB and WM provided data and gave feedback on the draft. This work was funded by a NWO Veni Grant (NWO Grant Number VI.Veni.191G.090), awarded to the lead author. Data of the RADAR (Research on Adolescent Development And Relationships) study were used (https://doi.org/10.17026/dans-zrb-v5wp). RADAR has been financially supported by main grants from the Netherlands Organisation for Scientific Research (GB-MAGW 480-03-005, GB-MAGW 480-08-006), Stichting Achmea Slachtoffer en Samenleving (SASS), the Netherlands Organisation for Scientific Research to the Consortium Individual Development (CID; 024.001.003), a grant of the European Research Council (ERC-2017-CoG - 773023 INTRANSITION), and various other grants from the Netherlands Organisation for Scientific Research, VU University Amsterdam, and Utrecht University. The funders had no role in the study design, data collection and analysis, decision to publish, or preparation of the manuscript. If the regulations of the journal allow it, the participating children, parents and schools are to be thanked as well.
 
 abstract: |
-  This paper set out to identify the most important early predictors of emotion regulation development from many (87) candidates using the machine learning algorithm SEM forests. Candidate predictors were selected based on a prior text mining systematic review of 6305 papers. Participants were 497 Dutch adolescents. Predictors were assessed at age 13, and emotion regulation development from age 14-18 was described using a quadratic latent trajectory model. SEM-forests were used to group adolescents based on their predictor scores, while maximizing the similarity of developmental trajectories within each group. Compared to other person-centered approaches, this method not only identifies groups of adolescents with similar trajectories, but also indicates why some adolescents follow similar trajectories. The results indicated that the most important early predictors (at age 13) were individual differences (e.g., in personality), conflict behaviors towards parents and friends, and internalizing and externalizing behavior. Less important were parenting behaviors, except autonomy support and invasive parenting, bullying and victimization, delinquent peers, and substance use. The implications of these findings for theory formation and intervention are discussed, and we present an open source risk assessment tool, ERRATA.
-
+  This paper set out to identify the most important early predictors of emotion regulation development from many (87) candidates using the machine learning algorithm SEM forests. Candidate predictors were selected based on a prior text mining systematic review of 6305 papers. Participants were 497 Dutch adolescents. Predictors were assessed at age 13, and emotion regulation development from age 14-18 was described using a quadratic latent trajectory model. SEM-forests were used to group adolescents based on their predictor scores, while maximizing the similarity of developmental trajectories within each group. Compared to other person-centered approaches, this method not only identifies groups of adolescents with similar trajectories, but also indicates why some adolescents follow similar trajectories. The results indicated that the most important early predictors (at age 13) were individual differences (e.g., in personality), conflict behaviors with parents and friends, and internalizing and externalizing behavior. Less important were parenting behaviors, except autonomy support and invasive parenting, bullying and victimization, delinquent peers, and substance use. The implications of these findings for theory formation and intervention are discussed, and we present an open source risk assessment tool, ERRATA.
   
 keywords          : "emotion regulation, adolescence, machine learning, theory formation, random forests"
 wordcount         : "6199"
@@ -131,33 +130,45 @@ An important next step is to identify which risk factors render some adolescents
 
 ## Potential predictors of emotion regulation development
 
-Several theories are commonly cited in research on adolescent emotion regulation [for a review, see @vanlissaMappingPhenomenaRelevant2021].
-Notably, there appears to be a trade-off between these theories' scope and specificity.
-Some theories are broad in scope, considering many potential risk factors, but are non-specific.
-This limits their usefulness in generating testable predictions, and renders them impervious to falsification.
-Other theories are narrow in scope, and are sufficiently specific to derive testable predictions, but lack broader context.
-Two macro-theories that have been influential in research on emotion regulation development are the bioecological model [@bronfenbrennerBioecologicalModelHuman2007; e.g., see @augustEmotionRegulationAtRisk2017] and the transactional model [@sameroffUnifiedTheoryDevelopment2010].
+A recent review noted that the literature on potential predictors of emotion regulation development is somewhat fragmented,
+with most studies considering only a handful of variables within the scope of a particular sub-discipline [@vanlissaMappingPhenomenaRelevant2021].
+<!-- At the same time, this literature is relatively fragmented, -->
+<!-- as most studies have examined only a limited number of predictors [@vanlissaMappingPhenomenaRelevant2021]. -->
+This fragmentation may be due, in part, to the fact that few theories are tailored specifically to adolescence,
+and none consistently guide research in the field [@bussTheoriesEmotionalDevelopment2019].
+Theories commonly cited in this field vary in scope and specificity:
+Some are broad in scope, considering many potential risk factors,
+but are somewhat non-specific.
+This limits their usefulness in generating testable hypotheses,
+and renders them impervious to falsification or improvement.
+Other theories are narrower in scope, and are sufficiently specific to derive testable predictions, but lack broader context.
+For a more detailed overview, see @vanlissaMappingPhenomenaRelevant2021.
+Two of the most influential broad theories are the bioecological model [@bronfenbrennerBioecologicalModelHuman2007; e.g., see @augustEmotionRegulationAtRisk2017] and the transactional model [@sameroffUnifiedTheoryDevelopment2010].
 The bioecological model describes how individual development is shaped by factors at different levels of analysis:
 The individual level, which includes biological make-up and individual differences;
 the microsystem, composed of primary caregivers and close relationships;
 the mesosystem, including school and neighborhood factors;
 the exosystem, including media, political- and economic influences;
 and the macrosystem, consisting of cultural norms and values.
-The transactional model is compatible with the bioecological model;
-it describes development as an interplay between the individual child and the environment.
+The transactional model is compatible with the bioecological model,
+and describes development as an interplay between the individual child and the environment.
 It distinguishes proximal environmental influences, roughly corresponding to the microsystem,
 from more distal influences.
 With increasing age, distal influences are thought to become more influential. 
 
-Other theories are more specific, focusing on cognitive maturation and the role of primary caregivers.
-This includes the theory of normative emotional development [@sroufeAttachmentDyadicRegulation1996]
-and the tripartite model of emotion regulation socialization by parents [@morrisRoleFamilyContext2007] and peers [@reindlSocializationEmotionRegulation2016].
-Note that the tripartite model explicitly addresses the life phase of adolescence.<!--is one of the few theories that -->
+More specific theories tend to focus on cognitive maturation and the role of primary caregivers.
+Examples include the theory of normative emotional development [@sroufeAttachmentDyadicRegulation1996]
+and the tripartite model of emotion regulation socialization in families [@morrisRoleFamilyContext2007], which has also been applied to the peer context [@reindlSocializationEmotionRegulation2016].
+This tripartite model is one of the few theories that explicitly addresses the life phase of adolescence.<!---->
 <!-- This seems a bit selective. For example, also discuss the work of Hollenstein and of Nicholas Allen. -->
 <!-- I think you do insufficient right to the theories that exist, both in breadth and in depth. Perhaps just stay closer to the contribution of the current paper: empirically examine multiple factors simultaneously rather than selectively examining a few? -->
-It would be beneficial to work towards a more comprehensive theory of emotion regulation development,
-specific to adolescence,
-that is broad in scope and still specific enough to derive testable predictions.
+<!-- Despite this abundance of relevant theory,  -->
+<!-- several reviews have noted the relatively fragmented nature of the literature  -->
+<!-- that  -->
+<!-- few theories are tailored specifically to emotion regulation development in adolescence, -->
+<!-- and none are used consistently to guide research in this field. -->
+Given that few theories are both comprehensive and sufficiently specific to derive testable hypotheses,
+an important challenge for the field is to work towards an integrating theory of emotion regulation development in adolescence.
 
 <!-- * Bioecological model [@bronfenbrennerBioecologicalModelHuman2007] -->
 <!-- * Transactional model [@sameroffUnifiedTheoryDevelopment2010] -->
@@ -169,65 +180,47 @@ that is broad in scope and still specific enough to derive testable predictions.
 <!-- * Model of social-affective engagement and goal flexibility [@croneUnderstandingAdolescencePeriod2012] -->
 <!-- * Process model of emotion regulation [@grossHandbookEmotionRegulation2013] -->
 <!-- * Social Information Processing Theory [@lemeriseIntegratedModelEmotion2000] -->
-
 <!-- Maybe review theory briefly? -->
-The first step towards theory formation or revision is identifying relevant phenomena [@borsboomTheoryConstructionMethodology2020].
+The first step towards theory formation is identifying relevant phenomena [@borsboomTheoryConstructionMethodology2020].
 <!--Thus, offering a starting point for this endeavor,<!-- empirical investigations of predictors of adolescents' emotion regulation development -->
 A recent literature review did so
 using a text mining systematic review of author keywords and abstracts of 6305 publications on  adolescents’ emotion regulation [@vanlissaMappingPhenomenaRelevant2021].
 Typically, phenomena are identified using narrative literature reviews.
 However, these are often limited to a small number of papers and structured around well-established ideas [@littellEvidencebasedBiasedQuality2008].
 Text mining systematic reviews, by comparison, are relatively comprehensive and derive insights from the literature through a relatively transparent and objective - albeit less interpretative - procedure [@vanlissaMappingPhenomenaRelevant2021].
-They identify relevant phenomena by grouping related keywords,
-and ranking these by number of studies those keywords occur in.<!-- reflection and meaning-making-->
-This review offers a relatively comprehensive overview of potentially relevant phenomena.
-The present study used it as a starting point for an empirical investigation of potential predictors of adolescents' emotion regulation development.
+Specifically, related keywords are grouped into clusters,
+with each cluster representing a phenomenon.
+These phenomena are then ranked by the number of studies those keywords occur in, and potential relations between phenomena are mapped by co-occurrence within studies.<!-- reflection and meaning-making-->
+This review thus offers a relatively comprehensive overview of potentially relevant phenomena.
+The present study used it as a starting point for an empirical investigation of the relative importance and direction of effect of these phenomena.
 
-According to this review, the phenomena that received most attention in the literature were related to internalizing and externalizing problems, and mental health.
-Although these phenomena are likely to be, at least in part, outcomes of emotion dysregulation - that does not diminish their usefulness as predictors.
-Some of the phenomena that were identified using text mining reflect what has been discussed in prior narrative reviews,
+According to this prior review,
+the phenomena that have received most research attention are internalizing and externalizing problems, and mental health.
+These are likely to be, at least in part, outcomes of emotion dysregulation.
+<!-- - but they that does not diminish their usefulness as predictors. -->
+Other important phenomena reflected what has been discussed in prior narrative reviews,
 including cognitive development, parenting, and external stressors [cf. @coe-odessEmergentEmotionsAdolescence2019].
-Other identified phenomena had received less attention in prior theory and reviews,
+Finally, the method identified some phenomena that have received less attention in prior theory and reviews,
 such as substance use, structural disadvantage,
 identity, morality, sex and sexual development.
-
 <!-- To this end, the present study sought to identify operationalizations of these relevant phenomena in a large-scale panel study. -->
+Prior theory and empirical research thus suggests many phenomena potentially related to heterogeneity in adolescents' emotion regulation development.
 
-## Complementing theory using machine learning
-
-According to models of knowledge production within the quantitative positivist paradigm,
-a field progresses through the cyclical alternation of exploratory and confirmatory research, also known as the "empirical cycle" [@degrootMethodologieGrondslagenVan1961, @wagenmakersCreativityVerificationCyclePsychological2018].
-Exploratory research gives rise to testable predictions,
-and confirmatory research evaluates testable predictions on new data.
-Crucially, these phases are linked through evaluation of existing theory in light of empirical findings [@degrootMethodologieGrondslagenVan1961].
-The fact that our field still lacks overarching theory despite decades of productive empirical research
-suggests that the empirical cycle is not routinely completed.
-In support of this claim, it has been noted that the overwhelming majority of research in our field appears, at first glance, to be confirmatory [@demuthQualitativeMethodologyDevelopmental2015].
-More exploratory research is thus needed to complete the cycle.
-Secondly, and paradoxically given the first argument,
-the link between confirmatory research and theory is often tenuous.
-For instance, many studies derive their predictions from prior empirical research, not from theory [e.g., @vanlissaCostEmpathyParentadolescent2017].
-Thirdly, theories are rarely falsified or revised in light of empirical findings.
-This failure to evaluate theory leads to flexible, "invulnerable" frameworks that can accommodate any result [@szollosiArrestedTheoryDevelopment2021].
-To advance theory formation, our field might benefit from "closing the empirical cycle" through increased exploratory research and reflection on theory.
-
-There are preliminary indications of a move towards exploratory research:
-Developmental scientists are turning to increasingly complex structural equation models.
-Consider, for example, the burgeoning interest in disentangling between-family differences from within-family processes using the innovative random-intercept cross-lagged panel model [@hamakerCritiqueCrosslaggedPanel2015] and dynamic structural equation modeling [@asparouhovDynamicStructuralEquation2018].
-Many authors using these methods have realized that existing theory is not sufficiently precise to derive distinct hypotheses at these two levels [see @nevilleBidirectionalAssociationsScreen2021; @vanlissaMothersFathersQuantitative2020].
-By necessity, these models are thus used in at least a partly exploratory capacity.
-This approach has two pitfalls.
-Firstly, complex models are by definition more flexible and fit data better then simpler models, at the expense of decreased generalizability [@hastieElementsStatisticalLearning2009].
-Flexibility is a hallmark of exploratory research [@wagenmakersCreativityVerificationCyclePsychological2018],
-but increases the risk of false-positive results and questionable research practices in confirmatory research [@wichertsDegreesFreedomPlanning2016, @simmonsFalsePositivePsychologyUndisclosed2011].
-It is therefore essential that flexibility is disclosed, and that exploratory and confirmatory research are clearly demarcated.
-Secondly, structural equation models are inherently a confirmatory method,
-and they can only include a limited number of predictors due to concerns of statistical power [@klinePrinciplesPracticeStructural2005].
-Their use for exploration is limited, effortful, and potentially fraught (e.g., when using p-values for discovery instead of inference).
-We argue that machine learning offers a suitable tool for rigorous exploration:
-These methods discover patterns in data while maximizing generalizability,
-and incorporate checks and balances to curtail false-positive results [@hastieElementsStatisticalLearning2009].
-In the context of the present study, we use a specific machine learning algorithm uniquely suited for theory-guided exploration: SEM-forests [@brandmaierTheoryguidedExplorationStructural2016].
+What is still missing is an understanding of the relative utility of different early indicators in predicting adolescents' developmental outcomes.
+<!-- we do not know the relative importance of  with respect to others not included in the same study. -->
+Put simply, each study has examined a piece of the puzzle,
+but no single study has captured the complete picture.
+This knowledge gap cannot be addressed by comparing the relative importance of different predictors across studies,
+as different studies tend to sample from different populations,
+use different research designs,
+different control variables and statistical models.
+Furthermore, conventional methods are ill-suited to overcome address this research question:
+<!-- In part, this limitation is a consequence of conventional methods: -->
+linear models limit the total number of predictors that can be included due to concerns of power, overfitting, and multicolinearity [REF].
+By contrast, some machine learning methods offer a more holistic approach,
+as they can incorporate many candidate predictors and perform variable selection,
+while incorporating checks and balances to ensure generalizable results [@hastieElementsStatisticalLearning2009].
+The present study used a specific machine learning algorithm uniquely suited for theory-guided exploration: SEM-forests [@brandmaierTheoryguidedExplorationStructural2016].
 
 <!-- * Predictors of latent growth model? -->
 <!--   + Only linear differences, few predictors (power) -->
@@ -248,16 +241,17 @@ In the context of the present study, we use a specific machine learning algorith
 ## The present study
 
 <!-- SB: you have convincingly argued why machine learning in general is important, yet I miss the details related to ER. I would recommend to add a paragraph summarizing theories of ER and the factors they consider important. Also, describe the candidate predictors that were derived from the literature search, and how they relate to theories and /or empirical evidence -->
-The present study set out to identify the most important early indicators of developmental trajectories
-of emotion regulation across adolescence.
-This involves three important challenges:
-First, the number of potentially relevant risk factors, as identified in a prior text mining systematic review, is large.
-Second, there is a paucity of relevant theory to narrow down the candidate predictors.
-Third, methods commonly used in the field are not well suited for large numbers of predictors.
-Machine learning methods that perform variable selection can overcome these challenges.
+The present study set out to obtain a relatively comprehensive understanding of the predictors of emotion regulation development across adolescence.
+<!-- identify the most important early indicators of developmental trajectories -->
+<!-- of  -->
+The primary aim was to identify the most important predictors of adolescents' developmental trajectories of emotion regulation development.
+The secondary aim was to probe the nature of the relationship of each predictor with these trajectories.
+This involves an important challenges, as
+the number of potentially relevant risk factors is too large for conventional methods.
+At the same time, there is a paucity of relevant theory to narrow down the candidate predictors a priori.
+<!-- Third, methods commonly used in the field are not well suited for large numbers of predictors. -->
+This challenge can be overcome by machine learning methods that perform variable selection.
 We therefore used the SEM-forests algorithm to identify the most important early predictors of trajectories of emotion regulation development throughout adolescence.
-The primary aim is to identify the most important predictors of adolescents' trajectories of emotion regulation development.
-The secondary aim is to probe the nature of the marginal association of the predictors with these trajectories.
 
 # Method
 
@@ -271,13 +265,13 @@ The original data (restricted) and all study documentation are available via <ht
 desc_num <- read.csv("../desc_num.csv", stringsAsFactors = FALSE)
 desc_cat <- read.csv("../desc_cat.csv", stringsAsFactors = FALSE)
 ```
-Participants were 497 Dutch adolescents and their parents enrolled in the ongoing longitudinal RADAR study  [@branjeResearchAdolescentDevelopment2018].
+Participants were 497 Dutch adolescents and their parents enrolled in the ongoing longitudinal RADAR study [@branjeResearchAdolescentDevelopment2018].
 The RADAR sample was recruited from over 200 randomly selected elementary schools in the province of Utrecht, and four main cities in The Netherlands.
 Of 1,544 eligible families, 497 produced informed consent and were included in the study.
-From 2006 to 2011, trained interviewers conducted annual home visits to collect questionnaire data from adolescents and parents.
+From 2006 to 2011, trained interviewers conducted annual home visits to collect questionnaire data.
 All independent variables were assessed in the first measurement wave.
 The dependent variable was measured from the second to the sixth wave.
-Adolescents received financial compensation for their participation in annual measurements (approximately \$17).
+Families received €100 financial compensation for their participation in annual measurements.
 
 <!-- **Participants** -->
 
@@ -296,8 +290,8 @@ ders_desc <- readRDS("../ders_desc.RData")
 alphs <- sapply(ders_desc, function(x){x$alpha$total$raw_alpha})
 ```
 
-From wave 2-6, adolescents completed the difficulty in emotion regulation scale [DERS, @gratzMultidimensionalAssessmentEmotion2004].
-Based on prior psychometric analyses [see @vanlissaRoleFathersMothers2018],
+From wave 2-6, adolescents completed the Difficulties in Emotion Regulation Scale, which was reverse coded to represent emotion regulation [DERS, @gratzMultidimensionalAssessmentEmotion2004].
+Based on prior psychometric analyses [see @vanlissaRoleFathersMothers2019],
 we used 24 items of this 32-item scale
 (e.g., "When I’m upset, I have difficulty thinking
 about anything else").
@@ -305,8 +299,8 @@ Responses ranged
 from 1 (Almost never) to 5 (Almost always).
 Score reliability was excellent in all waves, $\alpha \in [`r report(min(alphs), equals = F)`, `r report(max(alphs), equals = F)`]$.
 We used latent variable scores (instead of mean scores) for further analyses.
-To this end, we imposed a five-factor CFA (one for each wave) on the indicators of the dependent variable.
-Latent means were restricted to zero, such that resulting scores reflect the deviation of individual adolescents' trajectories from the overall trajectory.
+To this end, we estimated a CFA with all DERS items loading on one latent variable per measurement wave.
+Latent means were restricted to zero, such that resulting scores reflect the deviation of individual adolescents' trajectories from the sample average trajectory.
 As measurement invariance must be imposed in order to compare latent scores across waves,
 we compared a model with configural invariance ($BIC = 141247.46$)
 to a model that imposed metric invariance ($BIC = 140913.27$).
@@ -334,7 +328,7 @@ ordr <- match(desc_cat$name, names(vimp))
 desc_cat$name <- paste0(ordr, ". ", desc_cat$name)
 desc_cat <- desc_cat[order(ordr, decreasing = FALSE), ]
 names(desc_cat) <- c("Variable", "n", "%", "Category")
-papaja::apa_table(desc_cat, caption = "Sample descriptive statistics for categorical predictors.", landscape = FALSE, longtable = TRUE, format.args = list(na_string = ""))
+papaja::apa_table(desc_cat, caption = "Sample descriptive statistics for categorical predictors, ranked by variable importance. Note that variable importance can be interpreted only in relative terms.", landscape = FALSE, longtable = TRUE, format.args = list(na_string = ""))
 ```
 ```{r tabnum, results='asis'}
 ordr <- match(desc_num$name, names(vimp))
@@ -342,7 +336,7 @@ desc_num$name <- paste0(ordr, ". ", desc_num$name)
 desc_num <- desc_num[order(ordr, decreasing = FALSE), ]
 desc_num <- desc_num[,c("name", "n", "Items", "mean", "sd", "min", "max", "Reliability", "PC1")]
 names(desc_num) <- c("Variable", "n", "i", "M", "SD", "min", "max", "alpha", "PC1")
-papaja::apa_table(desc_num, caption = "Sample descriptive statistics for continuous variables and scales. n: valid sample size, i: number of items, M: mean, SD: standard deviation, alpha: Cronbach's alpha", landscape = FALSE, longtable = TRUE, format.args = list(na_string = ""))
+papaja::apa_table(desc_num, caption = "Sample descriptive statistics for continuous variables and scales, ranked by variable importance. n: valid sample size, i: number of items, M: mean, SD: standard deviation, alpha: Cronbach's alpha", landscape = FALSE, longtable = TRUE, format.args = list(na_string = ""))
 ```
 
 ## Missing data
@@ -362,7 +356,7 @@ and from $`r report(min((495-desc_num[["n"]])/495), equals = F)` - `r report(max
 Preliminary analyses were conducted to ensure the appropriateness of growth curve modeling, and determine the presence of heterogeneity in developmental trajectories.
 First, trajectories of emotion regulation development were modeled using a curvilinear latent growth curve model with an intercept (I), linear slope (S), and quadratic slope (Q).
 The full sample model fit was excellent, $\text{RMSEA} < .05, \text{SRMR} = 0.02, \text{CFI} = 1.00$.
-Second, latent class growth analyses were conducted to determine the presence of youth with trajectories that indicated elevated risk of emotion regulation difficulties.
+Second, latent class growth analyses were conducted to determine the presence of youth with trajectories that indicated difficulties in emotion regulation (e.g. lower levels or a temporary dip).
 We used the R-package `tidySEM` [@tidysem] to estimate and compare 1-6 class solutions of the aforementioned curvilinear growth curve model;
 analysis results are displayed in [Supplemental Table 2](https://github.com/cjvanlissa/veni_forest/blob/master/supplemental_table_2.csv).
 To ensure model convergence in small classes, the latent variable covariance matrix was restricted to zero,
@@ -411,6 +405,7 @@ is defined as the average absolute increase in model misfit due to randomization
 For each tree, the log-likelihood of cases not in that tree's bootstrap sample is computed twice:
 Once using the true data for these cases, and once after randomizing one predictor.
 The variable importance is given by averaging the ratio of these two log-likelihoods across all trees.
+Note that variable importance has no meaningful scale and can only be interpreted in relative terms (i.e., one variable is more important than another). 
 Our secondary outcome of interest were marginal association plots,
 which visualize the partial dependence of each predictor with trajectories of emotion regulation development.
 New functions for computing partial dependence for growth curve SEM-forests were developed for this paper, which are now available in the `semtree` R-package.
@@ -530,27 +525,28 @@ the most commonly used substances of alcohol (78) and cigarettes (61) were ranke
 
 ## Direction of association
 
-Figures \@ref(fig:figpdp1)-\@ref(fig:figpdp4) depict the marginal association of the predictors with the outcome,
+Figures \@ref(fig:figpdp1)-\@ref(fig:figpdp4) depict the marginal association plots,
 also in order of importance.
+Each plot shows the expected trajectory of emotion regulation development at different values of each predictor.
+For continuous variables, quantiles corresponding to +/- 1SD and the mean of a standard normal distribution were used.
 This provides an indication of whether the effect is generally positive, negative, or other.
-Note that the dependent variable measures *difficulties* in emotion regulation;
-thus, higher values represent poorer emotion regulation.
+For categorical variables, all values are plotted.
 
-```{r figpdp1, fig.cap="Predicted trajectory of difficulties in emotion regulation for predictors 1-20."}
+```{r figpdp1, fig.cap="Predicted trajectory of emotion regulation development for predictors 1-20."}
 knitr::include_graphics("../plots/pdp1-20.png")
 ```
-```{r figpdp2, fig.cap="Predicted trajectory of difficulties in emotion regulation for predictors 21-40."}
+```{r figpdp2, fig.cap="Predicted trajectory of emotion regulation development for predictors 21-40."}
 knitr::include_graphics("../plots/pdp21-40.png")
 ```
-```{r figpdp3, fig.cap="Predicted trajectory of difficulties in emotion regulation for predictors 41-60."}
+```{r figpdp3, fig.cap="Predicted trajectory of emotion regulation development for predictors 41-60."}
 knitr::include_graphics("../plots/pdp41-60.png")
 ```
-```{r figpdp4, fig.cap="Predicted trajectory of difficulties in emotion regulation for predictors 61-87."}
+```{r figpdp4, fig.cap="Predicted trajectory of emotion regulation development for predictors 61-87."}
 knitr::include_graphics("../plots/pdp61-87.png")
 ```
 
 All associations were in a direction consistent with prior literature.
-Among these were several factors associated with less difficulties in emotion regulation (i.e., potential protective factors), including
+Among these were several factors associated with better emotion regulation (i.e., potential protective factors), including
 parents' autonomy support and tolerance,
 big five extraversion and agreeableness, 
 self-concept clarity,
@@ -558,7 +554,7 @@ problem solving in conflict with both parents,
 parents' own emotion regulation ability,
 and maternal age (older mothers had better adjusted children).
 
-Other factors were associated with more difficulties in emotion regulation (i.e., potential risk factors or diagnostic aids),
+Other factors were associated with poorer emotion regulation (i.e., potential risk factors or diagnostic aids),
 including big five neuroticism, 
 behavioral inhibition system,
 externalizing and internalizing (depression and anxiety) problem behavior,
@@ -569,7 +565,7 @@ All empathy dimensions except perspective taking predicted greater emotion dysre
 as did different daily negative emotions,
 parental stress and interparental conflict,
 age and pubertal development,
-and sex (girls experienced greater difficulties in emotion regulation).
+and sex (boys girls reported better emotion regulation).
 
 <!-- Categories:  -->
 
@@ -652,7 +648,8 @@ such factors ought to be included in future theory, but should not take center s
 A final consideration relevant for future theory development is to what extent 
 research interest corresponds to the empirical importance of phenomena relevant for adolescents' emotion regulation.
 A prior text mining systematic review comprehensively mapped the phenomena studied in this field [@vanlissaMappingPhenomenaRelevant2021].
-It showed that among the most commonly studied phenomena were parenting, substance use, and bullying - all phenomena that ranked low in empirical importance in the present study.
+It showed that parenting, substance use, and bullying were among the phenomena most studied in research on emotion regulation.
+These phenomena all ranked relatively low in empirical importance in the present study.
 Conversely, phenomena found to be important in the present study, such as personality and other individual differences, parental autonomy support, and conflict-related behavior were less prevalent in the literature.
 Of course, the relative importance of predictors may vary across studies,
 and replications of the present findings are required.
@@ -732,7 +729,7 @@ only the one corresponding to the least desirable conditions diverged from the o
 <!-- For instanhigh neuroticism, high interparental conflict, low constructive conflict resolution with fathers. -->
 Our findings send an important signal that many of the associations between predictors and developmental outcomes might be better modeled non-linearly.
 In particular, they suggest a notion of "good-enough" preconditions for the development of mature emotion regulation.
-Most adolescents seem to follow trajectories characterized by low difficulties in emotion regulation - except those with the most disadvantage.
+Most adolescents seem to follow trajectories characterized by high emotion regulation - except those with the most disadvantage.
 Some prior research has considered this notion of a "good-enough" environment [@vanlissaCostEmpathyParentadolescent2017; @poonGoodEnoughParental2017];
 the consistency of our findings suggests that it may be more ubiquitous than previously thought.
 
