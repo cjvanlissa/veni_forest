@@ -45,7 +45,7 @@ Variable & \multicolumn{1}{c}{n} & \multicolumn{1}{c}{\%} & \multicolumn{1}{c}{C
 \begin{ThreePartTable}
 
 \begin{longtable}{lllllllll}\noalign{\getlongtablewidth\global\LTcapwidth=\longtablewidth}
-\caption{\label{tab:tabnum}Sample descriptive statistics for continuous variables and scales, ranked by variable importance. n: valid sample size, i: number of items, M: mean, SD: standard deviation, alpha: Cronbach's alpha}\\
+\caption{\label{tab:tabnum}Sample descriptive statistics for continuous variables and scales, ranked by variable importance. n: valid sample size, i: number of items, M: mean, SD: standard deviation, alpha: Cronbach's alpha, PC1: variance explained by first principal component}\\
 \toprule
 Variable & \multicolumn{1}{c}{n} & \multicolumn{1}{c}{i} & \multicolumn{1}{c}{M} & \multicolumn{1}{c}{SD} & \multicolumn{1}{c}{min} & \multicolumn{1}{c}{max} & \multicolumn{1}{c}{alpha} & \multicolumn{1}{c}{PC1}\\
 \midrule

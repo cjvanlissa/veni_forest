@@ -29,12 +29,19 @@ authornote: |
   This is a preprint paper, generated from Git Commit # `r gert::git_commit_id()`. CVL conceived of the study, conducted the final analyses, and wrote the draft paper. LB conducted preliminary analyses and gave feedback on the draft. SB and WM provided data and gave feedback on the draft. This work was funded by a NWO Veni Grant (NWO Grant Number VI.Veni.191G.090), awarded to the lead author. Data of the RADAR (Research on Adolescent Development And Relationships) study were used (https://doi.org/10.17026/dans-zrb-v5wp). RADAR has been financially supported by main grants from the Netherlands Organisation for Scientific Research (GB-MAGW 480-03-005, GB-MAGW 480-08-006), Stichting Achmea Slachtoffer en Samenleving (SASS), the Netherlands Organisation for Scientific Research to the Consortium Individual Development (CID; 024.001.003), a grant of the European Research Council (ERC-2017-CoG - 773023 INTRANSITION), and various other grants from the Netherlands Organisation for Scientific Research, VU University Amsterdam, and Utrecht University. The funders had no role in the study design, data collection and analysis, decision to publish, or preparation of the manuscript. If the regulations of the journal allow it, the participating children, parents and schools are to be thanked as well.
 
 abstract: |
-  This paper set out to identify the most important early predictors of emotion regulation development from many (87) candidates using the machine learning algorithm SEM forests. Candidate predictors were selected based on a prior text mining systematic review of 6305 papers. Participants were 497 Dutch adolescents. Predictors were assessed at age 13, and emotion regulation development from age 14-18 was described using a quadratic latent trajectory model. SEM-forests were used to group adolescents based on their predictor scores, while maximizing the similarity of developmental trajectories within each group. Compared to other person-centered approaches, this method not only identifies groups of adolescents with similar trajectories, but also indicates why some adolescents follow similar trajectories. The results indicated that the most important early predictors (at age 13) were individual differences (e.g., in personality), conflict behaviors with parents and friends, and internalizing and externalizing behavior. Less important were parenting behaviors, except autonomy support and invasive parenting, bullying and victimization, delinquent peers, and substance use. The implications of these findings for theory formation and intervention are discussed, and we present an open source risk assessment tool, ERRATA.
+  | **Research Highlights**
+  |
+  | * Individual differences (e.g., in personality, motivation, and empathy) are among the most important predictors of emotion regulation development.
+  | * Parenting may be less relevant for emotion regulation development than previously thought, and negative parenting may be more impactful than positive parenting.
+  | * Important predictors most suitable for early risk assessment include regularly administered personality inventories, and readily observable indicators like externalizing problems and conflict behavior.
+  | * Future theory should emphasize proximal- over distal processes, focus on good-enough parenting, and reassess common perceptions about “risky behaviors” like delinquency, substance use, and bullying.
+  |
+  | This paper set out to identify the most important early predictors of emotion regulation development from many (87) candidates using the machine learning algorithm SEM forests. Candidate predictors were selected based on a prior text mining systematic review of 6305 papers. Participants were 497 Dutch adolescents. Predictors were assessed at age 13, and emotion regulation development from age 14-18 was described using a quadratic latent trajectory model. SEM-forests were used to group adolescents based on their predictor scores, while maximizing the similarity of developmental trajectories within each group. Compared to other person-centered approaches, this method not only identifies groups of adolescents with similar trajectories, but also indicates why some adolescents follow similar trajectories. The results indicated that the most important early predictors (at age 13) were individual differences (e.g., in personality), conflict behaviors with parents and friends, and internalizing and externalizing behavior. Less important were parenting behaviors, except autonomy support and invasive parenting, bullying and victimization, delinquent peers, and substance use. The implications of these findings for theory formation and intervention are discussed, and we present an open source risk assessment tool, ERRATA.
   
 keywords          : "emotion regulation, adolescence, machine learning, theory formation, random forests"
 wordcount         : "6199"
 
-bibliography      : ["r-references.bib", "references.bib"]
+bibliography      : ["r-references.bib", "references.bib", "Veni.bib"]
 
 floatsintext      : no
 figurelist        : no
@@ -336,7 +343,7 @@ desc_num$name <- paste0(ordr, ". ", desc_num$name)
 desc_num <- desc_num[order(ordr, decreasing = FALSE), ]
 desc_num <- desc_num[,c("name", "n", "Items", "mean", "sd", "min", "max", "Reliability", "PC1")]
 names(desc_num) <- c("Variable", "n", "i", "M", "SD", "min", "max", "alpha", "PC1")
-papaja::apa_table(desc_num, caption = "Sample descriptive statistics for continuous variables and scales, ranked by variable importance. n: valid sample size, i: number of items, M: mean, SD: standard deviation, alpha: Cronbach's alpha", landscape = FALSE, longtable = TRUE, format.args = list(na_string = ""))
+papaja::apa_table(desc_num, caption = "Sample descriptive statistics for continuous variables and scales, ranked by variable importance. n: valid sample size, i: number of items, M: mean, SD: standard deviation, alpha: Cronbach's alpha, PC1: variance explained by first principal component", landscape = FALSE, longtable = TRUE, format.args = list(na_string = ""))
 ```
 
 ## Missing data
@@ -513,6 +520,11 @@ and supportive criticism (33).
 Positively valenced dimensions of parent-adolescent relationship quality
 like maternal (54) and paternal (55) support were ranked low,
 and neutrally valenced aspects like parental monitoring (sollicitation 71, adolescent disclosure 72) were ranked very low.
+
+Finally, an emerging theme is that internalizing- and externalizing symptoms
+often associated with emotion regulation ranked moderately in terms of predictive importance.
+Of these, parent-reported externalizing behavior (5) ranked highest, followed by adolescent-reported anxiety (15) and depression (17).
+Adolescent-reported externalizing behavior ranked substantially lower (30).
 
 It is further of note that some themes that are considered to be theoretically relevant ranked low.
 For instance, indicators of maternal (86) and paternal (87) socio-economic status were ranked the lowest,
@@ -703,7 +715,7 @@ By contrast, promoting positive parenting practices may have limited potential f
 With this in mind, it is important to consider that positive parenting practices are often a key focus of parenting training.
 Although one meta-analysis did report large effects of the Triple P-Positive Parenting Program on parental outcomes - including some negative parenting behaviors [@fletcherImpactBehaviouralParent2011],
 another meta-analysis called these findings into question,
-citing mixed evidence, a lack of adequate blinding, risk of bias, and the substantial cost of such programs [@wilsonHowEvidencebasedEvidencebased2012].
+citing mixed evidence, a lack of adequate blinding, and risk of bias [@wilsonHowEvidencebasedEvidencebased2012].
 <!-- Another study Even when negative parenting has been assessed as outcomes, -->
 <!-- significant effects were found for positive practices only [@marcynyszynGettingEvidencebasedProgram2011]. -->
 <!-- and that there have been prior concerns about the efficacy of such training [@wilsonHowEvidencebasedEvidencebased2012; @cottamDiscoursesUnderpinningParenting2014]. -->
@@ -744,12 +756,16 @@ but these results might indicate potentially fruitful areas of future research.
 
 ## Strengths and limitations
 
-The present study had some unique strengths, most notably that it constituted the first comprehensive study of potential predictors of adolescent emotion regulation development. In contrast, prior work has taken more piecewise approaches, considering only a few predictors at a time.
-This allows us, for the first time, to assess the relative importance of different (themes of) predictors, where the more fragmented approach used in prior work does not allow for such comparisons.
-Another important contribution of the present study is that, in contrast to many other approaches,
-our method accommodates non-linear associations and interactions.
-Results indeed showed consistent evidence for non-linear effects,
-and some indications for interactions. 
+The present study had some unique strengths.
+Most notably, it included a much larger number of independent variables than prior research,
+which has taken more piecewise approaches.
+The present study thus offers a more holistic understanding potential predictors of adolescent emotion regulation development.
+This allows us, for the first time, to assess the relative importance of different predictors.
+<!-- , where the more fragmented approach used in prior work does not allow for such comparisons. -->
+Another important contribution is that, in contrast to many other approaches,
+the method used in the present study accommodates non-linear associations and interactions.
+The value of this approach is supported by our results, which showed consistent evidence for non-linear effects,
+and some indications for the existence of interactions. 
 The present study answers recent calls for more person-centered research that explores heterogeneity in developmental processes.
 Crucially, whereas other approaches have merely *explored* heterogeneity in outcomes (e.g., using latent class analyses),
 the present study *explained* heterogeneity using a comprehensive battery of predictors.
@@ -772,11 +788,18 @@ Specifically, this was a non-random, ethnically and socially relatively homogene
 This raises specific concerns, for example, that the low importance of SES might be due to a restriction of range.
 The sample might also be somewhat dated - especially considering daily life has changed drastically for youth coming of age in a post-pandemic world.
 The only way to address these concerns is to replicate these findings in other samples.
-Note that all code is made available in a reproducible archive to enable easy replication.
-Another limitation is that the data source was a panel study with mostly questionnaire measures and relatively few biological, cognitive and neurological assays.
+Note that all code is made available in a reproducible archive to facilitate replication.
+Another limitation is that the data source was a panel study with mostly questionnaire measures.
+All conclusions are conditional on the available data; thus, for example,
+our study cannot speak to the potential importance of biological (except pubertal development),
+cognitive and neurological factors.
 It is also important to consider that, in our efforts to identify important early predictors of emotion dysregulation, we relied on predictors at a single timepoint (age 13).
-It is possible that the relative importance of these predictors changes over time,
-or even dynamically, in interplay with emotion regulation.
+This does not account for over time change in the relative importance of predictors.
+Another potential limitation is common method bias.
+Many predictors were assessed using adolescent-reported questionnaire measures,
+which raises the question whether individual-level predictors ranked highly due to shared method variance.
+This concern is assuaged somewhat by the observation that parent-reported externalizing behavior (5) was much more predictive than adolescent self-reported externalizing behavior (30).
+This indicates that predictors less susceptible to common method bias nonetheless explained substantial variance.
 One final limitation related to the data is the relatively small sample size.
 Machine learning methods benefit from large samples.
 Although random forests are relatively robust to overfitting,
