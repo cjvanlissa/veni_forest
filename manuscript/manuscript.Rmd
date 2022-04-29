@@ -26,16 +26,14 @@ affiliation:
     institution: "Utrecht University, department of Youth and Family"
 
 authornote: |
-  This is a preprint paper, generated from Git Commit # `r gert::git_commit_id()`. CVL conceived of the study, conducted the final analyses, and wrote the draft paper. LB conducted preliminary analyses and gave feedback on the draft. SB and WM provided data and gave feedback on the draft. This work was funded by a NWO Veni Grant (NWO Grant Number VI.Veni.191G.090), awarded to the lead author. Data of the RADAR (Research on Adolescent Development And Relationships) study were used (https://doi.org/10.17026/dans-zrb-v5wp). RADAR has been financially supported by main grants from the Netherlands Organisation for Scientific Research (GB-MAGW 480-03-005, GB-MAGW 480-08-006), Stichting Achmea Slachtoffer en Samenleving (SASS), the Netherlands Organisation for Scientific Research to the Consortium Individual Development (CID; 024.001.003), a grant of the European Research Council (ERC-2017-CoG - 773023 INTRANSITION), and various other grants from the Netherlands Organisation for Scientific Research, VU University Amsterdam, and Utrecht University. The funders had no role in the study design, data collection and analysis, decision to publish, or preparation of the manuscript. If the regulations of the journal allow it, the participating children, parents and schools are to be thanked as well.
+  This is a preprint paper, generated from Git Commit # `r gert::git_commit_id()`. CVL conceived of the study, conducted the final analyses, and wrote the draft paper. LB conducted preliminary analyses and gave feedback on the draft. SB and WM provided data and gave feedback on the draft. This work was funded by a NWO Veni Grant (NWO Grant Number VI.Veni.191G.090), awarded to the lead author. Data of the RADAR (Research on Adolescent Development And Relationships) study were used, and is available under restricted access (https://doi.org/10.17026/dans-zrb-v5wp). RADAR has been financially supported by main grants from the Netherlands Organisation for Scientific Research (GB-MAGW 480-03-005, GB-MAGW 480-08-006), Stichting Achmea Slachtoffer en Samenleving (SASS), the Netherlands Organisation for Scientific Research to the Consortium Individual Development (CID; 024.001.003), a grant of the European Research Council (ERC-2017-CoG - 773023 INTRANSITION), and various other grants from the Netherlands Organisation for Scientific Research, VU University Amsterdam, and Utrecht University. The funders had no role in the study design, data collection and analysis, decision to publish, or preparation of the manuscript. If the regulations of the journal allow it, the participating children, parents and schools are to be thanked as well.
 
 abstract: |
   | **Research Highlights**
-  |
-  | * Individual differences (e.g., in personality, motivation, and empathy) are among the most important predictors of emotion regulation development.
-  | * Parenting may be less relevant for emotion regulation development than previously thought, and negative parenting may be more impactful than positive parenting.
-  | * Important predictors most suitable for early risk assessment include regularly administered personality inventories, and readily observable indicators like externalizing problems and conflict behavior.
-  | * Future theory should emphasize proximal- over distal processes, focus on good-enough parenting, and reassess common perceptions about “risky behaviors” like delinquency, substance use, and bullying.
-  |
+  | • Individual differences (e.g., in personality, motivation, and empathy) are among the most important predictors of emotion regulation development.
+  | • Parenting may be less relevant for emotion regulation development than previously thought, and negative parenting may be more impactful than positive parenting.
+  | • Important predictors most suitable for early risk assessment include regularly administered personality inventories, and readily observable indicators like externalizing problems and conflict behavior.
+  | • Future theory should emphasize proximal- over distal processes, focus on good-enough parenting, and reassess common perceptions about “risky behaviors” like delinquency, substance use, and bullying.
   | This paper set out to identify the most important early predictors of emotion regulation development from many (87) candidates using the machine learning algorithm SEM forests. Candidate predictors were selected based on a prior text mining systematic review of 6305 papers. Participants were 497 Dutch adolescents. Predictors were assessed at age 13, and emotion regulation development from age 14-18 was described using a quadratic latent trajectory model. SEM-forests were used to group adolescents based on their predictor scores, while maximizing the similarity of developmental trajectories within each group. Compared to other person-centered approaches, this method not only identifies groups of adolescents with similar trajectories, but also indicates why some adolescents follow similar trajectories. The results indicated that the most important early predictors (at age 13) were individual differences (e.g., in personality), conflict behaviors with parents and friends, and internalizing and externalizing behavior. Less important were parenting behaviors, except autonomy support and invasive parenting, bullying and victimization, delinquent peers, and substance use. The implications of these findings for theory formation and intervention are discussed, and we present an open source risk assessment tool, ERRATA.
   
 keywords          : "emotion regulation, adolescence, machine learning, theory formation, random forests"
@@ -53,7 +51,7 @@ draft             : no
 
 documentclass     : "apa6"
 classoption       : "man"
-output            : papaja::apa6_pdf
+output            : papaja::apa6_docx
 knit              : worcs::cite_all
 urlcolor: blue
 header-includes:
@@ -61,6 +59,7 @@ header-includes:
 ---
 
 ```{r setup, include = FALSE}
+mask = TRUE
 library("papaja")
 library("worcs")
 library(tidySEM)
@@ -262,9 +261,9 @@ We therefore used the SEM-forests algorithm to identify the most important early
 
 # Method
 
-The Workflow for Open Reproducible Code in Science (WORCS) was used to make analyses reproducible [@vanlissaWORCSWorkflowOpen2020].
-All analysis code, supplemental materials and synthetic data are available at <https://github.com/cjvanlissa/veni_forest>.
-The original data (restricted) and all study documentation are available via <https://doi.org/10.17026/DANS-ZRB-V5WP>.
+`r ifelse(mask, "The Workflow for Open Reproducible Code in Science (WORCS)", "**Masked**")` was used to make analyses reproducible  `r ifelse(mask, "[@vanlissaWORCSWorkflowOpen2020]", "**(masked reference)**")`.
+All analysis code, supplemental materials and synthetic data are available at `r ifelse(mask, "<https://github.com/cjvanlissa/veni_forest>", "**masked URL**")`.
+The original data (controlled access) and all study documentation are available via `r ifelse(mask, "<https://doi.org/10.17026/DANS-ZRB-V5WP>", "**masked URL**")`.
 
 ## Participants and procedure
 
@@ -272,8 +271,9 @@ The original data (restricted) and all study documentation are available via <ht
 desc_num <- read.csv("../desc_num.csv", stringsAsFactors = FALSE)
 desc_cat <- read.csv("../desc_cat.csv", stringsAsFactors = FALSE)
 ```
-Participants were 497 Dutch adolescents and their parents enrolled in the ongoing longitudinal RADAR study [@branjeResearchAdolescentDevelopment2018].
-The RADAR sample was recruited from over 200 randomly selected elementary schools in the province of Utrecht, and four main cities in The Netherlands.
+Participants were 497 Dutch adolescents and their parents enrolled in the ongoing longitudinal study `r ifelse(mask, "RADAR [@branjeResearchAdolescentDevelopment2018]", "**(masked reference)**")`, which 
+received ethical approval from the ethical committee of the University Medical Centre `r ifelse(mask, "Utrecht", "**masked**")`.
+The `r ifelse(mask, "RADAR", "**masked**")` sample was recruited from over 200 randomly selected elementary schools in the province of `r ifelse(mask, "Utrecht", "**masked**")`, and four main cities in `r ifelse(mask, "The Netherlands", "**masked**")`.
 Of 1,544 eligible families, 497 produced informed consent and were included in the study.
 From 2006 to 2011, trained interviewers conducted annual home visits to collect questionnaire data.
 All independent variables were assessed in the first measurement wave.
