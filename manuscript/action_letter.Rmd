@@ -1,0 +1,211 @@
+---
+title       : "Using machine learning to identify early predictors of adolescent emotion regulation development"
+authors     : "masked"
+journal     : "Journal of Research on Adolescence"
+editor      : "Raval"
+manuscript  : "2022-182"
+class       : "draft"
+bibliography: ["manuscript/veni.bib"]
+output      : papaja::revision_letter_pdf
+---
+
+```{r}
+library(revise)
+```
+
+
+Dear Dr. `r rmarkdown::metadata$editor`,
+
+Thank you for considering my manuscript for publication in _`r rmarkdown::metadata$journal`_.
+I appreciate the thorough and critical comments you solicited,
+which helped strengthen the argumentation, clarify the structure, and add nuance.
+I have made a good-faith effort to address all comments as thoroughly as possible.
+All changes are explained below, and the difference between the current version and previous one can be seen at <https://github.com/cjvanlissa/rigorous_exploration/compare/d8ba218..48d2b17>.
+I hope that you will find the quality of the work to be sufficiently improved.
+
+Yours sincerely,
+Author
+
+`r get_revision("manuscript.Rmd", "test")`
+
+# Editor {-}
+
+# Reviewer \#1
+
+Dear Authors:
+
+Thank you for submitting your manuscript to the Journal of Research on Adolescence.  I have received feedback from external reviewers who are experts in this area of research.  The detailed comments from these reviewers are included at the bottom of this letter.
+
+Overall, the reviewers indicate, and I agree, that there are several strengths of your manuscript including longitudinal design, a reasonably sized data set, multiple reporters, and the use of machine learning to identify importance of a large number of predictors of adolescent emotion regulation trajectories.
+
+However, the reviewers also indicated a number of substantial limitations.  These limitations preclude publication of the manuscript in its current form, but are potentially addressable through revision.  I will not try to summarize all of the reviewers’ comments here, but I trust that you will consider the reviewers’ comments in detail if you decide to revise and resubmit this manuscript.  Below are some of the key critiques raised by the reviewers, along with some further suggestions I am offering for revising the manuscript.
+
+In the introduction section, please provide a comprehensive review of the literature. As reviewer 3 points out, there is existing literature investigating risk factors associated with emotion dysregulation. This research needs to be cited. Also, please specify the demographics of the samples of cited studies. A bulk of the literature in our field, including related to emotion dysregulation, is based on samples from Western countries (e.g., Australia, those in North America, and those in Europe). If the studies you are citing are from these world regions, please specify that.
+
+Also, you describe two major theories of development including the bioecological theory (Bronfenbrenner & Morris, 2007). Note that there is a revision to Bronfenbrenner’s model that places culture as existing in different settings and not only as a distal influence as a macrosystem (see Velez-Agosto et al., 2017). According to this revision, cultural processes are not distal influences, instead cultural and individual processes interact in a transactional fashion and this revised model is actually much more aligned with the Transactional model (Sameroff, 2010) that you reference.
+
+In the method section, it would be helpful to include when (months and year) and where the data are collected (geographic location/country). Given cultural differences in emotion regulation, the context of the sample is really critical to include. Also, as reviewer 1 suggests, please explain the methodology used to extract predictors in more detail.
+In the results and discussion, as reviewer 2 and 3 highlight, please be careful about interpreting your findings. For example, to refer to parenting as unimportant based on your findings seems inaccurate given that balanced relatedness was the 3rd ranked predictor, so rather than say that parenting was unimportant or underrepresented, state that some dimensions of parenting were important, and name those dimensions.
+
+In the discussion, I encourage you to think about predictors from the revised bioecological theory perspective (Velez-Agosto et al., 2017) that does not conceptualize individual level, micro- and macro as influences that move along the proximal to distal continuum and conceptualizes them in a transactional framework. Factors such as religiosity and social class are reflected in relationships with parents and peers and thus to state that they are less important because they are ranked lower may not capture the complexity of their relevance. Also, as you mention in the limitations, it is possible that SES was ranked low because of the restricted range of SES that was represented in your sample.
+
+In the discussion, it is stated, “Predictors at the individual level were most important, followed by those at the microsystem level, such as aspects of the relationship with parents, followed by the mesosystem, including aspects of the peer network (e.g., bullying/victimization and delinquency), school performance, and socio-economic status, and the macrosystem indicator religiosity was among the least important predictors.”  This statement does not seem to fit the findings. If you look at the top 10 predictors listed in table 2, they include individual characteristics (big 5) and relational aspects (balanced relatedness, conflict). Please revise. Also, there are frequent references to individual level predictors being the most important and again looking at the top 10 predictors in table 2, there are both individual characteristics and relational dimensions so please revise the language.
+
+Given these limitations, I cannot accept the current manuscript for publication in the Journal of Research on Adolescence.  However, I am willing to consider a revised resubmission if you believe that you can successfully address the reviewers’ concerns.  I must point out that revising a manuscript in no way guarantees publication.  The journal currently has a rejection rate of about 85%, and even revised manuscripts might be rejected.
+
+If you decide to revise and resubmit your manuscript for further consideration, please resubmit your manuscript by 14-Nov-2022. If you are not able to submit your revision within this time frame, you may request an extension. Please contact the editorial office with a reasonable expectation of when your revision would be ready. If you use an electronic calendar (e.g., Outlook, iCal), you can open the email attachment to put a reminder of your due date into your calendar.
+
+To submit your revision, log into https://mc.manuscriptcentral.com/jra and enter your Author Center. You will find your manuscript title listed under "Manuscripts with Decisions."  Under "Actions," click on "Create a Revision."  Your manuscript number has been appended to denote a revision.  Please DO NOT upload your revised manuscripts as a new submission.
+
+My plan is to send this manuscript back to external reviewers before reaching a decision.  Please provide a point-by-point summary of your responses to reviewers’ comments in the “Response to Decision Letter” field.
+
+Wiley Editing Services Available to All Authors
+Should you be interested, Wiley Editing Services offers expert help with manuscript, language, and format editing, along with other article preparation services. You can learn more about this service option at www.wileyauthors.com/eeo/preparation. You can also check out Wiley’s collection of free article preparation resources for general guidance about writing and preparing your manuscript at www.wileyauthors.com/eeo/prepresources.
+
+Thank you for submitting to the Journal of Research on Adolescence.  I look forward to reading a revised version of your manuscript.
+
+Sincerely,
+
+Dr. Vaishali Raval
+Associate Editor, Journal of Research on Adolescence
+
+
+Reviewer(s)' Comments to Author:
+
+Reviewer: 1
+
+Comments to the Author
+It was a delight to read this manuscript that applied multiple novel machine learning methods to identify the most important early predictors of adolescent emotion regulation development. I found this manuscript to be one of the most innovative, potentially revolutionary manuscripts I have read in a long time. I absolutely think it should be published eventually. I have several suggestions and clarifying questions, provided by section below, that, if addressed, would further strengthen the manuscript. Specifically, I think addressing many of my suggestions would allow the manuscript to be even more translatable and understandable by traditional hypothesis-testing longitudinal researchers like me.
+
+However, again, I want to emphasize that overall I found this manuscript to be absolutely enthralling, and I look forward to seeing it published. Bravo to the authors!
+
+Introduction:
+• This was a tour-de-force of an introduction in my opinion. It was well thought out, well-written, and presented compelling arguments that made me enthralled to read the rest of the paper. The authors did fantastic work here.
+• It looks like a reference needs to be added to this line: “linear models limit the total number of predictors that can be included due to concerns of power, overfitting, and multicolinearity [REF].”
+
+Method:
+• When the authors state that “The RMSEA and SRMR of the invariant model indicated acceptable fit..”; I am assuming they are talking about the metric invariant model correct? It might be important to add the word “metric” just to specify that.
+• This is not something that needs to be answered in the text, but what do the authors make of the relatively poor CFI model fit, compared to RMSEA and SRMR. Any idea what accounts for that? I think the authors make a convincing enough argument as is for retaining the chosen model despite the low CFI test statistic, but I was just wondering how they interpreted that divergence in omnibus fit statistics.
+• The Link to Supplementary Table S1 was broken; I couldn’t access it.
+• I have a couple of items about the approach to missing data used (that, if there is not room in the text, can certainly be provided in a supplement)
+o It mentions that this method is valid when missingness is either random or contingent on observed data. Can you present some evidence that missingness was MAR or MCAR here?
+o Additionally, and relatedly, were there any systematic differences between those with missing and complete data? That would also be good for the reader to know.
+• I think that the methodology used to extract predictors here is ground-breaking and pretty revolutionary. However, that also means that the procedure might need to be explained in a little more depth for “old methodologists” like me. I actually think because this procedure is so innovative in the field of psychology, I would humbly be in favor of expanding the page limits of the manuscript to provide clarification on some of these questions in further detail, only because as a “tried and true” frequentist longitudinal modeler who is beginning to dabble in machine learning, I (and I suspect many like me) would love to learn even more about this procedure. Here are a few questions I had about it.
+o The authors note that for multi-item scales, they used principal components analysis for dimension reduction and took the first component for further analysis. Could, perhaps, the authors provide a specific example to make this process even more “concrete” in the minds of readers. Perhaps the authors could provide an example of how this was done on a single scale, what items were included as part of the first component that represents large amounts of shared variance, etc.
+o I see that in the SEM-forest analysis, homoscedastic residuals over time were assumed. I am guessing the reason for doing so is because estimating heteroscedastic residuals over time just makes the model hopelessly complex and unestimable. So my question here is two-fold: First, is that true? Second, can the homoscedasticity versus heteroscedasticity of residuals be tested in similar ways as it can in traditional growth curve modeling here? I don’t at all mind if homoscedastic residuals need to be assumed to ensure the model runs (I think that is the implication from the limitation mentioned in the discussion).
+o Could you speak a little more (maybe just a sentence or so) on the importance of step 2 substep iii. In the SEM forest algorithm? It was hard for me to follow why identifying the value of preditor k that maximizes the likelihood ratio of a post-split two-group model indicates best model fit. I suspect just another sentence or so of clarification is needed.
+o Could you speak more to the importance of why steps 3 and 4 need to be repeated until all post-split groups reach a minimum size? What would that minimum size be and why is it important?
+o How are predictions aggregated from all SEM-trees? If you could offer even just a sentence or two on that process in a way a “traditional” “applied” longitudinal researcher (like me) would understand, I think such readers would be very grateful.
+o Could you provide a quick applied example to accompany this statement “This approach intrinsically accommodates non-linear effects as subsequent splits on the same predictor, and complex interactions as subsequent splits on interacting variables. This offers greater flexibility than linear parametric models.”. Again, I think providing an example would allow non-machine learning researchers to follow what you are doing here even more clearly.
+
+Results:
+• I think the results clearly presented a complex set of findings. I really appreciated the grouping by theme.
+• I have seen many ML applications split data sets into “train” and “test” sub-samples, to validate the findings in the “train” data set in the “test” data set. As far as I can tell, that was not done here. Did the authors consider this approach? I feel like having “test” and “train” sub-samples wherein results are replicated would provide further robustness and validity to study findings. I also understand if that procedure is not possible with the SEM forests approach.
+• I know ensuring the article remains inside page limits is always a battle, but I had a suggestion for one additional, hopefully simplistic analysis that might even further bridge the “gap” between these machine learning analyses and “traditional, frequentist” analyses. Perhaps the authors could take only the most important predictors, say the top 10 (or really whatever number they want), and run regression analyses that predict trajectory intercepts and slopes? Basically, I know that people like me really like explanations like “oh yeah, these top 10 machine learning predictors predict XX% of variance in emotion regulation scores over time”, and so I was trying to think of a way to generate those sorts of tangible, “traditional” effect sizes. Could the authors potentially provide such effect size estimates? I also understand if there simply isn’t time or space for this, but figured it was worth asking.
+
+Discussion:
+• I appreciated the brave and nuanced discussion of how these analyses conform to, and also challenge, traditionally held norms in the field of emotion regulation. I especially appreciated the identification that parenting, substance use, and bullying might not be the risk factors we think they are.
+• The ERRATA tool seems amazing; I couldn’t find it online. Could a link be provided directly in the text?
+• I love the notion of “good enough” parenting environment and preconditions, and its’ application here; I thought the link between non-linear effects and “good enough” parenting environments was such an incredible example of translating a statistical insight into “on the ground” wisdom that can be applied by clinicians.  
+• The only part of the results that were left relatively untouched by the Discussion was the relatively large importance of Big 5 personality traits as predictors of adolescent emotion regulation. Could the authors comment on what they thought about those findings? I am especially interested to hear the authors thoughts about those results, because I feel like investigation of personality traits is so often “siloed” away from investigation of parenting, substance use, and other phenomena when it comes to adolescent emotion regulation. So I think it would be especially important to also highlight those findings in the Discussion.
+
+Miscellaneous:
+• I think there are some broken links to supplemental materials in the manuscript.
+• I think the authors should just re-read the manuscript again before final publication; there were missing words and sentences throughout in some places.
+• Pages 43 to 65 of the manuscript materials appeared cut-off and unreadable in many areas.
+
+
+Reviewer: 2
+
+Comments to the Author
+REVIEWER STATEMENT
+
+I reviewed this manuscript from the perspective of a clinical psychologist with expertise in quantitative methods and adult psychopathology. I have years of experience with and expertise in applied predictive modeling and supervised machine learning in general but am not that familiar with the SEM forest algorithm, which seems to blend supervised and unsupervised learning. Thus, I defer to other reviewers to evaluate the substantive aspects of the manuscript related to adolescent emotion regulation development and the highly technical aspects of the manuscript specific to the SEM forest algorithm.
+
+SUMMARY
+
+Overall, I found the manuscript to be ambitious and interesting. The size and longitudinal nature of the dataset is impressive, even if it the number of participants is a bit lower than one might ideally want to support complex machine learning. I also valued the manuscript’s integration of theory and methods, transparency of the methods, the addition of variable importance functions to the semTrees package, and the creation of the Shiny app as a demo/first step towards implementation. My concerns are mainly around the lack of external cross-validation (I realize that the out-of-bag approach is like an internal cross-validation) and hyperparameter tuning (which may be related to differences between the supervised approach I am used to and the hybrid approach of SEM forest) as well as some apparent discrepancies between the results as I understand them and the conclusions in the manuscript.
+
+CONCERNS
+
+1. I think that the number of predictors used should be tuned during cross-validation rather than set to 9 or, at least, multiple values should be compared. Similarly, I think that the complexity parameter should be tuned or compared. Please comment on why this wasn’t done.
+
+2. On page 15, there seem to be semantic themes or groupings of predictors. In addition to textual interpretation, I think it would be helpful to create a visualization (even if it were supplemental) that grouped the variable importance scores per theme. Perhaps each theme could be represented by a boxplot or jittered points. This would help communicate the relative importance of each theme (as the text is currently doing informally). A similar approach could be employed for predictors assigned to different levels of the bioecological model.
+
+3. The manuscript’s conclusion that parenting behaviors (especially positive ones) are low in importance (e.g., page 18) is hard for me to reconcile with the third-most important predictor being a positive parenting behavior. Overall, there seems to be an interpretive bias against the parenting behaviors being important. Or perhaps I am misunderstanding something?
+
+4. On page 12, it seems to me that the interpretation of SEM-forests answering, “why do some adolescents have similar growth trajectories” has some causal connotations that may or may not be intended. Please speak to this directly in the manuscript. Can SEM-forests enable causal inferences, or would it be more accurate to rephrase this sentence to remove the connotation?
+
+5. My understanding is that the importance of specific interactions can be interrogated using an generalization of partial dependence profiles (Apley & Zhu, 2020). I’m not saying that this necessarily has to be added to the current paper, but it might be worth citing this approach in the “next steps” part of the manuscript and considering it in future work.
+
+6. That said, my understanding is that partial dependence profiles can be somewhat problematic when applied to correlated predictors (as these predictors surely are) and that a better approach in such cases would be accumulated local profiles (Apley, 2018).
+
+COMMENTS
+
+1. On page 10, please clarify whether the CFAs were single factor models.
+
+2. On page 10, please provide more explanation of the discrepancy between absolute and comparative fit of the metric invariant model.
+
+3. In figure 1, clarify whether the y-axis is reversed. I ask because it seems strange to me that someone with lower difficulties with emotion regulation would be “high risk” and Figure 1 seems to show the opposite pattern as Figure 7.
+
+4. On page 12, please speak to the reasonableness of the assumption of homoscedastic residuals over time.
+
+5. On page 14, the reference to Figure 1 should be to Figure 2.
+
+6. I think Figures 5 and 6 could be moved to supplemental if space is tight.
+
+7. On page 18, is it true that “out [of] all parent-related constructs, constructive conflict resolution with fathers ranked highest and, and out of all parenting behaviors, paternal power ranked highest”? This seems to only be true if you look at only the mother/father-specific parenting measures and omit the general ones like balanced relatedness and conflict interparental.
+
+8. The supplemental table 1 didn’t render well in the PDF.
+
+REFERENCES
+
+Apley, D. W. (2018). ALEPlot: Accumulated Local Effects (ALE) Plots and Partial Dependence (PD) Plots (1.1) [Computer software]. https://CRAN.R-project.org/package=ALEPlot
+
+Apley, D. W., & Zhu, J. (2020). Visualizing the effects of predictor variables in black box supervised learning models. Journal of the Royal Statistical Society: Series B (Statistical Methodology), 82(4), 1059–1086. https://doi.org/10.1111/rssb.12377
+
+Reviewer: 3
+
+Comments to the Author
+The current study used machine learning to identify importance of predictors of adolescent emotion regulation trajectories. The study used a large sample of adolescents and included multiple reporters (although adolescent report was featured most heavily). Despite these strengths, I have a number of concerns about the manuscript in its present form that make its contribution unclear at this point. I list these concerns in roughly the order of appearance in the manuscript.
+
+The abstract could be strengthened by providing theoretical rationale for the study. The abstract also seems to exceed the journal’s word limit, as several sentences are cut off on the version included in the pdf cover page. In describing the results for parenting behaviors, it seems that autonomy support and invasive parenting were important if I am reading the statement correctly, so please remove these from the “less important” statement in order not to undermine the importance of parenting.
+
+Please provide citations for the statement in the first paragraph on page 4, “These difficulties in emotion regulation can cause…” and provide examples of why these incur societal cost.
+
+I would suggest removing reference to “destinies” on page 4 and elsewhere, as this word connotes fixedness in developmental outcomes, which does not reflect contemporary developmental views.
+
+The introduction would benefit from proofreading for parallel structure (last sentence in first paragraph on page 4), fragments (e.g., “For example, because they are not…”), and other typos (e.g., “an important challenges” on page 8). These are just several examples. The entire manuscript requires proofreading. The Discussion has sentences that are fragments or are missing words.
+
+At the bottom of page 5, it is noted that the next step in this area of research is to identify risk factors associated with emotion dysregulation. There is a wealth of research already identifying various risk factors. It should be acknowledged that this work exists (and what these identified factors are – some of which are reviewed beginning at the bottom of page 7) before noting the problems with existing research and theory. I would suggest expanding beyond the small number of labs currently heavily relied upon for background on emotion regulation. It seems that the actual next step for this literature is what is defined at the top of the first full paragraph on page 8 – “What is still missing is an understanding of the relative utility…” In short, the introduction could better acknowledge what we already know and more precisely describe the contribution of this study. I expect this would require a fairly extensive revision to move forward.
+
+Please insert the reference listed as [REF] on page 8.
+
+Please provide more of an introduction to SEM-forests prior to The Present Study section. The manuscript appears to assume much more knowledge about machine learning than many readers have.
+
+Please provide more information about the participants (mean and range of age of adolescents and parents at time of recruitment, race/ethnicity, income, and parental education). This will help contextualize the findings related to demographic characteristics that were predictive of emotion regulation trajectories.
+
+How far apart were “waves” of the study?
+
+Did missingeness relate to demographic or emotion regulation variables in the dataset?
+
+Was the statement, “Class solutions with more than two classes were excluded…” an a priori decision, or a statement of what resulted from the attempt to estimate them? Please be clear in the manuscript.
+
+I was curious why the median and plus/minus 1 SD were used for “s” for continuous variables. I would expect the median to be accompanied by percentiles (e.g., 15th and 85th percentiles) or +/- 1 SD to go along with the mean.
+
+Please correct the finding for sex – it currently reads, “boys girls reported better emotion regulation.”
+
+In the first paragraph of the Discussion, where most important predictors are listed, please list parenting behaviors that ranked as highly as aspects currently listed. Throughout the paper, parenting is listed as unimportant, when there are important exceptions that should be more explicit, rather than parenthetical within a negative statement.
+
+I do not believe it is accurate to state, “The fact that individual-level predictors were most important suggests that individual assessments might be sufficient.” Just because a factor is not the most important does not mean it is not playing a significant role. Perhaps the most important factors should be prioritized, but it would be contrary to much of developmental theory and many clinical interventions to suggest that it would be best to consider the adolescent as separate from their context. If anything, developmentalists and clinicians are moving towards greater contextualization of individuals and their identities.
+
+It is rightfully noted that this machine learning application was performed within one sample within one nation. There is limited reason to believe it would be universally applicable, especially because it seemed to draw on variables that happened to be available in a dataset, rather than designing the study for this purpose. The paper could provide more information about the cultural values that may impact emotion regulation in this sample to provide readers more information with which to evaluate generalizability to other populations.
+
+It is not clear how the information on pages 43-65 are to be used. This is not a labeled or formatted table.
+
+\newpage
+
+# References
+
+::: {#refs custom-style="Bibliography"}
+:::

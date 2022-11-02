@@ -34,7 +34,7 @@ abstract: |
   | • Parenting may be less relevant for emotion regulation development than previously thought, and negative parenting may be more impactful than positive parenting.
   | • Important predictors most suitable for early risk assessment include regularly administered personality inventories, and readily observable indicators like externalizing problems and conflict behavior.
   | • Future theory should emphasize proximal- over distal processes, focus on good-enough parenting, and reassess common perceptions about “risky behaviors” like delinquency, substance use, and bullying.
-  | This paper set out to identify the most important early predictors of emotion regulation development from many (87) candidates using the machine learning algorithm SEM forests. Candidate predictors were selected based on a prior text mining systematic review of 6305 papers. Participants were 497 Dutch adolescents. Predictors were assessed at age 13, and emotion regulation development from age 14-18 was described using a quadratic latent trajectory model. SEM-forests were used to group adolescents based on their predictor scores, while maximizing the similarity of developmental trajectories within each group. Compared to other person-centered approaches, this method not only identifies groups of adolescents with similar trajectories, but also indicates why some adolescents follow similar trajectories. The results indicated that the most important early predictors (at age 13) were individual differences (e.g., in personality), conflict behaviors with parents and friends, and internalizing and externalizing behavior. Less important were parenting behaviors, except autonomy support and invasive parenting, bullying and victimization, delinquent peers, and substance use. The implications of these findings for theory formation and intervention are discussed, and we present an open source risk assessment tool, ERRATA.
+  | This paper set out to identify the most important early predictors of emotion regulation development from many (87) candidates using the machine learning algorithm SEM-forests. Candidate predictors were selected based on a prior text mining systematic review of 6305 papers. Participants were 497 Dutch adolescents. Predictors were assessed at age 13, and emotion regulation development from age 14-18 was described using a quadratic latent trajectory model. SEM-forests were used to group adolescents based on their predictor scores, while maximizing the similarity of developmental trajectories within each group. Compared to other person-centered approaches, this method not only identifies groups of adolescents with similar trajectories, but also indicates why some adolescents follow similar trajectories. The results indicated that the most important early predictors (at age 13) were individual differences (e.g., in personality), conflict behaviors with parents and friends, and internalizing and externalizing behavior. Less important were parenting behaviors, except autonomy support and invasive parenting, bullying and victimization, delinquent peers, and substance use. The implications of these findings for theory formation and intervention are discussed, and we present an open source risk assessment tool, ERRATA.
   
 keywords          : "emotion regulation, adolescence, machine learning, theory formation, random forests"
 wordcount         : "6199"
@@ -88,22 +88,20 @@ with potentially lifelong implications for mental health and well-being [@aldaoE
 These difficulties in emotion regulation can cause substantial distress to the individual,
 and incur a sizable societal cost.
 A comprehensive understanding of the risk factors that predispose some adolescents to emotion dysregulation could aid in the development of effective screening and interventions.
-However, despite an abundance of empirical research,
-many studies are narrow in scope, considering only a few predictors,
-the literature is fragmented across subdisciplines, and lacks a unifying theoretical framework
-<!-- that is both specific to adolescence and comprehensive in scope  -->
-[@vanlissaMappingPhenomenaRelevant2021].
+<span id = "abundantlit">There is already an abundance of empirical research on emotion regulation and its predictors; a recent systematic review identified 6305 relevant publications [@vanlissaMappingPhenomenaRelevant2021].
+Still, that review identified specific limitations of the existing literature: many studies are narrow in scope, considering only a few predictors and thus missing the relative importance compared to other predictors.</span>
+This problem is exacerbated because the literature is fragmented across sub-disciplines, each of which examines mostly predictors within its scope.
+And finally, the literature lacks a unifying theoretical framework that is both specific to adolescence and comprehensive in scope [see @bariolaChildAdolescentEmotion2011].
 
 The present study seeks to overcome these limitations
 by using data-driven insights to complement and reflect on existing theory.
 To this end, a broad range of potential risk factors were analyzed using machine learning,
 and ranked in terms of predictive importance.
-<!-- These predictors may include both risk factors that render some youth susceptible to emotion regulation difficulties, and correlates that can be used to identify at-risk youth. -->
 Specifically,
-the SEM-forests algorithm was used to
-identify the most important early indicators, at age 13, of developmental trajectories
+<span id = "personcentered1">the SEM-forests algorithm [@brandmaierTheoryguidedExplorationStructural2016] was used as a person-centered analysis technique,
+to identify the most important early indicators (at age 13) of developmental trajectories
 of emotion regulation across adolescence (age 14 through 18).
-The resulting insights indicate which factors are most predictive of adolescents' diverging destinies in terms of emotion regulation development.
+The resulting insights indicate which factors are most predictive of adolescents' diverging trajectories of emotion regulation development, contributing to our understanding of why some youth flourish while others struggle [@croneUnderstandingAdolescencePeriod2012].</span>
 Armed with this knowledge, future research and interventions can focus on the most important predictors.
 Moreover, these insights can guide the formation of overarching theory that adequately represents essential phenomena.
 <!-- complement existing theory on adolescent emotion regulation using data-driven insights from machine learning. -->
@@ -120,7 +118,6 @@ The emotional salience of social stimuli is intensified, while the development o
 This imbalance might help motivate adolescents to engage in adaptive exploration:
 Seeking out experiences that challenge their socio-emotional competences and stimulate growth.
 At the same time, this imbalance may render some adolescents vulnerable to emotion dysregulation [@leeAdolescentMentalHealth2014].
-<!-- exposes youth to a risk of emotion dysregulation, -->
 For example, because they are not yet well-equipped to regulate the pursuit of unhealthy incentives,
 or persevere in pursuing adaptive goals when facing obstacles.
 Thus, some become trapped in a negative spiral characterized by more negative and volatile emotions [@craccoEmotionRegulationChildhood2017],
@@ -129,8 +126,10 @@ which has been linked to the emergence of several mental disorders [@schaferEmot
 <!-- but renders some of them vulnerable to emotion dysregulation1,10. Unfortunately, there is little theory about which risk factors and environmental hazards render adolescents susceptible to emotional difficulties11. -->
 <!-- Acquiring adaptive emotion regulation skills in adolescence plays a key role in this regard7,20, because t -->
  
-Empirical support for this notion of diverging destinies is evident from studies that examine developmental trajectories of emotion regulation in adolescence: 
+Longitudinal studies of emotion regulation development in adolescence provide preliminary empirical support for this notion of diverging trajectories: 
 Such studies consistently reveal large between-individual heterogeneity [see @craccoEmotionRegulationChildhood2017; @vanlissaRoleFathersMothers2019; @zimmermannEmotionRegulationEarly2014; @reindlSocializationEmotionRegulation2016].
+Although some studies have examined, on average, how strongly particular risk factors are associated with developmental trajectories 
+
 An important next step is to identify which risk factors render some adolescents susceptible to emotion dysregulation.
 <!-- This goal fits within the paradigm shift that has gripped the field of pedagogy, towards "person-centered" research, which focuses on individual developmental trajectories and within-family predictive processes, rather than average patterns across samples16,23. Seminal studies have applied "clustering" methods to identify youth with similar developmental trajectories14,24–26. Adolescents may follow similar trajectories for different reasons, however, and person-centered methods are too complex to accommodate more than a handful of theoretically-derived predictors. Unfortunately, relevant theory on adolescent emotion regulation development is limited27–29. The field is therefore at an impasse: We know that some adolescents are more susceptible to emotion dysregulation than others, but lack tools and theory to identify important predictors of individual development30. -->
 
@@ -222,11 +221,36 @@ use different research designs,
 different control variables and statistical models.
 Furthermore, conventional methods are ill-suited to overcome address this research question:
 <!-- In part, this limitation is a consequence of conventional methods: -->
-linear models limit the total number of predictors that can be included due to concerns of power, overfitting, and multicolinearity [REF].
+linear models limit the total number of predictors that can be included due to concerns of power, overfitting, and multicolinearity [@hastieElementsStatisticalLearning2009].
 By contrast, some machine learning methods offer a more holistic approach,
 as they can incorporate many candidate predictors and perform variable selection,
 while incorporating checks and balances to ensure generalizable results [@hastieElementsStatisticalLearning2009].
 The present study used a specific machine learning algorithm uniquely suited for theory-guided exploration: SEM-forests [@brandmaierTheoryguidedExplorationStructural2016].
+
+## Introduction to SEM-forests
+
+<span id = "semforests">The SEM-forests algorithm is based on the random forests algorithm, which in turn is based on regression trees [see @stroblIntroductionRecursivePartitioning2009].
+A single regression tree splits the sample repeatedly in two by whichever predictor $p$ makes both post-split groups maximally internally homogenous, and maximally different from one another.
+A random forest consists of many regression trees grown on bootstrapped samples from the original dataset.
+To ensure that each tree learns something different from the data, it may only consider a random subsample of $K$ candidates out of all $p$ predictors at each split.
+With this in mind, the SEM-forest algorithm operates as follows:
+
+1. Bootstrap the data with replacement; we used 1000 bootstrap replications
+2. For each bootstrap sample, construct a SEM tree:
+    i. Estimate the latent growth model on the bootstrap sample
+    ii. Consider a random selection of $K$ candidates out of all $p$ predictors; we used $k = 9$ based on the standard practice to use $K = \lfloor\sqrt{p}\rfloor$
+    iii. Identify the predictor $k$ and value of that predictor that, when using that predictor and value to split the sample in two, maximizes the difference in model parameters between the two post-split groups (as determined by a likelihood ratio test).
+    iv. Build a SEM-tree by repeating steps 3 and 4 until all post-split groups reach a minimum size that is too small for further splitting. The tree is then fully grown.
+3. Given an individual's scores on the predictor variables $p$, we can now traverse each tree in the forest to obtain a predicted value of the model parameters (in this case, the latent growth parameters). Aggregating the predicted parameters across all SEM-trees in the forest averages out prediction error.
+
+Each tree thus maps relationships between the predictors and outcome as a series of recursive splits of the data.
+This approach intrinsically accommodates non-linear effects and (complex) interactions, which is an advantage over parametric models that assume linearity.
+As a simple example, imagine that only very low levels of autonomy support would be associated with elevated levels of emotion regulation (i.e., a higher intercept).
+In regression analysis, this could be represented with a linear and quadratic term, and a plot might show that the effect of autonomy support on the intercept increases to a value $x_{knee}$, and then tapers off.
+A tree-based model would represent the same effect by splitting the sample on autonomy support at the value $x_{knee}$.
+The algorithm additionally performs variable selection;
+unimportant variables are not selected in step 2.iii.
+Thus, the number of predictors can be large without risking model non-identification.</span>
 
 <!-- * Predictors of latent growth model? -->
 <!--   + Only linear differences, few predictors (power) -->
@@ -262,7 +286,7 @@ We therefore used the SEM-forests algorithm to identify the most important early
 # Method
 
 `r ifelse(mask, "The Workflow for Open Reproducible Code in Science (WORCS)", "**Masked**")` was used to make analyses reproducible  `r ifelse(mask, "[@vanlissaWORCSWorkflowOpen2020]", "**(masked reference)**")`.
-All analysis code, supplemental materials and synthetic data are available at `r ifelse(mask, "<https://github.com/cjvanlissa/veni_forest>", "**masked URL**")`.
+All analysis code, Supplemental materials and synthetic data are available at `r ifelse(mask, "<https://github.com/cjvanlissa/veni_forest>", "**masked URL**")`.
 The original data (controlled access) and all study documentation are available via `r ifelse(mask, "<https://doi.org/10.17026/DANS-ZRB-V5WP>", "**masked URL**")`.
 
 ## Participants and procedure
@@ -271,11 +295,11 @@ The original data (controlled access) and all study documentation are available 
 desc_num <- read.csv("../desc_num.csv", stringsAsFactors = FALSE)
 desc_cat <- read.csv("../desc_cat.csv", stringsAsFactors = FALSE)
 ```
-Participants were 497 Dutch adolescents and their parents enrolled in the ongoing longitudinal study `r ifelse(mask, "RADAR [@branjeResearchAdolescentDevelopment2018]", "**(masked reference)**")`, which 
+<span id = "dutch">Participants were 497 Dutch adolescents and their parents enrolled in the ongoing longitudinal study `r ifelse(mask, "RADAR [@branjeResearchAdolescentDevelopment2018]", "**(masked reference)**")`, which 
 received ethical approval from the ethical committee of the University Medical Centre `r ifelse(mask, "Utrecht", "**masked**")`.
-The `r ifelse(mask, "RADAR", "**masked**")` sample was recruited from over 200 randomly selected elementary schools in the province of `r ifelse(mask, "Utrecht", "**masked**")`, and four main cities in `r ifelse(mask, "The Netherlands", "**masked**")`.
+The `r ifelse(mask, "RADAR", "**masked**")` sample was recruited from over 200 randomly selected elementary schools in the province of `r ifelse(mask, "Utrecht", "**masked**")`, and four main cities in `r ifelse(mask, "The Netherlands", "**masked**")`.</span>
 Of 1,544 eligible families, 497 produced informed consent and were included in the study.
-From 2006 to 2011, trained interviewers conducted annual home visits to collect questionnaire data.
+[From 2006 to 2011, trained interviewers conducted six annual measurement waves to collect questionnaire data during home visits.]{#waves}
 All independent variables were assessed in the first measurement wave.
 The dependent variable was measured from the second to the sixth wave.
 Families received €100 financial compensation for their participation in annual measurements.
@@ -312,7 +336,8 @@ As measurement invariance must be imposed in order to compare latent scores acro
 we compared a model with configural invariance ($BIC = 141247.46$)
 to a model that imposed metric invariance ($BIC = 140913.27$).
 The lower BIC indicates support for metric invariance.
-The RMSEA and SRMR of the invariant model indicated acceptable fit ($\text{RMSEA} = .05, \text{SRMR} = 0.05$), but the CFI indicated poor fit ($\text{CFI} = .80$).
+The RMSEA and SRMR of the metric invariance model indicated acceptable fit ($\text{RMSEA} = .05, \text{SRMR} = 0.05$), but the CFI indicated poor fit ($\text{CFI} = .80$).
+[Note that the RMSEA has been found to be more sensitive to misspecifications of growth curve models [@leiteDetectingGrowthShape2011]]{#cfi}.
 As score reliability and standardized factor loadings were high across all waves ($\lambda \in [0.44, 0.84]$),
 we considered it acceptable to proceed with individual factor scores for further analysis.
 
@@ -321,10 +346,17 @@ we considered it acceptable to proceed with individual factor scores for further
 We set out to identify operationalizations of all relevant phenomena identified in @vanlissaMappingPhenomenaRelevant2021 that were available in the RADAR data.
 This yielded 87 candidate predictors, of which `r nrow(desc_cat)` categorical (see Table \@ref(tab:tabcat)), `r sum(is.na(desc_num$Items))` numerical, and `r sum(!is.na(desc_num$Items))` multi-item scales, see Table \@ref(tab:tabnum).
 <!-- SB: I miss a reflection on the extent to which the available data cover all relevant predictors -->
-For multi-item scales, we used principal components analysis for dimension reduction.
-Across all scales, the explained variance of the first component ranged from $R^2 \in [0.18, 0.90]$.
-This first component represents the largest amount of shared variance among the scale items, and was used for further analysis.
-[Supplementary Table S1](https://github.com/cjvanlissa/veni_forest/blob/master/supplemental_table_1.csv) additionally reports skew and kurtosis,
+We used principal components analysis to obtain a single score for multi-item scales without making additional assumptions about the underlying measurement model.
+For each scale, we retained the first component for further analysis, which represents the largest amount of shared variance among the scale items.
+For example, consider the construct *neuroticism*, which was measured on a seven point Likert scale.
+Participants were asked to indicate "Please indicate to what extent you posess these traits" for six adjectives associated with neuroticism.
+Principal components analysis indicated that the first component was the only component with an Eigenvalue greater than one (3.22, other Eigenvalues [0.99 - .33].
+This component explained the majority of variance in all six adjectives, $R^2 = .54$, other components $R^2 = [.16 - .05]$.
+All adjectives loaded highly on this first component, $L = [.54 - .83]$.
+We thus used this first component as operationalization of the construct neuroticism.
+Across all other scales, the explained variance of the first component ranged from $R^2 \in [0.18, 0.90]$, which corresponded to 1.60 - 17.46 times as much variance as could be expected if each dimension of the scale explained equal variance.
+We thus considered these principal components to be adequate operationalizations of the scales.
+[Supplemental Table S1](https://github.com/cjvanlissa/veni_forest/blob/master/supplemental_table_1.csv) additionally reports skew and kurtosis,
 minimum and maximum factor loadings,
 sample items,
 and references to the validation paper for each scale.
@@ -351,11 +383,12 @@ papaja::apa_table(desc_num, caption = "Sample descriptive statistics for continu
 The SEM-forests algorithm requires complete data and cannot accommodate multiple imputed data.
 Consequently, we used single imputation using the missForest algorithm,
 a random forests based approach with comparable performance to multiple imputation and FIML estimation [@stekhovenMissForestNonparametricMissing2012].
-This method is valid when missingness is either random or contingent on observed data (MAR or MCAR).
+This method is valid, regardless of whether missingness is random or contingent on observed data (MAR or MCAR).
 It does not make any distributional assumptions and does not extrapolate,
 meaning it returns realistic values within the range of the observed data.
 The proportion of missingness ranged from $`r report(min((495-desc_cat[["n"]])/495), equals = F)` - `r report(max((495-desc_cat[["n"]])/495), equals = F)`$ for categorical data (see Table \@ref(tab:tabcat)),
 and from $`r report(min((495-desc_num[["n"]])/495), equals = F)` - `r report(max((495-desc_cat[["n"]])/495), equals = F)`$ for continuous data (see Table \@ref(tab:tabnum)).
+[We compared participants with missing- versus complete data on demographic characteristics (sex, age, socio-economic status, religion and religiosity) and scores of emotion regulation in all waves, and found no significant differences, $p = [0.06, 0.48]$.]{#missing}
 <!-- Original publication had up to 30% missing, Wolputte, E. V., & Blockeel, H. (2020, October). Missing value imputation with MERCS: a faster alternative to MissForest. In International Conference on Discovery Science (pp. 502-516). Springer, Cham. looked at higher numbers. According to Mplus: minimum 10% -->
 
 ## Strategy of analyses
@@ -369,8 +402,9 @@ analysis results are displayed in [Supplemental Table 2](https://github.com/cjva
 To ensure model convergence in small classes, the latent variable covariance matrix was restricted to zero,
 reflecting the assumption of homogeneity of trajectories,
 with remaining heterogeneity attributed to error variance.
-Class solutions with more than two classes were excluded from consideration due to low class separability (entropy < .9).
 The LMR likelihood ratio test indicated that two classes significantly improved fit ($p < .001$); more classes did not ($p = .26$).
+[Furthermore, results indicated that solutions with more than two classes had low class separability (entropy < .9),
+which means that these solutions are less interpretable [@jungIntroductionLatentClass2008].]{#entropy}
 As displayed in Figure \@ref(fig:figclass),
 about 25% of youth were at-risk for emotion dysregulation,
 a similar proportion to what was found in previous studies [cf @leeAdolescentMentalHealth2014].
@@ -379,33 +413,19 @@ a similar proportion to what was found in previous studies [cf @leeAdolescentMen
 knitr::include_graphics("../classplot.pdf")
 ```
 
-As we set out to identifying important predictors of emotion regulation development,
-this latent class analysis is not sufficient to answer our research question.
-In latent class analysis, individuals are clustered only with respect the the outcome (growth trajectories), to ensure maximum homogeneity of growth trajectories in each class.
+As our research question was to identifying important predictors of emotion regulation development,
+this latent class analysis does not yet provide an adequate answer.
+Latent class analysis clusters individuals only with respect to the outcome (growth trajectories), and ensures maximum homogeneity of growth trajectories in each class.
 It thus answers the question: "Which adolescents have similar growth trajectories"?
-SEM-forests similarly aim to ensure maximum homogeneity of growth trajectories within clusters,
-but they differ from latent class analysis in that they cluster individuals by reference to a set of predictors.
+SEM-forests similarly aim for maximum homogeneity of growth trajectories within clusters,
+but unlike latent class analysis, they cluster individuals by reference to a set of *predictors*.
 They thus answer the question: "Why do some adolescents have similar growth trajectories"?
 This method is suitable to meet the study goals.
 
-For the SEM-forests analysis,
+<span id = "homogeneity">For the SEM-forests analysis,
 we imposed an additional restriction on the diagonal of the residual covariance matrix,
 reflecting an assumption of homoscedastic residuals over time.
-The SEM-forests algorithm operates as follows:
-
-1. Bootstrap the data with replacement; we used 1000 bootstrap replications
-2. For each bootstrap sample, construct a SEM tree:
-    i. Estimate the latent growth model on the bootstrap sample
-    ii. Consider a random selection of $K$ candidates out of all $p$ predictors; we used $k = 9$ based on the standard practice to use $K = \lfloor\sqrt{p}\rfloor$
-    iii. Identify the predictor $k$ and value of that predictor that, when using that predictor and value to split the sample in two, maximizes the likelihood ratio $LR$ of a post-split multigroup model
-    iv. Repeat steps 3 and 4 until all post-split groups reach a minimum size
-3. Aggregate predictions from all SEM-trees
-
-Each tree thus maps relationships between the predictors and outcome as a series of recursive splits of the data.
-This approach intrinsically accommodates non-linear effects and (complex) interactions, which is an advantage over parametric models that assume linearity.
-The algorithm additionally performs variable selection;
-unimportant variables are not selected in step 2.iii.
-Thus, the number of predictors can be large without risking model non-identification.
+We deemed this assumption to be necessary because the dataset is relatively small, and we wanted the model to be as simple as possible.</span>
 
 Our primary outcome of interest, variable importance,
 is defined as the average absolute increase in model misfit due to randomization of each variable.
@@ -426,7 +446,8 @@ $$
 \hat{\boldsymbol{g}}_s = \frac{1}{n}\sum^{n}_{i = 1}\hat{f}(s, \boldsymbol{X}_{-p})
 $$
 
-For continuous predictors, three values of $s$ were used - namely the percentiles corresponding to the median, $+/- 1 SD$ of a standard normal distribution.
+[For continuous predictors, three values of $s$ were used - namely the percentiles, computed on the observed data, corresponding to the median, $+/- 1 SD$ of a standard normal distribution (i.e., the $16^{th}$ and $84^{th}$ percentile).
+For convenience, these percentiles are labeled as $+/- 1 SD$ in Figure \@ref(fig:figpdp1)-\@ref(fig:figpdp4).]{#percentiles}
 For categorical predictors, all unique values were used.
 
 <!-- $$ -->
@@ -479,9 +500,9 @@ For categorical predictors, all unique values were used.
 ## Variable importance
 
 Candidate predictors were rank-ordered by their relative variable importance,
-as illustrated in Figure 1.
+as illustrated in Figure \@ref(fig:figvarimp).
 <!-- Table \@ref(tab:tablegend) provides a brief legend of the 30 most important variables, and  -->
-Supplementary Table S1 provides a full legend of all variables.
+Supplemental Table S1 provides a full legend of all variables.
 
 ```{r figvarimp, fig.cap="Predictors ranked in order of relative importance. m: mother, f: father, b: best friend, s: sibling."}
 knitr::include_graphics("../pcomb.pdf")
@@ -577,7 +598,7 @@ All empathy dimensions except perspective taking predicted greater emotion dysre
 as did different daily negative emotions,
 parental stress and interparental conflict,
 age and pubertal development,
-and sex (boys girls reported better emotion regulation).
+and sex (boys reported better emotion regulation).
 
 <!-- Categories:  -->
 
@@ -589,6 +610,18 @@ and sex (boys girls reported better emotion regulation).
 <!-- * Parenting (perceived and parent-reported) -->
 <!-- * Conflict resolution styles -->
 
+## Post-hoc frequentist analyses
+
+A Reviewer suggested following up the planned machine learning analysis with follow-up analyses that might be more familiar to a developmental readership:
+Regressing the parameters (intercept, slope and quadratic slope) of a latent growth model on each predictor in turn.
+Such analyses might be helpful to plan hypotheses and perform power analysis for follow-up research within the SEM framework.
+However, we strongly caution against over-interpretation.
+Unlike the machine learning analyses, these analyses do not accommodate non-linear effects or interactions, nor are effects controlled for other predictors.
+The results are merely descriptive and should not be used to perform inference.
+[Supplemental Table S3](https://github.com/cjvanlissa/veni_forest/blob/master/supplemental_table_3.csv) reports standardized regression coefficients with significance asterisks for all continuous and binary predictors, and significance asterisks of Likelihood Ratio tests for multi-group categorical predictors.
+All models had good fit ($RMSEA < .07$, $CFI > .99$, $SRMR < .04$).
+Out of all predictors, 79% had a significant effect on the intercept, 24% on the slope, and 18% on the quadratic slope.
+This indicates that our machine learning analyses indeed recovered relevant patterns in the data.
 
 # Discussion
 
@@ -603,8 +636,10 @@ Conflict frequency and behavior also ranked highly.
 Parenting ranked relatively low, with two notable exceptions:
 First, balanced relatedness, a measure of autonomy support, was an important protective factor, and second,
 among all remaining parenting constructs, negative and intrusive dimensions were more predictive (as risk factors) than positive or neutral parenting practices.
-Themes that ranked notably low were family demographics (SES and religion),
-bullying, victimization and delinquency, and substance use.
+Themes that ranked notably low were family demographics (SES and religion) and bullying, victimization and delinquency, and substance use.
+The relatively low importance of demographics might be attributable to a restriction of range, as the sample was relatively homogenous.
+Still, other empirical studies have also found little evidence for a direct effect of, for example, SES on adolescent emotion regulation [e.g., @defranceExpandingContextRole2021].
+It is thus also possible that the population effect is small, or that it is fully mediated by more proximal process variables.
 
 ## Implications for theory
 
@@ -693,6 +728,9 @@ By default, all inputs are set to the median and mode values.
 This means that users can use informative input for the most important predictors,
 while keeping other less important predictors constant at the most common value.
 The ERRATA application is open source, and can thus be customized for clinical use.
+The source code is available at <https://github.com/cjvanlissa/shiny_errata>;
+users can run the app from a local R instance,
+or view an online demo using a link in the README file of this repository (as long hosting is available).
 
 ```{r figerrata, fig.cap="Screen captures of the ERRATA app."}
 knitr::include_graphics("errata.png")
@@ -785,7 +823,7 @@ Another contribution is that the results have clear implications for theory, ass
 The study also has limitations, most notably that the sample was selective,
 which may limit the generalizability of the findings.
 Specifically, this was a non-random, ethnically and socially relatively homogeneous sample from the Netherlands.
-This raises specific concerns, for example, that the low importance of SES might be due to a restriction of range.
+This raises specific concerns, for example, that the low importance of the demograpic factors SES and religion might be due to a restriction of range.
 The sample might also be somewhat dated - especially considering daily life has changed drastically for youth coming of age in a post-pandemic world.
 The only way to address these concerns is to replicate these findings in other samples.
 Note that all code is made available in a reproducible archive to facilitate replication.
@@ -803,12 +841,18 @@ This indicates that predictors less susceptible to common method bias nonetheles
 One final limitation related to the data is the relatively small sample size.
 Machine learning methods benefit from large samples.
 Although random forests are relatively robust to overfitting,
-larger samples will likely yield more generalizable results,
-and also afford more complicated models (thus removing the need for assumptions such as homogeneity of residuals).
-Other limitations pertain to the method; for instance, SEM-forests require vast computational resources.
-Computational constraints thus prevented us from tuning the model beyond default settings,
-and from exploring marginal effects for higher order interactions.
-Moreover, at the time of writing, there is not yet a method to evaluate the overall fit of a SEM-forest.
+larger samples will likely yield more generalizable results.
+<span i = "homogeneity2">Larger samples also afford more complicated models.
+We saw the need, for example, to assume homogeneity of residuals within each node of the SEM-forest.
+This assumption is likely violated in some nodes; a larger sample would allow us to freely estimate residuals.
+Note, however, that many other assumptions are also likely violated in some nodes (e.g., the shape of the growth trajectory).
+This limitation is inherent to the method.</span>
+Other limitations related to SEM-forests include the fact that,
+unlike in traditional random forests, there is no error metric that could be used to calculate fit in a hold-out testing sample.
+By extension, at the time of writing, there are not yet methods for cross-validation, model tuning, or evaluating the overall fit of a SEM-forest, as these too require an error metric.
+Finally, SEM-forests require substantial computational resources,
+which also limit the ability to compute different iterations of the model beyond default settings,
+or to exploring marginal effects for higher order interactions.
 
 ## Conclusions
 

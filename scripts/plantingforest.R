@@ -37,6 +37,14 @@ fa.parallel(df_anal[, grepl("^de[2-6]", names(df_anal))])
 dv <- principal(df_anal[, grepl("^de[2-6]", names(df_anal))])
 dv$scores
 df_pres <- data.frame(dv$scores, df_anal[, !grepl("^de[2-6]", names(df_anal))])
+
+anymiss <- readRDS("anymiss.RData")
+checkthese <- df_anal[, grepl("^de[2-6]", names(df_anal))]
+range(sapply(names(checkthese), function(n){
+  tmp <- lm(checkthese[[n]] ~ anymiss)
+  summary(tmp)$coefficients[2, 4]
+  }))
+
 library(ranger)
 library(tuneRanger)
 tunetask <- makeRegrTask(data = df_pres, target = "PC1")
@@ -57,6 +65,10 @@ p <- p +
   scale_fill_manual(values = c("FALSE" = "white", "TRUE" = "black"))+
   theme(legend.position = "none")
 
+
+# Post hoc linear models --------------------------------------------------
+
+source("posthocmodels.R")
 
 # SEM forest --------------------------------------------------------------
 basicgrowth <- lavaan::growth("i =~ 1*de2 + 1*de3 + 1*de4 + 1*de5 + 1*de6

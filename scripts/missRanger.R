@@ -152,6 +152,17 @@ intvars <- intvars[!intvars %in% numvars]
 reldata[intvars] <- lapply(reldata[intvars], drop_floats)
 table(drop_floats(reldata$de21aa03))
 saveRDS(reldata, "reldata.RData")
+
+miss<- is.na(reldata)
+anymiss <- apply(miss, 1, any)
+saveRDS(anymiss, "anymiss.RData")
+checkthese <- reldata[c("geslacht", "brpmoe_lmh", "brpvad_lmh", "sesgez_low", "bg11aa04", "reli")]
+range(c(sapply(names(checkthese), function(n){
+  chisq.test(factor(anymiss), factor(reldata[[n]]))$p.value
+}), leeftijd = t.test(reldata$leeftijd_target_11~ anymiss)$p.value))
+
+# reldata <- readRDS("reldata.RData")
+# misstest <- mice::mcar(reldata, replications = 1000)
 #!
 # @Caspar - make sure to adjust the num.trees parameter! 
 #!

@@ -111,6 +111,13 @@ pc_mat <- t(sapply(pred_list, function(x){
 #pc_mat <- pc_mat[!is.na(pc_mat[, 2]), ]
 range(pc_mat[,1][!pc_mat[,1]==1])
 
+# How much more variance does the first component explain than expected by chance?
+range(sapply(pred_list, function(x){
+  tst <- summary(x)
+  if(ncol(x$x) == 1) return(NA)
+  tst$importance[2,1]/(1/ncol(x$x))
+}), na.rm = TRUE)
+
 #library(psych)
 #fa.parallel(data[scales_list$schoolprestatie_aa], fa = "pc", plot = FALSE)
 #summary(prcomp(data[scales_list$schoolprestatie_aa]))
