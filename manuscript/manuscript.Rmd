@@ -239,15 +239,15 @@ With this in mind, the SEM-forest algorithm operates as follows:
 2. For each bootstrap sample, construct a SEM tree:
     i. Estimate the latent growth model on the bootstrap sample
     ii. Consider a random selection of $K$ candidates out of all $p$ predictors; we used $k = 9$ based on the standard practice to use $K = \lfloor\sqrt{p}\rfloor$
-    iii. Identify the predictor $k$ and value of that predictor that, when using that predictor and value to split the sample in two, maximizes the difference in model parameters between the two post-split groups (as determined by a likelihood ratio test).
-    iv. Build a SEM-tree by repeating steps 3 and 4 until all post-split groups reach a minimum size that is too small for further splitting. The tree is then fully grown.
-3. Given an individual's scores on the predictor variables $p$, we can now traverse each tree in the forest to obtain a predicted value of the model parameters (in this case, the latent growth parameters). Aggregating the predicted parameters across all SEM-trees in the forest averages out prediction error.
+    iii. [Identify the predictor $k$ and value of that predictor that, when using that predictor and value to split the sample in two, maximizes the difference in model parameters between the two post-split groups (as determined by a likelihood ratio test).]{#stepiii}
+    iv. [Build a SEM-tree by repeating steps 3 and 4 until all post-split groups reach a minimum size that is too small for further splitting. The tree is then fully grown.]{#fullygrown}
+3. [Given an individual's scores on the predictor variables $p$, we can now traverse each tree in the forest to obtain a predicted value of the model parameters (in this case, the latent growth parameters). Aggregating the predicted parameters across all SEM-trees in the forest averages out prediction error.]{#predictions}
 
 Each tree thus maps relationships between the predictors and outcome as a series of recursive splits of the data.
 This approach intrinsically accommodates non-linear effects and (complex) interactions, which is an advantage over parametric models that assume linearity.
-As a simple example, imagine that only very low levels of autonomy support would be associated with elevated levels of emotion regulation (i.e., a higher intercept).
+<span id = "examplenonlinear">As a simple example, imagine that only very low levels of autonomy support would be associated with elevated levels of emotion regulation (i.e., a higher intercept).
 In regression analysis, this could be represented with a linear and quadratic term, and a plot might show that the effect of autonomy support on the intercept increases to a value $x_{knee}$, and then tapers off.
-A tree-based model would represent the same effect by splitting the sample on autonomy support at the value $x_{knee}$.
+A tree-based model would represent the same effect by splitting the sample on autonomy support at the value $x_{knee}$.</span>
 The algorithm additionally performs variable selection;
 unimportant variables are not selected in step 2.iii.
 Thus, the number of predictors can be large without risking model non-identification.</span>
@@ -612,7 +612,7 @@ and sex (boys reported better emotion regulation).
 
 ## Post-hoc frequentist analyses
 
-A Reviewer suggested following up the planned machine learning analysis with follow-up analyses that might be more familiar to a developmental readership:
+<span id = "posthoc">A Reviewer suggested following up the planned machine learning analysis with follow-up analyses that might be more familiar to a developmental readership:
 Regressing the parameters (intercept, slope and quadratic slope) of a latent growth model on each predictor in turn.
 Such analyses might be helpful to plan hypotheses and perform power analysis for follow-up research within the SEM framework.
 However, we strongly caution against over-interpretation.
@@ -621,7 +621,7 @@ The results are merely descriptive and should not be used to perform inference.
 [Supplemental Table S3](https://github.com/cjvanlissa/veni_forest/blob/master/supplemental_table_3.csv) reports standardized regression coefficients with significance asterisks for all continuous and binary predictors, and significance asterisks of Likelihood Ratio tests for multi-group categorical predictors.
 All models had good fit ($RMSEA < .07$, $CFI > .99$, $SRMR < .04$).
 Out of all predictors, 79% had a significant effect on the intercept, 24% on the slope, and 18% on the quadratic slope.
-This indicates that our machine learning analyses indeed recovered relevant patterns in the data.
+This indicates that our machine learning analyses indeed recovered relevant patterns in the data.</span>
 
 # Discussion
 
@@ -653,6 +653,14 @@ and the macrosystem indicator religiosity was among the least important predicto
 Future theory might thus emphasize proximal factors over distal ones [see also @sameroffUnifiedTheoryDevelopment2010].
 <!-- SB: So in a way this is support for the specific theories that tend to focus on proximal factors such as personality and parenting? -->
 <!-- Yet perhaps there was too little variation in relevant macro factors (ethnicity, SES/poverty, cultural differences in ER) -->
+
+<span id = "includepersonality">Several personality traits emerged as particularly important proximal predictors.
+According to a recent review on personality and emotion regulation (in adults),
+personality is a broad framework for describing psychological capacities,
+of which emotion regulation is one [@hughesPersonalityTraitsEmotion2020].
+This view is certainly supported by our findings,
+and yet research on adolescents does not routinely assess the role of personality alongside factors of particular interest in our discipline, such as parenting, peer relationships, and problem behavior [@vanlissaMappingPhenomenaRelevant2021].
+This is certainly a promising area for future research.</span>
 
 Another relevant insight for theory formation is that
 results were somewhat consistent with one of the few theories specific to (adolescent) emotion regulation development: the tripartite model,
@@ -707,10 +715,12 @@ Considering the empirical importance of phenomena may provide guidance in focusi
 
 ## Implications for practice
 
-These findings have several implications for the early identification of youth at-risk for emotion regulation difficulties.
-The fact that individual-level predictors were most important
-suggests that individual assessments might be sufficient.
-Holistic approaches that involve the family system might not be necessary for preliminary risk assessment.
+[These findings have several implications for the early identification of youth at-risk for emotion regulation difficulties.
+The fact that individual-level predictors were most important in predicting adolescents' diverging developmental trajectories suggests that it might be possible to perform preliminary risk assessments for emotion dysregulation using only adolescent-reported individual differences.
+Although the focus in clinical practice is shifting towards holistic approaches that involve the family system,
+this may not always be feasible.
+For instance, a family member may refuse to cooperate, or holistic assessment may be too costly.
+In such cases, it is useful to know that individual differences carry substantial informational value.]{#riskassessment}
 Moreover, some of the most important predictors are already routinely assessed (for example, big five personality).
 Other important predictors are overt, and thus easily observed by teachers and parents - for example, externalizing problem behavior and conflict frequency and behavior.
 Future research might thus develop and validate risk assessment instruments
@@ -727,10 +737,10 @@ which are mapped to the percentiles of the observed data distribution correspond
 By default, all inputs are set to the median and mode values.
 This means that users can use informative input for the most important predictors,
 while keeping other less important predictors constant at the most common value.
-The ERRATA application is open source, and can thus be customized for clinical use.
+<span id = "errata">The ERRATA application is open source, and can thus be customized for clinical use.
 The source code is available at <https://github.com/cjvanlissa/shiny_errata>;
 users can run the app from a local R instance,
-or view an online demo using a link in the README file of this repository (as long hosting is available).
+or view an online demo using a link in the README file of this repository (as long hosting is available).</span>
 
 ```{r figerrata, fig.cap="Screen captures of the ERRATA app."}
 knitr::include_graphics("errata.png")
@@ -823,10 +833,14 @@ Another contribution is that the results have clear implications for theory, ass
 The study also has limitations, most notably that the sample was selective,
 which may limit the generalizability of the findings.
 Specifically, this was a non-random, ethnically and socially relatively homogeneous sample from the Netherlands.
-This raises specific concerns, for example, that the low importance of the demograpic factors SES and religion might be due to a restriction of range.
+[Cultural values, which differ across and within countries,
+have been found to influence people's motivation to regulate emotions, as well as the strategies they use and their adaptiveness [@fordCultureEmotionRegulation2015].
+In cross-cultural comparisons, the Netherlands has been found (on average) to ascribe to similar cultural values as large Anglophonic countries (e.g., the United States, Canada, and Australia) [@terlutterGLOBEStudyApplicability2006].
+Whether our findings also generalize to populations that adhere to different cultural values remains an open question.]{#culture}
+Another concern related to generalizability is that the relative homogeneity of our sample in terms of demograpic factors, like SES and religion, might have contributed to their lower variable importance.
 The sample might also be somewhat dated - especially considering daily life has changed drastically for youth coming of age in a post-pandemic world.
 The only way to address these concerns is to replicate these findings in other samples.
-Note that all code is made available in a reproducible archive to facilitate replication.
+To facilitate such replications, all code is made available in a reproducible archive.
 Another limitation is that the data source was a panel study with mostly questionnaire measures.
 All conclusions are conditional on the available data; thus, for example,
 our study cannot speak to the potential importance of biological (except pubertal development),
@@ -842,14 +856,15 @@ One final limitation related to the data is the relatively small sample size.
 Machine learning methods benefit from large samples.
 Although random forests are relatively robust to overfitting,
 larger samples will likely yield more generalizable results.
-<span i = "homogeneity2">Larger samples also afford more complicated models.
+<span id = "homogeneity2">Larger samples also afford more complicated models.
 We saw the need, for example, to assume homogeneity of residuals within each node of the SEM-forest.
 This assumption is likely violated in some nodes; a larger sample would allow us to freely estimate residuals.
 Note, however, that many other assumptions are also likely violated in some nodes (e.g., the shape of the growth trajectory).
 This limitation is inherent to the method.</span>
-Other limitations related to SEM-forests include the fact that,
+<span id = "limitations">Other limitations related to SEM-forests include the fact that,
 unlike in traditional random forests, there is no error metric that could be used to calculate fit in a hold-out testing sample.
 By extension, at the time of writing, there are not yet methods for cross-validation, model tuning, or evaluating the overall fit of a SEM-forest, as these too require an error metric.
+Note, however, that even without model tuning, random forests tend to achieve competitive performance [@probstHyperparametersTuningStrategies2019].</span>
 Finally, SEM-forests require substantial computational resources,
 which also limit the ability to compute different iterations of the model beyond default settings,
 or to exploring marginal effects for higher order interactions.

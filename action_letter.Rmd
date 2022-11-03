@@ -14,7 +14,6 @@ library(revise)
 man <- revise::read_manuscript("manuscript/manuscript.Rmd")
 ```
 
-
 Dear Dr. `r rmarkdown::metadata$editor`,
 
 Thank you for considering my manuscript for publication in _`r rmarkdown::metadata$journal`_.
@@ -152,39 +151,33 @@ And by addressing it further in the Limitations section:
 
 `r get_revision(man, "homogeneity")`
 
-
 \RC{Could you speak a little more (maybe just a sentence or so) on the importance of step 2 substep iii. In the SEM forest algorithm? It was hard for me to follow why identifying the value of preditor k that maximizes the likelihood ratio of a post-split two-group model indicates best model fit. I suspect just another sentence or so of clarification is needed.}
 
 We have simply rewritten this step in an attempt to address this comment. It now reads:
 
-> Identify the predictor $k$ and value of that predictor that, when using that predictor and value to split the sample in two, maximizes the difference in model parameters between the two post-split groups (as determined by a likelihood ratio test).
+`r get_revision(man, "stepiii")`
 
 \RC{Could you speak more to the importance of why steps 3 and 4 need to be repeated until all post-split groups reach a minimum size? What would that minimum size be and why is it important?}
 
 To address this comment, we have rewritten this step as follows:
 
-> Build a SEM-tree by repeating steps 3 and 4 until all post-split groups reach a minimum size that is too small for further splitting. The tree is then fully grown.
+`r get_revision(man, "fullygrown")`
 
 Additionally, we have rewritten the introduction to the SEM-forests algorithm to provide more context, thereby hopefully making it easier for readers to grasp:
 
-> The SEM-forests algorithm is based on the random forests algorithm, which in turn is based on regression trees [see @stroblIntroductionRecursivePartitioning2009].
-A single regression tree splits the sample repeatedly in two by whichever predictor $p$ makes both post-split groups maximally internally homogenous, and maximally different from one another.
-A regression forest consists of many regression trees grown on bootstrap samples of the data. To ensure that each tree learns something different from the data, it may only consider a random subsample of $K$ candidates out of all $p$ predictors at each split.
-With this in mind, the SEM-forest algorithm operates as follows... [etc]
+`r get_revision(man, "semforests")`
 
 \RC{How are predictions aggregated from all SEM-trees? If you could offer even just a sentence or two on that process in a way a “traditional” “applied” longitudinal researcher (like me) would understand, I think such readers would be very grateful.}
 
 We have added the following explanation:
 
-> Given an individual's scores on the predictor variables $p$, we can now traverse each tree in the forest to obtain a predicted value of the model parameters (in this case, the latent growth parameters). Aggregating the predicted parameters across all SEM-trees in the forest averages out prediction error.
+`r get_revision(man, "predictions")`
 
 \RC{Could you provide a quick applied example to accompany this statement “This approach intrinsically accommodates non-linear effects as subsequent splits on the same predictor, and complex interactions as subsequent splits on interacting variables. This offers greater flexibility than linear parametric models.”. Again, I think providing an example would allow non-machine learning researchers to follow what you are doing here even more clearly.}
 
 We have added the following example:
 
-> As a simple example, imagine that only very low levels of autonomy support would be associated with elevated levels of emotion regulation (i.e., a higher intercept).
-In regression analysis, this could be represented with a linear and quadratic term, and a plot might show that the effect of autonomy support on the intercept increases to a value $x_{knee}$, and then tapers off.
-A tree-based model would represent the same effect by splitting the sample on autonomy support at the value $x_{knee}$.
+`r get_revision(man, "examplenonlinear")`
 
 \RC{I think the results clearly presented a complex set of findings. I really appreciated the grouping by theme.
 • I have seen many ML applications split data sets into “train” and “test” sub-samples, to validate the findings in the “train” data set in the “test” data set. As far as I can tell, that was not done here. Did the authors consider this approach? I feel like having “test” and “train” sub-samples wherein results are replicated would provide further robustness and validity to study findings. I also understand if that procedure is not possible with the SEM forests approach.}
@@ -193,9 +186,7 @@ Thank you for bringing up this point. This is indeed common practice in "standar
 
 We had mentioned this in the Limitations section, but evidently that statement was not sufficiently clear. To address this comment, we have rewritten that section as follows:
 
-> Other limitations related to SEM-forests include the fact that,
-unlike in traditional random forests, there is no error metric that could be used to calculate fit in a hold-out testing sample.
-By extension, at the time of writing, there are not yet methods for cross-validation, model tuning, or evaluating the overall fit of a SEM-forest, as these too require an error metric.
+`r get_revision(man, "limitations")`
 
 \RC{I know ensuring the article remains inside page limits is always a battle, but I had a suggestion for one additional, hopefully simplistic analysis that might even further bridge the “gap” between these machine learning analyses and “traditional, frequentist” analyses. Perhaps the authors could take only the most important predictors, say the top 10 (or really whatever number they want), and run regression analyses that predict trajectory intercepts and slopes? Basically, I know that people like me really like explanations like “oh yeah, these top 10 machine learning predictors predict XX% of variance in emotion regulation scores over time”, and so I was trying to think of a way to generate those sorts of tangible, “traditional” effect sizes. Could the authors potentially provide such effect size estimates? I also understand if there simply isn’t time or space for this, but figured it was worth asking.}
 
@@ -203,25 +194,14 @@ Thank you for this suggestion; we agree that many people would be interested in 
 
 To address this comment, we have added the following paragraph and an additional Supplemental Table:
 
-> A Reviewer suggested following up the planned machine learning analysis with follow-up analyses that might be more familiar to a developmental readership:
-Regressing the parameters (intercept, slope and quadratic slope) of a latent growth model on each predictor in turn.
-Such analyses might be helpful to plan hypotheses and perform power analysis for follow-up research within the SEM framework.
-However, we strongly caution against over-interpretation.
-Unlike the machine learning analyses, these analyses do not accommodate non-linear effects or interactions, nor are effects controlled for other predictors.
-The results are merely descriptive and should not be used to perform inference.
-[Supplemental Table S3](https://github.com/cjvanlissa/veni_forest/blob/master/supplemental_table_3.csv) reports standardized regression coefficients with significance asterisks for all continuous and binary predictors, and significance asterisks of Likelihood Ratio tests for multi-group categorical predictors.
-All models had good fit ($RMSEA < .07$, $CFI > .99$, $SRMR < .04$).
-Out of all predictors, 79% had a significant effect on the intercept, 24% on the slope, and 18% on the quadratic slope.
-This indicates that our machine learning analyses indeed recovered relevant patterns in the data.
+`r get_revision(man, "posthoc")`
 
 \RC{I appreciated the brave and nuanced discussion of how these analyses conform to, and also challenge, traditionally held norms in the field of emotion regulation. I especially appreciated the identification that parenting, substance use, and bullying might not be the risk factors we think they are.
 • The ERRATA tool seems amazing; I couldn’t find it online. Could a link be provided directly in the text?}
 
 To address this comment, we have added the following information:
 
-> The source code is available at <https://github.com/cjvanlissa/shiny_errata>;
-users can run the app from a local R instance,
-or view an online demo using a link in the README file of this repository (as long hosting is available).
+`r get_revision(man, "errata")`
 
 \RC{I love the notion of “good enough” parenting environment and preconditions, and its’ application here; I thought the link between non-linear effects and “good enough” parenting environments was such an incredible example of translating a statistical insight into “on the ground” wisdom that can be applied by clinicians.}
 
@@ -229,7 +209,9 @@ Thank you for these kind words!
 
 \RC{The only part of the results that were left relatively untouched by the Discussion was the relatively large importance of Big 5 personality traits as predictors of adolescent emotion regulation. Could the authors comment on what they thought about those findings? I am especially interested to hear the authors thoughts about those results, because I feel like investigation of personality traits is so often “siloed” away from investigation of parenting, substance use, and other phenomena when it comes to adolescent emotion regulation. So I think it would be especially important to also highlight those findings in the Discussion.}
 
-REF
+We thank the Reviewer for this hepful suggestion, and have written the following to address it:
+
+`r get_revision(man, "includepersonality")`
 
 \RC{I think there are some broken links to supplemental materials in the manuscript.}
 
@@ -241,7 +223,7 @@ We have done as suggested and corrected any errors found.
 
 \RC{Pages 43 to 65 of the manuscript materials appeared cut-off and unreadable in many areas.}
 
-We apologize. The manuscript only has 42 pages; pages 43-65 are copies of the online supplemental materials. The submission portal has trouble correctly presenting these materials, but they will not be part of the paper.
+We apologize. The manuscript only has 42 pages; pages 43-65 are copies of the online supplemental materials (which are supposed to be accessed via the broken links, which have now been fixed). For the sake of blind review, we also submitted copies of these tables through the submission portal, but it evidently cannot correctly present these materials. The tables will not be part of the paper in this form.
 
 # Reviewer: 2
 
@@ -252,7 +234,22 @@ Overall, I found the manuscript to be ambitious and interesting. The size and lo
 
 \RC{1. I think that the number of predictors used should be tuned during cross-validation rather than set to 9 or, at least, multiple values should be compared. Similarly, I think that the complexity parameter should be tuned or compared. Please comment on why this wasn’t done.}
 
+We understand why the Reviewer expects the analysis to include model tuning and cross-validation; these are standard procedures in machine learning.
+However, these methods do not (yet?) exist for SEM-forests.
+This is because there is no single error metric for SEM-forests that can be optimized.
+For standard random forests, this error metric is the root mean squared error (difference between predicted and observed values for all cases).
+The "outcome" of each regression tree in the SEM-forest is an entire SEM-model, for which there is no clear-cut case-specific error metric.
+It is important to note, however, that unlike other techniques, random forests typically achieve competitive performance even with default settings [@probstHyperparametersTuningStrategies2019].
+Thus, even when a model isn't tuned - or cannot be tuned, as is the case here - it should perform well.
+Although we did attempt to explain these points in the previous version of the manuscript,
+we have attempted to address this comment by further emphasizing this in the Revision:
+
+
+`r get_revision(man, "limitations")`
+
 \RC{2. On page 15, there seem to be semantic themes or groupings of predictors. In addition to textual interpretation, I think it would be helpful to create a visualization (even if it were supplemental) that grouped the variable importance scores per theme. Perhaps each theme could be represented by a boxplot or jittered points. This would help communicate the relative importance of each theme (as the text is currently doing informally). A similar approach could be employed for predictors assigned to different levels of the bioecological model.}
+
+We thank the Reviewer for this excellent suggestion, and now provide this figure
 
 \RC{3. The manuscript’s conclusion that parenting behaviors (especially positive ones) are low in importance (e.g., page 18) is hard for me to reconcile with the third-most important predictor being a positive parenting behavior. Overall, there seems to be an interpretive bias against the parenting behaviors being important. Or perhaps I am misunderstanding something?}
 
@@ -385,13 +382,20 @@ REF
 
 \RC{I do not believe it is accurate to state, “The fact that individual-level predictors were most important suggests that individual assessments might be sufficient.” Just because a factor is not the most important does not mean it is not playing a significant role. Perhaps the most important factors should be prioritized, but it would be contrary to much of developmental theory and many clinical interventions to suggest that it would be best to consider the adolescent as separate from their context. If anything, developmentalists and clinicians are moving towards greater contextualization of individuals and their identities.}
 
-REF
+We appreciate this point, and the writing here should certainly be more nuanced (that was an oversight).
+We have rephrased this as follows:
+
+`r get_revision(man, "riskassessment")`
 
 \RC{It is rightfully noted that this machine learning application was performed within one sample within one nation. There is limited reason to believe it would be universally applicable, especially because it seemed to draw on variables that happened to be available in a dataset, rather than designing the study for this purpose. The paper could provide more information about the cultural values that may impact emotion regulation in this sample to provide readers more information with which to evaluate generalizability to other populations.}
 
+As requested, we now provide more information about cultural values that may impact the generalizability of our findings:
+
+`r get_revision(man, "culture")`
+
 \RC{It is not clear how the information on pages 43-65 are to be used. This is not a labeled or formatted table.}
 
-We understand that pages 43-65 are not very useful in their current form, and apologize for the inconvenience. We were required to attach hard copies of the online supplemental tables during submission, and these were evidently not correctly formatted by the submission portal. They are just Excel spreadsheets, and will not be part of the manuscript.
+We apologize for the inconvenience. Pages 43-65 are not intended to be used; we were required to attach hard copies of the online supplemental tables in the submission portal, and these were evidently not formatted correctly. They are just spreadsheets, available online, and will not be part of the printed manuscript.
 
 \newpage
 
