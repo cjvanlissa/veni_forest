@@ -9,80 +9,144 @@ bibliography: ["manuscript/veni.bib"]
 output      : papaja::revision_letter_pdf
 ---
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 library(revise)
-man <- revise::read_manuscript("manuscript/manuscript.Rmd")
+man <- read_manuscript("manuscript/manuscript.Rmd")
+letter <- read_manuscript("action_letter.Rmd")
+mask = TRUE
 ```
 
 Dear Dr. `r rmarkdown::metadata$editor`,
 
-Thank you for considering my manuscript for publication in _`r rmarkdown::metadata$journal`_.
-I appreciate the thorough and critical comments you solicited,
+Thank you for considering our manuscript for publication in _`r rmarkdown::metadata$journal`_.
+We appreciate the thorough and critical comments you solicited,
 which helped strengthen the argumentation, clarify the structure, and add nuance.
-I have made a good-faith effort to address all comments as thoroughly as possible.
-All changes are explained below, and the difference between the current version and previous one can be seen at <https://github.com/cjvanlissa/rigorous_exploration/compare/d8ba218..48d2b17>.
-I hope that you will find the quality of the work to be sufficiently improved.
+We have attempted to address all comments as thoroughly as possible.
+All changes are explained below.
+We hope that you will find the quality of the work to be sufficiently improved.
 
 Yours sincerely,
 Author
-
-<!-- ` get_revision(man, "test")` -->
 
 # Editor {-}
 
 \RC{In the introduction section, please provide a comprehensive review of the literature. As reviewer 3 points out, there is existing literature investigating risk factors associated with emotion dysregulation. This research needs to be cited.}
 
+We completely agree with Reviewer 3 that there is already a wealth of prior research in this area.
+In fact, there is so much work on this topic that it would be a tall order to review the literature on an individual study basis.
+Given the large prior literature,
+we rely primarily on prior review articles.
+We currently cite 17 review articles in the introduction,
+including a recent (2021) comprehensive systematic review of 6305 studies on factors associated with adolescent emotion regulation.
+
+We cannot strive to recreate a comprehensive review here - 
+and this also seems redundant, given that many of the cited review articles are very recent (i.e., from 2019-2021),
+and seems overly ambitious, given the page limits and attention that must be devoted to explaining the novel methods,
+and spurious, given that this is an exploratory study and thus has no hypotheses that must be supported with prior literature.
+The present study builds upon prior reviews of the literature,
+and those reviews are cited.
+
+Of course we are willing to include specific omitted literature, but please note that Reviewer 3 does not mention which references they feel are missing.
+
+To address this comment, we now emphasize more strongly that there is an abundance of prior literature on predictors of adolescent emotion regulation, e.g.:
+
+`r get_revision(manuscript = man, "abundantlit")`
+
 \RC{Also, please specify the demographics of the samples of cited studies. A bulk of the literature in our field, including related to emotion dysregulation, is based on samples from Western countries (e.g., Australia, those in North America, and those in Europe). If the studies you are citing are from these world regions, please specify that.}
+
+As mentioned above, the vast majority of cited studies are reviews (narrative reviews, meta-analyses, and book chapters) or theoretical publications.
+Although one would hope that such publications cover all available literature without selecting for country of origin,
+some bias is likely present.
+Of the few primary empirical studies we cited, all originated in the "Global North" (if one also considers Israel and Greece to be part of the Global North).
+To address this comment, we have extracted information about the country of origin of the samples of all primary data sources cited.
+This information is summarized in a new Supplemental Table,
+which also indicates what references are *not* primary data sources but instead theoretical, review, or methodological articles.
+
+To address this comment, we now state the following in the Limitations section:
+
+`r get_revision(manuscript = man, "globalnorth")`
 
 \RC{Also, you describe two major theories of development including the bioecological theory (Bronfenbrenner \& Morris, 2007). Note that there is a revision to Bronfenbrenner’s model that places culture as existing in different settings and not only as a distal influence as a macrosystem (see Velez-Agosto et al., 2017). According to this revision, cultural processes are not distal influences, instead cultural and individual processes interact in a transactional fashion and this revised model is actually much more aligned with the Transactional model (Sameroff, 2010) that you reference.}
 
-Note that a recent perspective on the bioecological theory emphasizes that distal factors like culture are often enacted proximally by close others.
-This claim might help explain why we found that distal factors were relatively less important predictors;
-if distal effects are largely mediated by proximal actors,
-their importance might be attenuated by conditioning on proximal effects.
+To address this comment, we have incorporated the following in our analysis of the results in light of the bioecological model:
+
+`r get_revision(manuscript = man, "velezagosto")`
 
 \RC{In the method section, it would be helpful to include when (months and year) and where the data are collected (geographic location/country). Given cultural differences in emotion regulation, the context of the sample is really critical to include.}
 
 We respectfully believe that this may have been an oversight,
-as this information was already provided. As per the submission guidelines, some specific details had been masked for review, which may have caused the oversight. To address this comment, we have unmasked these details in the revision:
+as the requested information was already provided. As per the submission guidelines, some specific details had been masked for review, which may have caused the confusion. To address this comment, we have unmasked these details in the revision:
 
 Timing of data collection (we do not have information about specific months):
 
-`r get_revision(man, "waves")`
+`r get_revision(manuscript = man, "waves")`
 
 Geographic location:
 
-`r get_revision(man, "dutch")`
+`r get_revision(manuscript = man, "dutch")`
 
 \RC{Also, as reviewer 1 suggests, please explain the methodology used to extract predictors in more detail.}
 
-As requested, we have addressed this comment by providing more detail and an illustrative example, please refer to our response to Reviewer 1.
+`r get_revision(manuscript = letter, "extractpreds", quote = F)`
 
 \RC{In the results and discussion, as reviewer 2 and 3 highlight, please be careful about interpreting your findings. For example, to refer to parenting as unimportant based on your findings seems inaccurate given that balanced relatedness was the 3rd ranked predictor, so rather than say that parenting was unimportant or underrepresented, state that some dimensions of parenting were important, and name those dimensions.}
 
+<span id = "parents">We now realize that our imprecise use of language caused confusion about the relative importance of what we previously called "parenting" - by which we meant specific parenting practices.
+
+In the revision, we have attempted to avoid confusion by distinguishing "parenting practices" from other "parent-related constructs".
+Parenting practices are defined as specific parental actions related to child-rearing,
+for example, support and dimensions of control [@petersonFamilySocialCompetence1990].
+The highest-ranking parenting practice is parental control of friendships (16).
+
+By contrast, parent-related constructs refer to any variable pertaining to a parent but that is not a parenting practice.
+The highest ranking parent-related construct is balanced relatedness (3),
+which measures whether the adolescent perceives his or her parents to be tolerant of the adolescent's differing beliefs.
+Balanced relatedness is an aspect of the emotional family climate [@morrisRoleFamilyContext2007],
+not a parenting practice, because it does not relate to specific parental actions.
+The specific parenting practices associated with instilling a sense of balanced relatedness are maternal (54) and paternal (55) support, which rank very low.
+
+The observation that *parenting practices* are relatively less important than individual predictors (and certainly much less important than we would have thought a-priori) is thus strongly supported by the data;
+the first such behaviors are (16) and (25).
+This is consistent with the finding that some parent-related constructs indeed score highly.
+
+To address this comment, we have:
+
+- Clarified the distinction between parenting practices and other parent-related constructs in the revision
+- Used consistent terminology throughout 
+- Provided a definition of parenting practices
+
+We have rewritten the following paragraphs:
+
+`r get_revision(manuscript = man, "parenting")`
+
+And:
+
+`r get_revision(manuscript = man, "parentrelated")`
+</span>
+
 \RC{In the discussion, I encourage you to think about predictors from the revised bioecological theory perspective (Velez-Agosto et al., 2017) that does not conceptualize individual level, micro- and macro as influences that move along the proximal to distal continuum and conceptualizes them in a transactional framework. Factors such as religiosity and social class are reflected in relationships with parents and peers and thus to state that they are less important because they are ranked lower may not capture the complexity of their relevance.}
+
+We thank the Editor for this excellent suggestion; we have addressed this comment by adding the following paragraph:
+
+`r get_revision(manuscript = man, "velezagosto")`
 
 \RC{Also, as you mention in the limitations, it is possible that SES was ranked low because of the restricted range of SES that was represented in your sample.}
 
-If we understand correctly, this statement requires no further action.
+If we understand correctly, this is a statement and requires no further action.
 
 \RC{In the discussion, it is stated, “Predictors at the individual level were most important, followed by those at the microsystem level, such as aspects of the relationship with parents, followed by the mesosystem, including aspects of the peer network (e.g., bullying/victimization and delinquency), school performance, and socio-economic status, and the macrosystem indicator religiosity was among the least important predictors.”  This statement does not seem to fit the findings. If you look at the top 10 predictors listed in table 2, they include individual characteristics (big 5) and relational aspects (balanced relatedness, conflict). Please revise. Also, there are frequent references to individual level predictors being the most important and again looking at the top 10 predictors in table 2, there are both individual characteristics and relational dimensions so please revise the language.}
 
-While we are willing to adjust the language as requested,
-we do disagree that the statement does not fit the findings.
-First of all, note that the top 10 is an arbitrary criterion;
-placing the 'cutoff' for important predictors in different places lends more versus less support to the statement.
+Reviewer 2 suggested that we include a Figure to illustrate the distribution of variable importances by level of the bioecological model and by theme, to illustrate the two ways we interpret the pattern of findings (see Figure 3).
+We believe that this figure substantially clarifies our interpretation of the results.
 
-Variable importance follows an approximately exponential distribution,
-which means that the first variables are more important than later ones.
-At least the first two most important variables are both individual characteristics.
-If we interpret the variable importance like a scree plot (which is also an exponential distribution), then we observe a drop after the first 6 variables, and another drop after the 12th.
-Of the first 6, only one relates to the adolescent-reported *relationship with* parents, not *parenting behaviors*. The rest of these top 6 are all individual differences.
-Of variables 7-12, two relate to characteristics of the parents - mother's age and interparental conflict. Again, not parenting behavior. The rest of variables in this group relates to individual differences and adolescents' conflict behaviors.
-Variables 16 and 25 are the first parenting behaviors.
-I think that's a surprisingly low score.
+```{r figviolin, results='asis', out.width="20%", fig.cap="Variable importances clustered by theme (A) and level of the bioecological model (B).", eval = FALSE}
+knitr::include_graphics("violin.png")
+```
 
-REF 
+Furthermore, to address the specific comment that "Predictors at the individual level were most important [etc]", we now refer to Figure 3 so readers can see the pattern we are describing.
+At the same time, we now explicitly acknowledge that there is substantial overlap in importance of predictors at the different levels: 
+
+`r get_revision(manuscript = man, "overlap")`
 
 # Reviewer: 1
 
@@ -98,20 +162,19 @@ We thank the Reviewer for pointing this out. We have inserted the correct refere
 
 \RC{When the authors state that “The RMSEA and SRMR of the invariant model indicated acceptable fit..”; I am assuming they are talking about the metric invariant model correct? It might be important to add the word “metric” just to specify that.}
 
-We thank the Reviewer for pointing this out. We have clarified this, as requested.
+We thank the Reviewer for pointing this out. We have made the requested change.
 
 \RC{This is not something that needs to be answered in the text, but what do the authors make of the relatively poor CFI model fit, compared to RMSEA and SRMR. Any idea what accounts for that? I think the authors make a convincing enough argument as is for retaining the chosen model despite the low CFI test statistic, but I was just wondering how they interpreted that divergence in omnibus fit statistics.}
 
-One potential reason is that the performance of these fit statistics has been validated in the context of confirmatory factor analysis, and their performance is less well understood for complex models.
-This may affect the CFI more than, e.g., RMSEA, because CFI compares the fit of the theoretical model to a null model that may be inappropriate for longitudinal data.
-For this reason, it has been suggested to rely more on RMSEA for confirmatory studies (in this case, the growth model part of the analyses is confirmatory), and on CFI for exploratory purposes [@rigdonCFIRMSEAComparison1996].
-In line with the above, other research, which we now cite in the revision, has also found the RMSEA to be better at detecting misspecifications of growth curve models than CFI [@leiteDetectingGrowthShape2011]:
+The performance of these fit statistics has been validated mostly in the context of cross-sectional data, and their performance is less well understood for longitudinal data.
+This may affect the CFI more than, e.g., RMSEA, because CFI compares the fit of the theoretical model to a null model that may be less appropriate for repeated measures.
+We now address this point in the revision:
 
-`r get_revision(man, "cfi")`
+`r get_revision(manuscript = man, "cfi")`
 
 \RC{The Link to Supplementary Table S1 was broken; I couldn’t access it.}
 
-We apologize; the Repository was still set to private at time of submission. This was intended to guarantee anonymous review. For this revision, it has been made public. The links should now work.
+We apologize; the Repository hosting these Supplementary Tables was still set to private at time of submission. This was intended to guarantee anonymous review. For this revision, it has been made public. The links now work.
 
 \RC{I have a couple of items about the approach to missing data used (that, if there is not room in the text, can certainly be provided in a supplement). It mentions that this method is valid when missingness is either random or contingent on observed data. Can you present some evidence that missingness was MAR or MCAR here?}
 
@@ -121,22 +184,24 @@ Also note the unfeasibility of performing an MCAR test when the number of variab
 
 \RC{Additionally, and relatedly, were there any systematic differences between those with missing and complete data? That would also be good for the reader to know.}
 
-To address this comment, and a comment by another Reviewer, we tested for differences on demographic characteristics and the dependent variable between participants with missing and complete data. We now mention this in the revised manuscript:
+<span id = "missingness">To address this comment, and a comment by another Reviewer, we tested for differences on demographic characteristics and the dependent variable between participants with missing and complete data. We now mention this in the revised manuscript:
 
-`r get_revision(man, "missing")`
+`r get_revision(manuscript = man, "missing")`
+</span>
 
 \RC{I think that the methodology used to extract predictors here is ground-breaking and pretty revolutionary. However, that also means that the procedure might need to be explained in a little more depth for “old methodologists” like me. I actually think because this procedure is so innovative in the field of psychology, I would humbly be in favor of expanding the page limits of the manuscript to provide clarification on some of these questions in further detail, only because as a “tried and true” frequentist longitudinal modeler who is beginning to dabble in machine learning, I (and I suspect many like me) would love to learn even more about this procedure. Here are a few questions I had about it.
 o The authors note that for multi-item scales, they used principal components analysis for dimension reduction and took the first component for further analysis. Could, perhaps, the authors provide a specific example to make this process even more “concrete” in the minds of readers. Perhaps the authors could provide an example of how this was done on a single scale, what items were included as part of the first component that represents large amounts of shared variance, etc.}
 
-We appreciate the Reviewer's kind words, but don't give us too much credit - PCA is the oldest dimension reduction technique (invented in 1901), and the main reason we use it here is because it makes fewer assumptions about the measurement model than, e.g., CFA.
+We appreciate the Reviewer's kind words.
+<span id = "extractpreds">
+The method used to extract predictors is less groundbreaking than the Reviewer gives us credit for. PCA is the oldest dimension reduction technique (invented in 1901), and the main reason we use it here is because it makes fewer assumptions about the measurement model than, e.g., CFA.
 
-We do appreciate the excellent suggestion of providing a specific example to help readers understand this approach. To address this comment, we have thus made the following changes:
+We appreciate the Reviewer's excellent suggestion of providing a specific example to help readers understand this approach. To address this comment, we have thus made the following changes:
 
 1. We added the requested illustrative example, using neuroticism. We could use any scale, but as Neuroticism later turns out to be the most important predictor, it seems a suitable candidate.
 2. We have attempted to clarify our description of the dimension reduction procedure
 3. We have added further statistics that, hopefully, give the reader a better sense of whether the use of these principal components is defensible. Specifically, we no longer just provide the explained variance by each first component - but we also standardize this explained variance by the number of items in the scale to see how much more variance the first component explains than expected by chance. We see that, across all scales, the first component explains between 1.6 - 17.46 times more variance than expected by chance.
-
-We hope this addresses the comment.
+</span>
 
 \RC{I see that in the SEM-forest analysis, homoscedastic residuals over time were assumed. I am guessing the reason for doing so is because estimating heteroscedastic residuals over time just makes the model hopelessly complex and unestimable. So my question here is two-fold: First, is that true? Second, can the homoscedasticity versus heteroscedasticity of residuals be tested in similar ways as it can in traditional growth curve modeling here? I don’t at all mind if homoscedastic residuals need to be assumed to ensure the model runs (I think that is the implication from the limitation mentioned in the discussion).}
 
@@ -145,39 +210,39 @@ Unfortunately there is no way to test this assumption. The SEM-forest method est
 
 We have attempted to address this comment as follows: By explaining our decision to assume homoscedasticity:
 
-`r get_revision(man, "homoscedastic")`
+`r get_revision(manuscript = man, "homogeneity")`
 
 And by addressing it further in the Limitations section:
 
-`r get_revision(man, "homogeneity")`
+`r get_revision(manuscript = man, "homogeneity2")`
 
 \RC{Could you speak a little more (maybe just a sentence or so) on the importance of step 2 substep iii. In the SEM forest algorithm? It was hard for me to follow why identifying the value of preditor k that maximizes the likelihood ratio of a post-split two-group model indicates best model fit. I suspect just another sentence or so of clarification is needed.}
 
-We have simply rewritten this step in an attempt to address this comment. It now reads:
+We have rewritten this step in an attempt to address this comment. It now reads:
 
-`r get_revision(man, "stepiii")`
+`r get_revision(manuscript = man, "stepiii")`
 
 \RC{Could you speak more to the importance of why steps 3 and 4 need to be repeated until all post-split groups reach a minimum size? What would that minimum size be and why is it important?}
 
 To address this comment, we have rewritten this step as follows:
 
-`r get_revision(man, "fullygrown")`
+`r get_revision(manuscript = man, "fullygrown")`
 
 Additionally, we have rewritten the introduction to the SEM-forests algorithm to provide more context, thereby hopefully making it easier for readers to grasp:
 
-`r get_revision(man, "semforests")`
+`r get_revision(manuscript = man, "semforests")`
 
 \RC{How are predictions aggregated from all SEM-trees? If you could offer even just a sentence or two on that process in a way a “traditional” “applied” longitudinal researcher (like me) would understand, I think such readers would be very grateful.}
 
 We have added the following explanation:
 
-`r get_revision(man, "predictions")`
+`r get_revision(manuscript = man, "predictions")`
 
 \RC{Could you provide a quick applied example to accompany this statement “This approach intrinsically accommodates non-linear effects as subsequent splits on the same predictor, and complex interactions as subsequent splits on interacting variables. This offers greater flexibility than linear parametric models.”. Again, I think providing an example would allow non-machine learning researchers to follow what you are doing here even more clearly.}
 
 We have added the following example:
 
-`r get_revision(man, "examplenonlinear")`
+`r get_revision(manuscript = man, "examplenonlinear")`
 
 \RC{I think the results clearly presented a complex set of findings. I really appreciated the grouping by theme.
 • I have seen many ML applications split data sets into “train” and “test” sub-samples, to validate the findings in the “train” data set in the “test” data set. As far as I can tell, that was not done here. Did the authors consider this approach? I feel like having “test” and “train” sub-samples wherein results are replicated would provide further robustness and validity to study findings. I also understand if that procedure is not possible with the SEM forests approach.}
@@ -186,22 +251,22 @@ Thank you for bringing up this point. This is indeed common practice in "standar
 
 We had mentioned this in the Limitations section, but evidently that statement was not sufficiently clear. To address this comment, we have rewritten that section as follows:
 
-`r get_revision(man, "limitations")`
+`r get_revision(manuscript = man, "limitations")`
 
 \RC{I know ensuring the article remains inside page limits is always a battle, but I had a suggestion for one additional, hopefully simplistic analysis that might even further bridge the “gap” between these machine learning analyses and “traditional, frequentist” analyses. Perhaps the authors could take only the most important predictors, say the top 10 (or really whatever number they want), and run regression analyses that predict trajectory intercepts and slopes? Basically, I know that people like me really like explanations like “oh yeah, these top 10 machine learning predictors predict XX% of variance in emotion regulation scores over time”, and so I was trying to think of a way to generate those sorts of tangible, “traditional” effect sizes. Could the authors potentially provide such effect size estimates? I also understand if there simply isn’t time or space for this, but figured it was worth asking.}
 
-Thank you for this suggestion; we agree that many people would be interested in such an overview. One major caution is that such post-hoc analyses should not be over-interpreted; they are in no way a substitute for the (much more flexible) machine learning models. Still, if people e.g. want to take guidance from our list of important predictors, having an overview of univariate linear effects might be useful to help plan follow-up studies.
+Thank you for this suggestion; we agree that many people would be interested in such an overview. One major caution is that such post-hoc analyses should not be over-interpreted; they are in no way a substitute for the (much more flexible) machine learning models. Still, we see that having an overview of univariate linear effects might be useful, for example, to determine expected effect sizes if people want to take guidance from our list of important predictors to help plan follow-up studies.
 
-To address this comment, we have added the following paragraph and an additional Supplemental Table:
+To address this comment, we have therefore added the following paragraph and an additional Supplemental Table:
 
-`r get_revision(man, "posthoc")`
+`r get_revision(manuscript = man, "posthoc")`
 
 \RC{I appreciated the brave and nuanced discussion of how these analyses conform to, and also challenge, traditionally held norms in the field of emotion regulation. I especially appreciated the identification that parenting, substance use, and bullying might not be the risk factors we think they are.
 • The ERRATA tool seems amazing; I couldn’t find it online. Could a link be provided directly in the text?}
 
 To address this comment, we have added the following information:
 
-`r get_revision(man, "errata")`
+`r get_revision(manuscript = man, "errata")`
 
 \RC{I love the notion of “good enough” parenting environment and preconditions, and its’ application here; I thought the link between non-linear effects and “good enough” parenting environments was such an incredible example of translating a statistical insight into “on the ground” wisdom that can be applied by clinicians.}
 
@@ -211,11 +276,11 @@ Thank you for these kind words!
 
 We thank the Reviewer for this hepful suggestion, and have written the following to address it:
 
-`r get_revision(man, "includepersonality")`
+`r get_revision(manuscript = man, "includepersonality")`
 
 \RC{I think there are some broken links to supplemental materials in the manuscript.}
 
-This is correct; at the time of submission, the repository on GitHub was still set to private. For the revision, this has been resolved.
+This is correct; at the time of submission, the repository on GitHub was still set to private to safeguard blind review. For the revision, this has been resolved.
 
 \RC{I think the authors should just re-read the manuscript again before final publication; there were missing words and sentences throughout in some places.}
 
@@ -223,7 +288,7 @@ We have done as suggested and corrected any errors found.
 
 \RC{Pages 43 to 65 of the manuscript materials appeared cut-off and unreadable in many areas.}
 
-We apologize. The manuscript only has 42 pages; pages 43-65 are copies of the online supplemental materials (which are supposed to be accessed via the broken links, which have now been fixed). For the sake of blind review, we also submitted copies of these tables through the submission portal, but it evidently cannot correctly present these materials. The tables will not be part of the paper in this form.
+We apologize for the inconvenience. The manuscript only has 42 pages; pages 43-65 are copies of the online supplemental materials (which are supposed to be accessed via the broken links, which have now been fixed). For the sake of blind review, we also submitted copies of these tables through the submission portal, but it evidently cannot correctly present these materials. The tables will not be part of the paper in this form.
 
 # Reviewer: 2
 
@@ -231,71 +296,144 @@ We apologize. The manuscript only has 42 pages; pages 43-65 are copies of the on
 
 Overall, I found the manuscript to be ambitious and interesting. The size and longitudinal nature of the dataset is impressive, even if it the number of participants is a bit lower than one might ideally want to support complex machine learning. I also valued the manuscript’s integration of theory and methods, transparency of the methods, the addition of variable importance functions to the semTrees package, and the creation of the Shiny app as a demo/first step towards implementation. My concerns are mainly around the lack of external cross-validation (I realize that the out-of-bag approach is like an internal cross-validation) and hyperparameter tuning (which may be related to differences between the supervised approach I am used to and the hybrid approach of SEM forest) as well as some apparent discrepancies between the results as I understand them and the conclusions in the manuscript.}
 
+We thank the Reviewer for their kind words and thoughtful comments, which have been instrumental in improving the manuscript.
+Please see our detailed responses to the specific comments below.
 
 \RC{1. I think that the number of predictors used should be tuned during cross-validation rather than set to 9 or, at least, multiple values should be compared. Similarly, I think that the complexity parameter should be tuned or compared. Please comment on why this wasn’t done.}
 
-We understand why the Reviewer expects the analysis to include model tuning and cross-validation; these are standard procedures in machine learning.
+Model tuning and cross-validation are indeed industry standard procedures in machine learning.
 However, these methods do not (yet?) exist for SEM-forests.
 This is because there is no single error metric for SEM-forests that can be optimized.
 For standard random forests, this error metric is the root mean squared error (difference between predicted and observed values for all cases).
 The "outcome" of each regression tree in the SEM-forest is an entire SEM-model, for which there is no clear-cut case-specific error metric.
-It is important to note, however, that unlike other techniques, random forests typically achieve competitive performance even with default settings [@probstHyperparametersTuningStrategies2019].
-Thus, even when a model isn't tuned - or cannot be tuned, as is the case here - it should perform well.
+It is important to note, however, that unlike other machine learning techniques, random forests typically achieve competitive performance even with default settings [@probstHyperparametersTuningStrategies2019].
+Thus, even when a random forest isn't tuned - or cannot be tuned, as is the case here - it should perform well.
 Although we did attempt to explain these points in the previous version of the manuscript,
 we have attempted to address this comment by further emphasizing this in the Revision:
 
-
-`r get_revision(man, "limitations")`
+`r get_revision(manuscript = man, "limitations")`
 
 \RC{2. On page 15, there seem to be semantic themes or groupings of predictors. In addition to textual interpretation, I think it would be helpful to create a visualization (even if it were supplemental) that grouped the variable importance scores per theme. Perhaps each theme could be represented by a boxplot or jittered points. This would help communicate the relative importance of each theme (as the text is currently doing informally). A similar approach could be employed for predictors assigned to different levels of the bioecological model.}
 
-We thank the Reviewer for this excellent suggestion, and now provide this figure
+We thank the Reviewer for this excellent suggestion, and have now included a new Figure (Figure 3) that clusters variable importances by (inductive) theme as discussed in the results section, as well as by level of the bioecological model.
+We now refer to this Figure when discussing the relative importance of each theme / level.
+
+```{r}
+knitr::include_graphics("violin.png")
+```
+
 
 \RC{3. The manuscript’s conclusion that parenting behaviors (especially positive ones) are low in importance (e.g., page 18) is hard for me to reconcile with the third-most important predictor being a positive parenting behavior. Overall, there seems to be an interpretive bias against the parenting behaviors being important. Or perhaps I am misunderstanding something?}
 
+We thank the Reviewer for pointing out the apparent inconsistency between the conclusion and results.
+
+`r get_revision(manuscript = letter, "parents", quote = F)`
+
+We also believe that the Figure above helps clarify these results.
+
 \RC{4. On page 12, it seems to me that the interpretation of SEM-forests answering, “why do some adolescents have similar growth trajectories” has some causal connotations that may or may not be intended. Please speak to this directly in the manuscript. Can SEM-forests enable causal inferences, or would it be more accurate to rephrase this sentence to remove the connotation?}
+
+We agree with the Reviewer that is is prudent to caution against undue causal interpretation of the results - which we have done in the Limitations section:
+
+`r get_revision(manuscript = man, "causality")`
+
+We do believe that the quoted statement is correct and does not require further modification, however, as it does not relate to causal interpretation of the results, but to the affordances of the method: latent class analysis *cannot* answer the question "Why?" some adolescents follow similar causal trajectories,
+whereas SEM-forests *can* answer this question, because cases are clustered based on predictor variables (of course with the caveat that causal interpretation is contingent on study design or theoretical justification).
 
 \RC{5. My understanding is that the importance of specific interactions can be interrogated using an generalization of partial dependence profiles (Apley \& Zhu, 2020). I’m not saying that this necessarily has to be added to the current paper, but it might be worth citing this approach in the “next steps” part of the manuscript and considering it in future work.}
 
-In principle, this is possible.
-In practice, it is not, for the following reason:
-1) Computing univariate partial dependence profiles is already so computationally expensive that I cannot repeat it without additional funding
-2) There is no way of determining what bivariate interactions might be important in SEM-forests analysis (because there is no applicable analogy for Friedman's H statistic)
-3) So one would have to examine all bivariate interactions by hand, for all model parameters. This comes down to interpreting 84*84*3 = 21168 plots.
+We appreciate the suggestion and had considered a similar approach - but it is not practically feasible for the following reasons:
+
+1. Computing univariate partial dependence profiles is extremely computationally expensive; bivariate partial dependence is prohibitively so.
+2. There is no a-priori way to determine which bivariate interactions might be important in SEM-forests analysis (because there is no applicable analogy for Friedman's H statistic).
+3. Consequently, one would have to examine all bivariate interactions by hand. This comes down to interpreting 84*84*3 = 21168 plots. This is not possible.
+
+With this in mind, we think it would be preferable *not* to muddy the waters by citing literature on interaction effects for random forests; not until suitable methods have been developed for SEM-forests as well.
 
 \RC{6. That said, my understanding is that partial dependence profiles can be somewhat problematic when applied to correlated predictors (as these predictors surely are) and that a better approach in such cases would be accumulated local profiles (Apley, 2018).}
 
-Again, in principle this is correct, but in practice, no method exists to obtain accumulated local effects for SEM-forests. For the purpose of this paper, I developed a novel method to obtain marginal dependencies for growth curves, but I am not familiar with Apley's method so I cannot implement it (and either way, that seems out of scope for a developmental paper).
+Again, we thank the Reviewer for the suggestion;
+in principle this is correct, but in practice, no method (currently?) exists to obtain accumulated local effects for SEM-forests.
+The Reviewer is citing cutting-edge developments in the area of classic random forests; it will take a while before these developments spill over into the SEM-forests literature, if ever.
 
 \RC{1. On page 10, please clarify whether the CFAs were single factor models.}
 
+We respectfully believe that this may be an oversight on the Reviewer's part, because the manuscript says:
+
+`r get_revision(manuscript = man, "singlefactor")`
+
+We do not believe further action is required on this point - but if we missed something, please let us know.
+
 \RC{2. On page 10, please provide more explanation of the discrepancy between absolute and comparative fit of the metric invariant model.}
+
+The performance of these fit statistics has been validated mostly in the context of cross-sectional data, and their performance is less well understood for longitudinal data.
+This may affect the CFI more than, e.g., RMSEA, because CFI compares the fit of the theoretical model to a null model that may be less appropriate for repeated measures.
+We now address this point in the revision:
+
+`r get_revision(manuscript = man, "cfi")`
 
 \RC{3. In figure 1, clarify whether the y-axis is reversed. I ask because it seems strange to me that someone with lower difficulties with emotion regulation would be “high risk” and Figure 1 seems to show the opposite pattern as Figure 7.}
 
+We apologize for the oversight; the y-axis was indeed reversed in this Figure. We have corrected this mistake.
+
 \RC{4. On page 12, please speak to the reasonableness of the assumption of homoscedastic residuals over time.}
+
+We assumed homoscedastic residuals because otherwise the model would be too complex to estimate. We would have more parameters for the residuals than for the rest of the model, and the SEM-forest analysis would thus be primarily driven to explain differences in residuals, instead of in growth curves.
+
+A SEM-forest method estimates tens, or hundreds of thousands of SEM models in its different nodes. It is not possible to test model assumptions in each of those nodes.
+This applies not only to the assumption of homogeneity of residuals, but to all other assumptions, for example, about normality of residuals, or the shape of the growth trajectories. 
+
+We have attempted to address this comment as follows: By explaining our decision to assume homoscedasticity:
+
+`r get_revision(manuscript = man, "homogeneity")`
+
+And by addressing it further in the Limitations section:
+
+`r get_revision(manuscript = man, "homogeneity2")`
 
 \RC{5. On page 14, the reference to Figure 1 should be to Figure 2.}
 
+We have corrected this mistake.
+
 \RC{6. I think Figures 5 and 6 could be moved to supplemental if space is tight.}
+
+We thank the Reviewer for the suggestion,
+and defer to the Editor on this point.
 
 \RC{7. On page 18, is it true that “out [of] all parent-related constructs, constructive conflict resolution with fathers ranked highest and, and out of all parenting behaviors, paternal power ranked highest”? This seems to only be true if you look at only the mother/father-specific parenting measures and omit the general ones like balanced relatedness and conflict interparental.}
 
+We have clarified this by writing:
+
+`r get_revision(manuscript = man, "motherfather")`
+
 \RC{8. The supplemental table 1 didn’t render well in the PDF.}
 
+We apologize for the inconvenience. These Supplemental Tables will not be part of the printed manuscript; we were required to attach hard copies of the online supplemental tables in the submission portal, and these were evidently not formatted correctly. They are just spreadsheets that can be opened in a web-browser or excel.
 
 # Reviewer: 3
 
-\RC{Comments to the Author
-The current study used machine learning to identify importance of predictors of adolescent emotion regulation trajectories. The study used a large sample of adolescents and included multiple reporters (although adolescent report was featured most heavily). Despite these strengths, I have a number of concerns about the manuscript in its present form that make its contribution unclear at this point. I list these concerns in roughly the order of appearance in the manuscript.}
-
 \RC{The abstract could be strengthened by providing theoretical rationale for the study. The abstract also seems to exceed the journal’s word limit, as several sentences are cut off on the version included in the pdf cover page. In describing the results for parenting behaviors, it seems that autonomy support and invasive parenting were important if I am reading the statement correctly, so please remove these from the “less important” statement in order not to undermine the importance of parenting.}
+
+We appreciate these suggestions and the caution about abstract length; we have cut the abstract by half and attempted to incorporate the Reviewer's suggestions. The Abstract now reads:
+
+`r get_revision(manuscript = man, "abstract")`
 
 \RC{Please provide citations for the statement in the first paragraph on page 4, “These difficulties in emotion regulation can cause…” and provide examples of why these incur societal cost.}
 
+The statement is a continuation of the preceding sentence,
+which is supported by two references. 
+To address this comment, we now also added one of these references to the second sentence, and emphasize the connection between the sentences by re-iterating that the societal cost is incurred via emotion regulation-related mental health problems:
+
+`r get_revision("cost", man)`
+
 \RC{I would suggest removing reference to “destinies” on page 4 and elsewhere, as this word connotes fixedness in developmental outcomes, which does not reflect contemporary developmental views.}
 
+We agree with the Reviewer that the word "destinies" has unintended connotations of fixedness in developmental outcomes.
+We certainly want to avoid this implication, and have rephrased all occurrences of "diverging destinies" with "diverging trajectories", which is a statistically accurate description of our outcome of interest.
+
 \RC{The introduction would benefit from proofreading for parallel structure (last sentence in first paragraph on page 4), fragments (e.g., “For example, because they are not…”), and other typos (e.g., “an important challenges” on page 8). These are just several examples. The entire manuscript requires proofreading. The Discussion has sentences that are fragments or are missing words.}
+
+We have attempted to correct all such errors.
 
 \RC{At the bottom of page 5, it is noted that the next step in this area of research is to identify risk factors associated with emotion dysregulation. There is a wealth of research already identifying various risk factors. It should be acknowledged that this work exists (and what these identified factors are – some of which are reviewed beginning at the bottom of page 7) before noting the problems with existing research and theory. I would suggest expanding beyond the small number of labs currently heavily relied upon for background on emotion regulation. It seems that the actual next step for this literature is what is defined at the top of the first full paragraph on page 8 – “What is still missing is an understanding of the relative utility…” In short, the introduction could better acknowledge what we already know and more precisely describe the contribution of this study. I expect this would require a fairly extensive revision to move forward.}
 
@@ -306,24 +444,28 @@ This is certainly different from preceding work, which has nearly exclusively lo
 This paragraph thus doesn't argue that "few have examined predictors of emotion regulation in adolescence", as the Reviewer interpreted it, but instead, argues that "few have used person-centered methods to examined predictors of adolescents' diverging developmental trajectories of emotion regulation."
 In the Revision, we have attempted to clarify this by more precisely describing the contribution of the present study, in several places:
 
-`r get_revision(man, "personcentered1")`
-
+`r get_revision(manuscript = man, "personcentered1")`
 
 The second issue is whether our writing does sufficient justice to prior publications on predictors of emotion regulation.
 We could not agree more with the Reviewer that there is a wealth of prior research in this area.
 In fact, there is so much work on this topic that it would be a tall order to do it all justice.
-We cite a recent (2021) comprehensive systematic review of 6305 studies on predictors of adolescent emotion regulation.
-From those 6305 studies, we selected the ones that seemed most relevant for the present paper.
-If the Reviewer feels that *specific* studies are missing here, we are happy to include them of course.
-At the same time, we cannot strive to recreate a comprehensive review here. This also seems redundant, given that one was just recently published, and overly ambitious, given the page limits and attention that must be devoted to explaining the novel methods.
+At present, we cite a total of 17 review articles in the introduction,
+including a recent (2021) comprehensive systematic review of 6305 studies on factors associated with adolescent emotion regulation.
+
+Given the large prior literature,
+we found it necessary to rely primarily on review articles to do justice to prior work.
+We cannot strive to recreate a comprehensive review here - 
+and this also seems redundant, given that many of the cited review articles are very recent (i.e., from 2019-2021),
+and seems overly ambitious, given the page limits and attention that must be devoted to explaining the novel methods,
+and spurious, given that this is an exploratory study and thus has no hypotheses that must be supported with prior literature.
 The present study builds upon prior reviews of the literature,
 and those reviews are cited.
 
+Of course we are willing to include **specific** omitted literature, but it is not clear from the comment which specific references should be included.
+
 To address this comment, we now emphasize more strongly that there is an abundance of prior literature on predictors of adolescent emotion regulation, e.g.:
 
-`r get_revision(man, "abundantlit")`
-
-
+`r get_revision(manuscript = man, "abundantlit")`
 
 \RC{Please insert the reference listed as [REF] on page 8.}
 
@@ -333,15 +475,18 @@ We have inserted the correct reference.
 
 As requested, we now provide a more extensive introduction to SEM-forests prior to The Present Study. This section reads:
 
-`r get_revision(man, "semforests")`
+`r get_revision(manuscript = man, "semforests")`
 
 \RC{Please provide more information about the participants (mean and range of age of adolescents and parents at time of recruitment, race/ethnicity, income, and parental education). This will help contextualize the findings related to demographic characteristics that were predictive of emotion regulation trajectories.}
 
-We respectfully believe that this may be an oversight on the Reviewer's part, as comprehensive descriptive statistics - including those requested by the reviewer - are reported in Tables 1 and 2.
+Comprehensive descriptive statistics about all available demographic characteristics are reported in Tables 1 and 2.
+To address this comment, we now stress this in the Participants section:
+
+`r get_revision("demographics", man)`
 
 \RC{How far apart were “waves” of the study?}
 
-In the original manuscript, we stated that:
+We respectfully believe that this may be an oversight on the Reviewer's part, as the original manuscript stated that:
 
 >  From 2006 to 2011, trained interviewers
 conducted annual home visits to collect questionnaire data. All independent variables were
@@ -349,28 +494,33 @@ assessed in the first measurement wave.
 
 To resolve any remaining ambiguity, in the revision, we rephrased this as follows:
 
-`r get_revision(man, "waves")`
+`r get_revision(manuscript = man, "waves")`
 
 \RC{Did missingeness relate to demographic or emotion regulation variables in the dataset?}
 
-As two Reviewers have requested this information, we understand that this is information readers will want to know. Note, however, that the methods we use are valid regardless of whether missingness is related to other variables in the dataset or not. To address this comment, we performed the suggested check, and report:
+`r get_revision("missingness", letter, quote = F)`
 
-`r get_revision(man, "missing")`
+Note, however, that the methods we use are valid regardless of whether missingness is related to other variables in the dataset or not (i.e., valid for MCAR and MAR). 
 
 \RC{Was the statement, “Class solutions with more than two classes were excluded…” an a priori decision, or a statement of what resulted from the attempt to estimate them? Please be clear in the manuscript.}
 
-We thank the Reviewer for pointing out this unfortunate choice of words. 
+We thank the Reviewer for pointing out this unfortunate choice of words, which should have been flagged during proof reading.
 Entropy is not a criterion for class enumeration, but for evaluating the quality of the chosen solution (see Jung \& Wickrama, 2008). In the Revision, we have attempted to clarify this as follows:
 
-`r get_revision(man, "entropy")`
+`r get_revision(manuscript = man, "entropy")`
 
 \RC{I was curious why the median and plus/minus 1 SD were used for “s” for continuous variables. I would expect the median to be accompanied by percentiles (e.g., 15th and 85th percentiles) or +/- 1 SD to go along with the mean.}
 
-In line with the Reviewer's expectation, we indeed used the median and 16th and 84th percentile. Percentiles do not assume a normal distribution of the predictor, and neither does the model, so this is a good fit. As we explain in the text, the 16th and 84th percentiles correspond to +/- 1SD of a standard normal distribution. We then use this label, "+/- 1SD", in the plots, in an attempt to make the results more understandable. Perhaps this was a misguided decision, but we were not sure whether the readership would be familiar with percentiles. 
+In line with the Reviewer's expectation, we did in fact use the median and 16th and 84th percentile.
+The confusion arises from our attempt to explain to the readership what these percentiles mean, by drawing a comparison to +/- 1SD.
 
-In the Revision, we have attempted to resolve this issue by stating:
+We use percentiles is because they do not assume a normal distribution of the predictor, and neither does the model, so this is a good fit.
+As we explain in the text, the 16th and 84th percentiles and the median correspond to +/- 1SD and the mean of a standard normal distribution.
+We then use the labels "+/- 1SD" in the plots, in an attempt to make the results more understandable, and explain that these correspond to percentiles of a normal distribution in the text.
 
-`r get_revision(man, "percentiles")`
+In the Revision, we have attempted to address this issue by further clarifying that :
+
+`r get_revision(manuscript = man, "percentiles")`
 
 \RC{Please correct the finding for sex – it currently reads, “boys girls reported better emotion regulation.”}
 
@@ -378,20 +528,28 @@ Thank you for pointing out this oversight. We have corrected it, along with othe
 
 \RC{In the first paragraph of the Discussion, where most important predictors are listed, please list parenting behaviors that ranked as highly as aspects currently listed. Throughout the paper, parenting is listed as unimportant, when there are important exceptions that should be more explicit, rather than parenthetical within a negative statement.}
 
-REF
+`r get_revision(manuscript = letter, "parents", quote = F)`
+
+To address this comment, we now also mention highly ranked parent-related constructs in the first paragraph of the Discussion:
+
+`r get_revision(manuscript = man, "highrankingparent", quote = F)`
 
 \RC{I do not believe it is accurate to state, “The fact that individual-level predictors were most important suggests that individual assessments might be sufficient.” Just because a factor is not the most important does not mean it is not playing a significant role. Perhaps the most important factors should be prioritized, but it would be contrary to much of developmental theory and many clinical interventions to suggest that it would be best to consider the adolescent as separate from their context. If anything, developmentalists and clinicians are moving towards greater contextualization of individuals and their identities.}
 
-We appreciate this point, and the writing here should certainly be more nuanced (that was an oversight).
+This is a fair point, and the writing here should have been much more nuanced (that was an oversight).
 We have rephrased this as follows:
 
-`r get_revision(man, "riskassessment")`
+`r get_revision(manuscript = man, "riskassessment")`
 
 \RC{It is rightfully noted that this machine learning application was performed within one sample within one nation. There is limited reason to believe it would be universally applicable, especially because it seemed to draw on variables that happened to be available in a dataset, rather than designing the study for this purpose. The paper could provide more information about the cultural values that may impact emotion regulation in this sample to provide readers more information with which to evaluate generalizability to other populations.}
 
 As requested, we now provide more information about cultural values that may impact the generalizability of our findings:
 
-`r get_revision(man, "culture")`
+`r get_revision(manuscript = man, "culture")`
+
+And also about cultural bias in prior literature:
+
+`r get_revision(manuscript = man, "globalnorth")`
 
 \RC{It is not clear how the information on pages 43-65 are to be used. This is not a labeled or formatted table.}
 

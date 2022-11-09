@@ -4,37 +4,35 @@ shorttitle        : "Emotion Regulation and Machine Learning"
 
 author:
   - name: "Caspar J. Van Lissa"
-    affiliation: "1,2"
+    affiliation: "1"
     corresponding: yes
-    address: "Padualaan 14, 3584CH Utrecht, The Netherlands"
-    email: "c.j.vanlissa@uu.nl"
+    address: "Professor Cobbenhagenlaan 125, 5037 DB Tilburg, The Netherlands"
+    email: "c.j.vanlissa@tilburguniversity.edu"
   - name: "Lukas Beinhauer"
-    affiliation: "3"
+    affiliation: "2"
   - name: "Susan Branje"
-    affiliation: "4"
+    affiliation: "3"
   - name: "Wim H. J. Meeus"
-    affiliation: "4"
+    affiliation: "3"
 
 affiliation:
   - id: "1"
-    institution: "Utrecht University, department of Methodology & Statistics"
+    institution: "Tilburg University, department of Methodology & Statistics"
   - id: "2"
-    institution: "Open Science Community Utrecht"
-  - id: "3"
     institution: "Helmut-Schmidt-Universität, Department of Methodology and Statistics for Psychology"
-  - id: "4"
+  - id: "3"
     institution: "Utrecht University, department of Youth and Family"
 
 authornote: |
-  This is a preprint paper, generated from Git Commit # `r gert::git_commit_id()`. CVL conceived of the study, conducted the final analyses, and wrote the draft paper. LB conducted preliminary analyses and gave feedback on the draft. SB and WM provided data and gave feedback on the draft. This work was funded by a NWO Veni Grant (NWO Grant Number VI.Veni.191G.090), awarded to the lead author. Data of the RADAR (Research on Adolescent Development And Relationships) study were used, and is available under restricted access (https://doi.org/10.17026/dans-zrb-v5wp). RADAR has been financially supported by main grants from the Netherlands Organisation for Scientific Research (GB-MAGW 480-03-005, GB-MAGW 480-08-006), Stichting Achmea Slachtoffer en Samenleving (SASS), the Netherlands Organisation for Scientific Research to the Consortium Individual Development (CID; 024.001.003), a grant of the European Research Council (ERC-2017-CoG - 773023 INTRANSITION), and various other grants from the Netherlands Organisation for Scientific Research, VU University Amsterdam, and Utrecht University. The funders had no role in the study design, data collection and analysis, decision to publish, or preparation of the manuscript. If the regulations of the journal allow it, the participating children, parents and schools are to be thanked as well.
+  This is a preprint paper, generated from Git Commit # `r substring(gert::git_commit_id(), 1, 8)`. CVL conceived of the study, conducted the reported analyses, and wrote the draft paper. LB conducted preliminary analyses and gave feedback on the draft. SB and WM provided data and gave feedback on the draft. This work was funded by a NWO Veni Grant (NWO Grant Number VI.Veni.191G.090), awarded to the lead author. Data of the RADAR (Research on Adolescent Development And Relationships) study were used, and are available under restricted access (https://doi.org/10.17026/dans-zrb-v5wp). RADAR has been financially supported by main grants from the Netherlands Organisation for Scientific Research (GB-MAGW 480-03-005, GB-MAGW 480-08-006), Stichting Achmea Slachtoffer en Samenleving (SASS), the Netherlands Organisation for Scientific Research to the Consortium Individual Development (CID; 024.001.003), a grant of the European Research Council (ERC-2017-CoG - 773023 INTRANSITION), and various other grants from the Netherlands Organisation for Scientific Research, VU University Amsterdam, and Utrecht University. The funders had no role in the study design, data collection and analysis, decision to publish, or preparation of the manuscript. We thank the participating children, parents and schools.
 
 abstract: |
   | **Research Highlights**
   | • Individual differences (e.g., in personality, motivation, and empathy) are among the most important predictors of emotion regulation development.
-  | • Parenting may be less relevant for emotion regulation development than previously thought, and negative parenting may be more impactful than positive parenting.
+  | • Specific parenting practices may be less relevant than previously thought, and negative parenting practices may be more impactful than positive ones.
   | • Important predictors most suitable for early risk assessment include regularly administered personality inventories, and readily observable indicators like externalizing problems and conflict behavior.
   | • Future theory should emphasize proximal- over distal processes, focus on good-enough parenting, and reassess common perceptions about “risky behaviors” like delinquency, substance use, and bullying.
-  | This paper set out to identify the most important early predictors of emotion regulation development from many (87) candidates using the machine learning algorithm SEM-forests. Candidate predictors were selected based on a prior text mining systematic review of 6305 papers. Participants were 497 Dutch adolescents. Predictors were assessed at age 13, and emotion regulation development from age 14-18 was described using a quadratic latent trajectory model. SEM-forests were used to group adolescents based on their predictor scores, while maximizing the similarity of developmental trajectories within each group. Compared to other person-centered approaches, this method not only identifies groups of adolescents with similar trajectories, but also indicates why some adolescents follow similar trajectories. The results indicated that the most important early predictors (at age 13) were individual differences (e.g., in personality), conflict behaviors with parents and friends, and internalizing and externalizing behavior. Less important were parenting behaviors, except autonomy support and invasive parenting, bullying and victimization, delinquent peers, and substance use. The implications of these findings for theory formation and intervention are discussed, and we present an open source risk assessment tool, ERRATA.
+  | [As 20% of adolescents develop emotion regulation difficulties, it is important to identify important early predictors thereof. Using the machine learning algorithm SEM-forests, we ranked the importance of (87) candidate variables assessed at age 13 in predicting quadratic latent trajectory models of emotion regulation development from age 14-18. Participants were 497 Dutch adolescents. Results indicated that the most important predictors were individual differences (e.g., in personality), aspects of relationship quality and conflict behaviors with parents and peers, and internalizing and externalizing problems. Relatively less important were demographics, bullying, delinquency, substance use, and specific parenting practices – and negative parenting practices ranked higher than positive ones. We discuss implications for theory and interventions, and present an open source risk assessment tool, ERRATA.]{#abstract}
   
 keywords          : "emotion regulation, adolescence, machine learning, theory formation, random forests"
 wordcount         : "6199"
@@ -83,28 +81,29 @@ options(knitr.kable.NA = '')
 
 A key challenge in adolescence is developing mature emotion regulation abilities [@zimmermannEmotionRegulationEarly2014]. 
 Adolescents experience biological, cognitive, and social changes that create an opportunity for positive emotion regulation development [@steinbergAgeOpportunityLessons2014].
-Still, as many as 20% of adolescents instead experience severe emotion regulation difficulties [@leeAdolescentMentalHealth2014],
+Still, [as many as 20% of adolescents instead experience severe emotion regulation difficulties [@leeAdolescentMentalHealth2014],
 with potentially lifelong implications for mental health and well-being [@aldaoEmotionregulationStrategiesPsychopathology2010].
 These difficulties in emotion regulation can cause substantial distress to the individual,
-and incur a sizable societal cost.
+and incur a sizable societal cost via their implications for mental health [@leeAdolescentMentalHealth2014].]{#cost}
 A comprehensive understanding of the risk factors that predispose some adolescents to emotion dysregulation could aid in the development of effective screening and interventions.
-<span id = "abundantlit">There is already an abundance of empirical research on emotion regulation and its predictors; a recent systematic review identified 6305 relevant publications [@vanlissaMappingPhenomenaRelevant2021].
-Still, that review identified specific limitations of the existing literature: many studies are narrow in scope, considering only a few predictors and thus missing the relative importance compared to other predictors.</span>
-This problem is exacerbated because the literature is fragmented across sub-disciplines, each of which examines mostly predictors within its scope.
-And finally, the literature lacks a unifying theoretical framework that is both specific to adolescence and comprehensive in scope [see @bariolaChildAdolescentEmotion2011].
+<span id = "abundantlit">There is already an abundance of empirical research on adolescent emotion regulation and its predictors; a recent systematic review identified 6305 relevant publications [@vanlissaMappingPhenomenaRelevant2021].
+Still, that review identified specific limitations of the existing literature:
+many studies narrowly focus on a few predictors within a specific research area,
+and thus fail to provide insight into these predictors' relative importance compared to other predictors, including those in other domains.
+Relatedly,
+the literature lacks a unifying theoretical framework that is both specific to adolescence and comprehensive in scope [see @bariolaChildAdolescentEmotion2011].</span>
 
 The present study seeks to overcome these limitations
 by using data-driven insights to complement and reflect on existing theory.
 To this end, a broad range of potential risk factors were analyzed using machine learning,
 and ranked in terms of predictive importance.
 Specifically,
-<span id = "personcentered1">the SEM-forests algorithm [@brandmaierTheoryguidedExplorationStructural2016] was used as a person-centered analysis technique,
+<span id = "personcentered1">the SEM-forests algorithm [@brandmaierTheoryguidedExplorationStructural2016], a person-centered analysis technique, was used
 to identify the most important early indicators (at age 13) of developmental trajectories
 of emotion regulation across adolescence (age 14 through 18).
-The resulting insights indicate which factors are most predictive of adolescents' diverging trajectories of emotion regulation development, contributing to our understanding of why some youth flourish while others struggle [@croneUnderstandingAdolescencePeriod2012].</span>
-Armed with this knowledge, future research and interventions can focus on the most important predictors.
-Moreover, these insights can guide the formation of overarching theory that adequately represents essential phenomena.
-<!-- complement existing theory on adolescent emotion regulation using data-driven insights from machine learning. -->
+The results indicate which factors are most predictive of adolescents' diverging trajectories of emotion regulation development, contributing to our understanding of why some youth flourish while others struggle through adolescence [@croneUnderstandingAdolescencePeriod2012].</span>
+These insights can guide development of interventions that focus on the most important predictors,
+and direct the formation of overarching theory that adequately represents essential phenomena.
 
 ## Emotion dysregulation in adolescence
 
@@ -114,22 +113,17 @@ is critical for mental health [@aldaoEmotionregulationStrategiesPsychopathology2
 and social competence [@zimmermannEmotionRegulationEarly2014] throughout life.
 There is mounting evidence, however, that adolescents do not uniformly become better at regulating emotions: 
 staggered development of emotional and regulatory brain circuits gives rise to a "maturity gap" in mid-adolescence [@croneUnderstandingAdolescencePeriod2012].
-The emotional salience of social stimuli is intensified, while the development of cognitive capacities lags behind [@caseyBrakingAcceleratingAdolescent2011, @vanlissaLongitudinalInterplayAffective2014].
+The emotional salience of social stimuli is intensified, while the development of cognitive capacities lags behind [see @caseyBrakingAcceleratingAdolescent2011; @vanlissaLongitudinalInterplayAffective2014].
 This imbalance might help motivate adolescents to engage in adaptive exploration:
 Seeking out experiences that challenge their socio-emotional competences and stimulate growth.
-At the same time, this imbalance may render some adolescents vulnerable to emotion dysregulation [@leeAdolescentMentalHealth2014].
-For example, because they are not yet well-equipped to regulate the pursuit of unhealthy incentives,
-or persevere in pursuing adaptive goals when facing obstacles.
+At the same time, this imbalance may render some adolescents vulnerable to emotion dysregulation if they are not yet able to regulate the pursuit of unhealthy incentives,
+or persevere in pursuing adaptive goals when facing obstacles [@leeAdolescentMentalHealth2014].
 Thus, some become trapped in a negative spiral characterized by more negative and volatile emotions [@craccoEmotionRegulationChildhood2017],
 which has been linked to the emergence of several mental disorders [@schaferEmotionRegulationStrategies2017].
-<!-- This imbalance motivates most youngsters to seek out new challenges in life and love, -->
-<!-- but renders some of them vulnerable to emotion dysregulation1,10. Unfortunately, there is little theory about which risk factors and environmental hazards render adolescents susceptible to emotional difficulties11. -->
-<!-- Acquiring adaptive emotion regulation skills in adolescence plays a key role in this regard7,20, because t -->
  
 Longitudinal studies of emotion regulation development in adolescence provide preliminary empirical support for this notion of diverging trajectories: 
 Such studies consistently reveal large between-individual heterogeneity [see @craccoEmotionRegulationChildhood2017; @vanlissaRoleFathersMothers2019; @zimmermannEmotionRegulationEarly2014; @reindlSocializationEmotionRegulation2016].
-Although some studies have examined, on average, how strongly particular risk factors are associated with developmental trajectories 
-
+<!-- Although some studies have examined, on average, how strongly particular risk factors are associated with developmental trajectories - most have done  REF write something about other studies examining risk factors -->
 An important next step is to identify which risk factors render some adolescents susceptible to emotion dysregulation.
 <!-- This goal fits within the paradigm shift that has gripped the field of pedagogy, towards "person-centered" research, which focuses on individual developmental trajectories and within-family predictive processes, rather than average patterns across samples16,23. Seminal studies have applied "clustering" methods to identify youth with similar developmental trajectories14,24–26. Adolescents may follow similar trajectories for different reasons, however, and person-centered methods are too complex to accommodate more than a handful of theoretically-derived predictors. Unfortunately, relevant theory on adolescent emotion regulation development is limited27–29. The field is therefore at an impasse: We know that some adolescents are more susceptible to emotion dysregulation than others, but lack tools and theory to identify important predictors of individual development30. -->
 
@@ -276,7 +270,7 @@ The present study set out to obtain a relatively comprehensive understanding of 
 <!-- of  -->
 The primary aim was to identify the most important predictors of adolescents' developmental trajectories of emotion regulation development.
 The secondary aim was to probe the nature of the relationship of each predictor with these trajectories.
-This involves an important challenges, as
+This involves an important challenge, as
 the number of potentially relevant risk factors is too large for conventional methods.
 At the same time, there is a paucity of relevant theory to narrow down the candidate predictors a priori.
 <!-- Third, methods commonly used in the field are not well suited for large numbers of predictors. -->
@@ -301,6 +295,7 @@ The `r ifelse(mask, "RADAR", "**masked**")` sample was recruited from over 200 r
 Of 1,544 eligible families, 497 produced informed consent and were included in the study.
 [From 2006 to 2011, trained interviewers conducted six annual measurement waves to collect questionnaire data during home visits.]{#waves}
 All independent variables were assessed in the first measurement wave.
+[The sample demographic information is reported in Tables \@ref(tab:tabcat) and \@ref(tab:tabnum).]{#demographics}
 The dependent variable was measured from the second to the sixth wave.
 Families received €100 financial compensation for their participation in annual measurements.
 
@@ -330,14 +325,14 @@ Responses ranged
 from 1 (Almost never) to 5 (Almost always).
 Score reliability was excellent in all waves, $\alpha \in [`r report(min(alphs), equals = F)`, `r report(max(alphs), equals = F)`]$.
 We used latent variable scores (instead of mean scores) for further analyses.
-To this end, we estimated a CFA with all DERS items loading on one latent variable per measurement wave.
+[To this end, we estimated a CFA with all DERS items loading on one latent variable per measurement wave.]{#singlefactor}
 Latent means were restricted to zero, such that resulting scores reflect the deviation of individual adolescents' trajectories from the sample average trajectory.
 As measurement invariance must be imposed in order to compare latent scores across waves,
 we compared a model with configural invariance ($BIC = 141247.46$)
 to a model that imposed metric invariance ($BIC = 140913.27$).
 The lower BIC indicates support for metric invariance.
 The RMSEA and SRMR of the metric invariance model indicated acceptable fit ($\text{RMSEA} = .05, \text{SRMR} = 0.05$), but the CFI indicated poor fit ($\text{CFI} = .80$).
-[Note that the RMSEA has been found to be more sensitive to misspecifications of growth curve models [@leiteDetectingGrowthShape2011]]{#cfi}.
+[Note that the RMSEA has been found to be more appropriate for longitudinal data, possibly because the null-model on which the CFI is based is less appropriate for repeated measures [@leiteDetectingGrowthShape2011]]{#cfi}.
 As score reliability and standardized factor loadings were high across all waves ($\lambda \in [0.44, 0.84]$),
 we considered it acceptable to proceed with individual factor scores for further analysis.
 
@@ -410,7 +405,7 @@ about 25% of youth were at-risk for emotion dysregulation,
 a similar proportion to what was found in previous studies [cf @leeAdolescentMentalHealth2014].
 
 ```{r figclass, fig.cap="Latent class analysis of risk profiles."}
-knitr::include_graphics("../classplot.pdf")
+knitr::include_graphics("../classplot.png")
 ```
 
 As our research question was to identifying important predictors of emotion regulation development,
@@ -446,8 +441,8 @@ $$
 \hat{\boldsymbol{g}}_s = \frac{1}{n}\sum^{n}_{i = 1}\hat{f}(s, \boldsymbol{X}_{-p})
 $$
 
-[For continuous predictors, three values of $s$ were used - namely the percentiles, computed on the observed data, corresponding to the median, $+/- 1 SD$ of a standard normal distribution (i.e., the $16^{th}$ and $84^{th}$ percentile).
-For convenience, these percentiles are labeled as $+/- 1 SD$ in Figure \@ref(fig:figpdp1)-\@ref(fig:figpdp4).]{#percentiles}
+[For continuous predictors, three values of $s$ were used - namely the percentiles, computed on the observed data, corresponding to the mean and $+/- 1 SD$ of a standard normal distribution (i.e., the $50^{th}$, $16^{th}$ and $84^{th}$ percentiles).
+For convenience, these percentiles are labeled as *mean* and $+/- 1 SD$ in Figure \@ref(fig:figpdp1)-\@ref(fig:figpdp4).]{#percentiles}
 For categorical predictors, all unique values were used.
 
 <!-- $$ -->
@@ -505,7 +500,8 @@ as illustrated in Figure \@ref(fig:figvarimp).
 Supplemental Table S1 provides a full legend of all variables.
 
 ```{r figvarimp, fig.cap="Predictors ranked in order of relative importance. m: mother, f: father, b: best friend, s: sibling."}
-knitr::include_graphics("../pcomb.pdf")
+#readRDS("../varimp_comb2_03-08-2022.RData")
+knitr::include_graphics("../pcomb2.png")
 ```
 
 ```{r legtab, results="asis", eval = FALSE}
@@ -514,45 +510,57 @@ papaja::apa_table(legtab, caption = "Brief description of 30 most important pred
 ```
 
 Examining the variable importance rankings,
-several themes emerged.
-Specifically, results indicated that several individual differences - personality and related constructs - were ranked among the most important predictors.
-For example, three of the big five personality dimensions rank among the top six predictors: Neuroticism (1), extraversion (4), and agreeableness (6).
+several themes emerged (see Figure \@ref(fig:figthemes) panel A).
+Specifically, results indicated that among the most important predictors were personality and personality-related constructs.
+Three of the big five personality dimensions ranked among the top six predictors: Neuroticism (1), extraversion (4), and agreeableness (6).
 The Behavioral Inhibition Scale (BIS, 2), which reflects motivation to avoid aversive outcomes, ranked highly - although the BAS (73), its counterpart which measures motivation to approach goal-oriented outcomes,
 ranked very low.
 One dimension of empathy - personal distress (9), the tendency to experience aversive emotions in response to the misfortunes of others,
 also ranked highly, and substantially higher than other dimensions of empathy.
 Finally, self-concept clarity (11) also ranked highly; this construct represents the internal consistency of self-referential thought, and has close theoretical ties to identity [@schwartzDailyDynamicsPersonal2011].
 
-A second emerging theme is that most constructs related to conflict frequency and behavior ranked highly, and few ranked low.
+```{r figthemes, fig.cap="Variable importances clustered by theme (A) and level of the bioecological model (B)."}
+knitr::include_graphics("../violin.png")
+```
+
+A second emerging theme was that most constructs related to conflict frequency and behavior ranked highly, and few ranked low.
 For instance, adolescent-perceived interparental conflict (8),
 adolescents' conflict engagement (escalation) with best friends (10),
 mothers (13) and fathers (20),
 frequency (14) and negative emotionality (28) of adolescents' conflict with both parents,
 and withdrawal from conflicts with best friends (18) and mothers (19).
 
-A third emerging theme is that parenting was relatively underrepresented among the most important predictors;
-the highest-ranking parental predictor was balanced relatedness (3),
-a construct that represents the extent to which parents support and respect the adolescent's autonomy.
-It further appeared that negative and intrusive aspects of parenting were more predictive than other positive practices:
-Prohibition and control of friendship choice (16),
-perceived intrusiveness and meddling (25),
+<span id = "parenting">A third emerging theme is that specific parenting practices were relatively underrepresented among the most important predictors.
+Parenting practices are defined as specific parental actions related to child-rearing,
+for example, support and dimensions of (behavioral and psychological) control [@petersonFamilySocialCompetence1990].</span>
+Negative and intrusive parenting practices were more predictive than positive ones:
+Of these, prohibition and control of friendship choice (16) ranked highest, followed by intrusiveness and meddling (25),
 psychological control (27),
 and supportive criticism (33).
-Positively valenced dimensions of parent-adolescent relationship quality
-like maternal (54) and paternal (55) support were ranked low,
+Positive parenting practices,
+like maternal (54) and paternal (55) support,
+were ranked low,
 and neutrally valenced aspects like parental monitoring (sollicitation 71, adolescent disclosure 72) were ranked very low.
+This is interesting, given the extensive research attention into the effect of these specific parenting practices.
 
-Finally, an emerging theme is that internalizing- and externalizing symptoms
-often associated with emotion regulation ranked moderately in terms of predictive importance.
+<span id = "parentrelated">Several parent-related constructs scored higher than the aforementioned child rearing behaviors;
+the highest of these was balanced relatedness (3),
+which represents parents' tolerance for adolescents' differing opinions and is related to parent-child intimacy and autonomy [@shuhnanAdolescentIntimacyRevisited1997].
+Other parent-related constructs that scored relatively highly were interparental conflict, which had a negative effect on emotion regulation (8);
+like balanced relatedness, conflict likely contributes to the emotional family climate [@morrisRoleFamilyContext2007].
+Finally, maternal age (7) had a protective effect, which is well-supported by prior literature [@zondervan-zwijnenburgParentalAgeOffspring2020].]</span>
+<!-- Add reference -->
+
+Finally, an emerging theme was that internalizing- and externalizing symptoms
+often associated with emotion regulation ranked relatively highly in terms of predictive importance.
 Of these, parent-reported externalizing behavior (5) ranked highest, followed by adolescent-reported anxiety (15) and depression (17).
 Adolescent-reported externalizing behavior ranked substantially lower (30).
 
 It is further of note that some themes that are considered to be theoretically relevant ranked low.
-For instance, indicators of maternal (86) and paternal (87) socio-economic status were ranked the lowest,
-as were other family demographic indicators, like religion (81, 82).<!--SB: Why is this important? CJ: Religion is part of moral development, SES, and is directly related to emotion regulation: https://link.springer.com/chapter/10.1007/978-94-017-8950-9_13--> 
+This was the case, for example, for demographic variables like maternal (86) and paternal (87) socio-economic status and family religion (81, 82).<!--SB: Why is this important? CJ: Religion is part of moral development, SES, and is directly related to emotion regulation: https://link.springer.com/chapter/10.1007/978-94-017-8950-9_13--> 
 Aspects of adolescents' peer networks,
 such as bullying (60, 84) and victimization (51, 62, 83),
-and contact with delinquent peers (85) also ranked low.
+and contact with delinquent peers (85) also ranked unexpectedly low.
 The same applied to substance use;
 the most commonly used substances of alcohol (78) and cigarettes (61) were ranked very low; drug use, which is less common, ranked a bit higher than this (37, but see direction of association).
 
@@ -593,7 +601,7 @@ behavioral inhibition system,
 externalizing and internalizing (depression and anxiety) problem behavior,
 frequency and intensity of conflict with both parents,
 and use of the conflict resolutions styles engagement and withdrawal.
-Intrusive parenting behaviors were also negative predictors, including psychological control, control of friendships, paternal power, and constructive criticism.
+Intrusive parenting practices were also negative predictors, including psychological control, control of friendships, paternal power, and constructive criticism.
 All empathy dimensions except perspective taking predicted greater emotion dysregulation,
 as did different daily negative emotions,
 parental stress and interparental conflict,
@@ -619,7 +627,7 @@ However, we strongly caution against over-interpretation.
 Unlike the machine learning analyses, these analyses do not accommodate non-linear effects or interactions, nor are effects controlled for other predictors.
 The results are merely descriptive and should not be used to perform inference.
 [Supplemental Table S3](https://github.com/cjvanlissa/veni_forest/blob/master/supplemental_table_3.csv) reports standardized regression coefficients with significance asterisks for all continuous and binary predictors, and significance asterisks of Likelihood Ratio tests for multi-group categorical predictors.
-All models had good fit ($RMSEA < .07$, $CFI > .99$, $SRMR < .04$).
+All models had good fit ($RMSEAs < .07$, $CFIs > .99$, $SRMRs < .04$).
 Out of all predictors, 79% had a significant effect on the intercept, 24% on the slope, and 18% on the quadratic slope.
 This indicates that our machine learning analyses indeed recovered relevant patterns in the data.</span>
 
@@ -631,12 +639,14 @@ and to explore the nature of the association of those predictors with developmen
 The results identified several potential protective- and risk factors.
 Although all predictors attained a positive variable importance value,
 there were differences in relative importance.
-Individual differences in personality, motivational system, self-concept clarity, and personal distress were among the most important predictors.
-Conflict frequency and behavior also ranked highly.
-Parenting ranked relatively low, with two notable exceptions:
-First, balanced relatedness, a measure of autonomy support, was an important protective factor, and second,
-among all remaining parenting constructs, negative and intrusive dimensions were more predictive (as risk factors) than positive or neutral parenting practices.
-Themes that ranked notably low were family demographics (SES and religion) and bullying, victimization and delinquency, and substance use.
+Most of the important predictors were individual differences in personality, the motivational system, self-concept clarity, and empathy.
+<span id = "highrankingparent">Although a few parent-related constructs ranked highly,
+these were primarily related to the family emotional climate (balanced relatedness and interparental conflict) and demographics (maternal age).</span>
+Specific parenting practices, however, ranked lower than might have been expected given prior literature [e.g., support, control, psychological control, @morrisRoleFamilyContext2007].
+Of these specific child-rearing behaviors,
+negative and intrusive dimensions were more predictive (as risk factors) than positive or neutral parenting practices.
+Adolescents' conflict frequency and behavior also ranked highly, across relationships with parents and peers, which suggests that these variables capture general aspects of pugnaciousness and conflict resolution skills.
+Themes that ranked lower than might have been expected given prior research were family demographics (SES and religion) and bullying, victimization and delinquency, and substance use.
 The relatively low importance of demographics might be attributable to a restriction of range, as the sample was relatively homogenous.
 Still, other empirical studies have also found little evidence for a direct effect of, for example, SES on adolescent emotion regulation [e.g., @defranceExpandingContextRole2021].
 It is thus also possible that the population effect is small, or that it is fully mediated by more proximal process variables.
@@ -644,22 +654,31 @@ It is thus also possible that the population effect is small, or that it is full
 ## Implications for theory
 
 Relating these results to prior theory,
-it is noteworthy that predictive importance of different themes appears to correspond to the levels of the bioecological model [@bronfenbrennerBioecologicalModelHuman2007]:
-Predictors at the individual level were most important,
+it is noteworthy that predictive importance of different themes appears to correspond to the levels of the bioecological model [@bronfenbrennerBioecologicalModelHuman2007], see Figure \@ref(fig:figthemes) panel B.
+[Although there was substantial overlap between predictors at different levels of the bioecological models,
+several predictors at the individual level achieved the highest importance rankings]{#overlap},
 <!-- SB: this is not very surprising given that many of the behaviors assessed require ER (e.g. becoming angry in a conflict is an indication of low ER, and individuals high in Neuroticism also have fluctuating emotions that they find difficult to control/regulate) -->
-followed by those at the microsystem level, such as aspects of the relationship with parents,
+followed by predictors at the microsystem level, particularly those representing the emotional family climate,
 followed by the mesosystem, including aspects of the peer network (e.g., bullying/victimization and delinquency), school performance, and socio-economic status,
 and the macrosystem indicator religiosity was among the least important predictors.
 Future theory might thus emphasize proximal factors over distal ones [see also @sameroffUnifiedTheoryDevelopment2010].
 <!-- SB: So in a way this is support for the specific theories that tend to focus on proximal factors such as personality and parenting? -->
 <!-- Yet perhaps there was too little variation in relevant macro factors (ethnicity, SES/poverty, cultural differences in ER) -->
+<span id = "velezagosto">Also note that a recent perspective on the bioecological theory emphasizes that distal factors like culture are enacted proximally in different domains of the microsystem [@velez-agostoBronfenbrennerBioecologicalTheory2017].
+Recognizing that culture is a product of human activity leaves more room for heterogeneity in cultural heritage and practices.
+This perspective might help explain why we found that distal factors were relatively less important predictors.
+If factors like religiosity and SES are (partly) enacted in relationships with parents and peers,
+their distal effects might be causally screened off by conditioning on proximal effects [@pearlCausalDiagramsEmpirical1995].
+This could explain their relatively lower variable importance.
+</span>
+A possible alternative explanation is that our sample was relatively homogenous in terms of characteristics typically attributed to the macrosystem.
 
 <span id = "includepersonality">Several personality traits emerged as particularly important proximal predictors.
 According to a recent review on personality and emotion regulation (in adults),
 personality is a broad framework for describing psychological capacities,
 of which emotion regulation is one [@hughesPersonalityTraitsEmotion2020].
 This view is certainly supported by our findings,
-and yet research on adolescents does not routinely assess the role of personality alongside factors of particular interest in our discipline, such as parenting, peer relationships, and problem behavior [@vanlissaMappingPhenomenaRelevant2021].
+and yet research on adolescents does not routinely assess the role of personality alongside factors of particular interest in our discipline, such as parenting practices, peer relationships, and problem behavior [@vanlissaMappingPhenomenaRelevant2021].
 This is certainly a promising area for future research.</span>
 
 Another relevant insight for theory formation is that
@@ -671,14 +690,15 @@ aspects of the emotional family climate ranked highly (e.g., autonomy support an
 Parent-child conflict resolution also ranked highly, but is not explicitly mentioned in the tripartite model.
 Perhaps the definition of the emotional family climate could be expanded to include it.
 Counter to this theory, however, parent characteristics (e.g., parental emotion regulation) ranked low in importance.
-Parenting practices also ranked relatively low - with the notable exception of negative parenting behaviors.
+Parenting practices also ranked relatively low, and negative practices ranked higher than positive ones.
 <!-- SB: here you should really go into more depth. you do find evidence for several parenting behaviors, yet you seem to dismiss the theory because some other dimensions were not significant. It makes sense that the dimensions that spring out in this analysis are the most relevant ones, particularly in adolescence when autonomy support is one of the most important parenting dimensions and parenting behaviors undermining autonomy development might result in most problems. -->
 <!-- Also, conflict resolution with parents was important and reflects the quality of the parent-adolescent relationship as well -->
 This finding is consistent with recent studies that, using innovative methods to study processes within families,<!--The finding that positive parenting practices ranked low -->
-have found limited evidence for effects of parenting behaviors on emotional development in adolescence [@vanlissaRoleFathersMothers2019; @mastrotheodorosFamilyFunctioningAdolescent2020] and childhood [@vanlissaMothersFathersQuantitative2020].
+have found limited evidence for effects of specific parenting practices on emotional development in adolescence [@vanlissaRoleFathersMothers2019; @mastrotheodorosFamilyFunctioningAdolescent2020] and childhood [@vanlissaMothersFathersQuantitative2020].
 <!-- aren’t individual differences the result of the environment where those people were growing up, hence parental style as well? -->
-We must thus consider the possibility that parenting behavior, at least in adolescence, is less influential than once was thought.
-The absence of negative behavior and constructive communication in conflict situations might be more important.
+We must thus consider the possibility that specific child-rearing behaviors might be less influential than once was thought, at least in adolescence.
+To ensure adaptive emotion regulation development,
+it might be more important that parents avoid negative parenting practices and engage adolescents in constructive communication in conflict situations.
 <!-- Future theories of adolescent emotion regulation development should thus at least go beyond parents' role. -->
 
 Given recent interest in fathers' role in child development [@vanlissaMothersFathersQuantitative2020],
@@ -686,7 +706,7 @@ it is worth examining whether differences exist between the importance of predic
 Some scholars have lamented the lack of research attention to fathers,
 and the equation of parenting with "mothering" [@pleckPaternalInvolvementRevised2004].
 Our results showed no systematic differences between mothers and fathers.
-Anecdotally however, out all parent-related constructs, constructive conflict resolution with fathers ranked highest, and out of all parenting behaviors, paternal power ranked highest.
+[Anecdotally however, out all parent-related constructs that were measured separately for mothers and fathers]{#motherfather}, constructive conflict resolution with fathers ranked highest, and out of all parenting practices, paternal power ranked highest.
 These observations validate the notion that fathers matter.
 Also note that two historically gendered constructs, support and socio-economic status, were both ranked approximately equally for mothers and fathers.
 Prior research has found support to be more important in mother-adolescent relationships [@vanlissaRoleFathersMothers2019], and family socio-economic status is often defined by reference to the father [@pleckPaternalInvolvementRevised2004].
@@ -703,7 +723,7 @@ such factors ought to be included in future theory, but should not take center s
 A final consideration relevant for future theory development is to what extent 
 research interest corresponds to the empirical importance of phenomena relevant for adolescents' emotion regulation.
 A prior text mining systematic review comprehensively mapped the phenomena studied in this field [@vanlissaMappingPhenomenaRelevant2021].
-It showed that parenting, substance use, and bullying were among the phenomena most studied in research on emotion regulation.
+It showed that parenting practices, substance use, and bullying were among the phenomena most studied in research on emotion regulation.
 These phenomena all ranked relatively low in empirical importance in the present study.
 Conversely, phenomena found to be important in the present study, such as personality and other individual differences, parental autonomy support, and conflict-related behavior were less prevalent in the literature.
 Of course, the relative importance of predictors may vary across studies,
@@ -752,16 +772,16 @@ Our findings reveal the strength of the association of each predictor with emoti
 Intervention can only be effective if this association can additionally be assumed to be causal, based on theory or experimental research.
 Two phenomena appear to be prime candidates for intervention,
 based on the variable importance rankings:
-conflict resolution behavior, and (negative) parenting.
+conflict resolution behavior, and (negative) parenting practices.
 
 There is prior evidence for the efficacy of conflict resolution training in adolescents [@breunlinConflictResolutionTraining2002].
 The same evidence indicates that conflict resolution training caused a decrease in externalizing problems (another important predictor), suggesting potential compounding benefits.
-Parenting behavior is another promising target for intervention,
+Parenting practices are another promising target for intervention,
 as indeed it has historically been.
-Importantly, our results suggest that such interventions should focus on promoting parental autonomy support, and decreasing intrusive, negative, guilt-inducing and overbearing parenting behaviors.
+Importantly, our results suggest that such interventions should focus on promoting parental autonomy support, and decreasing intrusive, negative, guilt-inducing and overbearing parenting practices.
 By contrast, promoting positive parenting practices may have limited potential for impact.
 With this in mind, it is important to consider that positive parenting practices are often a key focus of parenting training.
-Although one meta-analysis did report large effects of the Triple P-Positive Parenting Program on parental outcomes - including some negative parenting behaviors [@fletcherImpactBehaviouralParent2011],
+Although one meta-analysis did report large effects of the Triple P-Positive Parenting Program on parental outcomes - including some negative parenting practices [@fletcherImpactBehaviouralParent2011],
 another meta-analysis called these findings into question,
 citing mixed evidence, a lack of adequate blinding, and risk of bias [@wilsonHowEvidencebasedEvidencebased2012].
 <!-- Another study Even when negative parenting has been assessed as outcomes, -->
@@ -771,11 +791,12 @@ Also note that the efficacy of parenting training has been evaluated primarily i
 the ultimate benefit for children,
 in particular for adolescents' emotion regulation,
 is less studied.
-The relatively higher importance rankings for negative versus parenting is in line with the well-established *negativity bias*,
-that negative stimuli are more psychologically impactful than positive ones,
+The relatively higher importance rankings for negative versus positive parenting practices is in line with the well-established *negativity bias*,
+that negative stimuli are more psychologically impactful,
 which has also been found in children [@vaishNotAllEmotions2008].
-Future parenting interventions might take this into consideration by devoting sufficient attention to the elimination of negative parenting practices,
-and including children's outcomes, including emotion regulation, into consideration.
+Future parenting interventions might take this into account by devoting sufficient attention to the elimination of negative parenting practices,
+and by considering children's outcomes,
+including emotion regulation.
 Simply put, the present results suggest that the best advice for parents might be to support their individuating adolescents' autonomy,
 refrain from overly invasive or negative parenting practices,
 and model problem solving behavior when conflicts arise.
@@ -818,6 +839,8 @@ The present study answers recent calls for more person-centered research that ex
 Crucially, whereas other approaches have merely *explored* heterogeneity in outcomes (e.g., using latent class analyses),
 the present study *explained* heterogeneity using a comprehensive battery of predictors.
 This answers the question why some adolescents experience more difficulties in emotion regulation than others.
+[Note however that, as our dataset describes naturally occurring development,
+any causal interpretation of the results must be substantiated by theory or corroborated with experimental research.]{#causality}
 Another contribution is that the results have clear implications for theory, assessment, and intervention.
 <!-- The present study set out to identify the most important early indicators of developmental trajectories -->
 <!-- of emotion regulation across adolescence. -->
@@ -835,8 +858,12 @@ which may limit the generalizability of the findings.
 Specifically, this was a non-random, ethnically and socially relatively homogeneous sample from the Netherlands.
 [Cultural values, which differ across and within countries,
 have been found to influence people's motivation to regulate emotions, as well as the strategies they use and their adaptiveness [@fordCultureEmotionRegulation2015].
-In cross-cultural comparisons, the Netherlands has been found (on average) to ascribe to similar cultural values as large Anglophonic countries (e.g., the United States, Canada, and Australia) [@terlutterGLOBEStudyApplicability2006].
+In cross-cultural comparisons, cultural values in Dutch samples have been found (on average) to be similar to those in large Anglophonic countries (e.g., the United States, Canada, and Australia) [@terlutterGLOBEStudyApplicability2006].
 Whether our findings also generalize to populations that adhere to different cultural values remains an open question.]{#culture}
+Relatedly, <span id = "globalnorth">although the majority of references cited in the introduction were (systematic) reviews or theoretical articles, all primary sources relied on data from the Global North (see [Supplemental Table 4]() for the countries of origin of all references cited). As geographic and cultural considerations were not selection criteria in our literature search,
+a possible explanation for this bias is that research on predictors of adolescent emotion regulation development may have been conducted primarily in the Global North.
+It thus remains to be determined whether these findings generalize to populations from the Global South.</span>
+
 Another concern related to generalizability is that the relative homogeneity of our sample in terms of demograpic factors, like SES and religion, might have contributed to their lower variable importance.
 The sample might also be somewhat dated - especially considering daily life has changed drastically for youth coming of age in a post-pandemic world.
 The only way to address these concerns is to replicate these findings in other samples.
@@ -878,16 +905,17 @@ Candidate predictors were selected based on a prior systematic review of 6305 re
 The SEM-forest algorithm was applied to rank-order these predictors by their relative importance for explaining heterogeneity in adolescents' developmental trajectories,
 and to probe the nature of their association with emotion regulation development. 
 Results indicated that the importance of different predictors corresponded somewhat with the levels of the bioecological model:
-Proximal factors were more predictive of emotion regulation development than distal predictors; individual differences were most predictive, and mesosystem factors (e.g., SES, religion) were least predictive.
-The results also suggested that parenting may be less relevant for emotion regulation development than previously thought, and that negative parenting may be more impactful than positive parenting.
+Proximal factors were more predictive of emotion regulation development than distal predictors; individual differences were most predictive; macro- and mesysystem factors (e.g., SES, religion) were least predictive.
+The results also suggested that specific parenting practices may be less relevant for emotion regulation development than previously thought,
+and that negative parenting practices may be more impactful than positive ones.
 The results have clear implications for early risk assessment:
 Regularly administered personality inventories, and readily observable indicators like externalizing problems and conflict behavior were among the most important predictors, and these are suitable indicators for diagnostic tools.
 The results further suggest that conflict skills training might be a promising avenue for adolescent-directed interventions.
-Parenting interventions might benefit more from addressing the notion of "good enough" parenting and remedying negative and invasive behaviors than from promoting positive parenting behaviors.
+Parenting interventions might benefit more from addressing the notion of "good enough" parenting and remedying negative and invasive practices than from promoting positive parenting practices.
 The results also provide clear guidance for the ongoing effort of theory generation in this field:
 Such theory should focus on proximal processes over distal ones.
 Parents' roles might be less central than previously thought;
-their support of adolescents' autonomy and the way they navigate conflict might be more important than their parenting behaviors.
+their support of adolescents' autonomy and the way they navigate conflict might be more important than their parenting practices.
 Moreover, there was no evidence of differences between mothers' and fathers' parenting, indicating that both parents should be equally represented in future theory.
 Finally, common perceptions about risk factors should be reassessed: 
 delinquency, substance use, and bullying were all relatively less important predictors.

@@ -62,6 +62,99 @@ p <- metaforest::VarImpPlot(VI, length(VI$variable.importance))
 saveRDS(p, "varimp_21-08-2021.RData")
 
 
+# Varimp by type ----------------------------------------------------------
+
+VI <- readRDS("variable_importance.RData")
+names(VI)[names(VI) == "Psychological control"] <- "Psychological control (mf)"
+ren <- read.csv("scale_rename.csv", stringsAsFactors = FALSE, header = FALSE)
+VI <- data.frame(Variable = paste0(1:length(VI), ". ", names(VI)), Importance = VI, 
+                 Level = ren$V4[match(names(VI), ren$V2)],
+                 Theme= ren$V5[match(names(VI), ren$V2)])
+VI$Level <- ordered(VI$Level, levels = rev(c("Individual", "Microsystem", "Mesosystem", "Macrosystem")))
+VI$Theme <- ordered(VI$Theme, levels = rev(c("Personality", "Int/ext", "Conflict", "Parenting", "Substance", 
+                                         "Peers", "Demographics")))
+
+#VI <- VI[order(VI$Level, VI$Importance, decreasing = TRUE), ]
+VI$Variable <- ordered(VI$Variable, levels = rev(VI$Variable))
+p1 <- 
+  ggplot(VI[1:44, ], aes(x = Importance, y = Variable, shape = Level)) +
+    geom_segment(aes(x = 0, xend = Importance, y = Variable, yend = Variable), colour = "grey50", linetype = 2) + 
+    geom_vline(xintercept = 0, colour = "grey50", 
+               linetype = 1) +
+    geom_point(size = 2) +
+    xlab("Variable Importance (Permutation importance)") + 
+    theme_bw() + theme(panel.grid.major.x = element_blank(), 
+                     panel.grid.minor.x = element_blank(), axis.title.y = element_blank())+
+    theme(axis.text.y = element_text(hjust=0))+xlab(NULL)+scale_x_continuous(limits = c(0, max(VI$Importance))) +
+    scale_shape_manual(breaks = c("Individual", "Microsystem"), values = c(16, 17), guide = "none")
+  
+  
+p2 <- 
+  ggplot(VI[45:nrow(VI), ], aes(x = Importance, y = Variable, shape = Level)) +
+    geom_segment(aes(x = 0, xend = Importance, y = Variable, yend = Variable), colour = "grey50", linetype = 2) + 
+    geom_vline(xintercept = 0, colour = "grey50", 
+               linetype = 1) +
+    geom_point(size = 2) +
+    xlab("Variable Importance (Permutation importance)") + 
+    theme_bw() + theme(panel.grid.major.x = element_blank(), 
+                       panel.grid.minor.x = element_blank(), axis.title.y = element_blank())+
+    theme(axis.text.y = element_text(hjust=0), legend.position = c(.72, .15))+xlab(NULL)+scale_x_continuous(limits = c(0, max(VI$Importance))) +
+    scale_shape_manual(breaks = c("Individual", "Microsystem", "Mesosystem", "Macrosystem"), values = c(16, 17, 18, 3))
+
+
+library("cowplot")
+pcomb <- plot_grid(p1,p2,
+                   ncol = 2, nrow = 1)
+ggsave("pcomb2.svg", pcomb, device = "svg", width = 210, height = 130, units = "mm")
+ggsave("pcomb2.png", pcomb, device = "png", width = 210, height = 130, units = "mm")
+ggsave("pcomb2.pdf", pcomb, device = "pdf")
+saveRDS(pcomb, "varimp_comb2_03-08-2022.RData")
+p <- metaforest::VarImpPlot(VI, length(VI$variable.importance))
+saveRDS(p, "varimp_21-08-2021.RData")
+
+library(ggplot2)
+ggplot(VI, aes(x = Importance, y = Level)) + geom_jitter(height = .2)
+
+set.seed(1)
+
+p1 <- ggplot(VI, aes(y = Level, x = Importance)) +
+  geom_violin(position = position_dodge(), scale = "width") +
+  geom_jitter(width = 0, height = .1)+
+  theme(legend.position = "none") +
+  theme_bw() +
+  theme(axis.title =  element_blank(),
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank())
+ggsave("violin.svg", p, device = "svg", width = 105, height = 60, units = "mm")
+
+df_plot <- VI
+df_plot$Type = "B. Level"
+df_plot$Label <- df_plot$Level
+df_plot2 <- VI[!is.na(VI$Theme), ]
+df_plot2$Type = "A. Theme"
+df_plot2$Label <- df_plot2$Theme
+df_plot <- rbind(df_plot, df_plot2)
+p = ggplot(df_plot, aes(y = Label, x = Importance)) +
+  #geom_boxplot()+
+  geom_violin(position = position_dodge(), scale = "width") +
+  geom_jitter(width = 0, height = .1)+
+  theme(legend.position = "none") +
+  theme_bw() +
+  theme(axis.title =  element_blank(),
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank()) +
+  facet_wrap(~Type, scales = "free_y")
+ggsave("violin.svg", p, device = "svg", width = 210, height = 60, units = "mm")
+ggsave("violin.png", p, device = "png", width = 210, height = 60, units = "mm")
+saveRDS(p, "violin.RData")
+
+pcomb <- plot_grid(p1,p2,
+                   ncol = 2, nrow = 1)
+ggsave("violin_comb.svg", pcomb, device = "svg", width = 210, height = 130, units = "mm")
+ggsave("pcomb2.pdf", pcomb, device = "pdf")
+saveRDS(pcomb, "varimp_comb2_03-08-2022.RData")
+p <- metaforest::VarImpPlot(VI, length(VI$variable.importance))
+saveRDS(p, "varimp_21-08-2021.RData")
 # Partial dependence: too computationally intensive -----------------------
 #plan(multisession, workers = 10, gc = TRUE)
 source("pdp_growth.R")
@@ -82,10 +175,10 @@ pdps[[1]] <- plot_pdp(res_rf, "neuroticism")
 
 
 # Clustering --------------------------------------------------------------
-klsym
-plan(multisession, workers = 10)
-M <- diversityMatrix(res_rf)
-
+# klsym
+# plan(multisession, workers = 10)
+# M <- diversityMatrix(res_rf)
+# 
 
 # a grid will show the proximity between every pair of observations.
 # The proximity represents the percentage of trees where the two observations

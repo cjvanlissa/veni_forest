@@ -26,3 +26,4 @@ results/full_forest.RData
 *.out
 *.dat
 !supplemental_table_2.csv
+!supplemental_table_*.csv
