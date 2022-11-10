@@ -32,7 +32,7 @@ abstract: |
   | • Specific parenting practices may be less relevant than previously thought, and negative parenting practices may be more impactful than positive ones.
   | • Important predictors most suitable for early risk assessment include regularly administered personality inventories, and readily observable indicators like externalizing problems and conflict behavior.
   | • Future theory should emphasize proximal- over distal processes, focus on good-enough parenting, and reassess common perceptions about “risky behaviors” like delinquency, substance use, and bullying.
-  | [As 20% of adolescents develop emotion regulation difficulties, it is important to identify important early predictors thereof. Using the machine learning algorithm SEM-forests, we ranked the importance of (87) candidate variables assessed at age 13 in predicting quadratic latent trajectory models of emotion regulation development from age 14-18. Participants were 497 Dutch adolescents. Results indicated that the most important predictors were individual differences (e.g., in personality), aspects of relationship quality and conflict behaviors with parents and peers, and internalizing and externalizing problems. Relatively less important were demographics, bullying, delinquency, substance use, and specific parenting practices – and negative parenting practices ranked higher than positive ones. We discuss implications for theory and interventions, and present an open source risk assessment tool, ERRATA.]{#abstract}
+  | [As 20% of adolescents develop emotion regulation difficulties, it is important to identify important early predictors thereof. Using the machine learning algorithm SEM-forests, we ranked the importance of (87) candidate variables assessed at age 13 in predicting quadratic latent trajectory models of emotion regulation development from age 14-18. Participants were 497 Dutch families. Results indicated that the most important predictors were individual differences (e.g., in personality), aspects of relationship quality and conflict behaviors with parents and peers, and internalizing and externalizing problems. Relatively less important were demographics, bullying, delinquency, substance use, and specific parenting practices – although negative parenting practices ranked higher than positive ones. We discuss implications for theory and interventions, and present an open source risk assessment tool, ERRATA.]{#abstract}
   
 keywords          : "emotion regulation, adolescence, machine learning, theory formation, random forests"
 wordcount         : "6199"
@@ -79,7 +79,7 @@ options(knitr.kable.NA = '')
 <!-- TS: Some longitudinal research falls between these categories. For example, complex longitudinal studies, where prior research is sufficient to lead us to hypothesize *some* associations between two constructs, but not sufficiently specific to let us hypothesize which parameters will be significant. -->
 <!-- TS: Instead, us -->
 
-A key challenge in adolescence is developing mature emotion regulation abilities [@zimmermannEmotionRegulationEarly2014]. 
+A key challenge in adolescence is developing mature emotion regulation abilities [@zimmermannEmotionRegulationEarly2014].
 Adolescents experience biological, cognitive, and social changes that create an opportunity for positive emotion regulation development [@steinbergAgeOpportunityLessons2014].
 Still, [as many as 20% of adolescents instead experience severe emotion regulation difficulties [@leeAdolescentMentalHealth2014],
 with potentially lifelong implications for mental health and well-being [@aldaoEmotionregulationStrategiesPsychopathology2010].
@@ -87,21 +87,19 @@ These difficulties in emotion regulation can cause substantial distress to the i
 and incur a sizable societal cost via their implications for mental health [@leeAdolescentMentalHealth2014].]{#cost}
 A comprehensive understanding of the risk factors that predispose some adolescents to emotion dysregulation could aid in the development of effective screening and interventions.
 <span id = "abundantlit">There is already an abundance of empirical research on adolescent emotion regulation and its predictors; a recent systematic review identified 6305 relevant publications [@vanlissaMappingPhenomenaRelevant2021].
-Still, that review identified specific limitations of the existing literature:
-many studies narrowly focus on a few predictors within a specific research area,
+An important limitation of the existing literature is that many studies narrowly focus on a few predictors within a specific research area,
 and thus fail to provide insight into these predictors' relative importance compared to other predictors, including those in other domains.
 Relatedly,
 the literature lacks a unifying theoretical framework that is both specific to adolescence and comprehensive in scope [see @bariolaChildAdolescentEmotion2011].</span>
 
-The present study seeks to overcome these limitations
-by using data-driven insights to complement and reflect on existing theory.
-To this end, a broad range of potential risk factors were analyzed using machine learning,
-and ranked in terms of predictive importance.
+This exploratory study seeks to overcome these limitations by casting a broad net among potential risk factors, 
+and using the resulting data-driven insights to complement and reflect on existing theory.
+Machine learning was used to determine the relative utility of a wide range of potential risk factors.
 Specifically,
 <span id = "personcentered1">the SEM-forests algorithm [@brandmaierTheoryguidedExplorationStructural2016], a person-centered analysis technique, was used
 to identify the most important early indicators (at age 13) of developmental trajectories
 of emotion regulation across adolescence (age 14 through 18).
-The results indicate which factors are most predictive of adolescents' diverging trajectories of emotion regulation development, contributing to our understanding of why some youth flourish while others struggle through adolescence [@croneUnderstandingAdolescencePeriod2012].</span>
+The results indicate which factors are most predictive of adolescents' diverging trajectories of emotion regulation development, contributing to our understanding of why some youth flourish while others struggle [@croneUnderstandingAdolescencePeriod2012].</span>
 These insights can guide development of interventions that focus on the most important predictors,
 and direct the formation of overarching theory that adequately represents essential phenomena.
 
@@ -124,24 +122,24 @@ which has been linked to the emergence of several mental disorders [@schaferEmot
 Longitudinal studies of emotion regulation development in adolescence provide preliminary empirical support for this notion of diverging trajectories: 
 Such studies consistently reveal large between-individual heterogeneity [see @craccoEmotionRegulationChildhood2017; @vanlissaRoleFathersMothers2019; @zimmermannEmotionRegulationEarly2014; @reindlSocializationEmotionRegulation2016].
 <!-- Although some studies have examined, on average, how strongly particular risk factors are associated with developmental trajectories - most have done  REF write something about other studies examining risk factors -->
-An important next step is to identify which risk factors render some adolescents susceptible to emotion dysregulation.
+[An important target of research is thus to identify which risk factors render some adolescents susceptible to emotion dysregulation.]{#nextstep}
 <!-- This goal fits within the paradigm shift that has gripped the field of pedagogy, towards "person-centered" research, which focuses on individual developmental trajectories and within-family predictive processes, rather than average patterns across samples16,23. Seminal studies have applied "clustering" methods to identify youth with similar developmental trajectories14,24–26. Adolescents may follow similar trajectories for different reasons, however, and person-centered methods are too complex to accommodate more than a handful of theoretically-derived predictors. Unfortunately, relevant theory on adolescent emotion regulation development is limited27–29. The field is therefore at an impasse: We know that some adolescents are more susceptible to emotion dysregulation than others, but lack tools and theory to identify important predictors of individual development30. -->
 
 ## Potential predictors of emotion regulation development
 
-A recent review noted that the literature on potential predictors of emotion regulation development is somewhat fragmented,
+[Substantial prior research has examined potential risk factors.
+However, a recent review of 6305 relevant publications noted that this literature is somewhat fragmented,
 with most studies considering only a handful of variables within the scope of a particular sub-discipline [@vanlissaMappingPhenomenaRelevant2021].
-<!-- At the same time, this literature is relatively fragmented, -->
-<!-- as most studies have examined only a limited number of predictors [@vanlissaMappingPhenomenaRelevant2021]. -->
-This fragmentation may be due, in part, to the fact that few theories are tailored specifically to adolescence,
+If each study examines only a piece of the puzzle, it is hard to see the big picture.]{#fragmented}
+This fragmentation may be due, in part,
+to the fact that few theories are tailored to emotion regulation in adolescence,
 and none consistently guide research in the field [@bussTheoriesEmotionalDevelopment2019].
-Theories commonly cited in this field vary in scope and specificity:
+Commonly cited theories in this field vary in scope and specificity [see @vanlissaMappingPhenomenaRelevant2021]:
 Some are broad in scope, considering many potential risk factors,
 but are somewhat non-specific.
 This limits their usefulness in generating testable hypotheses,
 and renders them impervious to falsification or improvement.
 Other theories are narrower in scope, and are sufficiently specific to derive testable predictions, but lack broader context.
-For a more detailed overview, see @vanlissaMappingPhenomenaRelevant2021.
 Two of the most influential broad theories are the bioecological model [@bronfenbrennerBioecologicalModelHuman2007; e.g., see @augustEmotionRegulationAtRisk2017] and the transactional model [@sameroffUnifiedTheoryDevelopment2010].
 The bioecological model describes how individual development is shaped by factors at different levels of analysis:
 The individual level, which includes biological make-up and individual differences;
@@ -149,8 +147,9 @@ the microsystem, composed of primary caregivers and close relationships;
 the mesosystem, including school and neighborhood factors;
 the exosystem, including media, political- and economic influences;
 and the macrosystem, consisting of cultural norms and values.
-The transactional model is compatible with the bioecological model,
-and describes development as an interplay between the individual child and the environment.
+<span id = "velez1">Note that a recent perspective on the bioecological model emphasizes that cultural practices are enacted by individuals at different levels of the model, including parents [@velez-agostoBronfenbrennerBioecologicalTheory2017].
+This perspective is consistent with the transactional model,
+which describes development as an interplay between the individual child and the environment.</span>
 It distinguishes proximal environmental influences, roughly corresponding to the microsystem,
 from more distal influences.
 With increasing age, distal influences are thought to become more influential. 
@@ -158,64 +157,40 @@ With increasing age, distal influences are thought to become more influential.
 More specific theories tend to focus on cognitive maturation and the role of primary caregivers.
 Examples include the theory of normative emotional development [@sroufeAttachmentDyadicRegulation1996]
 and the tripartite model of emotion regulation socialization in families [@morrisRoleFamilyContext2007], which has also been applied to the peer context [@reindlSocializationEmotionRegulation2016].
-This tripartite model is one of the few theories that explicitly addresses the life phase of adolescence.<!---->
-<!-- This seems a bit selective. For example, also discuss the work of Hollenstein and of Nicholas Allen. -->
-<!-- I think you do insufficient right to the theories that exist, both in breadth and in depth. Perhaps just stay closer to the contribution of the current paper: empirically examine multiple factors simultaneously rather than selectively examining a few? -->
-<!-- Despite this abundance of relevant theory,  -->
-<!-- several reviews have noted the relatively fragmented nature of the literature  -->
-<!-- that  -->
-<!-- few theories are tailored specifically to emotion regulation development in adolescence, -->
-<!-- and none are used consistently to guide research in this field. -->
-Given that few theories are both comprehensive and sufficiently specific to derive testable hypotheses,
-an important challenge for the field is to work towards an integrating theory of emotion regulation development in adolescence.
+The tripartite model is one of the few theories that explicitly addresses the life phase of adolescence.
+It posits that children's emotion regulation is shaped by modeling, specific parenting practices, and the emotional family climate (including the interparental relationship).
+This model is relatively narrow, focusing on parents' role - but also sufficiently specific to derive testable hypotheses.
+Note that few theories are both comprehensive and specific.
+An important challenge for the field is thus to work towards an integrating theory of emotion regulation development in adolescence.
 
-<!-- * Bioecological model [@bronfenbrennerBioecologicalModelHuman2007] -->
-<!-- * Transactional model [@sameroffUnifiedTheoryDevelopment2010] -->
-<!-- * Hall's notion of "storm and stress" -->
-<!-- * Theory of normative emotional development [@sroufeEmotionalDevelopmentOrganization1995] -->
-<!-- * Tripartite model [@morrisRoleFamilyContext2007] -->
-<!-- * Internalization model [@holodynskiDevelopmentEmotionsEmotion2006] -->
-<!-- * Polyvagal theory [@porgesOrientingDefensiveWorld1995]. -->
-<!-- * Model of social-affective engagement and goal flexibility [@croneUnderstandingAdolescencePeriod2012] -->
-<!-- * Process model of emotion regulation [@grossHandbookEmotionRegulation2013] -->
-<!-- * Social Information Processing Theory [@lemeriseIntegratedModelEmotion2000] -->
-<!-- Maybe review theory briefly? -->
 The first step towards theory formation is identifying relevant phenomena [@borsboomTheoryConstructionMethodology2020].
-<!--Thus, offering a starting point for this endeavor,<!-- empirical investigations of predictors of adolescents' emotion regulation development -->
-A recent literature review did so
-using a text mining systematic review of author keywords and abstracts of 6305 publications on  adolescents’ emotion regulation [@vanlissaMappingPhenomenaRelevant2021].
-Typically, phenomena are identified using narrative literature reviews.
-However, these are often limited to a small number of papers and structured around well-established ideas [@littellEvidencebasedBiasedQuality2008].
-Text mining systematic reviews, by comparison, are relatively comprehensive and derive insights from the literature through a relatively transparent and objective - albeit less interpretative - procedure [@vanlissaMappingPhenomenaRelevant2021].
-Specifically, related keywords are grouped into clusters,
-with each cluster representing a phenomenon.
-These phenomena are then ranked by the number of studies those keywords occur in, and potential relations between phenomena are mapped by co-occurrence within studies.<!-- reflection and meaning-making-->
-This review thus offers a relatively comprehensive overview of potentially relevant phenomena.
-The present study used it as a starting point for an empirical investigation of the relative importance and direction of effect of these phenomena.
+Phenomena considered relevant in a field of research are often summarized using literature reviews.
+A recent review of 6305 publications on adolescents’ emotion regulation used text mining to identify relevant phenomena, including potential risk factors [@vanlissaMappingPhenomenaRelevant2021].
+Narrative reviews are often limited to a small number of papers and structured around well-established ideas [@littellEvidencebasedBiasedQuality2008].
+Text mining systematic reviews are more comprehensive and derive insights from the literature through a transparent and somewhat objective - albeit less interpretative - procedure [@vanlissaMappingPhenomenaRelevant2021].
+This review thus offers a relatively comprehensive overview of potential predictors of emotion regulation development.
+The present study used it as a starting point for an empirical investigation of the relative importance and direction of effect of these predictors.
 
 According to this prior review,
 the phenomena that have received most research attention are internalizing and externalizing problems, and mental health.
-These are likely to be, at least in part, outcomes of emotion dysregulation.
-<!-- - but they that does not diminish their usefulness as predictors. -->
+Although reciprocal effects cannot be excluded, these phenomena are typically conceptualized as outcomes of emotion dysregulation.
+Note, however, that this does not diminish their usefulness as predictors.
 Other important phenomena reflected what has been discussed in prior narrative reviews,
 including cognitive development, parenting, and external stressors [cf. @coe-odessEmergentEmotionsAdolescence2019].
 Finally, the method identified some phenomena that have received less attention in prior theory and reviews,
 such as substance use, structural disadvantage,
 identity, morality, sex and sexual development.
-<!-- To this end, the present study sought to identify operationalizations of these relevant phenomena in a large-scale panel study. -->
 Prior theory and empirical research thus suggests many phenomena potentially related to heterogeneity in adolescents' emotion regulation development.
 
+The aforementioned potential risk factors have largely been studied in isolation.
 What is still missing is an understanding of the relative utility of different early indicators in predicting adolescents' developmental outcomes.
-<!-- we do not know the relative importance of  with respect to others not included in the same study. -->
-Put simply, each study has examined a piece of the puzzle,
-but no single study has captured the complete picture.
 This knowledge gap cannot be addressed by comparing the relative importance of different predictors across studies,
 as different studies tend to sample from different populations,
 use different research designs,
 different control variables and statistical models.
-Furthermore, conventional methods are ill-suited to overcome address this research question:
-<!-- In part, this limitation is a consequence of conventional methods: -->
-linear models limit the total number of predictors that can be included due to concerns of power, overfitting, and multicolinearity [@hastieElementsStatisticalLearning2009].
+<!-- Furthermore, conventional methods are ill-suited to address this research question: -->
+In part, this knowledge gap is a consequence of the limitations of conventional methods:
+linear models limit the total number of predictors that can be included due to power concerns, risk of overfitting, and multicolinearity [@hastieElementsStatisticalLearning2009].
 By contrast, some machine learning methods offer a more holistic approach,
 as they can incorporate many candidate predictors and perform variable selection,
 while incorporating checks and balances to ensure generalizable results [@hastieElementsStatisticalLearning2009].
@@ -223,27 +198,26 @@ The present study used a specific machine learning algorithm uniquely suited for
 
 ## Introduction to SEM-forests
 
-<span id = "semforests">The SEM-forests algorithm is based on the random forests algorithm, which in turn is based on regression trees [see @stroblIntroductionRecursivePartitioning2009].
-A single regression tree splits the sample repeatedly in two by whichever predictor $p$ makes both post-split groups maximally internally homogenous, and maximally different from one another.
+<span id = "semforests">The SEM-forests algorithm is based on the random forests algorithm, which in turn is based on regression trees [for an accessible introduction, see @stroblIntroductionRecursivePartitioning2009].
+A single regression tree splits the sample repeatedly in two by whichever predictor makes both post-split groups maximally internally homogenous, and maximally different from one another.
 A random forest consists of many regression trees grown on bootstrapped samples from the original dataset.
-To ensure that each tree learns something different from the data, it may only consider a random subsample of $K$ candidates out of all $p$ predictors at each split.
+To ensure that each tree learns something different from the data, it may only consider a random subsample of $m$ candidates out of all $p$ predictors at each split.
 With this in mind, the SEM-forest algorithm operates as follows:
 
 1. Bootstrap the data with replacement; we used 1000 bootstrap replications
 2. For each bootstrap sample, construct a SEM tree:
     i. Estimate the latent growth model on the bootstrap sample
-    ii. Consider a random selection of $K$ candidates out of all $p$ predictors; we used $k = 9$ based on the standard practice to use $K = \lfloor\sqrt{p}\rfloor$
-    iii. [Identify the predictor $k$ and value of that predictor that, when using that predictor and value to split the sample in two, maximizes the difference in model parameters between the two post-split groups (as determined by a likelihood ratio test).]{#stepiii}
-    iv. [Build a SEM-tree by repeating steps 3 and 4 until all post-split groups reach a minimum size that is too small for further splitting. The tree is then fully grown.]{#fullygrown}
-3. [Given an individual's scores on the predictor variables $p$, we can now traverse each tree in the forest to obtain a predicted value of the model parameters (in this case, the latent growth parameters). Aggregating the predicted parameters across all SEM-trees in the forest averages out prediction error.]{#predictions}
+    ii. Consider a random selection of $m$ candidates out of all $p$ predictors; commonly $m = \lfloor\sqrt{p}\rfloor$
+    iii. [Identify the predictor $p_k$ and value of that predictor $x$ that, when using individual values on that predictor $p_{ki}$ to split the sample in two by the rule $p_{ki} \leq x$, maximizes the difference in model parameters between the two post-split groups (as determined by a likelihood ratio test).]{#stepiii}
+    iv. [Build a SEM-tree by repeating steps 3 and 4 until all post-split groups reach a minimum size that is too small for further splitting. The tree is then considered fully grown.]{#fullygrown}
+3. [Given an individual's scores on all predictor variables $p_i$, we can now traverse each tree in the forest to obtain a predicted value of the model parameters (in this case, the latent growth parameters). Aggregating the predicted parameters across all SEM-trees in the forest averages out prediction error.]{#predictions}
 
 Each tree thus maps relationships between the predictors and outcome as a series of recursive splits of the data.
 This approach intrinsically accommodates non-linear effects and (complex) interactions, which is an advantage over parametric models that assume linearity.
-<span id = "examplenonlinear">As a simple example, imagine that only very low levels of autonomy support would be associated with elevated levels of emotion regulation (i.e., a higher intercept).
+[As a simple example, imagine that only very low levels of autonomy support would be associated with elevated levels of emotion regulation (i.e., a higher intercept).
 In regression analysis, this could be represented with a linear and quadratic term, and a plot might show that the effect of autonomy support on the intercept increases to a value $x_{knee}$, and then tapers off.
-A tree-based model would represent the same effect by splitting the sample on autonomy support at the value $x_{knee}$.</span>
-The algorithm additionally performs variable selection;
-unimportant variables are not selected in step 2.iii.
+A tree-based model would represent the same effect by splitting the sample on autonomy support at the value $x_{knee}$.]{#nonlinearexample}
+Note that SEM-forests intrinsically perform variable selection: unimportant variables are not selected in step 2.iii.
 Thus, the number of predictors can be large without risking model non-identification.</span>
 
 <!-- * Predictors of latent growth model? -->
@@ -264,24 +238,20 @@ Thus, the number of predictors can be large without risking model non-identifica
 
 ## The present study
 
-<!-- SB: you have convincingly argued why machine learning in general is important, yet I miss the details related to ER. I would recommend to add a paragraph summarizing theories of ER and the factors they consider important. Also, describe the candidate predictors that were derived from the literature search, and how they relate to theories and /or empirical evidence -->
-The present study set out to obtain a relatively comprehensive understanding of the predictors of emotion regulation development across adolescence.
-<!-- identify the most important early indicators of developmental trajectories -->
-<!-- of  -->
+The present study set out to obtain a comprehensive understanding of the relative utility of predictors of emotion regulation development across adolescence.
 The primary aim was to identify the most important predictors of adolescents' developmental trajectories of emotion regulation development.
 The secondary aim was to probe the nature of the relationship of each predictor with these trajectories.
-This involves an important challenge, as
-the number of potentially relevant risk factors is too large for conventional methods.
+An important challenge of these research aims is that the number of potentially relevant risk factors is too large for conventional methods.
 At the same time, there is a paucity of relevant theory to narrow down the candidate predictors a priori.
-<!-- Third, methods commonly used in the field are not well suited for large numbers of predictors. -->
-This challenge can be overcome by machine learning methods that perform variable selection.
-We therefore used the SEM-forests algorithm to identify the most important early predictors of trajectories of emotion regulation development throughout adolescence.
+We sought to overcome this challenge by using SEM-forests, 
+a machine learning algorithm methods that performs variable selection,
+to identify the most important early predictors of trajectories of emotion regulation development throughout adolescence.
 
 # Method
 
-`r ifelse(mask, "The Workflow for Open Reproducible Code in Science (WORCS)", "**Masked**")` was used to make analyses reproducible  `r ifelse(mask, "[@vanlissaWORCSWorkflowOpen2020]", "**(masked reference)**")`.
-All analysis code, Supplemental materials and synthetic data are available at `r ifelse(mask, "<https://github.com/cjvanlissa/veni_forest>", "**masked URL**")`.
-The original data (controlled access) and all study documentation are available via `r ifelse(mask, "<https://doi.org/10.17026/DANS-ZRB-V5WP>", "**masked URL**")`.
+`r ifelse(mask, "The Workflow for Open Reproducible Code in Science (WORCS)", "**Masked**")` was used to create a reproducible research archive  `r ifelse(mask, "[@vanlissaWORCSWorkflowOpen2020]", "**(masked reference)**")`.
+All analysis code, supplemental materials and synthetic data are available at `r ifelse(mask, "<https://github.com/cjvanlissa/veni_forest>", "**masked URL**")`.
+The original data and all study documentation are available under controlled access via `r ifelse(mask, "<https://doi.org/10.17026/DANS-ZRB-V5WP>", "**masked URL**")`.
 
 ## Participants and procedure
 
@@ -293,23 +263,15 @@ desc_cat <- read.csv("../desc_cat.csv", stringsAsFactors = FALSE)
 received ethical approval from the ethical committee of the University Medical Centre `r ifelse(mask, "Utrecht", "**masked**")`.
 The `r ifelse(mask, "RADAR", "**masked**")` sample was recruited from over 200 randomly selected elementary schools in the province of `r ifelse(mask, "Utrecht", "**masked**")`, and four main cities in `r ifelse(mask, "The Netherlands", "**masked**")`.</span>
 Of 1,544 eligible families, 497 produced informed consent and were included in the study.
-[From 2006 to 2011, trained interviewers conducted six annual measurement waves to collect questionnaire data during home visits.]{#waves}
+[From 2006 to 2011, trained interviewers completed six annual measurement waves by collecting questionnaire data during home visits.]{#waves}
 All independent variables were assessed in the first measurement wave.
-[The sample demographic information is reported in Tables \@ref(tab:tabcat) and \@ref(tab:tabnum).]{#demographics}
+[Sample demographic characteristics are reported in Tables \@ref(tab:tabcat) and \@ref(tab:tabnum).]{#demographics}
 The dependent variable was measured from the second to the sixth wave.
 Families received €100 financial compensation for their participation in annual measurements.
 
-<!-- **Participants** -->
-
-<!-- * RADAR data (https://www.uu.nl/en/research/radar) -->
-<!-- * 497 Dutch adolescents (283 boys; age at T1: M =13.03, SD = 0.46) -->
-<!-- * Collected between 2006-2011 -->
-<!-- * Most families were  medium- to high-SES (10% low-SES) -->
-
-
 ## Measures
 
-## Dependent variable
+### Dependent variable
 
 ```{r}
 ders_desc <- readRDS("../ders_desc.RData")
@@ -331,27 +293,26 @@ As measurement invariance must be imposed in order to compare latent scores acro
 we compared a model with configural invariance ($BIC = 141247.46$)
 to a model that imposed metric invariance ($BIC = 140913.27$).
 The lower BIC indicates support for metric invariance.
-The RMSEA and SRMR of the metric invariance model indicated acceptable fit ($\text{RMSEA} = .05, \text{SRMR} = 0.05$), but the CFI indicated poor fit ($\text{CFI} = .80$).
+The RMSEA and SRMR of the metric invariance model indicated acceptable fit ($\text{RMSEA} = .05$,  $\text{SRMR} = 0.05$), but the CFI indicated poor fit ($\text{CFI} = .80$).
 [Note that the RMSEA has been found to be more appropriate for longitudinal data, possibly because the null-model on which the CFI is based is less appropriate for repeated measures [@leiteDetectingGrowthShape2011]]{#cfi}.
 As score reliability and standardized factor loadings were high across all waves ($\lambda \in [0.44, 0.84]$),
-we considered it acceptable to proceed with individual factor scores for further analysis.
+we proceeded with individual factor scores for further analysis.
 
-## Candidate predictors
+### Candidate predictors
 
 We set out to identify operationalizations of all relevant phenomena identified in @vanlissaMappingPhenomenaRelevant2021 that were available in the RADAR data.
-This yielded 87 candidate predictors, of which `r nrow(desc_cat)` categorical (see Table \@ref(tab:tabcat)), `r sum(is.na(desc_num$Items))` numerical, and `r sum(!is.na(desc_num$Items))` multi-item scales, see Table \@ref(tab:tabnum).
-<!-- SB: I miss a reflection on the extent to which the available data cover all relevant predictors -->
+This yielded 87 candidate predictors, including `r nrow(desc_cat)` categorical (see Table \@ref(tab:tabcat)), `r sum(is.na(desc_num$Items))` numerical, and `r sum(!is.na(desc_num$Items))` multi-item scales, see Table \@ref(tab:tabnum).
 We used principal components analysis to obtain a single score for multi-item scales without making additional assumptions about the underlying measurement model.
 For each scale, we retained the first component for further analysis, which represents the largest amount of shared variance among the scale items.
 For example, consider the construct *neuroticism*, which was measured on a seven point Likert scale.
 Participants were asked to indicate "Please indicate to what extent you posess these traits" for six adjectives associated with neuroticism.
 Principal components analysis indicated that the first component was the only component with an Eigenvalue greater than one (3.22, other Eigenvalues [0.99 - .33].
-This component explained the majority of variance in all six adjectives, $R^2 = .54$, other components $R^2 = [.16 - .05]$.
+This component explained the majority of variance in all six adjectives, $R^2 = .54$, or 3.24 times as much variance as could be expected if each dimension of the scale explained equal variance. Other components' $R^2 \in [.16 - .05]$.
 All adjectives loaded highly on this first component, $L = [.54 - .83]$.
 We thus used this first component as operationalization of the construct neuroticism.
-Across all other scales, the explained variance of the first component ranged from $R^2 \in [0.18, 0.90]$, which corresponded to 1.60 - 17.46 times as much variance as could be expected if each dimension of the scale explained equal variance.
+Across all other scales, explained variance of the first component ranged from $R^2 \in [0.18, 0.90]$, which corresponded to 1.60 - 17.46 times as much variance as could be expected if scale dimension explained equal variance.
 We thus considered these principal components to be adequate operationalizations of the scales.
-[Supplemental Table S1](https://github.com/cjvanlissa/veni_forest/blob/master/supplemental_table_1.csv) additionally reports skew and kurtosis,
+[Supplemental Table S1](https://github.com/cjvanlissa/veni_forest/blob/2c545ab2195fade5d2be3e4a269c24e57e8921a8/supplemental_table_1.csv) additionally reports skew and kurtosis,
 minimum and maximum factor loadings,
 sample items,
 and references to the validation paper for each scale.
@@ -362,8 +323,11 @@ ordr <- match(desc_cat$name, names(vimp))
 desc_cat$name <- paste0(ordr, ". ", desc_cat$name)
 desc_cat <- desc_cat[order(ordr, decreasing = FALSE), ]
 names(desc_cat) <- c("Variable", "n", "%", "Category")
-papaja::apa_table(desc_cat, caption = "Sample descriptive statistics for categorical predictors, ranked by variable importance. Note that variable importance can be interpreted only in relative terms.", landscape = FALSE, longtable = TRUE, format.args = list(na_string = ""))
+desc_cat$Category[desc_cat$Category == "TRUE"] <- "Yes"
+desc_cat$Category[desc_cat$Category == "FALSE"] <- "No"
+papaja::apa_table(desc_cat, caption = "Sample descriptive statistics for categorical predictors, ranked by variable importance.", landscape = FALSE, longtable = TRUE, format.args = list(na_string = ""))
 ```
+
 ```{r tabnum, results='asis'}
 ordr <- match(desc_num$name, names(vimp))
 desc_num$name <- paste0(ordr, ". ", desc_num$name)
@@ -388,12 +352,13 @@ and from $`r report(min((495-desc_num[["n"]])/495), equals = F)` - `r report(max
 
 ## Strategy of analyses
 
-Preliminary analyses were conducted to ensure the appropriateness of growth curve modeling, and determine the presence of heterogeneity in developmental trajectories.
+All analyses were conducted in R [@R-base]. 
+Preliminary analyses were used to establish the appropriateness of growth curve modeling, and determine the presence of heterogeneity in developmental trajectories.
 First, trajectories of emotion regulation development were modeled using a curvilinear latent growth curve model with an intercept (I), linear slope (S), and quadratic slope (Q).
 The full sample model fit was excellent, $\text{RMSEA} < .05, \text{SRMR} = 0.02, \text{CFI} = 1.00$.
 Second, latent class growth analyses were conducted to determine the presence of youth with trajectories that indicated difficulties in emotion regulation (e.g. lower levels or a temporary dip).
 We used the R-package `tidySEM` [@tidysem] to estimate and compare 1-6 class solutions of the aforementioned curvilinear growth curve model;
-analysis results are displayed in [Supplemental Table 2](https://github.com/cjvanlissa/veni_forest/blob/master/supplemental_table_2.csv).
+analysis results are displayed in [Supplemental Table S2](https://github.com/cjvanlissa/veni_forest/blob/2c545ab2195fade5d2be3e4a269c24e57e8921a8/supplemental_table_2.csv).
 To ensure model convergence in small classes, the latent variable covariance matrix was restricted to zero,
 reflecting the assumption of homogeneity of trajectories,
 with remaining heterogeneity attributed to error variance.
@@ -412,25 +377,29 @@ As our research question was to identifying important predictors of emotion regu
 this latent class analysis does not yet provide an adequate answer.
 Latent class analysis clusters individuals only with respect to the outcome (growth trajectories), and ensures maximum homogeneity of growth trajectories in each class.
 It thus answers the question: "Which adolescents have similar growth trajectories"?
-SEM-forests similarly aim for maximum homogeneity of growth trajectories within clusters,
-but unlike latent class analysis, they cluster individuals by reference to a set of *predictors*.
-They thus answer the question: "Why do some adolescents have similar growth trajectories"?
-This method is suitable to meet the study goals.
+A SEM-forest similarly aims for maximum homogeneity of growth trajectories within clusters,
+but unlike latent class analysis, clusters individuals by reference to a set of *predictors*.
+It thus answers the question: "Why do some adolescents have similar growth trajectories"?
+This matches the present study goals.
 
-<span id = "homogeneity">For the SEM-forests analysis,
-we imposed an additional restriction on the diagonal of the residual covariance matrix,
-reflecting an assumption of homoscedastic residuals over time.
-We deemed this assumption to be necessary because the dataset is relatively small, and we wanted the model to be as simple as possible.</span>
+The main analysis consisted of a SEM-forest with 1000 trees grown on bootstrapped samples of the original data, estimated using the `semtree` package [@brandmaierSemtreeRecursivePartitioning2022].
+At each split, the model could examine a random selection of 9 predictors, based on the standard practice to use $m = \lfloor\sqrt{p}\rfloor$.
+<span id = "homogeneity">As described above, the outcome of the SEM-tree was a quadratic latent growth curve model.
+We additionally assumed homoscedastic residuals over time by imposing an equality restriction on the diagonal of the residual covariance matrix.
+Thus, instead of four residual variances,
+a single residual variance parameter is estimated.
+We deemed this assumption to be necessary because the dataset was relatively small, and we wanted the model to be as simple as possible.
+The resulting model had four parameters in total.</span>
 
 Our primary outcome of interest, variable importance,
-is defined as the average absolute increase in model misfit due to randomization of each variable.
+is defined as the average absolute increase in model misfit resulting from randomization of a particular variable.
 For each tree, the log-likelihood of cases not in that tree's bootstrap sample is computed twice:
 Once using the true data for these cases, and once after randomizing one predictor.
 The variable importance is given by averaging the ratio of these two log-likelihoods across all trees.
 Note that variable importance has no meaningful scale and can only be interpreted in relative terms (i.e., one variable is more important than another). 
 Our secondary outcome of interest were marginal association plots,
 which visualize the partial dependence of each predictor with trajectories of emotion regulation development.
-New functions for computing partial dependence for growth curve SEM-forests were developed for this paper, which are now available in the `semtree` R-package.
+New functions for computing partial dependence for growth curve SEM-forests were developed for this paper, which are now available in the `semtree` R-package [@brandmaierSemtreeRecursivePartitioning2022].
 Partial dependence for a predictor $p$ is defined as following:
 let $\hat{\boldsymbol{g}}_s$ be a vector representing the expected growth trajectory for value $s$ on predictor $p$,
 let $\hat{f}$ be the function implied by a SEM-forest trained on predictor matrix $\boldsymbol{X}$ with $n$ rows,
@@ -441,54 +410,10 @@ $$
 \hat{\boldsymbol{g}}_s = \frac{1}{n}\sum^{n}_{i = 1}\hat{f}(s, \boldsymbol{X}_{-p})
 $$
 
-[For continuous predictors, three values of $s$ were used - namely the percentiles, computed on the observed data, corresponding to the mean and $+/- 1 SD$ of a standard normal distribution (i.e., the $50^{th}$, $16^{th}$ and $84^{th}$ percentiles).
-For convenience, these percentiles are labeled as *mean* and $+/- 1 SD$ in Figure \@ref(fig:figpdp1)-\@ref(fig:figpdp4).]{#percentiles}
+[For continuous predictors, three values of $s$ were used, namely the $50^{th}$, $16^{th}$ and $84^{th}$ percentiles of the observed data.
+These percentiles were chosen because they correspond to the mean and $+/- 1 SD$ of a standard normal distribution.
+For ease of interpretation, in Figures \@ref(fig:figpdp1)-\@ref(fig:figpdp4), these percentiles are therefore labeled as *mean* and +/- 1 SD.]{#percentiles}
 For categorical predictors, all unique values were used.
-
-<!-- $$ -->
-<!-- \begin{align} -->
-<!-- \bm{\lambda} &=  -->
-<!-- \begin{bmatrix} -->
-<!-- 1 & 0 & 0^2 \\ -->
-<!-- 1 & 1 & 1^2 \\ -->
-<!-- \vdots & \vdots & \vdots \\ -->
-<!-- 1 & 5 & 5^2 \\ -->
-
-<!-- \end{bmatrix} -->
-<!-- \\ -->
-<!-- \bm{\psi} &= -->
-<!-- \end{align} -->
-<!-- $$ -->
-<!-- Across all measurements, 13.3% of data were missing. -->
-<!-- Little’s (1988) Missing Completely at Random (MCAR) -->
-<!-- test produced a statistically significant value for the daily -->
-<!-- identity and self-concept clarity variables, x -->
-<!-- 2 -->
-<!-- (8592) ¼ -->
-<!-- 9228.07, p < .001, although the x -->
-<!-- 2 -->
-<!-- /df ratio was only 1.07. -->
-<!-- Similarly, for the annual assessments, the MCAR test -->
-<!-- produced a statistically significant value, x -->
-<!-- 2 -->
-<!-- (56) ¼ 75.19, -->
-<!-- p < .001, although the x -->
-<!-- 2 -->
-<!-- /df ratio was only 1.34. These -->
-<!-- findings suggest that data were likely missing at random, -->
-<!-- and that maximum likelihood techniques were appropriate -->
-<!-- for use. Moreover, even when the assumption of missing -->
-<!-- completely at random is not met, the Full Information -->
-<!-- Maximum Likelihood (FIML) procedure is still preferable to -->
-<!-- listwise deletion of cases with missing data (McKnight, -->
-<!-- McKnight, Sidani, & Figuredo, 2007). Listwise deletion -->
-<!-- results in a biased sample, and therefore biased results, -->
-<!-- by systematically excluding cases with missing data on -->
-<!-- any of the study variables. We therefore utilized FIML -->
-<!-- estimation using Mplus release 5.1 (Muthe´n & Muthe´n, -->
-<!-- 2007). -->
-<!-- Our analyses were based on an extension of cross-lagged panel modeling (Selig & Little, 2012), with staggered measurement occasions for one of the variables (mood variability). Mood variability was measured each time during the year between two measurement waves. Thus, for mood variability, no within-wave correlations were estimated, and all links with conflict frequency and difficulties in emotion regulation were specified as (predictive) regression paths. We used this staggered cross-lagged panel model to investigate over-time predictive effects between conflict frequency, day-to-day mood variability, and difficulties in emotion regulation. First, we estimated a single-group path model with autoregressive and cross-lagged paths, as well as within-time correlations for concurrent measurements (Model 1, see Table 1). Then we introduced empathy (high, average, low) as a moderator in a multi-group model, with all parameters free to vary between groups (Model 2). To derive the best fitting, most parsimonious model, we constrained parameters that were not significantly different. We used Wald \chi^2 tests to evaluate which parameters did not differ significantly, first over time and then between groups. We used the resulting final model to test our hypotheses (Model 3, see Figure 2). For hypotheses involving moderation, we used Wald tests to investigate whether parameters differed significantly between empathy groups. To test hypotheses involving mediation, we inspected indirect effects with bootstrapped standard errors (10,000 resamples). Furthermore, although posterior predictive probabilities were high, we conducted additional analyses, using the approach described by Asparouhov and Muthén (2014) to account for classification uncertainty. As can be seen in Appendix A, results were in line with the multi-group model reported here. -->
-<!-- Attrition for the annual measurements ranged from 0.40% at age 13 to 14.50% at age 18, and attrition for the daily mood diaries ranged from 3.40% to 23.40%. These data were missing completely at random, Little’s (1988) MCAR test \chi^2(2179) = 2124.07, p = .80. Therefore, full information maximum likelihood estimation (FIML) was warranted to make use of all available information without estimating missing data. All analyses were conducted in Mplus Version 7 (Muthén & Muthén, 1998–2012). Per the developers’ recommendation, we used robust maximum-likelihood estimation, which yields a Satorra-Bentler scaled \chi^2 value to account for potential non-normality (Satorra, 2000). Model fit was evaluated using the Comparative Fit Index and Tucker–Lewis Index (CFI and TLI, acceptable fit = 0.90-0.95, Bentler & Bonett, 1980), and Root Mean Square Error of Approximation (RMSEA, close fit = 0.01-0.06, acceptable fit = 0.06-0.08, Browne & Cudeck, 1993). According to these criteria, the fit of the final model was acceptable-to-good (Table 1). In addition to these measures of objective fit, we also provide two comparative fit indices, the Akaike Information Criterion (AIC) and sample-size adjusted Bayesian Information Criterion (saBIC). Lower values on these comparative fit indices indicate a better fitting model. According to both relative and absolute fit indices, the final model had the best fit. -->
 
 # Results
 
@@ -496,10 +421,9 @@ For categorical predictors, all unique values were used.
 
 Candidate predictors were rank-ordered by their relative variable importance,
 as illustrated in Figure \@ref(fig:figvarimp).
-<!-- Table \@ref(tab:tablegend) provides a brief legend of the 30 most important variables, and  -->
-Supplemental Table S1 provides a full legend of all variables.
+[Supplemental Table S1](https://github.com/cjvanlissa/veni_forest/blob/2c545ab2195fade5d2be3e4a269c24e57e8921a8/supplemental_table_1.csv) provides a full legend of all variables.
 
-```{r figvarimp, fig.cap="Predictors ranked in order of relative importance. m: mother, f: father, b: best friend, s: sibling."}
+```{r figvarimp, fig.cap="Predictors ranked in order of relative importance, and categorized by level of the bioecological model. m: mother, f: father, b: best friend, s: sibling."}
 #readRDS("../varimp_comb2_03-08-2022.RData")
 knitr::include_graphics("../pcomb2.png")
 ```
@@ -511,7 +435,7 @@ papaja::apa_table(legtab, caption = "Brief description of 30 most important pred
 
 Examining the variable importance rankings,
 several themes emerged (see Figure \@ref(fig:figthemes) panel A).
-Specifically, results indicated that among the most important predictors were personality and personality-related constructs.
+Specifically, results indicated that several of the highest-ranking predictors were individual differences in personality and related constructs.
 Three of the big five personality dimensions ranked among the top six predictors: Neuroticism (1), extraversion (4), and agreeableness (6).
 The Behavioral Inhibition Scale (BIS, 2), which reflects motivation to avoid aversive outcomes, ranked highly - although the BAS (73), its counterpart which measures motivation to approach goal-oriented outcomes,
 ranked very low.
@@ -523,14 +447,20 @@ Finally, self-concept clarity (11) also ranked highly; this construct represents
 knitr::include_graphics("../violin.png")
 ```
 
-A second emerging theme was that most constructs related to conflict frequency and behavior ranked highly, and few ranked low.
+A second emerging theme was that internalizing- and externalizing symptoms
+often associated with emotion regulation ranked relatively highly.
+Of these, parent-reported externalizing behavior (5) ranked highest,
+followed by adolescent-reported anxiety (15) and depression (17).
+Adolescent-reported externalizing behavior also ranked somewhat highly (30), but much lower than parent reports.
+
+A third emerging theme was that constructs related to conflict frequency and behavior ranked relatively highly.
 For instance, adolescent-perceived interparental conflict (8),
 adolescents' conflict engagement (escalation) with best friends (10),
 mothers (13) and fathers (20),
 frequency (14) and negative emotionality (28) of adolescents' conflict with both parents,
 and withdrawal from conflicts with best friends (18) and mothers (19).
 
-<span id = "parenting">A third emerging theme is that specific parenting practices were relatively underrepresented among the most important predictors.
+<span id = "parenting">A fourth emerging theme was that specific parenting practices were relatively underrepresented among the most important predictors.
 Parenting practices are defined as specific parental actions related to child-rearing,
 for example, support and dimensions of (behavioral and psychological) control [@petersonFamilySocialCompetence1990].</span>
 Negative and intrusive parenting practices were more predictive than positive ones:
@@ -539,35 +469,29 @@ psychological control (27),
 and supportive criticism (33).
 Positive parenting practices,
 like maternal (54) and paternal (55) support,
-were ranked low,
-and neutrally valenced aspects like parental monitoring (sollicitation 71, adolescent disclosure 72) were ranked very low.
-This is interesting, given the extensive research attention into the effect of these specific parenting practices.
+ranked low,
+and neutrally valenced aspects like parental monitoring ranked very low (sollicitation 71, adolescent disclosure 72).
+This is interesting, given the extensive research attention into the effect of these specific parenting practices - but also consistent with other recent critical accounts [@keijsersParentalMonitoringAdolescent2016; @vanlissaRoleFathersMothers2018].
 
 <span id = "parentrelated">Several parent-related constructs scored higher than the aforementioned child rearing behaviors;
 the highest of these was balanced relatedness (3),
 which represents parents' tolerance for adolescents' differing opinions and is related to parent-child intimacy and autonomy [@shuhnanAdolescentIntimacyRevisited1997].
 Other parent-related constructs that scored relatively highly were interparental conflict, which had a negative effect on emotion regulation (8);
 like balanced relatedness, conflict likely contributes to the emotional family climate [@morrisRoleFamilyContext2007].
-Finally, maternal age (7) had a protective effect, which is well-supported by prior literature [@zondervan-zwijnenburgParentalAgeOffspring2020].]</span>
-<!-- Add reference -->
+Finally, maternal age (7) had a protective effect, which is well-supported by prior literature [@zondervan-zwijnenburgParentalAgeOffspring2020].</span>
 
-Finally, an emerging theme was that internalizing- and externalizing symptoms
-often associated with emotion regulation ranked relatively highly in terms of predictive importance.
-Of these, parent-reported externalizing behavior (5) ranked highest, followed by adolescent-reported anxiety (15) and depression (17).
-Adolescent-reported externalizing behavior ranked substantially lower (30).
+Finally, it is noteworthy that some themes that are considered to be theoretically relevant ranked low.
+This was the case, for example, for substance use;
+the most commonly used substances of alcohol (78) and cigarettes (61) were ranked very low; drug use, which has a lower incidence, ranked a bit higher than this (37) - but did not appear to have a marginal negative effect (Figure 5).
+Similarly, aspects of adolescents' peer networks also ranked unexpectedly low,
+such as bullying (60, 84), victimization (51, 62, 83),
+and contact with delinquent peers (85).
+The same applied to demographic variables like maternal (86) and paternal (87) socio-economic status and family religion (81, 82).<!--SB: Why is this important? CJ: Religion is part of moral development, SES, and is directly related to emotion regulation: https://link.springer.com/chapter/10.1007/978-94-017-8950-9_13--> 
 
-It is further of note that some themes that are considered to be theoretically relevant ranked low.
-This was the case, for example, for demographic variables like maternal (86) and paternal (87) socio-economic status and family religion (81, 82).<!--SB: Why is this important? CJ: Religion is part of moral development, SES, and is directly related to emotion regulation: https://link.springer.com/chapter/10.1007/978-94-017-8950-9_13--> 
-Aspects of adolescents' peer networks,
-such as bullying (60, 84) and victimization (51, 62, 83),
-and contact with delinquent peers (85) also ranked unexpectedly low.
-The same applied to substance use;
-the most commonly used substances of alcohol (78) and cigarettes (61) were ranked very low; drug use, which is less common, ranked a bit higher than this (37, but see direction of association).
 
 ## Direction of association
 
-Figures \@ref(fig:figpdp1)-\@ref(fig:figpdp4) depict the marginal association plots,
-also in order of importance.
+Figures \@ref(fig:figpdp1)-\@ref(fig:figpdp4) depict marginal association plots of all predictors in order of importance.
 Each plot shows the expected trajectory of emotion regulation development at different values of each predictor.
 For continuous variables, quantiles corresponding to +/- 1SD and the mean of a standard normal distribution were used.
 This provides an indication of whether the effect is generally positive, negative, or other.
@@ -586,12 +510,12 @@ knitr::include_graphics("../plots/pdp41-60.png")
 knitr::include_graphics("../plots/pdp61-87.png")
 ```
 
-All associations were in a direction consistent with prior literature.
-Among these were several factors associated with better emotion regulation (i.e., potential protective factors), including
-parents' autonomy support and tolerance,
-big five extraversion and agreeableness, 
-self-concept clarity,
-problem solving in conflict with both parents,
+All directions of association were consistent with prior literature.
+Several potential protective factors were associated with better emotion regulation, including
+individual differences in big five extraversion and agreeableness and self-concept clarity, 
+aspects of the emotional family climate like
+balanced relatedness and interparental conflict,
+and problem solving in conflict with both parents,
 parents' own emotion regulation ability,
 and maternal age (older mothers had better adjusted children).
 
@@ -620,14 +544,14 @@ and sex (boys reported better emotion regulation).
 
 ## Post-hoc frequentist analyses
 
-<span id = "posthoc">A Reviewer suggested following up the planned machine learning analysis with follow-up analyses that might be more familiar to a developmental readership:
+<span id = "posthoc">A Reviewer suggested following up the planned machine learning analysis with post-hoc analyses that might be more familiar to a developmental readership:
 Regressing the parameters (intercept, slope and quadratic slope) of a latent growth model on each predictor in turn.
-Such analyses might be helpful to plan hypotheses and perform power analysis for follow-up research within the SEM framework.
-However, we strongly caution against over-interpretation.
-Unlike the machine learning analyses, these analyses do not accommodate non-linear effects or interactions, nor are effects controlled for other predictors.
-The results are merely descriptive and should not be used to perform inference.
-[Supplemental Table S3](https://github.com/cjvanlissa/veni_forest/blob/master/supplemental_table_3.csv) reports standardized regression coefficients with significance asterisks for all continuous and binary predictors, and significance asterisks of Likelihood Ratio tests for multi-group categorical predictors.
-All models had good fit ($RMSEAs < .07$, $CFIs > .99$, $SRMRs < .04$).
+Such analyses might help formulate hypotheses and perform power analyses for future research within the SEM framework.
+However, we strongly caution against over-interpretation of these post-hoc analyses.
+Unlike the primary analysis, they do not accommodate non-linear effects or interactions, nor are effects controlled for other predictors.
+The results are descriptive and should not be used for inference.
+[Supplemental Table S3](https://github.com/cjvanlissa/veni_forest/blob/2c545ab2195fade5d2be3e4a269c24e57e8921a8/supplemental_table_3.csv) reports standardized regression coefficients with significance asterisks for all continuous and binary predictors, and significance asterisks of Likelihood Ratio tests for multi-group categorical predictors.
+All models had good fit ($\text{RMSEAs} < .07$, $\text{CFIs} > .99$, $\text{SRMRs} < .04$).
 Out of all predictors, 79% had a significant effect on the intercept, 24% on the slope, and 18% on the quadratic slope.
 This indicates that our machine learning analyses indeed recovered relevant patterns in the data.</span>
 
@@ -639,28 +563,28 @@ and to explore the nature of the association of those predictors with developmen
 The results identified several potential protective- and risk factors.
 Although all predictors attained a positive variable importance value,
 there were differences in relative importance.
-Most of the important predictors were individual differences in personality, the motivational system, self-concept clarity, and empathy.
-<span id = "highrankingparent">Although a few parent-related constructs ranked highly,
-these were primarily related to the family emotional climate (balanced relatedness and interparental conflict) and demographics (maternal age).</span>
-Specific parenting practices, however, ranked lower than might have been expected given prior literature [e.g., support, control, psychological control, @morrisRoleFamilyContext2007].
+Some of the most important predictors were individual differences in personality, the motivational system, self-concept clarity, and empathy.
+<span id = "highrankingparent">Although a few parent-related constructs also ranked highly,
+these were related to the emotional family climate (balanced relatedness and interparental conflict).</span>
+Specific parenting practices, by contrast, ranked lower than might have been expected given prior literature [e.g., support, control, psychological control, @morrisRoleFamilyContext2007].
 Of these specific child-rearing behaviors,
 negative and intrusive dimensions were more predictive (as risk factors) than positive or neutral parenting practices.
 Adolescents' conflict frequency and behavior also ranked highly, across relationships with parents and peers, which suggests that these variables capture general aspects of pugnaciousness and conflict resolution skills.
 Themes that ranked lower than might have been expected given prior research were family demographics (SES and religion) and bullying, victimization and delinquency, and substance use.
-The relatively low importance of demographics might be attributable to a restriction of range, as the sample was relatively homogenous.
+One possible explanation for the relatively low importance of demographics might be restriction of range, as the sample was relatively homogenous.
 Still, other empirical studies have also found little evidence for a direct effect of, for example, SES on adolescent emotion regulation [e.g., @defranceExpandingContextRole2021].
-It is thus also possible that the population effect is small, or that it is fully mediated by more proximal process variables.
+It is thus also possible that the population effect is small.
+Finally, another explanation may be that the effect of demographics is fully mediated by more proximal process variables.
 
 ## Implications for theory
 
 Relating these results to prior theory,
-it is noteworthy that predictive importance of different themes appears to correspond to the levels of the bioecological model [@bronfenbrennerBioecologicalModelHuman2007], see Figure \@ref(fig:figthemes) panel B.
-[Although there was substantial overlap between predictors at different levels of the bioecological models,
-several predictors at the individual level achieved the highest importance rankings]{#overlap},
-<!-- SB: this is not very surprising given that many of the behaviors assessed require ER (e.g. becoming angry in a conflict is an indication of low ER, and individuals high in Neuroticism also have fluctuating emotions that they find difficult to control/regulate) -->
+it is noteworthy that there appears to be some correspondence between the relative importance of different predictors and the levels of the bioecological model [@bronfenbrennerBioecologicalModelHuman2007], see Figure \@ref(fig:figthemes) panel B.
+[Although there was substantial overlap between predictors at different levels of the bioecological model,
+several predictors at the individual level achieved the highest importance rankings,
 followed by predictors at the microsystem level, particularly those representing the emotional family climate,
-followed by the mesosystem, including aspects of the peer network (e.g., bullying/victimization and delinquency), school performance, and socio-economic status,
-and the macrosystem indicator religiosity was among the least important predictors.
+followed by mesosystem predictors, including aspects of the peer network (e.g., bullying/victimization and delinquency), school performance, and socio-economic status.
+The only macrosystem-level indicator, religiosity, ranked among the least important predictors.]{#overlap},
 Future theory might thus emphasize proximal factors over distal ones [see also @sameroffUnifiedTheoryDevelopment2010].
 <!-- SB: So in a way this is support for the specific theories that tend to focus on proximal factors such as personality and parenting? -->
 <!-- Yet perhaps there was too little variation in relevant macro factors (ethnicity, SES/poverty, cultural differences in ER) -->
@@ -671,7 +595,7 @@ If factors like religiosity and SES are (partly) enacted in relationships with p
 their distal effects might be causally screened off by conditioning on proximal effects [@pearlCausalDiagramsEmpirical1995].
 This could explain their relatively lower variable importance.
 </span>
-A possible alternative explanation is that our sample was relatively homogenous in terms of characteristics typically attributed to the macrosystem.
+A possible alternative explanation is that our sample was relatively homogenous in terms of religion and SES.
 
 <span id = "includepersonality">Several personality traits emerged as particularly important proximal predictors.
 According to a recent review on personality and emotion regulation (in adults),
@@ -706,47 +630,48 @@ it is worth examining whether differences exist between the importance of predic
 Some scholars have lamented the lack of research attention to fathers,
 and the equation of parenting with "mothering" [@pleckPaternalInvolvementRevised2004].
 Our results showed no systematic differences between mothers and fathers.
-[Anecdotally however, out all parent-related constructs that were measured separately for mothers and fathers]{#motherfather}, constructive conflict resolution with fathers ranked highest, and out of all parenting practices, paternal power ranked highest.
+[Anecdotally however, out of all constructs that were measured separately for mothers and fathers, constructive conflict resolution with fathers was the highest-ranking parent-related construct, and paternal power was the highest-ranking parenting practice.]{#motherfather}
 These observations validate the notion that fathers matter.
 Also note that two historically gendered constructs, support and socio-economic status, were both ranked approximately equally for mothers and fathers.
 Prior research has found support to be more important in mother-adolescent relationships [@vanlissaRoleFathersMothers2019], and family socio-economic status is often defined by reference to the father [@pleckPaternalInvolvementRevised2004].
 Our results highlight the importance of considering both parents as equally relevant in future empirical research and theory development.
 
-A finding that challenges contemporary discourse is that certain phenomena often conceptualized as "problem behaviors" had very low - for example, substance use [cf @willsEmotionRegulationSubstance2017], bullying, and time spent with delinquent peers.
-Even the highest ranked problem behavior, drug use, had no distinguishable marginal effect.
-This suggests that drug use derives its high importance from higher-order interactions with other predictors.
-It might be the case, for example, that for some youth, drug use contributes to self-exploration and social relationships, whereas for others, it may be a form of escapism, self-medication, or even self-harm [see also @nelemansLongitudinalAssociationsSocial2016].
-This is merely a hypothesis, and further research is required to identify what interactions are at play.
-These results imply that what are commonly thought of as risk factors might not be decisive in adolescents' emotion regulation development;
-such factors ought to be included in future theory, but should not take center stage.
+A finding that challenges contemporary discourse is that certain phenomena often conceptualized as "problem behaviors" had very low predictive importance - for example, substance use [cf @willsEmotionRegulationSubstance2017], bullying, and time spent with delinquent peers.
+Even the highest ranked problem behavior, drug use, had no distinguishable marginal effect, see Figure \@ref(fig:figpdp2).
+This suggests that drug use derives its high importance from interactions with other predictors.
+It might be the case, for example, that for some youth, drug use contributes to self-exploration and social relationships, whereas for others, it may be a form of escapism, self-medication, or even self-harm [see @nelemansLongitudinalAssociationsSocial2016].
+This is merely one potential explanation; further research is required to identify what interactions are at play.
+These results imply that what are commonly thought of as risk factors might not be decisive in adolescents' emotion regulation development.
+As we found little evidence of straightforward negative effects,
+future theory should strive to provide a more nuanced account of their potential role in emotion regulation development.
 
 A final consideration relevant for future theory development is to what extent 
 research interest corresponds to the empirical importance of phenomena relevant for adolescents' emotion regulation.
 A prior text mining systematic review comprehensively mapped the phenomena studied in this field [@vanlissaMappingPhenomenaRelevant2021].
 It showed that parenting practices, substance use, and bullying were among the phenomena most studied in research on emotion regulation.
 These phenomena all ranked relatively low in empirical importance in the present study.
-Conversely, phenomena found to be important in the present study, such as personality and other individual differences, parental autonomy support, and conflict-related behavior were less prevalent in the literature.
-Of course, the relative importance of predictors may vary across studies,
+Conversely, phenomena found to be important in the present study, such as personality and other individual differences, parental autonomy support, and conflict-related behavior, are less prevalent in existing literature.
+Of course, this study provides only a single estimate of variable importance,
 and replications of the present findings are required.
 Nonetheless, this is an important reminder that the salience of a construct is not the same as its empirical importance.
 As many theorists base their work on literature reviews and expert opinion,
 focal topics in the literature are likely to garner undue theoretical weight.
-Considering the empirical importance of phenomena may provide guidance in focusing future theory development in this area.
+Taking the empirical importance of phenomena into account may help guide future theory development in this area.
 
 ## Implications for practice
 
 [These findings have several implications for the early identification of youth at-risk for emotion regulation difficulties.
-The fact that individual-level predictors were most important in predicting adolescents' diverging developmental trajectories suggests that it might be possible to perform preliminary risk assessments for emotion dysregulation using only adolescent-reported individual differences.
+The fact that individual-level predictors were most important in predicting adolescents' diverging developmental trajectories underscores the utility of adolescent self-reports for preliminary risk assessments.
 Although the focus in clinical practice is shifting towards holistic approaches that involve the family system,
 this may not always be feasible.
 For instance, a family member may refuse to cooperate, or holistic assessment may be too costly.
-In such cases, it is useful to know that individual differences carry substantial informational value.]{#riskassessment}
-Moreover, some of the most important predictors are already routinely assessed (for example, big five personality).
-Other important predictors are overt, and thus easily observed by teachers and parents - for example, externalizing problem behavior and conflict frequency and behavior.
+In such cases, it is useful to know that individual differences - which are already routinely assessed - carry substantial informational value.]{#riskassessment}
+Moreover, some of the most important predictors are also among the most commonly administered  scales (e.g., big five personality).
+Other important predictors were overt behaviors, which are easily observed by teachers and parents - for example, externalizing problem behavior and conflict frequency and behavior.
 Future research might thus develop and validate risk assessment instruments
 focusing on these constructs.
 
-The method used in the present study is particularly well-suited to risk assessment instruments,
+The method used in the present study also has substantial potential for risk assessment instruments,
 because machine learning models maximize predictive performance, whereas traditional methods like linear regression maximize performance within the study sample.
 In fact, the trained model from the present study can be used to make predictions for the emotion regulation development of new adolescents.
 To illustrate the potential for risk assessment, we developed ERRATA,
@@ -770,17 +695,18 @@ The present findings also have important implications for intervention.
 However, it is important to consider the correlational nature of the study design.
 Our findings reveal the strength of the association of each predictor with emotion regulation development.
 Intervention can only be effective if this association can additionally be assumed to be causal, based on theory or experimental research.
-Two phenomena appear to be prime candidates for intervention,
-based on the variable importance rankings:
-conflict resolution behavior, and (negative) parenting practices.
+Based on the variable importance rankings,
+and prior experimental research,
+two promising candidates for intervention
+are conflict resolution behavior and (negative) parenting practices.
 
 There is prior evidence for the efficacy of conflict resolution training in adolescents [@breunlinConflictResolutionTraining2002].
 The same evidence indicates that conflict resolution training caused a decrease in externalizing problems (another important predictor), suggesting potential compounding benefits.
 Parenting practices are another promising target for intervention,
-as indeed it has historically been.
-Importantly, our results suggest that such interventions should focus on promoting parental autonomy support, and decreasing intrusive, negative, guilt-inducing and overbearing parenting practices.
+as indeed they have historically been.
+Importantly, our results suggest that such interventions should focus on promoting balanced relatedness and decreasing intrusive, negative, guilt-inducing and overbearing parenting practices.
 By contrast, promoting positive parenting practices may have limited potential for impact.
-With this in mind, it is important to consider that positive parenting practices are often a key focus of parenting training.
+With this in mind, it is important to consider that existing parenting training tends to focus primarily on positive parenting practices.
 Although one meta-analysis did report large effects of the Triple P-Positive Parenting Program on parental outcomes - including some negative parenting practices [@fletcherImpactBehaviouralParent2011],
 another meta-analysis called these findings into question,
 citing mixed evidence, a lack of adequate blinding, and risk of bias [@wilsonHowEvidencebasedEvidencebased2012].
@@ -804,24 +730,23 @@ and model problem solving behavior when conflicts arise.
 ## Methodological implications
 
 Linear statistical models are the default in our field.
-Therefore, an interesting result is that most predictors had non-linear effects:
+With this in mind, it is noteworthy that most predictors had non-linear effects:
 Out of the three values contrasted in the marginal dependence plots,
 only the one corresponding to the least desirable conditions diverged from the others.
-<!-- For instanhigh neuroticism, high interparental conflict, low constructive conflict resolution with fathers. -->
-Our findings send an important signal that many of the associations between predictors and developmental outcomes might be better modeled non-linearly.
-In particular, they suggest a notion of "good-enough" preconditions for the development of mature emotion regulation.
+An important methodological implication is that the effects of many developmental influences ought to be modeled non-linearly.
+In particular, our findings suggest a notion of "good-enough" preconditions for the development of mature emotion regulation.
 Most adolescents seem to follow trajectories characterized by high emotion regulation - except those with the most disadvantage.
-Some prior research has considered this notion of a "good-enough" environment [@vanlissaCostEmpathyParentadolescent2017; @poonGoodEnoughParental2017];
+Although prior research has considered this notion of a "good-enough" environment [@vanlissaCostEmpathyParentadolescent2017; @poonGoodEnoughParental2017];
 the consistency of our findings suggests that it may be more ubiquitous than previously thought.
 
 It is also noteworthy that some predictors had relatively high predictive importance,
 but almost no marginal effect (e.g., father's age, drug use, openness to experience).
-Such predictors likely derive their importance from interactions.
+Such predictors likely derive their importance from interactions [@vanlissaDevelopmentalDataScience2022].
 For instance, drug use might be a vehicle for social status or self-harm;
 older fathers might be an asset if they are involved in children's lives but a liability if they prioritize professional success;
 openness to experience may be an asset if it leads to self-discovery but a liability if it leads to risk behavior.
-The present method is not well-suited to identify what interaction drives a variable's importance,
-but these results might indicate potentially fruitful areas of future research. 
+The present method is not well-suited to identify what specific interactions drive a variable's importance,
+but these results do suggest potentially fruitful areas of future research. 
 
 ## Strengths and limitations
 
@@ -855,19 +780,19 @@ Another contribution is that the results have clear implications for theory, ass
 
 The study also has limitations, most notably that the sample was selective,
 which may limit the generalizability of the findings.
-Specifically, this was a non-random, ethnically and socially relatively homogeneous sample from the Netherlands.
+Specifically, this was a non-random, ethnically and socially homogeneous sample from the Netherlands.
 [Cultural values, which differ across and within countries,
 have been found to influence people's motivation to regulate emotions, as well as the strategies they use and their adaptiveness [@fordCultureEmotionRegulation2015].
-In cross-cultural comparisons, cultural values in Dutch samples have been found (on average) to be similar to those in large Anglophonic countries (e.g., the United States, Canada, and Australia) [@terlutterGLOBEStudyApplicability2006].
-Whether our findings also generalize to populations that adhere to different cultural values remains an open question.]{#culture}
-Relatedly, <span id = "globalnorth">although the majority of references cited in the introduction were (systematic) reviews or theoretical articles, all primary sources relied on data from the Global North (see [Supplemental Table 4]() for the countries of origin of all references cited). As geographic and cultural considerations were not selection criteria in our literature search,
-a possible explanation for this bias is that research on predictors of adolescent emotion regulation development may have been conducted primarily in the Global North.
+In cross-cultural comparisons, cultural values in Dutch samples have been found to be similar on average to those in large Anglophonic countries (e.g., the United States, Canada, and Australia) [@terlutterGLOBEStudyApplicability2006].
+Whether our findings also generalize to populations that emphasize different cultural values remains an open question.]{#culture}
+Relatedly, <span id = "globalnorth">although the majority of references cited in the introduction were (systematic) reviews or theoretical articles, all primary sources relied on data from the Global North (see [Supplemental Table S4](https://github.com/cjvanlissa/veni_forest/blob/2c545ab2195fade5d2be3e4a269c24e57e8921a8/supplemental_table_4.csv) for the countries of origin of all references cited). As geographic and cultural considerations were not selection criteria in our literature search,
+a possible explanation for this bias is that prior research in this area may have been conducted primarily in the Global North.
 It thus remains to be determined whether these findings generalize to populations from the Global South.</span>
 
 Another concern related to generalizability is that the relative homogeneity of our sample in terms of demograpic factors, like SES and religion, might have contributed to their lower variable importance.
 The sample might also be somewhat dated - especially considering daily life has changed drastically for youth coming of age in a post-pandemic world.
 The only way to address these concerns is to replicate these findings in other samples.
-To facilitate such replications, all code is made available in a reproducible archive.
+To facilitate replications, all analysis code is made available in a reproducible archive.
 Another limitation is that the data source was a panel study with mostly questionnaire measures.
 All conclusions are conditional on the available data; thus, for example,
 our study cannot speak to the potential importance of biological (except pubertal development),
@@ -878,9 +803,9 @@ Another potential limitation is common method bias.
 Many predictors were assessed using adolescent-reported questionnaire measures,
 which raises the question whether individual-level predictors ranked highly due to shared method variance.
 This concern is assuaged somewhat by the observation that parent-reported externalizing behavior (5) was much more predictive than adolescent self-reported externalizing behavior (30).
-This indicates that predictors less susceptible to common method bias nonetheless explained substantial variance.
+Thus, some predictors not susceptible to common method bias were also found to explain substantial variance.
 One final limitation related to the data is the relatively small sample size.
-Machine learning methods benefit from large samples.
+Machine learning benefits from large samples.
 Although random forests are relatively robust to overfitting,
 larger samples will likely yield more generalizable results.
 <span id = "homogeneity2">Larger samples also afford more complicated models.
@@ -893,7 +818,7 @@ unlike in traditional random forests, there is no error metric that could be use
 By extension, at the time of writing, there are not yet methods for cross-validation, model tuning, or evaluating the overall fit of a SEM-forest, as these too require an error metric.
 Note, however, that even without model tuning, random forests tend to achieve competitive performance [@probstHyperparametersTuningStrategies2019].</span>
 Finally, SEM-forests require substantial computational resources,
-which also limit the ability to compute different iterations of the model beyond default settings,
+which limits the ability to compute different iterations of the model beyond default settings,
 or to exploring marginal effects for higher order interactions.
 
 ## Conclusions
@@ -905,7 +830,7 @@ Candidate predictors were selected based on a prior systematic review of 6305 re
 The SEM-forest algorithm was applied to rank-order these predictors by their relative importance for explaining heterogeneity in adolescents' developmental trajectories,
 and to probe the nature of their association with emotion regulation development. 
 Results indicated that the importance of different predictors corresponded somewhat with the levels of the bioecological model:
-Proximal factors were more predictive of emotion regulation development than distal predictors; individual differences were most predictive; macro- and mesysystem factors (e.g., SES, religion) were least predictive.
+Proximal factors were more predictive of emotion regulation development than distal predictors; individual differences were most predictive; meso- and macrosystem factors (e.g., SES, religion) were least predictive.
 The results also suggested that specific parenting practices may be less relevant for emotion regulation development than previously thought,
 and that negative parenting practices may be more impactful than positive ones.
 The results have clear implications for early risk assessment:
@@ -914,12 +839,12 @@ The results further suggest that conflict skills training might be a promising a
 Parenting interventions might benefit more from addressing the notion of "good enough" parenting and remedying negative and invasive practices than from promoting positive parenting practices.
 The results also provide clear guidance for the ongoing effort of theory generation in this field:
 Such theory should focus on proximal processes over distal ones.
-Parents' roles might be less central than previously thought;
-their support of adolescents' autonomy and the way they navigate conflict might be more important than their parenting practices.
+Parenting practices might be less crucial than previously thought;
+the emotional family climate and the way parents and adolescents navigate conflict might be more important.
 Moreover, there was no evidence of differences between mothers' and fathers' parenting, indicating that both parents should be equally represented in future theory.
 Finally, common perceptions about risk factors should be reassessed: 
 delinquency, substance use, and bullying were all relatively less important predictors.
-Even drug use, the highest-ranking problem behavior, had no distinguishable marginal effect, suggesting that it is more problematic for some adolescents than others.
+Even drug use, the highest-ranking problem behavior, had no distinguishable marginal effect, suggesting that it is problematic for some adolescents but not for others.
 These results illustrate how machine learning can provide a holistic view of a research area,
 complement existing knowledge,
 offer alternative perspectives,

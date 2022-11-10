@@ -40,12 +40,12 @@ write.csv(desc, "supplemental_table_2.csv", row.names = FALSE)
 classlabs <- paste0(c("High", "Low"), ": ", round(res_mp$mix_2_class.out$results$class_counts$modelEstimated$proportion*100), "%")
 p <- plotGrowthMixtures(res_mp[[2]], rawdata = TRUE, bw = TRUE)
 p <- p + 
-  scale_y_reverse(breaks = c(0.5, 0.0, -0.5, -1.0, -1.5), labels = as.character((-1*c(0.5, 0.0, -0.5, -1.0, -1.5)))) +
-  scale_linetype_manual(labels = classlabs, values = c(1:2), name = "Risk") +
-  scale_shape_manual(labels = classlabs, values = c(15, 17), name = "Risk") +
+  # scale_y_reverse(breaks = c(0.5, 0.0, -0.5, -1.0, -1.5), labels = as.character((-1*c(0.5, 0.0, -0.5, -1.0, -1.5)))) +
+  scale_linetype_manual(labels = classlabs, values = c(1:2), name = "Risk", guide = guide_legend(reverse = TRUE) ) +
+  scale_shape_manual(labels = classlabs, values = c(15, 17), name = "Risk", guide = guide_legend(reverse = TRUE) ) +
   scale_x_continuous(breaks = 0:4, labels = 14:18, expand = c(0, 0)) +
-  labs(x = "Age", y = "Difficulties in emotion regulation") +
-  theme(legend.position = c(0.88, 0.85))
+  labs(x = "Age", y = "Emotion regulation") +
+  theme(legend.position = c(0.88, 0.15))
 p
 saveRDS(p, "classplot.RData")
 ggsave("classplot.pdf", p, device = "pdf", units = "in", width = 7, height = 5)
