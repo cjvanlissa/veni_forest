@@ -168,8 +168,8 @@ Phenomena considered relevant in a field of research are often summarized using 
 A recent review of 6305 publications on adolescents’ emotion regulation used text mining to identify relevant phenomena, including potential risk factors [@vanlissaMappingPhenomenaRelevant2021].
 Narrative reviews are often limited to a small number of papers and structured around well-established ideas [@littellEvidencebasedBiasedQuality2008].
 Text mining systematic reviews are more comprehensive and derive insights from the literature through a transparent and somewhat objective - albeit less interpretative - procedure [@vanlissaMappingPhenomenaRelevant2021].
-This review thus offers a relatively comprehensive overview of potential predictors of emotion regulation development.
-The present study used it as a starting point for an empirical investigation of the relative importance and direction of effect of these predictors.
+The present study used this prior text mining review by Van Lissa as a starting point for an empirical investigation of the relative importance and direction of effect of these predictors.
+It provides a relatively comprehensive overview of potential predictors of emotion regulation development.
 
 According to this prior review,
 the phenomena that have received most research attention are internalizing and externalizing problems, and mental health.
@@ -259,9 +259,10 @@ The original data and all study documentation are available under controlled acc
 desc_num <- read.csv("../desc_num.csv", stringsAsFactors = FALSE)
 desc_cat <- read.csv("../desc_cat.csv", stringsAsFactors = FALSE)
 ```
-<span id = "dutch">Participants were 497 Dutch adolescents and their parents enrolled in the ongoing longitudinal study `r ifelse(mask, "RADAR [@branjeResearchAdolescentDevelopment2018]", "**(masked reference)**")`, which 
-received ethical approval from the ethical committee of the University Medical Centre `r ifelse(mask, "Utrecht", "**masked**")`.
-The `r ifelse(mask, "RADAR", "**masked**")` sample was recruited from over 200 randomly selected elementary schools in the province of `r ifelse(mask, "Utrecht", "**masked**")`, and four main cities in `r ifelse(mask, "The Netherlands", "**masked**")`.</span>
+
+<span id = "dutch">Participants were 497 Dutch adolescents and their parents enrolled in the ongoing longitudinal RADAR study  [@branjeResearchAdolescentDevelopment2018], which 
+received ethical approval from the ethical committee of the University Medical Centre Utrecht.
+The RADAR sample was recruited from over 200 randomly selected elementary schools in the province of Utrecht, and four main cities in The Netherlands.</span>
 Of 1,544 eligible families, 497 produced informed consent and were included in the study.
 [From 2006 to 2011, trained interviewers completed six annual measurement waves by collecting questionnaire data during home visits.]{#waves}
 All independent variables were assessed in the first measurement wave.
@@ -293,7 +294,7 @@ As measurement invariance must be imposed in order to compare latent scores acro
 we compared a model with configural invariance ($BIC = 141247.46$)
 to a model that imposed metric invariance ($BIC = 140913.27$).
 The lower BIC indicates support for metric invariance.
-The RMSEA and SRMR of the metric invariance model indicated acceptable fit ($\text{RMSEA} = .05$,  $\text{SRMR} = 0.05$), but the CFI indicated poor fit ($\text{CFI} = .80$).
+The RMSEA and SRMR of the metric invariance model indicated acceptable fit ($\text{RMSEA} = .047$,  $\text{SRMR} = 0.05$), but the CFI indicated poor fit ($\text{CFI} = .80$).
 [Note that the RMSEA has been found to be more appropriate for longitudinal data, possibly because the null-model on which the CFI is based is less appropriate for repeated measures [@leiteDetectingGrowthShape2011]]{#cfi}.
 As score reliability and standardized factor loadings were high across all waves ($\lambda \in [0.44, 0.84]$),
 we proceeded with individual factor scores for further analysis.
@@ -342,7 +343,7 @@ papaja::apa_table(desc_num, caption = "Sample descriptive statistics for continu
 The SEM-forests algorithm requires complete data and cannot accommodate multiple imputed data.
 Consequently, we used single imputation using the missForest algorithm,
 a random forests based approach with comparable performance to multiple imputation and FIML estimation [@stekhovenMissForestNonparametricMissing2012].
-This method is valid, regardless of whether missingness is random or contingent on observed data (MAR or MCAR).
+This method is valid, regardless of whether missingness is random or contingent on observed data (MCAR or MAR).
 It does not make any distributional assumptions and does not extrapolate,
 meaning it returns realistic values within the range of the observed data.
 The proportion of missingness ranged from $`r report(min((495-desc_cat[["n"]])/495), equals = F)` - `r report(max((495-desc_cat[["n"]])/495), equals = F)`$ for categorical data (see Table \@ref(tab:tabcat)),
