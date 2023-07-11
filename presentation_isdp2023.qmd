@@ -1,6 +1,6 @@
 ---
 title: "Machine Learning can Advance Theory Formation in the Social Sciences"
-subtitle: "Funded by NWO Veni grant VI.Veni.191G.090<br>Paper: [doi:10.1002/icd.2370](https://doi.org/10.1002/icd.2370)"
+subtitle: "Funded by NWO Veni grant VI.Veni.191G.090<br>[doi:10.1002/icd.2370](https://doi.org/10.1002/icd.2370)"
 author: "Caspar J. Van Lissa"
 institute: "Tilburg University, dept. Methodology & Statistics"
 knit: (function(inputFile, encoding) {
@@ -22,9 +22,9 @@ _Machine learning_ can help advance _theory formation_ in the social sciences
 
 * Replication crisis [@scheelWhyMostPsychological2022; @lavelleWhenCrisisBecomes2021]
 * Current solutions improve deductive research (theory-testing)
-    + preregistration [@peikertReproducibleResearchTutorial2021]
-    + replication
     + questionable research practices [@wichertsDegreesFreedomPlanning2016]
+    + replication
+    + preregistration
 
 Many preregistered hypotheses are not supported (56%) [@scheelExcessPositiveResults2021]
 
@@ -60,9 +60,8 @@ knitr::include_graphics("presentation/empiricalcycle.png")
 How can we improve exploratory research?
 
 * Confirmatory methods poorly suited to exploratory research
-    + p-values: 5% Type I error prob is consistent with 14-50% false discovery rate [@vidgenPValuesMisunderstoodMisused2016]
-    + Depending on prior probability of hypotheses being true
-    + Model fit indices: manually specify models, no guarantee that best model is in set
+    + p-values: Type I error is 5%, but false discovery rate (FDR) is 14-50% [@vidgenPValuesMisunderstoodMisused2016].
+    + Model fit indices: manually specify models, no guarantee that best model is included
 * Role of flexibility: there are infinite ways to explore
 * "unguided exploration" is effortful and inflates the risk of spurious results
 
@@ -78,19 +77,14 @@ Psychology can benefit from its superior predictive performance [@yarkoniChoosin
 
 **NEW**: Epistemological implications of ML for theory formation [@vanlissaDevelopmentalDataScience2022]
 
-## Machine learning vs unguided exploration
-
-```{r, out.width="100%"}
-knitr::include_graphics("Figure Machine learning 4.png")
-```
-
 ## Phenomena detection  
 
 First step in *Theory Construction Methods* is identifying relevant phenomena [@borsboomTheoryConstructionMethodology2020]
 
-* Phenomena: stable features of the world reliably evidenced by patterns in data (Woodward, 1989)
+* Phenomena: stable and general features of the world
+* Few quantitative methods for phenomena detection (aside from expert opinion)
 
-Machine learning  [@vanlissaMappingPhenomenaRelevant2021]
+**Text mining** may be suitable for phenomena detection [@vanlissaMappingPhenomenaRelevant2021]
 
 * Unsupervised learning method
 * Clusters in keywords and abstracts
@@ -109,7 +103,9 @@ Including all relevant predictors is important:
 * Good theory incorporates most important causes
 * Cannot assess the relative utility of predictors across studies
 * Include potential predictors from various theories, and undertheorized factors
-
+* Pitfalls:
+    + Multicollinearity
+    + Colliders
 
 ## Complex effects
 
@@ -143,16 +139,15 @@ All of these methods allow for theory guided exploration using machine learning
 
 Explain heterogeneity at a more fine-grained level than the whole sample
 
-* Unsupervised learning methods
-    + Group individuals to maximize homogeneity of some outcomes
+* E.g., latent class analyses
     + "Which individuals are similar?"
-    + Non-parametric (e.g., K-means) and model-based (e.g., LCA)
+    + Other *unsupervised learning* methods exist
 * Tree-based models
-    + Group individuals by predictors to maximize homogeneity of outcomes
     + "Why are these individuals similar?"
-* Mixed-effects / multilevel models
-    + Often model but rarely explain heterogeneity in within-person effects
-    + Regularization (e.g., regularized SEM)
+    + Group individuals based on predictors to maximize homogeneity of the outcome
+* RI-CLPM and DSEM
+    + Rarely explain heterogeneity in within-person effects
+    + Regularization
 
 ## Generalizability
 
@@ -250,35 +245,14 @@ Data models -> formal theory [@haslbeckModelingPsychopathologyData2021]
 <!-- * Supervised learning to identify important predictors -->
 <!-- * Some algorithms incorporate basic theoretical elements -->
 
-## Example: TMSR
+## Text Mining Systematic Review
 
-* Text Mining Systematic Review
-* First step in theory development: identifying relevant phenomena [@borsboomTheoryConstructionMethodology2020]
-    + Often done by systematic review
-* Narrative reviews: small samples, confirmation bias, emphasize positive results [@littellEvidencebasedBiasedQuality2008]
-* Introducing text mining systematic review (TMSR) [@vanlissaMappingPhenomenaRelevant2021]:
-    + Unlimited sample size, transparent, objective, reproducible
-
-6653 papers on **emotion regulation** in **adolescence** [age 10-24]
-
-<https://doi.org/10.1007/s40894-021-00160-7>
-
-## Open science
-
-All code and data available at <https://github.com/cjvanlissa/veni_sysrev>
-
-Workflow for Open Reproducible Code in Science (WORCS) used to make analyses reproducible [@vanlissaWORCSWorkflowOpen2020]
-
-## Design
-
-1. Manually construct baseline network from relevant theory and prior reviews
-2. Identify which constructs co-occur in papers
-    + Use POS-tagging to identify nouns and adjectives
-    + Use (Google pagerank-based) TextRank to identify bigrams
-    + Use regex dictionary to cluster terms
-3. Frequency -> Relevance
-4. Co-occurrence in publications -> Potential association
-5. Compare co-occurrence networks to baseline network
+* Identify which constructs are discussed in 6653 papers on **emotion regulation** in **adolescence** [age 10-24]
+* Identify which constructs co-occur in papers
+* Compare resulting networks to construct networks from existing theories and systematic reviews
+* Paper: <https://doi.org/10.1007/s40894-021-00160-7>
+* Code and data: <https://github.com/cjvanlissa/veni_sysrev>
+* Workflow for Open Reproducible Code in Science (WORCS) used to make analyses reproducible [@vanlissaWORCSWorkflowOpen2020]
 
 ## Baseline network {.smaller}
 
@@ -310,13 +284,13 @@ Author keywords (a) and abstracts (b)
 
 ## Results {.smaller}
 
-* TM analyses retrieve constructs from theoretical literature
+* Both analyses reflected constructs from theoretical literature
     + Especially pertaining to neurodevelopment and socialization
-    + This suggests validity
-* Substantial correspondence between keyword and abstract network
-    + This suggests reliability
-* Networks are sparse; few connections among constructs:
-    + Fragmented literature, as noted by prior reviews
+* Mental health-related outcomes feature prominently
+    + Emotion regulation implicated in mental health problems [@leeAdolescentMentalHealth2014],
+    + This underlines the importance of research in this area
+* Substantial correspondence between keywords and abstracts, suggesting validity of method
+* Networks are sparse; few connections among constructs: fragmented literature
 
 ## Undertheorized themes
 
@@ -328,14 +302,14 @@ Author keywords (a) and abstracts (b)
 * Identity and moral development
 * Sexual development
 
-## Implications
+<!-- ## Implications -->
 
-* Empirical research relies on theory; under-theorized phenomena may be overlooked
-    + TMSR offers guidance for phenomena to consider as confounders/causes
-* Unembedded terms indicate promising areas of future research
-* TMSR network can serve as proto-theoretical nomological network
+<!-- * Empirical research relies on theory; under-theorized phenomena may be overlooked -->
+<!--     + TMSR offers guidance for phenomena to consider as confounders/causes -->
+<!-- * Unembedded terms indicate promising areas of future research -->
+<!-- * TMSR network can serve as proto-theoretical nomological network -->
 
-## Example: Predictors of Development {.smaller}
+## Predicting ER development {.smaller}
 
 * What are important predictors of adolescents' ER development?
 * What is the nature of the association of the predictors with the trajectories?
@@ -351,56 +325,10 @@ Author keywords (a) and abstracts (b)
 knitr::include_graphics("tree.png")
 ```
 
-## Method
-
-SEM-forest [@brandmaierTheoryguidedExplorationStructural2016]
-
-1. Bootstrap sample
-2. On each sample, estimate a SEM-model
-3. Consider $k$ candidate predictors
-4. Identify predictor and value that maximizes $LR$ of post-split multi-group model
-5. Average predictions across bootstrap samples
-
-We used 1000 bootstrap samples, $k = 9$
-
-## Relation to other methods
-
-```{r, out.height="50%"}
-knitr::include_graphics("groups.png")
-```
-
-* Predictors of latent growth model?
-  + Only linear differences, few predictors (power)
-* Multigroup latent growth model?
-  + Non-linear differences, but only one moderator
-* Latent class growth model with auxilliary variables?
-  + Groups with regard to trajectory, not predictors
-* SEM forest
-  + Groups with regard to trajectory, based on predictors
-
-## Variable importance
-
-```{r, out.width="90%"}
-knitr::include_graphics("pcomb2.png")
-```
-
-## Variable importance 2
-
-```{r, out.width="100%"}
-knitr::include_graphics("violin.png")
-```
-
-## Marginal association
-
-```{r, out.width="40%"}
-knitr::include_graphics("plots/pdp1-12.png")
-```
-
-
 ## Results {.smaller}
 
-* Best predictors: Personality and conflict behaviors
-* Negative parenting more predictive than positive parenting
+* Best predictors: Personality and conflict resolution behavior
+* Negative parenting more predictive than other positive practices
 
 Less important than expected:
 
@@ -410,40 +338,7 @@ Less important than expected:
 * Substance use
 * Monitoring
 
-* Most predictors show non-linear effects
-
-## Limitations
-
-1. Problem of induction
-2. Causal inference
-
-## Induction {.smaller}
-
-It is impossible to logically induce general principles from specific data
-
-* You may have unobserved counterexamples
-* Multiple principles could be consistent with the same data
-
-But it is possible to reason about general principles based on observed patterns in data data
-
-* Popper:
-    + "there is no such thing as a logical method of having new ideas"
-    + "my arguments in this book are quite independent of [the problem of having new ideas]"
-* Machine learning is *one possible method* for generating ideas inductively
-
-## Causal Inference {.smaller}
-
-Machine learning finds patterns in data, irrespective of causality
-
-* If you goal is prediction, this is fine
-* But interpreting those patterns assumes causality
-
-Be particularly mindful of:
-
-* Conditioning on colliders
-* Multicolinearity
-
-See Pearl 2019
+* Many predictors show non-linear effects
 
 ## Conclusions
 
@@ -455,8 +350,6 @@ See Pearl 2019
 * Ignoring causality limits interpretability of machine learning
     + Incorrect direction of causality: meaningless results
     + Conditioning on a collider: biased results
-    
-
 
 <!-- ## Future direction 1: Formal theoretical object -->
 

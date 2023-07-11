@@ -366,9 +366,9 @@ Caspar J. Van Lissa
 <li>Replication crisis <span class="citation" data-cites="scheelWhyMostPsychological2022 lavelleWhenCrisisBecomes2021">(<a href="#/section" role="doc-biblioref" onclick="">Scheel 2022</a>; <a href="#/section" role="doc-biblioref" onclick="">Lavelle 2021</a>)</span></li>
 <li>Current solutions improve deductive research (theory-testing)
 <ul>
-<li>questionable research practices <span class="citation" data-cites="wichertsDegreesFreedomPlanning2016">(<a href="#/section" role="doc-biblioref" onclick="">Wicherts et al. 2016</a>)</span></li>
+<li>preregistration <span class="citation" data-cites="peikertReproducibleResearchTutorial2021">(<a href="#/section" role="doc-biblioref" onclick="">Peikert, van Lissa, and Brandmaier 2021</a>)</span></li>
 <li>replication</li>
-<li>preregistration</li>
+<li>questionable research practices <span class="citation" data-cites="wichertsDegreesFreedomPlanning2016">(<a href="#/section" role="doc-biblioref" onclick="">Wicherts et al. 2016</a>)</span></li>
 </ul></li>
 </ul>
 <p>Many preregistered hypotheses are not supported (56%) <span class="citation" data-cites="scheelExcessPositiveResults2021">(<a href="#/section" role="doc-biblioref" onclick="">Scheel, Schijen, and Lakens 2021</a>)</span></p>
@@ -408,8 +408,9 @@ Caspar J. Van Lissa
 <ul>
 <li>Confirmatory methods poorly suited to exploratory research
 <ul>
-<li>p-values: Type I error is 5%, but false discovery rate (FDR) is 14-50% <span class="citation" data-cites="vidgenPValuesMisunderstoodMisused2016">(<a href="#/section" role="doc-biblioref" onclick="">Vidgen and Yasseri 2016</a>)</span>.</li>
-<li>Model fit indices: manually specify models, no guarantee that best model is included</li>
+<li>p-values: 5% Type I error prob is consistent with 14-50% false discovery rate <span class="citation" data-cites="vidgenPValuesMisunderstoodMisused2016">(<a href="#/section" role="doc-biblioref" onclick="">Vidgen and Yasseri 2016</a>)</span></li>
+<li>Depending on prior probability of hypotheses being true</li>
+<li>Model fit indices: manually specify models, no guarantee that best model is in set</li>
 </ul></li>
 <li>Role of flexibility: there are infinite ways to explore</li>
 <li>“unguided exploration” is effortful and inflates the risk of spurious results</li>
@@ -426,14 +427,17 @@ Caspar J. Van Lissa
 <p>Psychology can benefit from its superior predictive performance <span class="citation" data-cites="yarkoniChoosingPredictionExplanation2017">(<a href="#/section" role="doc-biblioref" onclick="">Yarkoni and Westfall 2017</a>)</span></p>
 <p><strong>NEW</strong>: Epistemological implications of ML for theory formation <span class="citation" data-cites="vanlissaDevelopmentalDataScience2022">(<a href="#/section" role="doc-biblioref" onclick="">Van Lissa 2022</a>)</span></p>
 </section>
+<section id="machine-learning-vs-unguided-exploration" class="slide level2">
+<h2>Machine learning vs unguided exploration</h2>
+
+<img data-src="Figure%20Machine%20learning%204.png" style="width:100.0%" class="r-stretch"></section>
 <section id="phenomena-detection" class="slide level2">
 <h2>Phenomena detection</h2>
 <p>First step in <em>Theory Construction Methods</em> is identifying relevant phenomena <span class="citation" data-cites="borsboomTheoryConstructionMethodology2020">(<a href="#/section" role="doc-biblioref" onclick="">Borsboom et al. 2020</a>)</span></p>
 <ul>
-<li>Phenomena: stable and general features of the world</li>
-<li>Few quantitative methods for phenomena detection (aside from expert opinion)</li>
+<li>Phenomena: stable features of the world reliably evidenced by patterns in data (Woodward, 1989)</li>
 </ul>
-<p><strong>Text mining</strong> may be suitable for phenomena detection <span class="citation" data-cites="vanlissaMappingPhenomenaRelevant2021">(<a href="#/section" role="doc-biblioref" onclick="">van Lissa 2021</a>)</span></p>
+<p>Machine learning <span class="citation" data-cites="vanlissaMappingPhenomenaRelevant2021">(<a href="#/section" role="doc-biblioref" onclick="">van Lissa 2021</a>)</span></p>
 <ul>
 <li>Unsupervised learning method</li>
 <li>Clusters in keywords and abstracts</li>
@@ -452,11 +456,6 @@ Caspar J. Van Lissa
 <li>Good theory incorporates most important causes</li>
 <li>Cannot assess the relative utility of predictors across studies</li>
 <li>Include potential predictors from various theories, and undertheorized factors</li>
-<li>Pitfalls:
-<ul>
-<li>Multicollinearity</li>
-<li>Colliders</li>
-</ul></li>
 </ul>
 </section>
 <section id="complex-effects" class="slide level2">
@@ -492,20 +491,21 @@ Caspar J. Van Lissa
 <h2>Person-centered approaches</h2>
 <p>Explain heterogeneity at a more fine-grained level than the whole sample</p>
 <ul>
-<li>E.g., latent class analyses
+<li>Unsupervised learning methods
 <ul>
+<li>Group individuals to maximize homogeneity of some outcomes</li>
 <li>“Which individuals are similar?”</li>
-<li>Other <em>unsupervised learning</em> methods exist</li>
+<li>Non-parametric (e.g., K-means) and model-based (e.g., LCA)</li>
 </ul></li>
 <li>Tree-based models
 <ul>
+<li>Group individuals by predictors to maximize homogeneity of outcomes</li>
 <li>“Why are these individuals similar?”</li>
-<li>Group individuals based on predictors to maximize homogeneity of the outcome</li>
 </ul></li>
-<li>RI-CLPM and DSEM
+<li>Mixed-effects / multilevel models
 <ul>
-<li>Rarely explain heterogeneity in within-person effects</li>
-<li>Regularization</li>
+<li>Often model but rarely explain heterogeneity in within-person effects</li>
+<li>Regularization (e.g., regularized SEM)</li>
 </ul></li>
 </ul>
 </section>
@@ -519,7 +519,7 @@ Caspar J. Van Lissa
 <!-- Any model captures both *signal* and *noise* -->
 <!-- **Overfitting**: model captures so much noise that it generalizes poorly to new samples -->
 
-<img data-src="presentation_tuebingen2023_files/figure-revealjs/unnamed-chunk-3-1.png" style="width:40.0%" class="r-stretch"></section>
+<img data-src="presentation_tuebingen2023_files/figure-revealjs/unnamed-chunk-4-1.png" style="width:40.0%" class="r-stretch"></section>
 <section id="from-models-to-theory" class="slide level2 smaller">
 <h2>From models to theory</h2>
 <p>Naive interpretative approach</p>
@@ -561,16 +561,42 @@ Caspar J. Van Lissa
 <!-- * Supervised learning to identify important predictors -->
 <!-- * Some algorithms incorporate basic theoretical elements -->
 </section>
-<section id="text-mining-systematic-review" class="slide level2">
-<h2>Text Mining Systematic Review</h2>
+<section id="example-tmsr" class="slide level2">
+<h2>Example: TMSR</h2>
 <ul>
-<li>Identify which constructs are discussed in 6653 papers on <strong>emotion regulation</strong> in <strong>adolescence</strong> [age 10-24]</li>
-<li>Identify which constructs co-occur in papers</li>
-<li>Compare resulting networks to construct networks from existing theories and systematic reviews</li>
-<li>Paper: <a href="https://doi.org/10.1007/s40894-021-00160-7" class="uri">https://doi.org/10.1007/s40894-021-00160-7</a></li>
-<li>Code and data: <a href="https://github.com/cjvanlissa/veni_sysrev" class="uri">https://github.com/cjvanlissa/veni_sysrev</a></li>
-<li>Workflow for Open Reproducible Code in Science (WORCS) used to make analyses reproducible <span class="citation" data-cites="vanlissaWORCSWorkflowOpen2020">(<a href="#/section" role="doc-biblioref" onclick="">Van Lissa et al. 2020</a>)</span></li>
+<li>Text Mining Systematic Review</li>
+<li>First step in theory development: identifying relevant phenomena <span class="citation" data-cites="borsboomTheoryConstructionMethodology2020">(<a href="#/section" role="doc-biblioref" onclick="">Borsboom et al. 2020</a>)</span>
+<ul>
+<li>Often done by systematic review</li>
+</ul></li>
+<li>Narrative reviews: small samples, confirmation bias, emphasize positive results <span class="citation" data-cites="littellEvidencebasedBiasedQuality2008">(<a href="#/section" role="doc-biblioref" onclick="">Littell 2008</a>)</span></li>
+<li>Introducing text mining systematic review (TMSR) <span class="citation" data-cites="vanlissaMappingPhenomenaRelevant2021">(<a href="#/section" role="doc-biblioref" onclick="">van Lissa 2021</a>)</span>:
+<ul>
+<li>Unlimited sample size, transparent, objective, reproducible</li>
+</ul></li>
 </ul>
+<p>6653 papers on <strong>emotion regulation</strong> in <strong>adolescence</strong> [age 10-24]</p>
+<p><a href="https://doi.org/10.1007/s40894-021-00160-7" class="uri">https://doi.org/10.1007/s40894-021-00160-7</a></p>
+</section>
+<section id="open-science" class="slide level2">
+<h2>Open science</h2>
+<p>All code and data available at <a href="https://github.com/cjvanlissa/veni_sysrev" class="uri">https://github.com/cjvanlissa/veni_sysrev</a></p>
+<p>Workflow for Open Reproducible Code in Science (WORCS) used to make analyses reproducible <span class="citation" data-cites="vanlissaWORCSWorkflowOpen2020">(<a href="#/section" role="doc-biblioref" onclick="">Van Lissa et al. 2020</a>)</span></p>
+</section>
+<section id="design" class="slide level2">
+<h2>Design</h2>
+<ol type="1">
+<li>Manually construct baseline network from relevant theory and prior reviews</li>
+<li>Identify which constructs co-occur in papers
+<ul>
+<li>Use POS-tagging to identify nouns and adjectives</li>
+<li>Use (Google pagerank-based) TextRank to identify bigrams</li>
+<li>Use regex dictionary to cluster terms</li>
+</ul></li>
+<li>Frequency -&gt; Relevance</li>
+<li>Co-occurrence in publications -&gt; Potential association</li>
+<li>Compare co-occurrence networks to baseline network</li>
+</ol>
 </section>
 <section id="baseline-network" class="slide level2 smaller">
 <h2>Baseline network</h2>
@@ -587,17 +613,19 @@ Caspar J. Van Lissa
 <section id="results" class="slide level2 smaller">
 <h2>Results</h2>
 <ul>
-<li>Both analyses reflected constructs from theoretical literature
+<li>TM analyses retrieve constructs from theoretical literature
 <ul>
 <li>Especially pertaining to neurodevelopment and socialization</li>
+<li>This suggests validity</li>
 </ul></li>
-<li>Mental health-related outcomes feature prominently
+<li>Substantial correspondence between keyword and abstract network
 <ul>
-<li>Emotion regulation implicated in mental health problems <span class="citation" data-cites="leeAdolescentMentalHealth2014">(<a href="#/section" role="doc-biblioref" onclick="">Lee et al. 2014</a>)</span>,</li>
-<li>This underlines the importance of research in this area</li>
+<li>This suggests reliability</li>
 </ul></li>
-<li>Substantial correspondence between keywords and abstracts, suggesting validity of method</li>
-<li>Networks are sparse; few connections among constructs: fragmented literature</li>
+<li>Networks are sparse; few connections among constructs:
+<ul>
+<li>Fragmented literature, as noted by prior reviews</li>
+</ul></li>
 </ul>
 </section>
 <section id="undertheorized-themes" class="slide level2">
@@ -611,14 +639,20 @@ Caspar J. Van Lissa
 <li>Identity and moral development</li>
 <li>Sexual development</li>
 </ul>
-<!-- ## Implications -->
-<!-- * Empirical research relies on theory; under-theorized phenomena may be overlooked -->
-<!--     + TMSR offers guidance for phenomena to consider as confounders/causes -->
-<!-- * Unembedded terms indicate promising areas of future research -->
-<!-- * TMSR network can serve as proto-theoretical nomological network -->
 </section>
-<section id="predicting-er-development" class="slide level2 smaller">
-<h2>Predicting ER development</h2>
+<section id="implications" class="slide level2">
+<h2>Implications</h2>
+<ul>
+<li>Empirical research relies on theory; under-theorized phenomena may be overlooked
+<ul>
+<li>TMSR offers guidance for phenomena to consider as confounders/causes</li>
+</ul></li>
+<li>Unembedded terms indicate promising areas of future research</li>
+<li>TMSR network can serve as proto-theoretical nomological network</li>
+</ul>
+</section>
+<section id="example-predictors-of-development" class="slide level2 smaller">
+<h2>Example: Predictors of Development</h2>
 <ul>
 <li>What are important predictors of adolescents’ ER development?</li>
 <li>What is the nature of the association of the predictors with the trajectories?</li>
@@ -632,6 +666,44 @@ Caspar J. Van Lissa
 <h2>SEM Forests</h2>
 
 <img data-src="tree.png" style="width:70.0%" class="r-stretch"></section>
+<section id="method" class="slide level2">
+<h2>Method</h2>
+<p>SEM-forest <span class="citation" data-cites="brandmaierTheoryguidedExplorationStructural2016">(<a href="#/section" role="doc-biblioref" onclick="">Brandmaier et al. 2016</a>)</span></p>
+<ol type="1">
+<li>Bootstrap sample</li>
+<li>On each sample, estimate a SEM-model</li>
+<li>Consider <span class="math inline">\(k\)</span> candidate predictors</li>
+<li>Identify predictor and value that maximizes <span class="math inline">\(LR\)</span> of post-split multi-group model</li>
+<li>Average predictions across bootstrap samples</li>
+</ol>
+<p>We used 1000 bootstrap samples, <span class="math inline">\(k = 9\)</span></p>
+</section>
+<section id="relation-to-other-methods" class="slide level2">
+<h2>Relation to other methods</h2>
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="groups.png" style="height:50.0%" width="608"></p>
+</div>
+</div>
+<ul>
+<li>Predictors of latent growth model?
+<ul>
+<li>Only linear differences, few predictors (power)</li>
+</ul></li>
+<li>Multigroup latent growth model?
+<ul>
+<li>Non-linear differences, but only one moderator</li>
+</ul></li>
+<li>Latent class growth model with auxilliary variables?
+<ul>
+<li>Groups with regard to trajectory, not predictors</li>
+</ul></li>
+<li>SEM forest
+<ul>
+<li>Groups with regard to trajectory, based on predictors</li>
+</ul></li>
+</ul>
+</section>
 <section id="results-1" class="slide level2 smaller">
 <h2>Results</h2>
 <ul>
@@ -647,6 +719,44 @@ Caspar J. Van Lissa
 <li><p>Monitoring</p></li>
 <li><p>Many predictors show non-linear effects</p></li>
 </ul>
+</section>
+<section id="limitations" class="slide level2">
+<h2>Limitations</h2>
+<ol type="1">
+<li>Problem of induction</li>
+<li>Causal inference</li>
+</ol>
+</section>
+<section id="induction" class="slide level2 smaller">
+<h2>Induction</h2>
+<p>It is impossible to logically induce general principles from specific data</p>
+<ul>
+<li>You may have unobserved counterexamples</li>
+<li>Multiple principles could be consistent with the same data</li>
+</ul>
+<p>But it is possible to reason about general principles based on observed patterns in data data</p>
+<ul>
+<li>Popper:
+<ul>
+<li>“there is no such thing as a logical method of having new ideas”</li>
+<li>“my arguments in this book are quite independent of [the problem of having new ideas]”</li>
+</ul></li>
+<li>Machine learning is <em>one possible method</em> for generating ideas inductively</li>
+</ul>
+</section>
+<section id="causal-inference" class="slide level2 smaller">
+<h2>Causal Inference</h2>
+<p>Machine learning finds patterns in data, irrespective of causality</p>
+<ul>
+<li>If you goal is prediction, this is fine</li>
+<li>But interpreting those patterns assumes causality</li>
+</ul>
+<p>Be particularly mindful of:</p>
+<ul>
+<li>Conditioning on colliders</li>
+<li>Multicolinearity</li>
+</ul>
+<p>See Pearl 2019</p>
 </section>
 <section id="conclusions" class="slide level2">
 <h2>Conclusions</h2>
@@ -753,8 +863,11 @@ Jacobucci, Ross, Kevin J. Grimm, and John J. McArdle. 2016. <span>“Regularized
 <div id="ref-lavelleWhenCrisisBecomes2021" class="csl-entry" role="listitem">
 Lavelle, Jane Suilin. 2021. <span>“When a <span>Crisis Becomes</span> an <span>Opportunity</span>: <span>The Role</span> of <span>Replications</span> in <span>Making Better Theories</span>.”</span> <em>The British Journal for the Philosophy of Science</em>, April, 714812. <a href="https://doi.org/10.1086/714812">https://doi.org/10.1086/714812</a>.
 </div>
-<div id="ref-leeAdolescentMentalHealth2014" class="csl-entry" role="listitem">
-Lee, Francis S., Hakon Heimer, Jay N. Giedd, Edward S. Lein, Nenad Šestan, Daniel R. Weinberger, and B. J. Casey. 2014. <span>“Adolescent Mental Health and Obligation.”</span> <em>Science</em> 346 (6209): 547–49. <a href="https://doi.org/10.1126/science.1260497">https://doi.org/10.1126/science.1260497</a>.
+<div id="ref-littellEvidencebasedBiasedQuality2008" class="csl-entry" role="listitem">
+Littell, Julia H. 2008. <span>“Evidence-Based or Biased? <span>The</span> Quality of Published Reviews of Evidence-Based Practices.”</span> <em>Children and Youth Services Review</em> 30 (11): 1299–1317. <a href="https://doi.org/10.1016/j.childyouth.2008.04.001">https://doi.org/10.1016/j.childyouth.2008.04.001</a>.
+</div>
+<div id="ref-peikertReproducibleResearchTutorial2021" class="csl-entry" role="listitem">
+Peikert, Aaron, Caspar J. van Lissa, and Andreas M. Brandmaier. 2021. <span>“Reproducible <span>Research</span> in <span>R</span>: <span>A Tutorial</span> on <span>How</span> to <span>Do</span> the <span>Same Thing More Than Once</span>.”</span> <em>Psych</em> 3 (4): 836–67. <a href="https://doi.org/10.3390/psych3040053">https://doi.org/10.3390/psych3040053</a>.
 </div>
 <div id="ref-scheelWhyMostPsychological2022" class="csl-entry" role="listitem">
 Scheel, Anne M. 2022. <span>“Why Most Psychological Research Findings Are Not Even Wrong.”</span> <em>Infant and Child Development</em> 31 (1): e2295. <a href="https://doi.org/10.1002/icd.2295">https://doi.org/10.1002/icd.2295</a>.
