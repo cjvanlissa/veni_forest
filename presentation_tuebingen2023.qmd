@@ -71,8 +71,6 @@ How can we improve exploratory research?
 **Machine learning**:
 
 * automated model building
-* checks and balances to prevent overfitting
-* maximize predictive performance and generalizability of results
 
 Psychology can benefit from its superior predictive performance [@yarkoniChoosingPredictionExplanation2017]
 
@@ -92,8 +90,8 @@ First step in *Theory Construction Methods* is identifying relevant phenomena [@
 
 Machine learning  [@vanlissaMappingPhenomenaRelevant2021]
 
-* Unsupervised learning method
-* Clusters in keywords and abstracts
+* Unsupervised learning methods find patterns in data
+* Text mining finds patterns in published literature
 
 ## Holistic approach {.smaller}
 
@@ -158,9 +156,12 @@ Explain heterogeneity at a more fine-grained level than the whole sample
 
 When using data models to guide theory formation, generalizability is essential [@haslbeckModelingPsychopathologyData2021]
 
-Checks and balances to curtail *overfitting*
+Machine learning...
 
-* cross-validation to estimate predictive accuracy [@hastieElementsStatisticalLearning2009]
+* Incorporates checks and balances to curtail *overfitting*
+* Maximizes predictive performance and generalizability of results
+* Cross-validation to estimate predictive accuracy [@hastieElementsStatisticalLearning2009]
+* Possible to estimate generalizability to representative subsample (e.g., Douglas, Sutton, Van Lissa et al., 2023)
 
 <!-- Any model captures both *signal* and *noise* -->
 
@@ -450,8 +451,8 @@ See Pearl 2019
 * Machine learning reveals blind spots in existing theory
     + Missing constructs, relative importance, functional form
 * ML can detect patterns in published research and primary data
-* "Inductive methods" for consolidating insights into theory remain vague
-    + Theories are still verbal and flexible, how should they be updated?
+* Does not solve the "inductive problem"
+    + Still your job to consolidate insights into theory
 * Ignoring causality limits interpretability of machine learning
     + Incorrect direction of causality: meaningless results
     + Conditioning on a collider: biased results
@@ -512,15 +513,16 @@ See Pearl 2019
 
 ## References {.smaller}
 
-Van Lissa, C. J. (2022). Developmental data science: How machine learning can advance theory formation in Developmental Psychology. Infant and Child Development. https://doi.org/10.1002/icd.2370
+Van Lissa, C. J. (2022). Developmental data science: How machine learning can advance theory formation in Developmental Psychology. Infant and Child Development. DOI:10.1002/icd.2370
 
-Van Lissa, C. J. (2022). Complementing preregistered confirmatory analyses with rigorous, reproducible exploration using machine learning. Religion, Brain & Behavior. https://doi.org/10.1080/2153599X.2022.2070254
+Van Lissa, C. J. (2022). Complementing preregistered confirmatory analyses with rigorous, reproducible exploration using machine learning. Religion, Brain & Behavior. DOI:10.1080/2153599X.2022.2070254
 
-Van Lissa, C. J., Beinhauer, L., Branje, S., & Meeus, W. (2022). Using machine learning to identify early predictors of adolescent emotion regulation development. Journal of Research on Adolescence. https://doi.org/10.31234/osf.io/rbqf9
+Van Lissa, C. J., Beinhauer, L., Branje, S., & Meeus, W. (2022). Using machine learning to identify early predictors of adolescent emotion regulation development. Journal of Research on Adolescence. DOI:10.31234/osf.io/rbqf9
 
-Van Lissa, C. J. (2021). Mapping Phenomena Relevant to Adolescent Emotion Regulation: A Text-Mining Systematic Review. Adolescent Research Review. https://doi.org/10.1007/s40894-021-00160-7
+Van Lissa, C. J. (2021). Mapping Phenomena Relevant to Adolescent Emotion Regulation: A Text-Mining Systematic Review. Adolescent Research Review. DOI:10.1007/s40894-021-00160-7
 
-Van Lissa, C. J., et al., (2022). Using machine learning to identify important predictors of COVID-19 infection prevention behaviors during the early phase of the pandemic. Patterns, 3(4), 100482. https://doi.org/10.1016/j.patter.2022.100482
+Van Lissa, C. J., et al., (2022). Using machine learning to identify important predictors of COVID-19 infection prevention behaviors during the early phase of the pandemic. Patterns, 3(4), 100482. DOI:10.1016/j.patter.2022.100482
 
+Douglas, K., Sutton, R. M., Caspar, V. L., Wolfgang, S., Jannis, K., Maximilian, A., ... & N Pontus, L. (2023). Identifying Important Individual-and Country-Level Predictors of Conspiracy Theorizing: A Machine Learning Analysis. European Journal of Social Psychology. DOI: 10.1002/ejsp.2968
 
 ## 
