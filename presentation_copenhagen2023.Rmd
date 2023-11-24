@@ -1,0 +1,726 @@
+---
+title: "Machine Learning can Advance Theory Formation in the Social Sciences"
+author: "Caspar J. Van Lissa<sup>1</sup>"
+date: "<sup>1</sup>: Tilburg University, dept. Methodology & Statistics<br>Funded by NWO Veni grant  VI.Veni.191G.090"
+knit: (function(inputFile, encoding) {
+  rmarkdown::render(inputFile, encoding = encoding, output_dir = "docs") })
+output: 
+  ioslides_presentation:
+    widescreen: true
+    css: slide.css
+bibliography      : ["manuscript/references.bib", "presentation/all_refs.bib"]
+---
+
+```{r setup, include=FALSE}
+#css: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+# Conceptual introduction
+
+## Central thesis
+
+_Machine learning_ can help advance _theory formation_ in the social sciences
+
+* Replication crisis [@scheelWhyMostPsychological2022; @lavelleWhenCrisisBecomes2021]
+* Current solutions improve deductive research (theory-testing)
+    + questionable research practices [@wichertsDegreesFreedomPlanning2016]
+    + replication
+    + preregistration
+
+Many preregistered hypotheses are not supported (56%) [@scheelExcessPositiveResults2021]
+
+* Lack of "good theories" another explanation for replication crisis
+
+## Defining theory
+
+> **Theory**: A (causal?) explanation of phenomena reliably evidenced by data [@bogenSavingPhenomena1988]
+
+* Allows for derivation of testable hypotheses for deductive research
+
+## Characteristics of Good Theory
+
+@meehlAppraisingAmendingTheories1990
+
+1. phenomena to be explained
+2. putative causal connections between them
+3. direction of the effect
+4. relative importance of predictors
+5. interaction effects
+6. functional form of associations
+
+Most social scientific theories are [@scheelWhyMostPsychological2022]:
+
+* insufficiently precise
+* too flexible
+* But cf. @walasekEvolutionaryModelSensitive2022
+
+## Why do we need theory?
+
+* Social science strives to understand, not only predict
+* Useful as an instrument of cumulative knowledge acquisition
+* Communicating social scientific research to its consumers
+
+## Deduction vs induction
+
+```{r, out.width="60%"}
+library(tidySEM)
+lay <- get_layout("the1", "the2",
+                  "hyp1", "hyp2",
+                  "pat1", "obs2",
+                  "obs1", "con2", rows = 4)
+nodes <- data.frame(
+  name = as.vector(lay),
+  label = c("Theory", "Working hypothesis", "Pattern", "Observation", "Theory", "Hypothesis", "Observation", "Test"),
+  shape = rep("rect", length(lay)),
+  group = rep(c("Inductive", "Deductive"), each = 4)
+  )
+edges <- data.frame(
+  from = c("the1", "hyp1", "pat1", "the2", "hyp2", "obs2"),
+  to = c("hyp1", "pat1", "obs1", "hyp2", "obs2", "con2"),
+  arrow = rep(c("first", "last"), each = 3),
+  group = rep(c("Inductive", "Deductive"), each = 3)
+)
+g <- prepare_graph(edges = edges, layout = lay, nodes = nodes)
+plot(g)
+```
+
+* Lack of theory cannot be overcome by improving deductive research
+* Theory formation requires inductive (exploratory) research [@creswellDesigningConductingMixed2017]
+
+## Empirical cycle 
+
+```{r, out.width="40%"}
+knitr::include_graphics("presentation/empiricalcycle.png")
+```
+
+De Groot’s empirical cycle
+
+* Model of cumulative knowledge acquisition through scientific research [@degrootMethodologieGrondslagenVan1961]
+
+## Rigorous exploration
+
+How can we improve exploratory research?
+
+* Confirmatory methods poorly suited to exploratory research
+    + p-values: Type I error is 5%, but false discovery rate (FDR) is 14-50% [@vidgenPValuesMisunderstoodMisused2016].
+    + Model fit indices: manually specify models, no guarantee that best model is included
+* Role of flexibility: there are infinite ways to explore
+* "unguided exploration" is effortful and inflates the risk of spurious results
+
+## Machine learning
+
+**Machine learning**:
+
+* Automated model building
+* Checks and balances to prevent overfitting
+* Maximize predictive performance and generalizability of results
+
+Psychology can benefit from its superior predictive performance [@yarkoniChoosingPredictionExplanation2017]
+
+**NEW**: Implications for the theory crisis have not yet been discussed
+
+## Machine learning vs unguided exploration
+
+```{r, out.width="100%"}
+knitr::include_graphics("Figure Machine learning 4.png")
+```
+
+# Advantages of Machine Learning
+
+## Phenomena detection  
+
+First step in *Theory Construction Methods* is identifying relevant phenomena [@borsboomTheoryConstructionMethodology2020]
+*
+* Few quantitative methods for phenomena detection (aside from expert opinion)
+* Phenomena: stable and general features of the world
+* **Cross-validated patterns of association** may constitute phenomena
+* **Text mining** existing literature may reveal what phenomena other authors have identified [@vanlissaMappingPhenomenaRelevant2021]
+
+## Holistic approach
+
+Every study examines only a piece of the puzzle; we never see the complete picture
+
+Machine learning accommodates more predictors than classical methods
+
+* Regularization 
+* Variable selection
+
+Including all relevant predictors is important:
+
+* Assumption for causal interpretation
+    + But mind multicolinearity and collider bias
+* Good theory incorporates most important causes
+* Include potential predictors from various theories, and undertheorized factors
+    + Assess the relative utility across studies
+    + Cannot do this across studies
+
+## Complex effects
+
+Many machine learning methods accommodate:
+
+* non-linear effects 
+* higher-order interactions, without having to specify the nature of these effects a-priori.
+* Automatic: tree-based methods
+* Manual: penalized methods
+
+Social scientific theories rarely account for complex effects
+
+* Machine learning can provide nuance by revealing them
+
+## Theoretical elements
+
+Some methods allow for theory guided exploration using machine learning
+
+When (part of) the theory can be expressed as a structural equation model, and part still remains to be discovered through exploratory research
+
+* E.g., some relevant constructs are latent variables
+* E.g., development follows a latent growth curve (LGC)
+* SEM forests [@brandmaierTheoryguidedExplorationStructural2016]
+* regularized SEM [@jacobucciRegularizedStructuralEquation2016], (Ernst & Peikert 2022)
+
+When the theory is a (nomological) network:
+
+* LASSO-penalized Gaussian graphical model (GGM) [@epskampGeneralizedNetworkPsychometrics2017]
+* E.g.: network theory of major depression [@cramerMajorDepressionComplex2016]
+
+## Person-centered approaches
+
+Call for person-centered research [@laursenPersonCenteredVariableCenteredApproaches2006]
+
+Explain heterogeneity at a more fine-grained level than the whole sample
+
+* Latent class analyses
+    + "Which individuals are similar?"
+    + Other *unsupervised learning* methods exist
+* Multilevel models
+    + Allow for, but rarely explain heterogeneity
+    + Includes RI-CLPM and DSEM
+    + Could use regularized SEM or SEM forests
+* Tree-based models
+    + Group individuals based on predictors to maximize homogeneity of the outcome
+    + "Why are these individuals similar?"
+
+## Generalizability
+
+When using data models to guide theory formation, generalizability is essential [@haslbeckModelingPsychopathologyData2021]
+
+ML: Checks and balances to curtail *overfitting*
+
+* cross-validation to estimate predictive accuracy
+
+<!-- Any model captures both *signal* and *noise* -->
+
+<!-- **Overfitting**: model captures so much noise that it generalizes poorly to new samples -->
+
+```{r, out.width="40%"}
+library(ggplot2)
+colors <- c("Variance" = "red", "Bias" = "green", "Total error" = "black")
+
+ggplot() +
+  xlim(-3, 3) +
+geom_function(
+  data = NULL,
+  stat = "function",
+  position = "identity",
+  fun = ~.x^2,
+  na.rm = FALSE,
+  inherit.aes = TRUE,
+  linewidth = 1,
+  aes(colour = "Total error")
+) +
+  geom_function(
+    data = NULL,
+    stat = "function",
+    position = "identity",
+    fun = ~2^.x -2,
+    na.rm = FALSE,
+    inherit.aes = TRUE,
+    aes(colour = "Bias"),
+    linewidth = 1
+  )+
+  geom_function(
+    data = NULL,
+    stat = "function",
+    position = "identity",
+    fun = ~2^-.x -2,
+    na.rm = FALSE,
+    inherit.aes = TRUE,
+    aes(colour = "Variance"),
+    linewidth = 1
+  ) +
+  labs(x = "Model complexity",
+       y = "Optimal model complexity",
+       color = "Legend") +
+  scale_color_manual(values = colors) +
+  geom_vline(xintercept = 0, linetype = 2) +
+  theme_bw() +
+  theme(axis.text = element_blank(), axis.ticks = element_blank())
+```
+
+## From models to theory
+
+Naive interpretative approach
+
+* Start with "interpretable machine learning" metrics [@henningerInterpretableMachineLearning2022]
+
+* Variable importance
+    + congruent with theoretical assumptions about important predictors?
+    + any theoretically important predictors rank low?
+    + any undertheorized factors rank high?
+* Marginal associations
+    + non-linear effects?
+    + high importance but flat marginal association?
+* Exemplar-based interpretation
+
+## From models to theory 2
+
+Data models -> formal theory [@haslbeckModelingPsychopathologyData2021]
+
+* Abductive Formal Theory Construction (AFTC) framework
+    + construct formal theory
+    + Generate data
+    + Mathematically compare to empirical data
+    + like a posterior predictive check in Bayes
+    + Discrepancies: amend formal theory
+* "Light" version of AFTC: Comparing predictive performance of simpler parametric model based on "interpretation" to more flexible machine learning model
+
+<!-- ## Summary -->
+
+<!-- * There is a paucity of good theory -->
+<!-- * Need for exploratory research for theory formation -->
+<!-- * Machine learning for rigorous exploration -->
+<!--     + automates model building -->
+<!--     + incorporates checks and balances for generalizable results -->
+<!-- * Unsupervised learning can assist in phenomenon detection -->
+<!-- * Supervised learning to identify important predictors -->
+<!-- * Some algorithms incorporate basic theoretical elements -->
+
+# Example: Text Mining Systematic Review
+
+## Emotion regulation in adolescence
+  
+Developmentally sensitive period [@zimmermannEmotionRegulationEarly2014]
+
+20% develop psychopathology [@leeAdolescentMentalHealth2014]
+
+Potentially lifelong implications for mental health and well-being
+
+```{r, out.height="20%"}
+knitr::include_graphics("trajectories.jpg")
+```
+
+## Knowledge gap
+
+Substantial empirical research, but:
+
+* Different (sub)disciplines have approached the topic in disparate ways [@riedigerEmotionRegulationAdolescence2014]
+* No consistent terminology [@bariolaChildAdolescentEmotion2011]
+* No conceptual frameworks [@stifterEmotionRegulation2019]
+* No overarching theoretical framework [@bussTheoriesEmotionalDevelopment2019]
+
+Knowledge must be consolidated into overarching theory
+
+## Limitations of relevant theory
+
+* Few explicitly address adolescence
+* Few comprehensively address predictors of emotion regulation
+* None directly guide contemporary research 
+* Theories vary widely in scope: Some are broad and non-specific; others describe a specific phenomenon in detail, but lack a broader perspective.
+    + Broad theories can frame any research, specific theories generate hypotheses.
+    + It would be beneficial to bridge these levels of analysis.
+
+## Towards integrative theory
+
+* First step: identifying relevant phenomena [@borsboomTheoryConstructionMethodology2020]
+    + Often done by systematic review
+* Narrative reviews: small samples, confirmation bias, emphasize positive results [@littellEvidencebasedBiasedQuality2008]
+* Introducing text mining systematic review (TMSR) [@vanlissaMappingPhenomenaRelevant2021]:
+    + Unlimited sample size, transparent, objective, reproducible
+
+6653 papers on **emotion regulation** in **adolescence** [age 10-24]
+
+<https://doi.org/10.1007/s40894-021-00160-7>
+
+## Open science
+
+All code and data available at <https://github.com/cjvanlissa/veni_sysrev>
+
+Workflow for Open Reproducible Code in Science (WORCS) used to make analyses reproducible [@vanlissaWORCSWorkflowOpen2020]
+
+## Baseline
+
+Manual selection of key constructs from relevant theory and prior reviews [ @bariolaChildAdolescentEmotion2011; @coe-odessEmergentEmotionsAdolescence2019]:
+
+* Bioecological model [@bronfenbrennerBioecologicalModelHuman2007]
+* Transactional model [@sameroffUnifiedTheoryDevelopment2010]
+* Hall's notion of "storm and stress"
+* Theory of normative emotional development [@sroufeEmotionalDevelopmentOrganization1995]
+* Tripartite model [@morrisRoleFamilyContext2007]
+* Internalization model [@holodynskiDevelopmentEmotionsEmotion2006]
+* Polyvagal theory [@porgesOrientingDefensiveWorld1995].
+* Model of social-affective engagement and goal flexibility [@croneUnderstandingAdolescencePeriod2012]
+* Process model of emotion regulation [@grossHandbookEmotionRegulation2013]
+* Social Information Processing Theory [@lemeriseIntegratedModelEmotion2000]
+
+
+## Baseline network {.smaller}
+
+```{r figbaseline, warning=FALSE, eval = TRUE, results='asis', out.width = "100%", fig.cap="Phenomena relevant to adolescents' emotion regulation according to theory (a) and narrative reviews (b; transparent nodes indicate constructs also present in the theory)."}
+knitr::include_graphics("presentation/baseline_network.png") 
+```
+
+(a) Theory (b) narrative reviews; transparent nodes indicate constructs also present in theory.
+
+## {.fullslide}
+
+![](presentation/varimps_small.png)
+
+## Co-occurrence graph {.smaller}
+
+```{r networks1, eval = TRUE, results='asis', out.width = "100%"}
+knitr::include_graphics("presentation/tmnetworks_small.png")
+```
+
+Author keywords (a) and abstracts (b)
+
+## Results
+
+* Both analyses reflected some constructs from theoretical literature
+    + Particularly related to neurodevelopment and socialization
+* Mental health-related outcomes feature prominently
+    + Emotion regulation implicated in mental health problems [@leeAdolescentMentalHealth2014],
+    + This underlines the importance of research in this area
+* Substantial correspondence between keywords and abstracts, suggesting validity of method
+* Networks are sparse; few connections among constructs: fragmented literature
+
+## Undertheorized themes
+
+* Developmental disorders
+* Physical health (sic)
+* External stressors
+* Structural disadvantage
+* Addictive behavior
+* Identity and moral development
+* Sexual development
+
+## Implications
+
+* Empirical research relies on theory; under-theorized phenomena may be overlooked
+    + TMSR offers guidance for phenomena to consider as confounders/causes
+* Unembedded terms indicate promising areas of future research
+* TMSR network can serve as proto-theoretical nomological network
+
+## Next Steps
+
+Rasoul Norouzi is further developing this method
+
+* Goal: Reconstructing a causal loop diagram based on authors' causal claims in literature
+
+Together with Denny Borsboom, applying TMSR v2 to Cooperation Databank
+
+* Using sciBERT vector embeddings and HDBSCAN clustering instead of dictionary 
+
+# Example: Predictors of emotion regulation development
+
+## Person-centered models
+
+```{r, out.height="50%"}
+knitr::include_graphics("groups.png")
+```
+
+* Predictors of latent growth model?
+  + Only linear differences, few predictors (power)
+* Multigroup latent growth model?
+  + Non-linear differences, but only one moderator
+* Latent class growth model with auxilliary variables?
+  + Groups with regard to trajectory, not predictors
+
+## Method
+
+SEM-forest [@brandmaierTheoryguidedExplorationStructural2016]
+
+1. Bootstrap sample
+2. On each sample, estimate a SEM-model
+3. Consider $k$ candidate predictors
+4. Identify predictor and value that maximizes $LR$ of post-split multi-group model
+5. Average predictions across bootstrap samples
+
+We used 1000 bootstrap samples, $k = 9$
+
+## SEM Forest
+
+```{r, out.width="70%"}
+knitr::include_graphics("tree.png")
+```
+
+<!-- TS: Confirmatory versus exploratory research: Define the distinction. -->
+<!-- TS: Some longitudinal research falls between these categories. For example, complex longitudinal studies, where prior research is sufficient to lead us to hypothesize *some* associations between two constructs, but not sufficiently specific to let us hypothesize which parameters will be significant. -->
+
+<!-- ## Results -->
+
+<!-- * Both analyses reflected some constructs from theoretical literature -->
+<!--     + neurodevelopment, socialization -->
+<!-- * Undertheorized themes -->
+<!--     + Developmental disorders -->
+<!--     + Physical health (sic) -->
+<!--     + External stressors -->
+<!--     + Structural disadvantage -->
+<!--     + Addictive behavior -->
+<!--     + Identity and moral development -->
+<!--     + Sexual development -->
+
+<!-- * This offers guidance for phenomena to consider as relevant predictors -->
+
+## Study design
+
+RQ1: What are the most important predictors of adolescents' trajectories of emotion regulation development?
+
+RQ2: What is the nature of the association of the predictors with the trajectories?
+
+**Participants**
+
+* RADAR data (https://www.uu.nl/en/research/radar)
+* 497 Dutch adolescents (283 boys; age at T1: M =13.03, SD = 0.46)
+* Collected between 2006-2011
+* Most families were  medium- to high-SES (10% low-SES)
+
+## Candidate predictors
+
+Predictors: 87
+
+Categories: 
+
+* Demographics (e.g., SES)
+* Biological (age, sex, pubertal development)
+* Individual differences (big5, BIS/BAS, empathy)
+* Risk behavior (in/externalizing symptoms, substance use, delinquency, school performance, victimization)
+* Relationship quality (parents/peers)
+* Parenting (perceived and parent-reported)
+* Conflict resolution styles
+
+## Dependent variable
+
+Difficulties in emotion regulation [@gratzMultidimensionalAssessmentEmotion2004]
+
+* 24 items (omitted 'emotional awareness' subscale)
+* E.g.: “When I’m upset, I have difficulty thinking about anything else”
+* 1 (“Almost never”) to 5 (“Almost always”)
+* Excellent reliability, $(.94 > \alpha > .95)$.
+* Metric invariance across waves
+* Quadratic growth model had good fit
+  + CFI = .996, TLI = .993, RMSEA = .047, SRMR = 0.020
+
+## Open science
+
+Workflow for Open Reproducible Code in Science (WORCS) used to make analyses reproducible [@vanlissaWORCSWorkflowOpen2020]
+
+All code and synthetic data available at
+
+<https://github.com/cjvanlissa/veni_forest>
+
+# Results
+
+## Variable importance
+
+```{r, out.width="90%"}
+knitr::include_graphics("pcomb2.png")
+```
+
+## Variable importance 2
+
+```{r, out.width="100%"}
+knitr::include_graphics("violin.png")
+```
+
+## Marginal association
+
+```{r, out.width="40%"}
+knitr::include_graphics("plots/pdp1-12.png")
+```
+
+
+## Summary
+
+Important:
+
+* Best predictors: Personality and related constructs
+* Best parental predictor is autonomy support (bal. rel.)
+  + Negative/intrusive parenting more predictive than other positive practices
+* Conflict frequency and behavior
+* Empathy, particularly personal distress
+
+Less important than expected:
+
+* SES
+* Bullying/victimization
+* Delinquency
+* Substance use
+* Monitoring
+
+## Reflection content
+
+* Proximal factors more predictive of ER development than distal predictors
+    + Order mirrors bioecological model
+* Most important predictors are routinely assessed (big 5) or overt (conflict)
+  + Prime candidates for early risk assessment
+  + Conflict resolution behavior can be taught
+    - Target for intervention if association is causal
+* Emphasis on parenting (in literature and theory) might not be justified
+  + Congruent with RI-CLPM showing few parenting effects in adolescence [@vanlissaRoleFathersMothers2019]
+
+
+## Reflections form
+
+* Many predictors show non-linear effects: Emotion dysregulation only for +/-1SD
+* Some predictors show almost no marginal effect (e.g., father's age, drug use)
+  + This suggests they might be important in **interactions**
+
+# Example: Predictors of Infection Prevention Behavior
+
+## Context
+
+Prior to vaccines, infection prevention behaviors were the only defense against COVID
+
+Behavioral science could thus inform policy
+
+Existing theories suggest a limited set of relevant predictors
+
+We used ML to cast a wider net and identify important predictors at the individual and country level
+
+## Study design
+
+**Participants**
+
+* PsyCorona consortium
+* 56.072 participants across 28 countries
+* Collected between March-May 2020
+
+## Variables
+
+* DV: Self-reported infection prevention behaviors (handwashing, avoiding crowds, isolation)
+* IVs: 80 individual-level variables (16 multi-item composites)
+* Enriched with 35 country-level variables
+    + E.g., political stability, government effectiveness
+    + Some matched to date of participation (pandemic severity, government response)
+
+## Open science
+
+Workflow for Open Reproducible Code in Science (WORCS) used to make analyses reproducible [@vanlissaWORCSWorkflowOpen2020]
+
+All code and synthetic data available at
+
+<https://github.com/cjvanlissa/covid19_metadata>
+
+# Results
+
+## Variable importance
+
+```{r, out.height="100%"}
+knitr::include_graphics("presentation/varimp_covid.png")
+```
+
+## Summary
+
+* Injunctive norms most important
+    + Consistent with theory of planned behavior
+* Coping styles were important:
+    + Problem-focused coping, focus on the present/ future, hopefulness
+* Five of most important predictors were country-level variables
+    + E.g., national healthcare infrastructure
+
+## Notable absences
+
+* Perceived likelihood of infection
+    + Contradicts Health Belief Model
+* Psychological and material struggle
+    + E.g., loneliness, boredom, job insecurity
+* No evidence for "intergenerational conflict of interest"
+    + Confirmed by preregistered studies
+    
+## Strengths
+
+This sample included a representative sub-sample
+
+* Allowed us to estimate generalizability
+* Predictive $R^2$ in the representative subsample was even higher than in the total hold-out sample ($R^2_{rep} = .59$, $R^2_{test} = .52$)
+
+# Limitations and future directions
+
+## Limitations
+
+1. Theories are still verbal and flexible
+    * Even if ML leads to new insights, it is not clear how theories should be updated
+2. Ignoring causality limits interpretability of machine learning
+    * Incorrect direction of causality: meaningless results
+    * Conditioning on a collider: biased results
+
+## Future direction 1: Formal theoretical object
+
+Formal theories are expressed in mathematical terms
+
+* unambiguous
+* logically sound
+* explicates assumptions
+* reveals ambiguities and gaps in knowledge
+* facilitates conveying ideas to others
+* applying rules of formal logic implies testable hypotheses
+* refutation of hypotheses dictates specific modifications
+
+## Recall: Characteristics of Good Theory
+
+@meehlAppraisingAmendingTheories1990
+
+1. phenomena to be explained
+2. putative causal connections between them
+3. direction of the effect
+4. relative importance of predictors
+5. interaction effects
+6. functional form of associations
+
+## Formal Theory
+
+* 1-2 can be described by a causal network (DAG), 3-6 refer to the nature of associations within that network
+* Augmented causal networks (ACN, see Crielaard et al., 2022)
+
+* encode both causal relationships and the nature of those relationships
+* imply testable hypotheses
+* shared in plain text, e.g., YAML or RDF
+* version controlled
+* shared conform FAIR software principles,
+to be used and updated through distributed collaboration
+
+Working on this with Aaron Peikert, Andreas Brandmaier and Felix Schönbrodt
+
+## Learning a causal network
+
+For example, using TMSR, based on what previous authors have written
+
+Working on this with my PhD student, Rasoul Norouzi
+
+## Epistemology
+
+Working on an epistemology of machine learning-informed theory formation
+
+With Denny Borsboom and James Woodward
+
+
+
+## References {.smaller}
+
+<font size = 4>
+**Van Lissa, C. J. (2022). Developmental data science: How machine learning can advance theory formation in Developmental Psychology. Infant and Child Development. https://doi.org/10.1002/icd.2370**
+
+Van Lissa, C. J. (2022). Complementing preregistered confirmatory analyses with rigorous, reproducible exploration using machine learning. Religion, Brain & Behavior. https://doi.org/10.1080/2153599X.2022.2070254
+
+Van Lissa, C. J., Beinhauer, L., Branje, S., & Meeus, W. (2022). Using machine learning to identify early predictors of adolescent emotion regulation development. Journal of Research on Adolescence. https://doi.org/10.31234/osf.io/rbqf9
+
+Van Lissa, C. J. (2021). Mapping Phenomena Relevant to Adolescent Emotion Regulation: A Text-Mining Systematic Review. Adolescent Research Review. https://doi.org/10.1007/s40894-021-00160-7
+
+Van Lissa, C. J., et al., (2022). Using machine learning to identify important predictors of COVID-19 infection prevention behaviors during the early phase of the pandemic. Patterns, 3(4), 100482. https://doi.org/10.1016/j.patter.2022.100482
+
+Douglas, K., Sutton, R. M., Van Lissa, C. J., ... & N Pontus, L. (2023). Identifying Important Individual-and Country-Level Predictors of Conspiracy Theorizing: A Machine Learning Analysis. European Journal of Social Psychology. DOI: 10.1002/ejsp.2968
+
+</font>
+
+## More refs
